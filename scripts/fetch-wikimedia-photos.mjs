@@ -35,7 +35,7 @@ const removableWords = new Set([
   "tamil", "telangana", "tripura", "uttarakhand", "marathi", "kannada", "tamilnadu", "up",
   "moroccan", "spanish", "greek", "chinese", "japanese", "korean", "vietnamese", "thai", "brazilian",
   "filipino", "nepali", "sri", "lankan", "simple", "basic", "quick", "easy", "style", "home",
-  "homestyle", "classic", "engineer", "high", "protein", "one", "pot", "bowl", "plate", "cup",
+  "homestyle", "classic", "high", "protein", "one", "pot", "bowl", "plate", "cup",
   "vegetable", "vegetarian", "plain", "starter", "cooker", "version", "mini", "everyday"
 ]);
 

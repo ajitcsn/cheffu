@@ -22,7 +22,7 @@ const titleIds = new Set(titles.map((title) => title.id));
 
 assert.equal(stages.length, 8, "Roadmap must have eight stages");
 assert.equal(recipeIds.size, recipes.length, "Recipe IDs must be unique");
-assert.ok(recipes.length >= 250, "Roadmap should offer at least 250 missions");
+assert.ok(recipes.length >= 378, "Roadmap should offer at least 378 missions");
 assert.ok(skills.length >= 100, "The skill system must remain granular");
 assert.ok(recipes.every((recipe) => recipe.steps.length >= 4), "Every mission needs at least four safe steps");
 assert.ok(recipes.every((recipe) => recipe.description && recipe.description.includes(recipe.name)), "Every dish needs a dish-specific description");
@@ -38,6 +38,15 @@ assert.ok(collectionConfig.worldCountries.length >= 20, "World collection needs 
 assert.ok(collectionConfig.indiaStates.every((item) => recipeIds.has(item.dishId)), "Every Indian state needs a linked dish");
 assert.ok(collectionConfig.worldCountries.every((item) => recipeIds.has(item.dishId)), "Every passport country needs a linked dish");
 assert.ok(recipes.every((recipe) => recipe.photo || sourcedPhotos[recipe.id]), "Every recipe needs source-linked imagery");
+assert.equal(Object.keys(sourcedPhotos).length, recipes.length, "Every recipe must use a researched local image asset");
+assert.ok(Object.values(sourcedPhotos).every((photo) => photo.url.startsWith("assets/recipes/") && photo.page), "Recipe images must be local and retain a source page");
+assert.ok(Object.values(sourcedPhotos).every((photo) => {
+  const file = new URL(`./${photo.url}`, import.meta.url);
+  return fs.existsSync(file) && fs.statSync(file).size > 1000;
+}), "Every recipe image file must exist and contain image data");
+const photoManifest = JSON.parse(fs.readFileSync(new URL("./assets/recipes/manifest.json", import.meta.url), "utf8"));
+assert.equal(photoManifest.total, recipes.length, "Recipe image manifest must cover the full catalogue");
+assert.equal(new Set(photoManifest.items.map((item) => item.recipeId)).size, recipes.length, "Recipe image manifest IDs must be unique");
 assert.equal(titles.length, 100, "Collections must expose exactly 100 titles");
 assert.equal(titleIds.size, titles.length, "Title IDs must be unique");
 assert.ok(titles.every((title) => title.description && title.requirement && title.condition), "Every title needs flavour text and an unlock rule");
@@ -46,18 +55,18 @@ assert.ok(titles.filter((title) => title.condition.type === "recipeCooks").every
 
 const index = fs.readFileSync(new URL("./index.html", import.meta.url), "utf8");
 const appSource = fs.readFileSync(new URL("./app.js", import.meta.url), "utf8");
-assert.ok(fs.existsSync(new URL("./cheffu-tara-logo.png", import.meta.url)), "Cheffu must include the Tara mascot logo asset");
-assert.ok(index.includes("cheffu-tara-logo.png"), "Header and app metadata must use the Tara mascot logo");
-for (const asset of ["tara-welcome.png", "tara-skills.png", "tara-streak.png", "tara-challenge.png"]) {
+assert.ok(fs.existsSync(new URL("./cheffu-aanya-logo.png", import.meta.url)), "Cheffu must include the Aanya mascot logo asset");
+assert.ok(index.includes("cheffu-aanya-logo.png"), "Header and app metadata must use the Aanya mascot logo");
+for (const asset of ["aanya-welcome.png", "aanya-skills.png", "aanya-streak.png", "aanya-challenge.png"]) {
   assert.ok(fs.existsSync(new URL(`./${asset}`, import.meta.url)), `Home companion asset missing: ${asset}`);
   assert.ok(appSource.includes(asset), `Home companion must use ${asset}`);
 }
-assert.ok(appSource.includes("taraHomePanel") && appSource.includes("TARA'S PICK"), "Home must include one reactive Tara recommendation");
-const taraVariationFiles = fs.readdirSync(new URL("./tara-variations/", import.meta.url)).filter((file) => file.endsWith(".jpg"));
-assert.equal(taraVariationFiles.length, 12, "Tara expression deck must contain 12 additional poses");
-assert.ok(taraVariationFiles.every((file) => appSource.includes(`tara-variations/${file}`)), "Every Tara expression must be available to the automatic home commentary");
-assert.ok(!appSource.includes("data-tara-pose") && !appSource.includes("data-tara-cycle") && !appSource.includes("More moods"), "Tara commentary must not expose manual mood choices");
-assert.ok(!/Ayyo|Seri/.test(appSource), "Tara's dialogue must use a friendly, region-neutral voice");
+assert.ok(appSource.includes("aanyaHomePanel") && appSource.includes("AANYA'S PICK"), "Home must include one reactive Aanya recommendation");
+const aanyaVariationFiles = fs.readdirSync(new URL("./aanya-variations/", import.meta.url)).filter((file) => file.endsWith(".jpg"));
+assert.equal(aanyaVariationFiles.length, 12, "Aanya expression deck must contain 12 additional poses");
+assert.ok(aanyaVariationFiles.every((file) => appSource.includes(`aanya-variations/${file}`)), "Every Aanya expression must be available to the automatic home commentary");
+assert.ok(!appSource.includes("data-aanya-pose") && !appSource.includes("data-aanya-cycle") && !appSource.includes("More moods"), "Aanya commentary must not expose manual mood choices");
+assert.ok(!/Ayyo|Seri/.test(appSource), "Aanya's dialogue must use a friendly, region-neutral voice");
 assert.ok(!appSource.includes("TODAY'S 1× QUEST") && appSource.includes("TODAY'S RECOMMENDATION"), "Daily recommendation wording must stay clear");
 assert.ok(!dataSource.includes("Boot Sequence") && dataSource.includes("Kitchen First Steps"), "Beginner roadmap wording must use plain language");
 assert.ok(!fs.readFileSync(new URL("./styles.css", import.meta.url), "utf8").includes('.nav-item[data-route="dishes"]'), "Dishes navigation must not have a special highlight");

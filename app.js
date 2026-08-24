@@ -2,7 +2,7 @@
   const { stages, skills, recipes, badges, collectionConfig } = window.CHEFFU_DATA;
   const sourcedPhotos = window.CHEFFU_RECIPE_PHOTOS || {};
   recipes.forEach((recipe) => {
-    if (!recipe.photo && sourcedPhotos[recipe.id]) recipe.photo = sourcedPhotos[recipe.id];
+    if (sourcedPhotos[recipe.id]) recipe.photo = sourcedPhotos[recipe.id];
   });
   const STORAGE_KEY = "cheffu-roadmap-state-v1";
   const XP_PER_LEVEL = 140;
@@ -12,21 +12,21 @@
 
   const roadmapTracks = [
     { id: "morning", name: "Morning Starter", icon: "🌅", colour: "#ffd84d", description: "Build confidence with drinks, eggs, poha, upma, toast, and fast breakfasts." },
-    { id: "dal-legume", name: "Dal & Bean Systems", icon: "🫘", colour: "#b9e85b", description: "Learn soaking, pressure, simmering, and tadka through dependable dals and beans." },
-    { id: "veg-curry", name: "Everyday Sabzi Desk", icon: "🥦", colour: "#80c95b", description: "Build dry sabzis and vegetable curries for realistic weeknight cooking." },
-    { id: "rice-onepot", name: "Rice Mission Control", icon: "🍚", colour: "#d9b34c", description: "Master rice ratios, khichdi, pulao, and compact one-pot Indian meals." },
-    { id: "family-meals", name: "Family Meal Architect", icon: "🏠", colour: "#74c65d", description: "Coordinate complete Indian meals and serve several people without timeline errors." },
+    { id: "dal-legume", name: "Dal & Bean Foundations", icon: "🫘", colour: "#b9e85b", description: "Learn soaking, pressure, simmering, and tadka through dependable dals and beans." },
+    { id: "veg-curry", name: "Everyday Sabzi", icon: "🥦", colour: "#80c95b", description: "Build dry sabzis and vegetable curries for realistic weeknight cooking." },
+    { id: "rice-onepot", name: "Rice & One-Pot Meals", icon: "🍚", colour: "#d9b34c", description: "Master rice ratios, khichdi, pulao, and compact one-pot Indian meals." },
+    { id: "family-meals", name: "Family Table", icon: "🏠", colour: "#74c65d", description: "Coordinate complete Indian meals and serve several people with calm timing." },
     { id: "plant-protein-fast", name: "Plant Protein Sprint", icon: "🌱", colour: "#ff9c46", description: "Build fast vegetarian protein meals in twenty minutes or less." },
-    { id: "plant-protein-meals", name: "Plant Protein Builder", icon: "💪", colour: "#ee7d38", description: "Train substantial paneer, tofu, pulse, and dairy meals for recovery." },
-    { id: "egg-meat-protein", name: "Egg & Meat Fuel Lab", icon: "🥚", colour: "#e5643c", description: "Practise efficient egg, chicken, fish, and meat protein meals." },
-    { id: "one-pot", name: "One-Pot Operator", icon: "🫕", colour: "#da9d45", description: "Make filling meals with one main vessel and a manageable washing-up queue." },
+    { id: "plant-protein-meals", name: "Plant Protein Meals", icon: "💪", colour: "#ee7d38", description: "Practise substantial paneer, tofu, pulse, and dairy meals." },
+    { id: "egg-meat-protein", name: "Indian Egg, Fish & Meat", icon: "🥚", colour: "#e5643c", description: "Explore regional egg, chicken, fish, seafood, pork, and mutton dishes." },
+    { id: "one-pot", name: "One-Pot Comforts", icon: "🫕", colour: "#da9d45", description: "Make filling meals with one main vessel and a manageable washing-up queue." },
     { id: "dough", name: "Dough & Bread Workshop", icon: "🫓", colour: "#c9825b", description: "Progress from kneading and rotis to fermented breads and structured doughs." },
     { id: "south-tiffin", name: "South Tiffin Route", icon: "🥥", colour: "#42b79a", description: "Master batter, tempering, chutneys, dosa, idli, and South Indian breakfasts." },
-    { id: "south-meals", name: "South Indian Table", icon: "🍚", colour: "#2ea77c", description: "Build rice, sambar, rasam, vegetables, and complete southern meal systems." },
+    { id: "south-meals", name: "South Indian Table", icon: "🍚", colour: "#2ea77c", description: "Build rice, sambar, rasam, vegetables, and complete southern meals." },
     { id: "north", name: "North Indian Comfort", icon: "🧈", colour: "#ef7950", description: "Explore dals, gravies, breads, snacks, and hearty northern comfort food." },
-    { id: "west", name: "Western India Snack Route", icon: "🥜", colour: "#ea9550", description: "Travel through Maharashtra, Gujarat, Goa, and western snack systems." },
+    { id: "west", name: "Western India Snack Route", icon: "🥜", colour: "#ea9550", description: "Travel through Maharashtra, Gujarat, Goa, and western snacks." },
     { id: "east-ne", name: "East & Northeast Trail", icon: "🎋", colour: "#5ca976", description: "Practise lighter stews, rice, fish, mustard, greens, and regional specialities." },
-    { id: "sweet", name: "Sweet Lab", icon: "🧁", colour: "#ee6f9f", description: "Progress from no-bake cups to custards, Indian sweets, pastry, and celebration cakes." },
+    { id: "sweet", name: "Sweet Studio", icon: "🧁", colour: "#ee6f9f", description: "Progress from no-bake cups to custards, Indian sweets, pastry, and celebration cakes." },
     { id: "pan-asian", name: "Wok & Bowl Explorer", icon: "🥢", colour: "#e84949", description: "Learn East and Southeast Asian bowls, noodles, stir-fries, soups, and composed meals." },
     { id: "italian", name: "Italian Workshop", icon: "🍝", colour: "#28a77a", description: "Move from bruschetta to sauces, pasta, risotto, dough, pizza, and Italian desserts." },
     { id: "world-foundations", name: "World Kitchen Basics", icon: "🌍", colour: "#4b82d4", description: "Use approachable international dishes to expand your ingredients and techniques." },
@@ -284,7 +284,7 @@
       </div>`;
   }
 
-  function taraHomePanel(totalCooks, learnedSkills, titleCount, badge, badgeStatus, primary) {
+  function aanyaHomePanel(totalCooks, learnedSkills, titleCount, badge, badgeStatus, primary) {
     const today = localDateKey();
     const playerName = state.playerName || "Chef";
     const info = levelInfo();
@@ -296,17 +296,17 @@
       return { key, recipe, completed: completed.length, bankedXp: state.checkpointXp[key] || 0 };
     }).find(Boolean);
     const sceneImages = [
-      "tara-challenge.png", "tara-skills.png", "tara-streak.png",
-      "tara-variations/surprised-o.jpg?v=2", "tara-variations/cutting-glance.jpg",
-      "tara-variations/hot-pot-towel.jpg", "tara-variations/pizza-spin.jpg",
-      "tara-variations/mortar-pestle.jpg", "tara-variations/icing-taste.jpg",
-      "tara-variations/embarrassed-flour.jpg", "tara-variations/full-content.jpg?v=2",
-      "tara-variations/onion-tears.jpg?v=2", "tara-variations/burnt-toast.jpg",
-      "tara-variations/fridge-detective.jpg?v=2", "tara-variations/proud-plating.jpg"
+      "aanya-challenge.png", "aanya-skills.png", "aanya-streak.png",
+      "aanya-variations/surprised-o.jpg?v=3", "aanya-variations/cutting-glance.jpg?v=3",
+      "aanya-variations/hot-pot-towel.jpg?v=3", "aanya-variations/pizza-spin.jpg?v=3",
+      "aanya-variations/mortar-pestle.jpg?v=3", "aanya-variations/icing-taste.jpg?v=3",
+      "aanya-variations/embarrassed-flour.jpg?v=3", "aanya-variations/full-content.jpg?v=3",
+      "aanya-variations/onion-tears.jpg?v=3", "aanya-variations/burnt-toast.jpg?v=3",
+      "aanya-variations/fridge-detective.jpg?v=3", "aanya-variations/proud-plating.jpg?v=3"
     ];
-    let image = totalCooks === 0 ? "tara-welcome.png" : sceneImages[stableHash(`${today}-${totalCooks}-${learnedSkills}`) % sceneImages.length];
-    if (pendingCook) image = "tara-variations/surprised-o.jpg?v=2";
-    if (state.lastCookDate === today) image = stableHash(`${today}-${totalCooks}`) % 2 ? "tara-variations/proud-plating.jpg" : "tara-variations/full-content.jpg?v=2";
+    let image = totalCooks === 0 ? "aanya-welcome.png" : sceneImages[stableHash(`${today}-${totalCooks}-${learnedSkills}`) % sceneImages.length];
+    if (pendingCook) image = "aanya-variations/surprised-o.jpg?v=3";
+    if (state.lastCookDate === today) image = stableHash(`${today}-${totalCooks}`) % 2 ? "aanya-variations/proud-plating.jpg?v=3" : "aanya-variations/full-content.jpg?v=3";
 
     const targetRecipe = pendingCook?.recipe || primary;
     const targetSkills = targetRecipe.skillIds.slice(0, 2).map((id) => skills.find((skill) => skill.id === id)?.name).filter(Boolean);
@@ -320,26 +320,26 @@
     } else if (totalCooks === 0) {
       heading = `${playerName}, I found a gentle first win for us.`;
       comment = `Start with ${targetRecipe.name}: ${targetRecipe.minutes} minutes, about ${targetRecipe.protein} g protein, and ${targetRecipe.xp} XP. Tap each checkpoint only after your hands are safe; Cheffu banks up to 30% XP if you pause. Finish every step to unlock the dish card. I will stay right here and guide you through it.`;
-      actionLabel = `Cook ${targetRecipe.name} with Tara`;
+      actionLabel = `Cook ${targetRecipe.name} with Aanya`;
     } else {
       const xpToLevel = Math.max(0, info.needed - info.current);
       heading = `${playerName}, I think ${targetRecipe.name} is your smartest next move.`;
       comment = `It takes ${targetRecipe.minutes} minutes, gives ${targetRecipe.xp} XP, has about ${targetRecipe.protein} g protein, and practises ${targetSkills.join(" and ") || "useful kitchen skills"}. You are ${xpToLevel} XP from Level ${Math.min(MAX_LEVEL, info.level + 1)}, at ${badgeStatus.value}/${badge.target} for ${badge.name}, with ${learnedSkills} skills and ${titleCount}/100 titles discovered. Finish every checkpoint so Cheffu awards the dish card, skill XP, and streak credit. I would love to cook this one with you, so save me a plate, okay?`;
-      actionLabel = `Cook ${targetRecipe.name} with Tara`;
+      actionLabel = `Cook ${targetRecipe.name} with Aanya`;
     }
     return `
-      <section class="tara-companion" aria-labelledby="tara-companion-heading">
-        <div class="tara-companion-art"><img src="${image}" alt="Chibi Tara sharing your cooking progress"></div>
-        <div class="tara-companion-copy">
-          <div class="tara-companion-top"><div><p class="eyebrow">Tara's kitchen commentary</p><h2 id="tara-companion-heading">${escapeHtml(heading)}</h2></div><span class="tara-live-pill">TARA'S PICK</span></div>
-          <div class="tara-speech"><span aria-hidden="true">💬</span><p>${escapeHtml(comment)}</p></div>
-          <div class="tara-progress-chips">
+      <section class="aanya-companion" aria-labelledby="aanya-companion-heading">
+        <div class="aanya-companion-art"><img src="${image}" alt="Chibi Aanya sharing your cooking progress"></div>
+        <div class="aanya-companion-copy">
+          <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's kitchen commentary</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA'S PICK</span></div>
+          <div class="aanya-speech"><span aria-hidden="true">💬</span><p>${escapeHtml(comment)}</p></div>
+          <div class="aanya-progress-chips">
             <span><strong>${totalCooks}</strong> cooks</span>
             <span><strong>${learnedSkills}</strong> skills</span>
             <span><strong>${state.streak}</strong> streak</span>
             <span><strong>${titleCount}</strong> titles</span>
           </div>
-          <button class="button button-primary tara-action" type="button" data-open-recipe="${targetRecipe.id}">${escapeHtml(actionLabel)} →</button>
+          <button class="button button-primary aanya-action" type="button" data-open-recipe="${targetRecipe.id}">${escapeHtml(actionLabel)} →</button>
         </div>
       </section>`;
   }
@@ -398,7 +398,7 @@
           <button class="text-button" data-route="roadmap" type="button">Explore ${escapeHtml(nextStage.name)} lessons →</button>
         </section>
 
-        ${taraHomePanel(totalCooks, learnedSkills, titleCount, badge, progress, primary)}
+        ${aanyaHomePanel(totalCooks, learnedSkills, titleCount, badge, progress, primary)}
 
         <section class="home-badge-shelf" aria-labelledby="badge-shelf-heading">
           <div class="section-heading"><div><p class="eyebrow">Your collectibles</p><h2 id="badge-shelf-heading">Badge cabinet</h2></div><button class="text-button" data-route="collections" type="button">Open collections →</button></div>
@@ -538,7 +538,7 @@
     return `
       <section class="skill-tree-shell" aria-labelledby="tree-title">
         <div class="tree-heading">
-          <div><p class="eyebrow">Connected capability tree</p><h2 id="tree-title">Kitchen Confidence</h2><p>Choose a coloured system to inspect its micro-skill branch.</p></div>
+          <div><p class="eyebrow">Connected capability tree</p><h2 id="tree-title">Kitchen Confidence</h2><p>Choose a coloured skill family to inspect its micro-skill branch.</p></div>
           <div class="tree-total"><strong>${skills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length}</strong><span>nodes lit</span></div>
         </div>
 
@@ -576,7 +576,7 @@
       <section class="skill-branch" style="--cluster-colour:${style.colour}">
         <div class="branch-heading">
           <div class="branch-root-node"><span>${style.icon}</span></div>
-          <div><p class="eyebrow">Selected system</p><h2>${escapeHtml(selectedSkillCluster)}</h2><p>${practised} of ${clusterSkills.length} micro-skills practised. Select a node to find dishes that train it.</p></div>
+          <div><p class="eyebrow">Selected skill family</p><h2>${escapeHtml(selectedSkillCluster)}</h2><p>${practised} of ${clusterSkills.length} micro-skills practised. Select a node to find dishes that train it.</p></div>
           <div class="branch-progress" role="progressbar" aria-valuemin="0" aria-valuemax="${clusterSkills.length}" aria-valuenow="${practised}" aria-label="${escapeHtml(selectedSkillCluster)} progress"><span style="width:${Math.round((practised / clusterSkills.length) * 100)}%"></span></div>
         </div>
         <div class="branch-trunk" aria-hidden="true"></div>
@@ -619,7 +619,7 @@
       const practised = allClusterSkills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
       return `
         <section class="skill-cluster">
-          <div class="cluster-heading"><div><p class="eyebrow">Skill system</p><h2>${escapeHtml(cluster)}</h2></div><span>${practised}/${allClusterSkills.length} practised</span></div>
+          <div class="cluster-heading"><div><p class="eyebrow">Skill family</p><h2>${escapeHtml(cluster)}</h2></div><span>${practised}/${allClusterSkills.length} practised</span></div>
           <div class="skill-grid">${clusterSkills.map(skillCard).join("")}</div>
         </section>`;
     }).join("");
@@ -646,7 +646,7 @@
 
     container.innerHTML = `
       <header class="page-head">
-        <div><p class="eyebrow">Your edible portfolio</p><h1 id="dishes-heading">Dishes cooked</h1><p>Every card is proof that you entered the kitchen and shipped something.</p></div>
+        <div><p class="eyebrow">Your edible collection</p><h1 id="dishes-heading">Dishes cooked</h1><p>Every card marks something you cooked and learned from.</p></div>
         <div class="summary-chip"><strong>${cooked.length} / ${recipes.length}</strong><span>dish cards found</span></div>
       </header>
       ${cooked.length ? `
@@ -796,7 +796,7 @@
 
       <section class="map-collection map-collection--world">
         <div class="map-collection-heading">
-          <div><p class="eyebrow">Grand collection 02</p><h2>World Kitchen Passport</h2><p>Start with accessible stovetop dishes, then unlock more ambitious international food systems.</p></div>
+          <div><p class="eyebrow">Grand collection 02</p><h2>World Kitchen Passport</h2><p>Start with accessible stovetop dishes, then unlock more ambitious international recipes.</p></div>
           <div class="map-collection-score"><strong>${worldComplete}/${collectionConfig.worldCountries.length}</strong><span>passport stamps</span></div>
         </div>
         <div class="world-map-stack">
@@ -901,7 +901,7 @@
           <option value="Northeast India" ${roadmapFilters.region === "Northeast India" ? "selected" : ""}>Northeast Indian</option>
           <option value="Pan-Indian" ${roadmapFilters.region === "Pan-Indian" ? "selected" : ""}>Pan-Indian</option>
           <option value="International" ${roadmapFilters.region === "International" ? "selected" : ""}>International</option>
-          <option value="Everywhere" ${roadmapFilters.region === "Everywhere" ? "selected" : ""}>Engineer fuel</option>
+          <option value="Everywhere" ${roadmapFilters.region === "Everywhere" ? "selected" : ""}>Everyday basics</option>
         </select>
       </section>
 
@@ -1007,7 +1007,7 @@
       </div>
       <div class="sheet-actions">
         <div class="sheet-action-buttons">
-          <button class="button button-primary button-large" type="button" data-complete-recipe="${recipe.id}" ${allStepsComplete ? "" : "disabled"}>${allStepsComplete ? (state.cooks[recipe.id]?.count ? "Log another cook" : `Ship dish · earn remaining XP`) : `Select all ${recipe.steps.length} steps to ship`}</button>
+          <button class="button button-primary button-large" type="button" data-complete-recipe="${recipe.id}" ${allStepsComplete ? "" : "disabled"}>${allStepsComplete ? (state.cooks[recipe.id]?.count ? "Log another cook" : `Finish dish · earn remaining XP`) : `Select all ${recipe.steps.length} steps to finish`}</button>
           <button class="text-button" type="button" data-close-dialog>Pause and keep checkpoint XP</button>
         </div>
         <small>Protein values are approximate per serving. Food photos and nutrition are not proof of food safety.</small>
@@ -1049,8 +1049,8 @@
     const allStepsComplete = completed.size === recipe.steps.length;
     shipButton.disabled = !allStepsComplete;
     shipButton.textContent = allStepsComplete
-      ? (state.cooks[recipe.id]?.count ? "Log another cook" : "Ship dish · earn remaining XP")
-      : `Select all ${recipe.steps.length} steps to ship`;
+      ? (state.cooks[recipe.id]?.count ? "Log another cook" : "Finish dish · earn remaining XP")
+      : `Select all ${recipe.steps.length} steps to finish`;
     if (reward) showToast(`Checkpoint cleared · +${reward} XP banked`);
   }
 
@@ -1098,7 +1098,7 @@
     const badgeText = unlocked.length ? ` · Badge unlocked: ${unlocked.map((badge) => badge.name).join(", ")}` : "";
     const titleText = newTitles.length ? ` · Title unlocked: ${newTitles.slice(0, 3).map((title) => title.name).join(", ")}${newTitles.length > 3 ? ` +${newTitles.length - 3} more` : ""}` : "";
     const skillText = ` · ${recipe.skillIds.length} micro-skills practised${newlyDiscoveredSkills.length ? ` · ${newlyDiscoveredSkills.length} discovered` : ""}`;
-    showToast(`${recipe.emoji} ${recipe.name} shipped · +${earnedXp} XP${skillText}${badgeText}${titleText}`, unlocked.length > 0 || newTitles.length > 0 || newlyDiscoveredSkills.length > 0);
+    showToast(`${recipe.emoji} ${recipe.name} complete · +${earnedXp} XP${skillText}${badgeText}${titleText}`, unlocked.length > 0 || newTitles.length > 0 || newlyDiscoveredSkills.length > 0);
   }
 
   function showSkillDishes(skillId) {
@@ -1144,7 +1144,7 @@
   function showToast(message, achievement = false) {
     const toast = document.createElement("div");
     toast.className = `toast ${achievement ? "toast--achievement" : ""}`;
-    toast.innerHTML = `<strong>${achievement ? "Achievement!" : "Compile successful"}</strong><span>${escapeHtml(message)}</span>`;
+    toast.innerHTML = `<strong>${achievement ? "Achievement!" : "Cook logged"}</strong><span>${escapeHtml(message)}</span>`;
     toastRegion.append(toast);
     window.setTimeout(() => toast.remove(), 5200);
   }

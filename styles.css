@@ -604,7 +604,7 @@ main {
   justify-content: space-between;
 }
 
-.tara-companion {
+.aanya-companion {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: minmax(250px, 330px) 1fr;
@@ -616,7 +616,7 @@ main {
   box-shadow: 7px 8px 0 var(--ink);
 }
 
-.tara-companion-art {
+.aanya-companion-art {
   position: relative;
   display: grid;
   min-height: 350px;
@@ -625,7 +625,7 @@ main {
   background: #fff7e8;
 }
 
-.tara-companion-art::after {
+.aanya-companion-art::after {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -637,14 +637,14 @@ main {
   pointer-events: none;
 }
 
-.tara-companion-art img {
+.aanya-companion-art img {
   width: 100%;
   height: 100%;
   max-height: 430px;
   object-fit: contain;
 }
 
-.tara-companion-copy {
+.aanya-companion-copy {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -654,21 +654,21 @@ main {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(255, 238, 185, 0.72));
 }
 
-.tara-companion-top {
+.aanya-companion-top {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 18px;
 }
 
-.tara-companion-top h2 {
+.aanya-companion-top h2 {
   max-width: 650px;
   margin: 0;
   font-size: clamp(1.5rem, 3.3vw, 2.6rem);
   line-height: 1.04;
 }
 
-.tara-live-pill {
+.aanya-live-pill {
   flex: 0 0 auto;
   padding: 6px 9px;
   border: 1px solid var(--ink);
@@ -679,7 +679,7 @@ main {
   letter-spacing: 0.08em;
 }
 
-.tara-speech {
+.aanya-speech {
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -692,20 +692,20 @@ main {
   box-shadow: 3px 4px 0 rgba(24, 37, 29, 0.18);
 }
 
-.tara-speech p {
+.aanya-speech p {
   margin: 0;
   color: var(--ink-soft);
   font-size: 0.9rem;
   line-height: 1.52;
 }
 
-.tara-progress-chips {
+.aanya-progress-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.tara-progress-chips span {
+.aanya-progress-chips span {
   padding: 7px 10px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.78);
@@ -714,12 +714,12 @@ main {
   font-weight: 800;
 }
 
-.tara-progress-chips strong {
+.aanya-progress-chips strong {
   color: var(--ink);
   font-size: 0.88rem;
 }
 
-.tara-action {
+.aanya-action {
   align-self: flex-start;
 }
 
@@ -3150,7 +3150,7 @@ main {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .tara-companion {
+  .aanya-companion {
     grid-template-columns: minmax(220px, 280px) 1fr;
   }
 }
@@ -3200,25 +3200,25 @@ main {
     transform: none;
   }
 
-  .tara-companion {
+  .aanya-companion {
     grid-template-columns: 1fr;
     box-shadow: 4px 5px 0 var(--ink);
   }
 
-  .tara-companion-art {
+  .aanya-companion-art {
     min-height: 310px;
   }
 
-  .tara-companion-art img {
+  .aanya-companion-art img {
     max-height: 340px;
   }
 
-  .tara-companion-copy {
+  .aanya-companion-copy {
     border-top: 2px solid var(--ink);
     border-left: 0;
   }
 
-  .tara-companion-top {
+  .aanya-companion-top {
     gap: 10px;
   }
 

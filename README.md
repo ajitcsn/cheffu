@@ -14,11 +14,11 @@
 
 Cheffu is a static cooking game designed for beginner cooks in India, especially protein-conscious young adults who have never felt comfortable in a kitchen. It starts with tiny wins such as mixing a drink, then gradually introduces heat, pans, tadka, pressure cooking, curries, dough, fermentation, and complete meals.
 
-The experience combines practical cooking instructions with XP, levels, micro-skills, collectible dish cards, badges, titles, daily recommendations, and a friendly companion named Tara.
+The experience combines practical cooking instructions with XP, levels, micro-skills, collectible dish cards, badges, titles, daily recommendations, and a friendly companion named Aanya.
 
 ## Highlights
 
-- **370 cooking missions** across Indian regional food, protein-focused meals, desserts, baking, and international cuisines.
+- **378 cooking missions** across Indian regional food, protein-focused meals, desserts, baking, and international cuisines.
 - **124 granular kitchen skills**, including measuring tools, mixing methods, knife actions, heat cues, cooker safety, fermentation, plating, and meal planning.
 - **Eight progression stages**, from no-heat first contact to coordinated full meals.
 - **Three daily recommendations** matched to the player's diet and current progress.
@@ -26,7 +26,7 @@ The experience combines practical cooking instructions with XP, levels, micro-sk
 - **100 unlockable titles** with humorous descriptions and distinct achievement conditions.
 - **Dish cards, badges, regional collections, an India map, and a world cooking passport.**
 - **Responsive five-view interface** with keyboard shortcuts for desktop players.
-- **Friendly Tara commentary** that explains the most useful next action using the player's live progress.
+- **Friendly Aanya commentary** that explains the most useful next action using the player's live progress.
 
 ## Main views
 
@@ -37,7 +37,7 @@ A visual collection of everything the player has successfully cooked, including 
 A colour-coded connected tree and searchable list covering every micro-skill the player has practised.
 
 **Today, `3`**  
-The daily dashboard with level progress, closest collectible, badge cabinet, Tara's recommendation, and three suggested dishes.
+The daily dashboard with level progress, closest collectible, badge cabinet, Aanya's recommendation, and three suggested dishes.
 
 **Collections, `4`**  
 Badges, 100 titles, regional food collections, the India State Plate, and World Kitchen Passport.
@@ -59,7 +59,7 @@ Opening `index.html` directly is not recommended because browsers restrict some 
 
 ## Verify the content
 
-The verification script checks catalogue integrity, skill links, collections, titles, imagery, navigation, Tara assets, and core progression requirements:
+The verification script checks catalogue integrity, skill links, collections, titles, imagery, navigation, Aanya assets, and core progression requirements:
 
 ```bash
 node verify.mjs
@@ -67,7 +67,7 @@ node verify.mjs
 
 The current verified content includes:
 
-- 370 recipes
+- 378 recipes
 - 124 micro-skills
 - 8 progression stages
 - 6 core badges
@@ -95,11 +95,11 @@ Cheffu/
 ├── app.js                     State, rendering, interactions, and game loop
 ├── data.js                    Core recipes, stages, skills, and badges
 ├── catalog-expansion.js       Expanded 370-dish catalogue and collections
-├── recipe-photos.js           Source-linked recipe imagery
+├── recipe-photos.js           Local recipe imagery with source credits
 ├── title-catalog.js           100 unlockable titles
 ├── verify.mjs                 Automated content validation
 ├── assets/                    Decorative interface assets
-├── tara-variations/           Tara's cooking expressions
+├── aanya-variations/          Aanya's cooking expressions
 ├── scripts/                   Catalogue image research utilities
 ├── CURRICULUM.md              Cooking curriculum rationale
 └── *_PROMPT.md                Reusable character and logo briefs
@@ -122,14 +122,14 @@ Recipes are concise training missions for a prototype. Protein values are approx
 
 ## Image attribution
 
-Dish photography is source-linked in the interface. Exact Wikimedia Commons matches are preferred. When an obscure dish lacks a reliable standalone photograph, Cheffu labels the nearest available dish-family image as a **related-dish reference**.
+Dish photography is researched per recipe and stored locally for reliable loading. Every acquired Wikimedia Commons image retains its source page and licence metadata in `assets/recipes/manifest.json`.
 
 Map sources:
 
 - [India states and union territories](https://commons.wikimedia.org/wiki/File:India_states_and_union_territories_map.svg), Planemad and contributors, CC BY-SA 3.0.
 - [World map configurable](https://commons.wikimedia.org/wiki/File:World_map_configurable.svg), Heitordp, CC0.
 
-The original Cheffu wordmark and Tara character assets were created for this prototype. Reusable generation briefs are available in [`CHEFFU_LOGO_PROMPT.md`](CHEFFU_LOGO_PROMPT.md) and [`TARA_COMPANION_PROMPTS.md`](TARA_COMPANION_PROMPTS.md).
+The original Cheffu wordmark and Aanya character assets were created for this prototype. Reusable generation briefs are available in [`CHEFFU_LOGO_PROMPT.md`](CHEFFU_LOGO_PROMPT.md) and [`AANYA_COMPANION_PROMPTS.md`](AANYA_COMPANION_PROMPTS.md).
 
 ## Current status
 

@@ -1,2000 +1,1893 @@
-/* Generated from source-linked food photography. Exact matches are preferred; representative entries identify their dish-family donor. */
+/* Dish-specific local assets acquired from Wikimedia Commons and Openverse. Source and licence metadata: assets/recipes/manifest.json */
 window.CHEFFU_RECIPE_PHOTOS = {
+  "aloo-gobi": {
+    "url": "assets/recipes/aloo-gobi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Aloo_Gobi_Sabzi.jpg",
+    "title": "Aloo Gobi Sabzi.jpg"
+  },
+  "appam": {
+    "url": "assets/recipes/appam.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg",
+    "title": "Appam - அப்பம்.jpg"
+  },
+  "appam-egg-curry": {
+    "url": "assets/recipes/appam-egg-curry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Appam_and_Egg_curry.jpg",
+    "title": "Appam and Egg curry.jpg"
+  },
+  "balanced-thali": {
+    "url": "assets/recipes/balanced-thali.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Indian_thali_with_poori_and_rice.jpg",
+    "title": "Indian thali with poori and rice.jpg"
+  },
+  "banana-badam-milkshake": {
+    "url": "assets/recipes/banana-badam-milkshake.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Strawberry_and_banana_milkshake,_May_2005.jpg",
+    "title": "Strawberry and banana milkshake, May 2005.jpg"
+  },
+  "beans-poriyal": {
+    "url": "assets/recipes/beans-poriyal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Carrot_beans_Poriyal_-_WCI-Day0-Dinner.jpg",
+    "title": "Carrot beans Poriyal - WCI-Day0-Dinner.jpg"
+  },
+  "bhindi-masala": {
+    "url": "assets/recipes/bhindi-masala.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Bhindi_Masala.jpg",
+    "title": "Bhindi Masala.jpg"
+  },
+  "boiled-eggs": {
+    "url": "assets/recipes/boiled-eggs.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Funny_hard_boiled_eggs-_Kolkata_-_West_Bengal_-_DSC_0003.jpg",
+    "title": "Funny hard boiled eggs- Kolkata - West Bengal - DSC 0003.jpg"
+  },
   "catalog-adai-dosa": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Dosa-chutney-sambhar.jpg/960px-Dosa-chutney-sambhar.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADosa-chutney-sambhar.jpg",
-    "title": "Dosa-chutney-sambhar.jpg"
+    "url": "assets/recipes/catalog-adai-dosa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Adai_dosa.jpg",
+    "title": "Adai dosa.jpg"
   },
   "catalog-afghan-kabuli-pulao": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Afghan_Palo.jpg/960px-Afghan_Palo.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAfghan_Palo.jpg",
-    "title": "Afghan_Palo.jpg"
+    "url": "assets/recipes/catalog-afghan-kabuli-pulao.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kabuli_Pulao.JPG",
+    "title": "Kabuli Pulao.JPG"
   },
   "catalog-akki-roti": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Roti_Style_Paratha.jpg/960px-Roti_Style_Paratha.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ARoti_Style_Paratha.jpg",
-    "title": "Roti_Style_Paratha.jpg"
+    "url": "assets/recipes/catalog-akki-roti.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Akki_roti.jpg",
+    "title": "Akki roti.jpg"
   },
   "catalog-aloo-capsicum": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Jeera_aloo_served_with_sprouts_and_dal.jpg/960px-Jeera_aloo_served_with_sprouts_and_dal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AJeera_aloo_served_with_sprouts_and_dal.jpg",
-    "title": "Jeera_aloo_served_with_sprouts_and_dal.jpg",
-    "representative": true,
-    "referenceFor": "Jeera aloo"
+    "url": "assets/recipes/catalog-aloo-capsicum.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=40963257",
+    "title": "File:ALOO CAPSICUM SABJI.JPG"
   },
   "catalog-aloo-matar": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Aloo_Mattar.jpg/960px-Aloo_Mattar.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAloo_Mattar.jpg",
-    "title": "Aloo_Mattar.jpg"
+    "url": "assets/recipes/catalog-aloo-matar.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Aloo_matar.jpg",
+    "title": "Aloo matar.jpg"
   },
   "catalog-aloo-paratha": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Mintparatha2.0.jpg/960px-Mintparatha2.0.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMintparatha2.0.jpg",
-    "title": "Mintparatha2.0.jpg"
+    "url": "assets/recipes/catalog-aloo-paratha.jpg",
+    "page": "https://www.flickr.com/photos/50642338@N00/245247260",
+    "title": "Aloo paratha"
   },
   "catalog-aloo-posto": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Aloo_Mattar.jpg/960px-Aloo_Mattar.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAloo_Mattar.jpg",
-    "title": "Aloo_Mattar.jpg",
-    "representative": true,
-    "referenceFor": "Aloo matar"
+    "url": "assets/recipes/catalog-aloo-posto.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Aloo_Posto.jpg",
+    "title": "Aloo Posto.jpg"
+  },
+  "catalog-amritsari-fish-fry": {
+    "url": "assets/recipes/catalog-amritsari-fish-fry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Amritsari_Fried_Fish-_Amritsar-Punjab_IMG_04.jpg",
+    "title": "File:Amritsari Fried Fish- Amritsar-Punjab IMG 04.jpg"
+  },
+  "catalog-amritsari-fish-tikka-wrap": {
+    "url": "assets/recipes/catalog-amritsari-fish-tikka-wrap.jpg",
+    "page": "https://www.flickr.com/photos/15157510@N00/335558230",
+    "title": "Karahi Fish Tikka Masala"
+  },
+  "catalog-andhra-kodi-pulao": {
+    "url": "assets/recipes/catalog-andhra-kodi-pulao.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Andhra_Kodi_Pulao_-_Hyatt_Hyderabad_Gachibowli_-_Hyderabad_2023-04-30_9340.jpg",
+    "title": "Andhra Kodi Pulao - Hyatt Hyderabad Gachibowli - Hyderabad 2023-04-30 9340.jpg"
   },
   "catalog-andhra-pesarattu-upma-plate": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/A_photo_of_Upma.jpg/960px-A_photo_of_Upma.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AA_photo_of_Upma.jpg",
-    "title": "A_photo_of_Upma.jpg"
+    "url": "assets/recipes/catalog-andhra-pesarattu-upma-plate.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Pesarattu-Upma_with_Ginger_Chutney.JPG",
+    "title": "Pesarattu-Upma with Ginger Chutney.JPG"
   },
   "catalog-apple-oat-crumble": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Banana_bread_slices.jpg/960px-Banana_bread_slices.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABanana_bread_slices.jpg",
-    "title": "Banana_bread_slices.jpg",
-    "representative": true,
-    "referenceFor": "Eggless banana bread"
+    "url": "assets/recipes/catalog-apple-oat-crumble.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Apple_Crumble_%26_Custard.jpg",
+    "title": "Apple Crumble & Custard.jpg"
   },
   "catalog-arisi-paruppu-sadam": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Rasam_%28closeup%29.jpg/960px-Rasam_%28closeup%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ARasam_(closeup).jpg",
-    "title": "Rasam_(closeup).jpg",
-    "representative": true,
-    "referenceFor": "Paruppu rasam"
+    "url": "assets/recipes/catalog-arisi-paruppu-sadam.jpg",
+    "page": "https://www.flickr.com/photos/11859234@N00/30350725865",
+    "title": "Arisi Paruppu Sadam"
   },
   "catalog-arunachal-vegetable-thukpa": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Thukpa%2C_Tibetan_noodle_in_Osaka%2C_Japan.jpg/960px-Thukpa%2C_Tibetan_noodle_in_Osaka%2C_Japan.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AThukpa%2C_Tibetan_noodle_in_Osaka%2C_Japan.jpg",
-    "title": "Thukpa,_Tibetan_noodle_in_Osaka,_Japan.jpg"
+    "url": "assets/recipes/catalog-arunachal-vegetable-thukpa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegetable_Thukpa.jpg",
+    "title": "Vegetable Thukpa.jpg"
   },
   "catalog-assamese-khar": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Thukpa%2C_Tibetan_noodle_in_Osaka%2C_Japan.jpg/960px-Thukpa%2C_Tibetan_noodle_in_Osaka%2C_Japan.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AThukpa%2C_Tibetan_noodle_in_Osaka%2C_Japan.jpg",
-    "title": "Thukpa,_Tibetan_noodle_in_Osaka,_Japan.jpg",
-    "representative": true,
-    "referenceFor": "Arunachal vegetable thukpa"
+    "url": "assets/recipes/catalog-assamese-khar.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Maasor_Muror_Khar.jpg",
+    "title": "Maasor Muror Khar.jpg"
   },
   "catalog-assamese-masor-tenga": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg/960px-Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAlu_ar_dhonepata_diye_Boyal_machher_jhol.jpg",
-    "title": "Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg",
-    "representative": true,
-    "referenceFor": "Bengali macher jhol"
+    "url": "assets/recipes/catalog-assamese-masor-tenga.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Masor_Tenga.jpg",
+    "title": "Masor Tenga.jpg"
   },
   "catalog-atta-halwa": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Kheer.jpg/960px-Kheer.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKheer.jpg",
-    "title": "Kheer.jpg",
-    "representative": true,
-    "referenceFor": "Classic rice kheer"
+    "url": "assets/recipes/catalog-atta-halwa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Picture_of_yummy_Atta_halwa.JPG",
+    "title": "Picture of yummy Atta halwa.JPG"
   },
   "catalog-aval-upma": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/A_photo_of_Upma.jpg/960px-A_photo_of_Upma.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:A_photo_of_Upma.jpg",
-    "representative": true,
-    "referenceFor": "Vegetable upma"
+    "url": "assets/recipes/catalog-aval-upma.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Aval_upma_-_1.jpg",
+    "title": "Aval upma - 1.jpg"
   },
   "catalog-avial": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Sambar%26Avial.jpg/960px-Sambar%26Avial.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASambar%26Avial.jpg",
-    "title": "Sambar&Avial.jpg"
+    "url": "assets/recipes/catalog-avial.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Avial_curry.jpg",
+    "title": "Avial curry.jpg"
   },
   "catalog-avocado-egg-toast": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Eierbal.jpg/960px-Eierbal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AEierbal.jpg",
-    "title": "Eierbal.jpg",
-    "representative": true,
-    "referenceFor": "Singapore egg fried rice"
+    "url": "assets/recipes/catalog-avocado-egg-toast.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Fresh_Avocado_Toast_with_Egg.jpg",
+    "title": "Fresh Avocado Toast with Egg.jpg"
   },
   "catalog-baingan-bharta": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Aloo_Mattar.jpg/960px-Aloo_Mattar.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAloo_Mattar.jpg",
-    "title": "Aloo_Mattar.jpg",
-    "representative": true,
-    "referenceFor": "Aloo matar"
+    "url": "assets/recipes/catalog-baingan-bharta.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Spicy_Baked_Aubergine_(Baingan_Bharta)_(753279896).jpg",
+    "title": "Spicy Baked Aubergine (Baingan Bharta) (753279896).jpg"
   },
   "catalog-bajra-moong-khichdi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Khichuri-edit.jpg/960px-Khichuri-edit.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKhichuri-edit.jpg",
-    "title": "Khichuri-edit.jpg"
+    "url": "assets/recipes/catalog-bajra-moong-khichdi.jpg",
+    "page": "https://www.indiblogger.in/indipost.php?post=830320",
+    "title": "Bajra and Moong Dal Khichdi"
   },
   "catalog-baked-cheesecake": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Chipa_Paraguay.jpg/960px-Chipa_Paraguay.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChipa_Paraguay.jpg",
-    "title": "Chipa_Paraguay.jpg",
-    "representative": true,
-    "referenceFor": "Chocolate chip cookies"
+    "url": "assets/recipes/catalog-baked-cheesecake.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Baked_Cheesecake_-_Jazz_Kissa_Lazy_Bird_2025-04-19.jpg",
+    "title": "Baked Cheesecake - Jazz Kissa Lazy Bird 2025-04-19.jpg"
   },
   "catalog-baked-penne": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Penne_all%27arrabbiata.jpg/960px-Penne_all%27arrabbiata.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3APenne_all'arrabbiata.jpg",
-    "title": "Penne_all'arrabbiata.jpg",
-    "representative": true,
-    "referenceFor": "Penne arrabbiata"
+    "url": "assets/recipes/catalog-baked-penne.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegan_mushroom_penne_-_Pasta_integral_con_champi%C3%B1ones_(6166219212).jpg",
+    "title": "Vegan mushroom penne - Pasta integral con champiñones (6166219212).jpg"
   },
   "catalog-bamboo-shoot-stir-fry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Phat_naem_sai_khai.jpg/960px-Phat_naem_sai_khai.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3APhat_naem_sai_khai.jpg",
-    "title": "Phat_naem_sai_khai.jpg"
+    "url": "assets/recipes/catalog-bamboo-shoot-stir-fry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Fried_Bamboo_Shoot.jpg",
+    "title": "Fried Bamboo Shoot.jpg"
   },
   "catalog-banana-lassi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Salt_lassi.jpg/960px-Salt_lassi.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASalt_lassi.jpg",
-    "title": "Salt_lassi.jpg",
-    "representative": true,
-    "referenceFor": "Plain sweet lassi"
+    "url": "assets/recipes/catalog-banana-lassi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegan_Banana_Lassi_(348299818).jpg",
+    "title": "Vegan Banana Lassi (348299818).jpg"
   },
   "catalog-bangladeshi-masoor-bhuna": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg",
-    "representative": true,
-    "referenceFor": "Masoor dal"
+    "url": "assets/recipes/catalog-bangladeshi-masoor-bhuna.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=782178",
+    "title": "Masoor dal"
   },
   "catalog-basic-sponge-cake": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Chipa_Paraguay.jpg/960px-Chipa_Paraguay.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChipa_Paraguay.jpg",
-    "title": "Chipa_Paraguay.jpg",
-    "representative": true,
-    "referenceFor": "Chocolate chip cookies"
+    "url": "assets/recipes/catalog-basic-sponge-cake.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Zero-sugar_sponge_cake.jpg",
+    "title": "Zero-sugar sponge cake.jpg"
   },
   "catalog-bean-quesadilla": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Black bean rice bowl"
+    "url": "assets/recipes/catalog-bean-quesadilla.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Carnitas_and_Black_Bean_Quesadilla,_Key_West_Florida_2022.jpg",
+    "title": "Carnitas and Black Bean Quesadilla, Key West Florida 2022.jpg"
   },
   "catalog-beans-on-toast": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Creamed_Eggs.png/960px-Creamed_Eggs.png",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACreamed_Eggs.png",
-    "title": "Creamed_Eggs.png"
+    "url": "assets/recipes/catalog-beans-on-toast.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:House_beans_on_toast_-_Black_Mocha_2025-03-13.jpg",
+    "title": "House beans on toast - Black Mocha 2025-03-13.jpg"
   },
   "catalog-beetroot-poriyal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Poriyal.jpg/960px-Poriyal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Poriyal.jpg",
-    "representative": true,
-    "referenceFor": "Beans poriyal"
+    "url": "assets/recipes/catalog-beetroot-poriyal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Beetroot_Poriyal_from_Tamilnadu.jpg",
+    "title": "Beetroot Poriyal from Tamilnadu.jpg"
+  },
+  "catalog-bengali-chicken-bhuna-khichuri": {
+    "url": "assets/recipes/catalog-bengali-chicken-bhuna-khichuri.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Bhuna_Khichuri_with_Chicken,_Vegetables,_Chili,_and_Lemon.jpg",
+    "title": "Bhuna Khichuri with Chicken, Vegetables, Chili, and Lemon.jpg"
   },
   "catalog-bengali-cholar-dal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-bengali-cholar-dal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Luchi_bagun_bhaja_Cholar_dal.jpg",
+    "title": "Luchi bagun bhaja Cholar dal.jpg"
+  },
+  "catalog-bengali-kosha-mangsho": {
+    "url": "assets/recipes/catalog-bengali-kosha-mangsho.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kosha_Mangsho.JPG",
+    "title": "Kosha Mangsho.JPG"
   },
   "catalog-bengali-macher-jhol": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg/960px-Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAlu_ar_dhonepata_diye_Boyal_machher_jhol.jpg",
-    "title": "Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg"
+    "url": "assets/recipes/catalog-bengali-macher-jhol.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Macher_Jhol.JPG",
+    "title": "Macher Jhol.JPG"
   },
   "catalog-bengali-mustard-fish": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Rasam.JPG/960px-Rasam.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File:Rasam.JPG",
-    "representative": true,
-    "referenceFor": "Kerala-style fish curry"
+    "url": "assets/recipes/catalog-bengali-mustard-fish.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Fish_mustard_curry.jpg",
+    "title": "Fish mustard curry.jpg"
   },
   "catalog-berry-fruit-compote": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Banana_bread_slices.jpg/960px-Banana_bread_slices.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABanana_bread_slices.jpg",
-    "title": "Banana_bread_slices.jpg",
-    "representative": true,
-    "referenceFor": "Eggless banana bread"
+    "url": "assets/recipes/catalog-berry-fruit-compote.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Buttermilk_pancakes,_cr%C3%A8me_fraiche,_berry_compote,_fresh_berries_%26_maple_syrup_-_Malt_Cafe_2026-04-22.jpg",
+    "title": "Buttermilk pancakes, crème fraiche, berry compote, fresh berries & maple syrup - Malt Cafe 2026-04-22.jpg"
   },
   "catalog-besan-chilla": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg",
-    "representative": true,
-    "referenceFor": "Moong dal chilla"
+    "url": "assets/recipes/catalog-besan-chilla.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=101676573",
+    "title": "Besan chilla"
   },
   "catalog-bharwa-capsicum": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Palakpaneer_Rayagada_Odisha_0009.jpg/960px-Palakpaneer_Rayagada_Odisha_0009.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Palakpaneer_Rayagada_Odisha_0009.jpg",
-    "representative": true,
-    "referenceFor": "Palak paneer"
+    "url": "assets/recipes/catalog-bharwa-capsicum.jpg",
+    "page": "https://www.flickr.com/photos/9020344@N02/5697759851",
+    "title": "Slow Cooker Stuffed Peppers"
   },
   "catalog-bhindi-do-pyaza": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Poriyal.jpg/960px-Poriyal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Poriyal.jpg",
-    "representative": true,
-    "referenceFor": "Bhindi masala"
+    "url": "assets/recipes/catalog-bhindi-do-pyaza.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Bhindi_Do_Pyaza.JPG",
+    "title": "Bhindi Do Pyaza.JPG"
   },
   "catalog-bihari-litti-chokha": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Litti_Chokha_2.jpg/960px-Litti_Chokha_2.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ALitti_Chokha_2.jpg",
-    "title": "Litti_Chokha_2.jpg"
+    "url": "assets/recipes/catalog-bihari-litti-chokha.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:BIHARI_LITTI_CHOKHA.jpg",
+    "title": "BIHARI LITTI CHOKHA.jpg"
   },
   "catalog-black-bean-rice-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg"
+    "url": "assets/recipes/catalog-black-bean-rice-bowl.jpg",
+    "page": "https://www.flickr.com/photos/67238971@N04/6772569317",
+    "title": "Cuban black beans & rice"
   },
   "catalog-black-urad-dal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-black-urad-dal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Urad_dal_black_gram.jpg",
+    "title": "Urad dal black gram.jpg"
   },
   "catalog-blueberry-breakfast-muffins": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Chipa_Paraguay.jpg/960px-Chipa_Paraguay.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChipa_Paraguay.jpg",
-    "title": "Chipa_Paraguay.jpg",
-    "representative": true,
-    "referenceFor": "Chocolate chip cookies"
+    "url": "assets/recipes/catalog-blueberry-breakfast-muffins.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:ChatGPT_blueberry_muffins_-_March_2025_-_Sarah_Stierch.jpg",
+    "title": "ChatGPT blueberry muffins - March 2025 - Sarah Stierch.jpg"
   },
   "catalog-boiled-potato-chaat": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Delhi_Chaat_with_saunth_chutney.jpg/960px-Delhi_Chaat_with_saunth_chutney.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADelhi_Chaat_with_saunth_chutney.jpg",
-    "title": "Delhi_Chaat_with_saunth_chutney.jpg"
+    "url": "assets/recipes/catalog-boiled-potato-chaat.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Aloo_chaat_vendor,_Connaught_Place,_New_Delhi.jpg",
+    "title": "Aloo chaat vendor, Connaught Place, New Delhi.jpg"
   },
   "catalog-brazilian-black-bean-stew": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/La_Casa_Restaurant_-_Stierch_-_April_2019_03.jpg/960px-La_Casa_Restaurant_-_Stierch_-_April_2019_03.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ALa_Casa_Restaurant_-_Stierch_-_April_2019_03.jpg",
-    "title": "La_Casa_Restaurant_-_Stierch_-_April_2019_03.jpg"
+    "url": "assets/recipes/catalog-brazilian-black-bean-stew.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Black_bean_soup.jpg",
+    "title": "Black bean soup.jpg"
   },
   "catalog-breakfast-burrito": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Eierbal.jpg/960px-Eierbal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AEierbal.jpg",
-    "title": "Eierbal.jpg",
-    "representative": true,
-    "referenceFor": "Singapore egg fried rice"
+    "url": "assets/recipes/catalog-breakfast-burrito.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chorizo_breakfast_burrito_-_17_GRAMS_2024-02-05.jpg",
+    "title": "Chorizo breakfast burrito - 17 GRAMS 2024-02-05.jpg"
   },
   "catalog-cabbage-peas-sabzi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Besan_Gatta_curry03.jpg/960px-Besan_Gatta_curry03.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABesan_Gatta_curry03.jpg",
-    "title": "Besan_Gatta_curry03.jpg",
-    "representative": true,
-    "referenceFor": "Gatte ki sabzi"
+    "url": "assets/recipes/catalog-cabbage-peas-sabzi.jpg",
+    "page": "https://www.flickr.com/photos/38996249@N00/20700248991",
+    "title": "Cabbage peas curry"
   },
   "catalog-cabbage-poriyal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Poriyal.jpg/960px-Poriyal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Poriyal.jpg",
-    "representative": true,
-    "referenceFor": "Beans poriyal"
+    "url": "assets/recipes/catalog-cabbage-poriyal.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=40962850",
+    "title": "File:Cabbage and Carrot Poriyal.jpg"
   },
   "catalog-canadian-lentil-soup": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Lentilsouparab.jpg/960px-Lentilsouparab.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ALentilsouparab.jpg",
-    "title": "Lentilsouparab.jpg"
+    "url": "assets/recipes/catalog-canadian-lentil-soup.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Curried_Lentil_Soup_(25662155295).jpg",
+    "title": "Curried Lentil Soup (25662155295).jpg"
   },
   "catalog-caprese-salad": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/GreekSalad.jpg/960px-GreekSalad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AGreekSalad.jpg",
-    "title": "GreekSalad.jpg",
-    "representative": true,
-    "referenceFor": "Greek chickpea salad"
+    "url": "assets/recipes/catalog-caprese-salad.png",
+    "page": "https://commons.wikimedia.org/wiki/File:Caprese_salad_ingredients.png",
+    "title": "Caprese salad ingredients.png"
   },
   "catalog-caramelised-bananas": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Banana_bread_slices.jpg/960px-Banana_bread_slices.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABanana_bread_slices.jpg",
-    "title": "Banana_bread_slices.jpg",
-    "representative": true,
-    "referenceFor": "Eggless banana bread"
+    "url": "assets/recipes/catalog-caramelised-bananas.jpg",
+    "page": "https://www.flickr.com/photos/43528767@N00/2083462810",
+    "title": "Caramelized Bananas and Waffles"
   },
   "catalog-carrot-beans-sabzi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Poriyal.jpg/960px-Poriyal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Poriyal.jpg",
-    "representative": true,
-    "referenceFor": "Beans poriyal"
+    "url": "assets/recipes/catalog-carrot-beans-sabzi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Carrot,_beans_poriyal.jpg",
+    "title": "Carrot, beans poriyal.jpg"
   },
   "catalog-chakalaka-beans": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Creamed_Eggs.png/960px-Creamed_Eggs.png",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACreamed_Eggs.png",
-    "title": "Creamed_Eggs.png",
-    "representative": true,
-    "referenceFor": "Beans on toast"
+    "url": "assets/recipes/catalog-chakalaka-beans.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Putu_pap_and_beans_with_chakalaka.JPG",
+    "title": "Putu pap and beans with chakalaka.JPG"
   },
   "catalog-chana-ghugni": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Chana_masala.jpg/960px-Chana_masala.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chana_masala.jpg",
-    "representative": true,
-    "referenceFor": "Chana masala"
+    "url": "assets/recipes/catalog-chana-ghugni.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Ghugni-MB24.jpg",
+    "title": "Ghugni-MB24.jpg"
   },
   "catalog-cheese-cucumber-sandwich": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Cheddar_cheese_sandwich.jpg/960px-Cheddar_cheese_sandwich.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACheddar_cheese_sandwich.jpg",
-    "title": "Cheddar_cheese_sandwich.jpg",
-    "representative": true,
-    "referenceFor": "Tomato cheese sandwich"
+    "url": "assets/recipes/catalog-cheese-cucumber-sandwich.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sandwich_with_cucumber_and_cheese.jpg",
+    "title": "Sandwich with cucumber and cheese.jpg"
   },
   "catalog-cheese-omelette": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/FoodOmelete.jpg/960px-FoodOmelete.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AFoodOmelete.jpg",
-    "title": "FoodOmelete.jpg"
+    "url": "assets/recipes/catalog-cheese-omelette.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:2750Onion_Cheese_Omelette_Sliced_cheese_06.jpg",
+    "title": "2750Onion Cheese Omelette Sliced cheese 06.jpg"
   },
   "catalog-chettinad-chicken": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Chickentandoori.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chickentandoori.jpg",
-    "representative": true,
-    "referenceFor": "South Indian chicken curry"
+    "url": "assets/recipes/catalog-chettinad-chicken.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chettinad_Chicken_Fry-Home-AndhraPradesh-005.jpg",
+    "title": "Chettinad Chicken Fry-Home-AndhraPradesh-005.jpg"
   },
   "catalog-chhattisgarhi-chila": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Bisi_Bele_Bath_%28Bisibelebath%29.JPG/960px-Bisi_Bele_Bath_%28Bisibelebath%29.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABisi_Bele_Bath_(Bisibelebath).JPG",
-    "title": "Bisi_Bele_Bath_(Bisibelebath).JPG",
-    "representative": true,
-    "referenceFor": "Karnataka bisi bele bath"
-  },
-  "catalog-chicken-breast-masala": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Chicken_tikka_masala.jpg/960px-Chicken_tikka_masala.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChicken_tikka_masala.jpg",
-    "title": "Chicken_tikka_masala.jpg"
-  },
-  "catalog-chicken-curd-sandwich": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/KFC_Chicken_Soup.jpg/960px-KFC_Chicken_Soup.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKFC_Chicken_Soup.jpg",
-    "title": "KFC_Chicken_Soup.jpg",
-    "representative": true,
-    "referenceFor": "Chicken vegetable soup"
-  },
-  "catalog-chicken-dal-khichdi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Chicken_tikka_masala.jpg/960px-Chicken_tikka_masala.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChicken_tikka_masala.jpg",
-    "title": "Chicken_tikka_masala.jpg",
-    "representative": true,
-    "referenceFor": "Chicken breast masala"
+    "url": "assets/recipes/catalog-chhattisgarhi-chila.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:CHILA(THE_DOSA_OF_CHHATTISGARH).jpg",
+    "title": "CHILA(THE DOSA OF CHHATTISGARH).jpg"
   },
   "catalog-chicken-keema-matar": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Chicken_tikka_by_fatima.jpg/960px-Chicken_tikka_by_fatima.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChicken_tikka_by_fatima.jpg",
-    "title": "Chicken_tikka_by_fatima.jpg",
-    "representative": true,
-    "referenceFor": "Tawa chicken tikka"
-  },
-  "catalog-chicken-lemon-rice-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AHainanese_Chicken_Rice.jpg",
-    "title": "Hainanese_Chicken_Rice.jpg"
+    "url": "assets/recipes/catalog-chicken-keema-matar.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_Keema_Matar.jpg",
+    "title": "Chicken Keema Matar.jpg"
   },
   "catalog-chicken-quesadilla": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AHainanese_Chicken_Rice.jpg",
-    "title": "Hainanese_Chicken_Rice.jpg",
-    "representative": true,
-    "referenceFor": "Chicken rice skillet"
+    "url": "assets/recipes/catalog-chicken-quesadilla.jpg",
+    "page": "https://www.flickr.com/photos/7927684@N03/7966501840",
+    "title": "Mmm... chicken quesadilla with peppers and cheese"
   },
   "catalog-chicken-rice-skillet": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AHainanese_Chicken_Rice.jpg",
-    "title": "Hainanese_Chicken_Rice.jpg"
+    "url": "assets/recipes/catalog-chicken-rice-skillet.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Classical_Meitei_chicken_%26_rice_dish_%E2%80%94_served_along_with_sauce_%E2%80%94_Traditional_Meetei_cuisine_of_Kangleipak_(Manipur).jpg",
+    "title": "Classical Meitei chicken & rice dish — served along with sauce — Traditional Meetei cuisine of Kangleipak (Manipur).jpg"
   },
   "catalog-chicken-saag": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Chicken_tikka_by_fatima.jpg/960px-Chicken_tikka_by_fatima.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChicken_tikka_by_fatima.jpg",
-    "title": "Chicken_tikka_by_fatima.jpg",
-    "representative": true,
-    "referenceFor": "Tawa chicken tikka"
+    "url": "assets/recipes/catalog-chicken-saag.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lamb_Saag_and_Chicken_Korma_-_Northern_Indian,_Palms_Food_Court.jpg",
+    "title": "Lamb Saag and Chicken Korma - Northern Indian, Palms Food Court.jpg"
   },
   "catalog-chicken-stir-fry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AHainanese_Chicken_Rice.jpg",
-    "title": "Hainanese_Chicken_Rice.jpg",
-    "representative": true,
-    "referenceFor": "Chicken rice skillet"
-  },
-  "catalog-chicken-vegetable-soup": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/KFC_Chicken_Soup.jpg/960px-KFC_Chicken_Soup.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKFC_Chicken_Soup.jpg",
-    "title": "KFC_Chicken_Soup.jpg"
+    "url": "assets/recipes/catalog-chicken-stir-fry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Fried_Rice_with_Salted_Fish_%26_Chicken_-_Stir_Fry_by_CK_2025-02-03.jpg",
+    "title": "Fried Rice with Salted Fish & Chicken - Stir Fry by CK 2025-02-03.jpg"
   },
   "catalog-chickpea-paneer-salad": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Paneer_Tikka_masala.JPG/960px-Paneer_Tikka_masala.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3APaneer_Tikka_masala.JPG",
-    "title": "Paneer_Tikka_masala.JPG",
-    "representative": true,
-    "referenceFor": "Paneer tikka wrap"
+    "url": "assets/recipes/catalog-chickpea-paneer-salad.jpg",
+    "page": "https://www.flickr.com/photos/10559879@N00/51943512651",
+    "title": "Vegetarian curries - Chilli India, Chadstone - chickpea, paneer, eggplant, dhal"
   },
   "catalog-chickpea-shakshuka": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/GreekSalad.jpg/960px-GreekSalad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AGreekSalad.jpg",
-    "title": "GreekSalad.jpg",
-    "representative": true,
-    "referenceFor": "Greek chickpea salad"
+    "url": "assets/recipes/catalog-chickpea-shakshuka.jpg",
+    "page": "https://www.flickr.com/photos/99658898@N00/48886415352",
+    "title": "Chickpea & Kale Shakshuka"
   },
   "catalog-chilli-paneer": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Paneer_Tikka_masala.JPG/960px-Paneer_Tikka_masala.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3APaneer_Tikka_masala.JPG",
-    "title": "Paneer_Tikka_masala.JPG",
-    "representative": true,
-    "referenceFor": "Stovetop paneer tikka"
+    "url": "assets/recipes/catalog-chilli-paneer.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:A_full_plate_chilli_paneer_in_Kolkata,_West_Bengal.jpg",
+    "title": "A full plate chilli paneer in Kolkata, West Bengal.jpg"
   },
   "catalog-chinese-scallion-pancakes": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Chinesechickensalad.jpg/960px-Chinesechickensalad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChinesechickensalad.jpg",
-    "title": "Chinesechickensalad.jpg",
-    "representative": true,
-    "referenceFor": "Chinese sesame cucumber salad"
+    "url": "assets/recipes/catalog-chinese-scallion-pancakes.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Scallion_pancakes.jpg",
+    "title": "Scallion pancakes.jpg"
   },
   "catalog-chinese-sesame-cucumber-salad": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Chinesechickensalad.jpg/960px-Chinesechickensalad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChinesechickensalad.jpg",
-    "title": "Chinesechickensalad.jpg"
+    "url": "assets/recipes/catalog-chinese-sesame-cucumber-salad.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:2016-09-07_Liangmaqiao_Japanese_Restaurant_cucumber_salat_anagoria.jpg",
+    "title": "2016-09-07 Liangmaqiao Japanese Restaurant cucumber salat anagoria.jpg"
   },
   "catalog-chinese-tomato-eggs": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Chinese_steamed_eggs_%28cropped%29.jpg/960px-Chinese_steamed_eggs_%28cropped%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChinese_steamed_eggs_(cropped).jpg",
-    "title": "Chinese_steamed_eggs_(cropped).jpg"
+    "url": "assets/recipes/catalog-chinese-tomato-eggs.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tomato_scrambled_eggs_noodles.jpg",
+    "title": "Tomato scrambled eggs noodles.jpg"
   },
   "catalog-chocolate-chip-cookies": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Chipa_Paraguay.jpg/960px-Chipa_Paraguay.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChipa_Paraguay.jpg",
-    "title": "Chipa_Paraguay.jpg"
+    "url": "assets/recipes/catalog-chocolate-chip-cookies.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chocolate_chip_cookies_on_cutting_board.jpg",
+    "title": "Chocolate chip cookies on cutting board.jpg"
   },
   "catalog-chocolate-choux-buns": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Chipa_Paraguay.jpg/960px-Chipa_Paraguay.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChipa_Paraguay.jpg",
-    "title": "Chipa_Paraguay.jpg",
-    "representative": true,
-    "referenceFor": "Chocolate chip cookies"
+    "url": "assets/recipes/catalog-chocolate-choux-buns.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chocolate_Choux_Bun_-_Haskins_Roundstone_Restaurant_2024-07-18.jpg",
+    "title": "Chocolate Choux Bun - Haskins Roundstone Restaurant 2024-07-18.jpg"
   },
   "catalog-chole-rice-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg"
+    "url": "assets/recipes/catalog-chole-rice-bowl.jpg",
+    "page": "https://www.flickr.com/photos/17983554@N00/5270483463",
+    "title": "That's the Close up to the Chole Chawal"
   },
   "catalog-chow-chow-kootu": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Ven_pongal_with_sambar_and_chutney.jpg/960px-Ven_pongal_with_sambar_and_chutney.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Ven_pongal_with_sambar_and_chutney.jpg",
-    "representative": true,
-    "referenceFor": "Ven pongal"
+    "url": "assets/recipes/catalog-chow-chow-kootu.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chow_chow_kootu.JPG",
+    "title": "Chow chow kootu.JPG"
   },
   "catalog-cinnamon-rolls": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Chipa_Paraguay.jpg/960px-Chipa_Paraguay.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChipa_Paraguay.jpg",
-    "title": "Chipa_Paraguay.jpg",
-    "representative": true,
-    "referenceFor": "Chocolate chip cookies"
+    "url": "assets/recipes/catalog-cinnamon-rolls.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Homemade_Cinnamon_rolls_01.jpg",
+    "title": "Homemade Cinnamon rolls 01.jpg"
   },
   "catalog-classic-rice-kheer": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Kheer.jpg/960px-Kheer.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKheer.jpg",
-    "title": "Kheer.jpg"
+    "url": "assets/recipes/catalog-classic-rice-kheer.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:CHAPATI_%26_KHEER_(RICE_KHEER).JPG",
+    "title": "CHAPATI & KHEER (RICE KHEER).JPG"
   },
   "catalog-cocoa-milk": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Chocolate_milk.JPG/960px-Chocolate_milk.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChocolate_milk.JPG",
-    "title": "Chocolate_milk.JPG"
+    "url": "assets/recipes/catalog-cocoa-milk.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chocolate_milk.JPG",
+    "title": "Chocolate milk.JPG"
   },
   "catalog-coconut-chickpea-curry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/GreekSalad.jpg/960px-GreekSalad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AGreekSalad.jpg",
-    "title": "GreekSalad.jpg",
-    "representative": true,
-    "referenceFor": "Greek chickpea salad"
+    "url": "assets/recipes/catalog-coconut-chickpea-curry.jpg",
+    "page": "https://www.flickr.com/photos/35903175@N02/4105752173",
+    "title": "Curried chickpeas"
   },
   "catalog-coconut-chutney": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Coconut rice"
+    "url": "assets/recipes/catalog-coconut-chutney.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Butter_Dosa_served_with_coconut_chutney_and_sambhar.jpg",
+    "title": "Butter Dosa served with coconut chutney and sambhar.jpg"
   },
   "catalog-coconut-rice": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg"
+    "url": "assets/recipes/catalog-coconut-rice.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Coconut_Rice_-_Easythaiger_2026-04-21.jpg",
+    "title": "Coconut Rice - Easythaiger 2026-04-21.jpg"
   },
   "catalog-coconut-sevai": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Sevai_plain320.jpg/960px-Sevai_plain320.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASevai_plain320.jpg",
-    "title": "Sevai_plain320.jpg"
+    "url": "assets/recipes/catalog-coconut-sevai.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=1733400",
+    "title": "Tam lem coc sevai"
   },
   "catalog-cold-coffee": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Preparation_of_cold_brew_coffee_06.jpg/960px-Preparation_of_cold_brew_coffee_06.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3APreparation_of_cold_brew_coffee_06.jpg",
-    "title": "Preparation_of_cold_brew_coffee_06.jpg"
+    "url": "assets/recipes/catalog-cold-coffee.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Cold_Coffee_3.jpg",
+    "title": "Cold Coffee 3.jpg"
   },
   "catalog-cr-me-caramel": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Cremeninon.JPG/960px-Cremeninon.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACremeninon.JPG",
-    "title": "Cremeninon.JPG"
+    "url": "assets/recipes/catalog-cr-me-caramel.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Cr%C3%A8me_caramel_at_NB_Steak_JK.jpg",
+    "title": "Crème caramel at NB Steak JK.jpg"
   },
   "catalog-cucumber-paneer-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Paneer_Tikka_masala.JPG/960px-Paneer_Tikka_masala.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3APaneer_Tikka_masala.JPG",
-    "title": "Paneer_Tikka_masala.JPG",
-    "representative": true,
-    "referenceFor": "Paneer tikka wrap"
+    "url": "assets/recipes/catalog-cucumber-paneer-bowl.jpg",
+    "page": "https://www.flickr.com/photos/22598380@N07/2212373146",
+    "title": "Paneer Salad"
+  },
+  "catalog-curd-rice-with-roasted-peanuts": {
+    "url": "assets/recipes/catalog-curd-rice-with-roasted-peanuts.jpg",
+    "page": "https://www.flickr.com/photos/27526538@N07/5326394159",
+    "title": "Curd Rice"
   },
   "catalog-dal-baati": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Baati.jpg/960px-Baati.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABaati.jpg",
-    "title": "Baati.jpg"
+    "url": "assets/recipes/catalog-dal-baati.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dal_Baati_5.jpg",
+    "title": "Dal Baati 5.jpg"
   },
   "catalog-dal-chawal-plate": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-dal-chawal-plate.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=40830534",
+    "title": "Dal chawal"
   },
   "catalog-dal-palak": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-dal-palak.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dal_palak_casserole.jpg",
+    "title": "Dal palak casserole.jpg"
   },
   "catalog-dalia-upma": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/A_photo_of_Upma.jpg/960px-A_photo_of_Upma.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:A_photo_of_Upma.jpg",
-    "representative": true,
-    "referenceFor": "Vegetable upma"
+    "url": "assets/recipes/catalog-dalia-upma.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dhalia_Upma.jpg",
+    "title": "Dhalia Upma.jpg"
   },
   "catalog-dalia-vegetable-khichdi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Khichuri-edit.jpg/960px-Khichuri-edit.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKhichuri-edit.jpg",
-    "title": "Khichuri-edit.jpg"
+    "url": "assets/recipes/catalog-dalia-vegetable-khichdi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Daliya_khichdi_(57900).jpg",
+    "title": "Daliya khichdi (57900).jpg"
   },
   "catalog-date-and-nut-bites": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Basmati_Johns_%28peas_and_basmati_rice%29.jpg/960px-Basmati_Johns_%28peas_and_basmati_rice%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABasmati_Johns_(peas_and_basmati_rice).jpg",
-    "title": "Basmati_Johns_(peas_and_basmati_rice).jpg",
-    "representative": true,
-    "referenceFor": "Jamaican rice and peas"
+    "url": "assets/recipes/catalog-date-and-nut-bites.jpg",
+    "page": "https://www.thepatchworkkitchen.com/blog/sticky-date-bites",
+    "title": "Sticky date and nut bites"
   },
   "catalog-dhaba-dal-fry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-dhaba-dal-fry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dal_Fry_Recipe_In_Dhaba_Style_From_Indian_Cuisine_By_Sonia_Goyal.jpg",
+    "title": "Dal Fry Recipe In Dhaba Style From Indian Cuisine By Sonia Goyal.jpg"
   },
   "catalog-drumstick-sambar": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Sambaar_kadamba.jpg/960px-Sambaar_kadamba.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASambaar_kadamba.jpg",
-    "title": "Sambaar_kadamba.jpg"
+    "url": "assets/recipes/catalog-drumstick-sambar.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Drumstick_sambar_,_Morekulambu_%26_White_rice.jpg",
+    "title": "Drumstick sambar , Morekulambu & White rice.jpg"
   },
   "catalog-egg-dosa": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg/960px-Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg",
-    "representative": true,
-    "referenceFor": "Appam + egg curry"
+    "url": "assets/recipes/catalog-egg-dosa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Egg_Dosa-MB42.jpg",
+    "title": "Egg Dosa-MB42.jpg"
   },
   "catalog-egg-fried-rice": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Eierbal.jpg/960px-Eierbal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AEierbal.jpg",
-    "title": "Eierbal.jpg"
+    "url": "assets/recipes/catalog-egg-fried-rice.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Egg_Fried_Rice.jpg",
+    "title": "Egg Fried Rice.jpg"
   },
   "catalog-egg-pepper-fry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg/960px-Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg",
-    "representative": true,
-    "referenceFor": "Appam + egg curry"
+    "url": "assets/recipes/catalog-egg-pepper-fry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:POMFRET_FRY_WITH_EGG_PEPPER.jpg",
+    "title": "POMFRET FRY WITH EGG PEPPER.jpg"
   },
   "catalog-egg-pulao": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Eierbal.jpg/960px-Eierbal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AEierbal.jpg",
-    "title": "Eierbal.jpg",
-    "representative": true,
-    "referenceFor": "Egg fried rice"
+    "url": "assets/recipes/catalog-egg-pulao.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Egg_pulao.jpg",
+    "title": "Egg pulao.jpg"
   },
   "catalog-eggless-banana-bread": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Banana_bread_slices.jpg/960px-Banana_bread_slices.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABanana_bread_slices.jpg",
-    "title": "Banana_bread_slices.jpg"
+    "url": "assets/recipes/catalog-eggless-banana-bread.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Banana_bread_slices.jpg",
+    "title": "Banana bread slices.jpg"
   },
   "catalog-eggless-chocolate-layer-cake": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Banana_bread_slices.jpg/960px-Banana_bread_slices.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABanana_bread_slices.jpg",
-    "title": "Banana_bread_slices.jpg",
-    "representative": true,
-    "referenceFor": "Eggless banana bread"
+    "url": "assets/recipes/catalog-eggless-chocolate-layer-cake.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chocolate_layer_cake.jpg",
+    "title": "Chocolate layer cake.jpg"
   },
   "catalog-eggless-chocolate-mug-cake": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Banana_bread_slices.jpg/960px-Banana_bread_slices.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABanana_bread_slices.jpg",
-    "title": "Banana_bread_slices.jpg",
-    "representative": true,
-    "referenceFor": "Eggless banana bread"
+    "url": "assets/recipes/catalog-eggless-chocolate-mug-cake.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chocolate_Mug_Cake_(KETO,_LCHF,_Low_Carb,_Gluten_free,_FIT).jpg",
+    "title": "Chocolate Mug Cake (KETO, LCHF, Low Carb, Gluten free, FIT).jpg"
   },
   "catalog-eggplant-parmigiana-meal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Focaccia-erbe-olive.jpg/960px-Focaccia-erbe-olive.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AFocaccia-erbe-olive.jpg",
-    "title": "Focaccia-erbe-olive.jpg",
-    "representative": true,
-    "referenceFor": "Rosemary focaccia"
+    "url": "assets/recipes/catalog-eggplant-parmigiana-meal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Eggplant_parmigiana.jpg",
+    "title": "Eggplant parmigiana.jpg"
   },
   "catalog-falafel-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Dalbath.jpg/960px-Dalbath.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADalbath.jpg",
-    "title": "Dalbath.jpg",
-    "representative": true,
-    "referenceFor": "Nepali dal bhat"
+    "url": "assets/recipes/catalog-falafel-bowl.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Falafel_Super_Bowl_Salad_-_Leon_2025-10-27.jpg",
+    "title": "Falafel Super Bowl Salad - Leon 2025-10-27.jpg"
   },
   "catalog-filipino-chicken-adobo": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AHainanese_Chicken_Rice.jpg",
-    "title": "Hainanese_Chicken_Rice.jpg",
-    "representative": true,
-    "referenceFor": "Chicken rice skillet"
-  },
-  "catalog-fish-rice-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Rasam.JPG/960px-Rasam.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File:Rasam.JPG",
-    "representative": true,
-    "referenceFor": "Kerala-style fish curry"
+    "url": "assets/recipes/catalog-filipino-chicken-adobo.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_adobo.jpg",
+    "title": "Chicken adobo.jpg"
   },
   "catalog-fluffy-breakfast-pancakes": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Chipa_Paraguay.jpg/960px-Chipa_Paraguay.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChipa_Paraguay.jpg",
-    "title": "Chipa_Paraguay.jpg",
-    "representative": true,
-    "referenceFor": "Chocolate chip cookies"
+    "url": "assets/recipes/catalog-fluffy-breakfast-pancakes.jpg",
+    "page": "https://www.flickr.com/photos/68907151@N00/3582416858",
+    "title": "Pancakes"
   },
   "catalog-french-style-omelette": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/FoodOmelete.jpg/960px-FoodOmelete.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AFoodOmelete.jpg",
-    "title": "FoodOmelete.jpg"
+    "url": "assets/recipes/catalog-french-style-omelette.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Omelette_aux_crevettes_au_restaurant_le_Mandarin_%C3%A0_Palaiseau_le_23_mai_2017_-_1.jpg",
+    "title": "Omelette aux crevettes au restaurant le Mandarin à Palaiseau le 23 mai 2017 - 1.jpg"
   },
   "catalog-fresh-fruit-custard-tart": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Cremeninon.JPG/960px-Cremeninon.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACremeninon.JPG",
-    "title": "Cremeninon.JPG",
-    "representative": true,
-    "referenceFor": "Crème caramel"
+    "url": "assets/recipes/catalog-fresh-fruit-custard-tart.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:DFC_4073_Assorted_fruit_tarts_piled_high_-_fresh_strawberries_blueberries_grapes_and_kiwi_on_creamy_pastry_shells.jpg",
+    "title": "DFC 4073 Assorted fruit tarts piled high - fresh strawberries blueberries grapes and kiwi on creamy pastry shells.jpg"
   },
   "catalog-fruit-and-yogurt-parfait": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Basmati_Johns_%28peas_and_basmati_rice%29.jpg/960px-Basmati_Johns_%28peas_and_basmati_rice%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABasmati_Johns_(peas_and_basmati_rice).jpg",
-    "title": "Basmati_Johns_(peas_and_basmati_rice).jpg",
-    "representative": true,
-    "referenceFor": "Jamaican rice and peas"
+    "url": "assets/recipes/catalog-fruit-and-yogurt-parfait.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:-2020-01-13_Fruit_and_Yogurt_Breakfast_Parfait,_Trimingham.JPG",
+    "title": "-2020-01-13 Fruit and Yogurt Breakfast Parfait, Trimingham.JPG"
   },
   "catalog-fruit-curd-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Peanut_Salad.jpg/960px-Peanut_Salad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Peanut_Salad.jpg",
-    "representative": true,
-    "referenceFor": "Curd peanut bowl"
+    "url": "assets/recipes/catalog-fruit-curd-bowl.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Yogurt_fruit_bowl.jpg",
+    "title": "Yogurt fruit bowl.jpg"
   },
   "catalog-fudgy-cocoa-brownies": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Chipa_Paraguay.jpg/960px-Chipa_Paraguay.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChipa_Paraguay.jpg",
-    "title": "Chipa_Paraguay.jpg",
-    "representative": true,
-    "referenceFor": "Chocolate chip cookies"
+    "url": "assets/recipes/catalog-fudgy-cocoa-brownies.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chocolate_brownies_without_table.jpg",
+    "title": "Chocolate brownies without table.jpg"
   },
   "catalog-ful-medames": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Black bean rice bowl"
+    "url": "assets/recipes/catalog-ful-medames.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=1608656",
+    "title": "Ful medames (arabic meal)"
   },
   "catalog-gajar-ka-halwa": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Kheer.jpg/960px-Kheer.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKheer.jpg",
-    "title": "Kheer.jpg",
-    "representative": true,
-    "referenceFor": "Classic rice kheer"
+    "url": "assets/recipes/catalog-gajar-ka-halwa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Delicious_Gajar_Ka_Halwa.jpg",
+    "title": "Delicious Gajar Ka Halwa.jpg"
   },
   "catalog-garlic-mushroom-toast": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Creamed_Eggs.png/960px-Creamed_Eggs.png",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACreamed_Eggs.png",
-    "title": "Creamed_Eggs.png",
-    "representative": true,
-    "referenceFor": "Beans on toast"
+    "url": "assets/recipes/catalog-garlic-mushroom-toast.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Garlic_Mushroom_Toastie_-_T_@_The_Dials_2026-07-08.jpg",
+    "title": "Garlic Mushroom Toastie - T @ The Dials 2026-07-08.jpg"
   },
   "catalog-gatte-ki-sabzi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Besan_Gatta_curry03.jpg/960px-Besan_Gatta_curry03.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABesan_Gatta_curry03.jpg",
-    "title": "Besan_Gatta_curry03.jpg"
+    "url": "assets/recipes/catalog-gatte-ki-sabzi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gatte_ki_sabzi_served_with_aamras_and_garlic_chutney.jpg",
+    "title": "Gatte ki sabzi served with aamras and garlic chutney.jpg"
   },
   "catalog-german-potato-egg-skillet": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Eierbal.jpg/960px-Eierbal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AEierbal.jpg",
-    "title": "Eierbal.jpg",
-    "representative": true,
-    "referenceFor": "Singapore egg fried rice"
+    "url": "assets/recipes/catalog-german-potato-egg-skillet.jpg",
+    "page": "https://www.flickr.com/photos/64157928@N00/4915563719",
+    "title": "Bratkartoffeln & Spiegelei / Fried potatoes & egg"
   },
   "catalog-goan-fish-curry-rice": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Rasam.JPG/960px-Rasam.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File:Rasam.JPG",
-    "representative": true,
-    "referenceFor": "Kerala-style fish curry"
+    "url": "assets/recipes/catalog-goan-fish-curry-rice.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Goan_Fish_Curry_Rice_(5905803304).jpg",
+    "title": "Goan Fish Curry Rice (5905803304).jpg"
+  },
+  "catalog-goan-pork-vindaloo": {
+    "url": "assets/recipes/catalog-goan-pork-vindaloo.jpg",
+    "page": "https://www.flickr.com/photos/51122240@N00/2179141768",
+    "title": "Pork Vindaloo"
   },
   "catalog-greek-chickpea-salad": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/GreekSalad.jpg/960px-GreekSalad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AGreekSalad.jpg",
-    "title": "GreekSalad.jpg"
+    "url": "assets/recipes/catalog-greek-chickpea-salad.jpg",
+    "page": "https://www.flickr.com/photos/12694964@N00/8032901332",
+    "title": "Greek chickpea salad"
   },
   "catalog-greek-yogurt-cucumber-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/GreekSalad.jpg/960px-GreekSalad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AGreekSalad.jpg",
-    "title": "GreekSalad.jpg",
-    "representative": true,
-    "referenceFor": "Greek chickpea salad"
+    "url": "assets/recipes/catalog-greek-yogurt-cucumber-bowl.jpg",
+    "page": "https://www.flickr.com/photos/10559879@N00/3483487268",
+    "title": "Mussels, Saganaki, Tzatziki, Horiatiki Salata, Patzari, Olives - Hellenic Republic"
   },
   "catalog-green-gram-sundal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Rasam_%28closeup%29.jpg/960px-Rasam_%28closeup%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ARasam_(closeup).jpg",
-    "title": "Rasam_(closeup).jpg",
-    "representative": true,
-    "referenceFor": "Paruppu rasam"
+    "url": "assets/recipes/catalog-green-gram-sundal.jpg",
+    "page": "https://www.flickr.com/photos/57696953@N00/1035204845",
+    "title": "Asian Edamame and Mung Bean Salad."
   },
   "catalog-grilled-cheese": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Cheddar_cheese_sandwich.jpg/960px-Cheddar_cheese_sandwich.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACheddar_cheese_sandwich.jpg",
-    "title": "Cheddar_cheese_sandwich.jpg",
-    "representative": true,
-    "referenceFor": "Tomato cheese sandwich"
+    "url": "assets/recipes/catalog-grilled-cheese.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Grilled_cheese_sandwich.jpg",
+    "title": "Grilled cheese sandwich.jpg"
   },
   "catalog-gujarati-dal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-gujarati-dal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gujarati_Dal..JPG",
+    "title": "Gujarati Dal..JPG"
   },
   "catalog-gujarati-handvo": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg",
-    "representative": true,
-    "referenceFor": "Gujarati dal"
+    "url": "assets/recipes/catalog-gujarati-handvo.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Handvo.JPG",
+    "title": "Handvo.JPG"
   },
   "catalog-gujarati-kadhi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Kadhi_and_Khichdi_of_Bardoli%2C_gujarat.jpg/960px-Kadhi_and_Khichdi_of_Bardoli%2C_gujarat.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKadhi_and_Khichdi_of_Bardoli%2C_gujarat.jpg",
-    "title": "Kadhi_and_Khichdi_of_Bardoli,_gujarat.jpg"
+    "url": "assets/recipes/catalog-gujarati-kadhi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Gujarati_Kadhi_%E0%AA%97%E0%AB%81%E0%AA%9C%E0%AA%B0%E0%AA%BE%E0%AA%A4%E0%AB%80_%E0%AA%95%E0%AA%A2%E0%AB%80.jpg",
+    "title": "Gujarati Kadhi ગુજરાતી કઢી.jpg"
   },
   "catalog-gujarati-thepla": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Kadhi_and_Khichdi_of_Bardoli%2C_gujarat.jpg/960px-Kadhi_and_Khichdi_of_Bardoli%2C_gujarat.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKadhi_and_Khichdi_of_Bardoli%2C_gujarat.jpg",
-    "title": "Kadhi_and_Khichdi_of_Bardoli,_gujarat.jpg",
-    "representative": true,
-    "referenceFor": "Gujarati kadhi"
+    "url": "assets/recipes/catalog-gujarati-thepla.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Thepla_2.jpg",
+    "title": "Thepla 2.jpg"
   },
   "catalog-gulab-jamun-from-khoya": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Gulab_Jamun.jpg/960px-Gulab_Jamun.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AGulab_Jamun.jpg",
-    "title": "Gulab_Jamun.jpg"
+    "url": "assets/recipes/catalog-gulab-jamun-from-khoya.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Saffron_Flavoured_Gulab_Jamun.jpg",
+    "title": "Saffron Flavoured Gulab Jamun.jpg"
   },
   "catalog-haryanvi-bajra-khichdi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Dall_Khichdi.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADall_Khichdi.jpg",
-    "title": "Dall_Khichdi.jpg"
-  },
-  "catalog-high-protein-curd-rice": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg"
+    "url": "assets/recipes/catalog-haryanvi-bajra-khichdi.jpg",
+    "page": "https://www.indiblogger.in/indipost.php?post=830320",
+    "title": "Haryanvi Bajra Khichdi"
   },
   "catalog-himachali-chana-madra": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Chana_masala.jpg/960px-Chana_masala.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chana_masala.jpg",
-    "representative": true,
-    "referenceFor": "Chana masala"
+    "url": "assets/recipes/catalog-himachali-chana-madra.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:White_Chana_Madra.jpg",
+    "title": "White Chana Madra.jpg"
   },
   "catalog-homemade-vada-pav": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Jumbo_Vada_Pav_%28dodged%29.jpg/960px-Jumbo_Vada_Pav_%28dodged%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AJumbo_Vada_Pav_(dodged).jpg",
-    "title": "Jumbo_Vada_Pav_(dodged).jpg"
+    "url": "assets/recipes/catalog-homemade-vada-pav.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:VaDa_PaV.jpg",
+    "title": "VaDa PaV.jpg"
   },
   "catalog-hummus-plate": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Black bean rice bowl"
+    "url": "assets/recipes/catalog-hummus-plate.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Hummus_plate.jpg",
+    "title": "Hummus plate.jpg"
   },
   "catalog-hung-curd-sandwich": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Cheddar_cheese_sandwich.jpg/960px-Cheddar_cheese_sandwich.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACheddar_cheese_sandwich.jpg",
-    "title": "Cheddar_cheese_sandwich.jpg",
-    "representative": true,
-    "referenceFor": "Tomato cheese sandwich"
+    "url": "assets/recipes/catalog-hung-curd-sandwich.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Airan_%D0%90%D0%B9%D1%80%D0%B0%D0%BD_yogurt_drink_and_sandwich._Plovdiv_station.jpg",
+    "title": "Airan Айран yogurt drink and sandwich. Plovdiv station.jpg"
   },
   "catalog-idiyappam": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Idiyappam.jpg/960px-Idiyappam.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AIdiyappam.jpg",
-    "title": "Idiyappam.jpg"
+    "url": "assets/recipes/catalog-idiyappam.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Idiyappam_and_curry_in_Green_leaf_plate.jpg",
+    "title": "Idiyappam and curry in Green leaf plate.jpg"
   },
   "catalog-instant-dhokla": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Khaman_dhokla.jpg/960px-Khaman_dhokla.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKhaman_dhokla.jpg",
-    "title": "Khaman_dhokla.jpg"
+    "url": "assets/recipes/catalog-instant-dhokla.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Instant_home_made_Dhokla.jpg",
+    "title": "Instant home made Dhokla.jpg"
   },
   "catalog-jacket-potato-with-beans": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Creamed_Eggs.png/960px-Creamed_Eggs.png",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACreamed_Eggs.png",
-    "title": "Creamed_Eggs.png",
-    "representative": true,
-    "referenceFor": "Beans on toast"
+    "url": "assets/recipes/catalog-jacket-potato-with-beans.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Baked_Beans_%26_Mature_Cheddar_Jacket_-_Jonny%27s_2026-06-12.jpg",
+    "title": "Baked Beans & Mature Cheddar Jacket - Jonny's 2026-06-12.jpg"
   },
   "catalog-jamaican-rice-and-peas": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Basmati_Johns_%28peas_and_basmati_rice%29.jpg/960px-Basmati_Johns_%28peas_and_basmati_rice%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABasmati_Johns_(peas_and_basmati_rice).jpg",
-    "title": "Basmati_Johns_(peas_and_basmati_rice).jpg"
+    "url": "assets/recipes/catalog-jamaican-rice-and-peas.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Jamaican_rice_and_peas_1.jpg",
+    "title": "Jamaican rice and peas 1.jpg"
   },
   "catalog-japanese-oyakodon": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Oyakodon_005.jpg/960px-Oyakodon_005.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AOyakodon_005.jpg",
-    "title": "Oyakodon_005.jpg"
+    "url": "assets/recipes/catalog-japanese-oyakodon.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Oyakodon_%E8%A6%AA%E5%AD%90%E4%B8%BC.jpg",
+    "title": "Oyakodon 親子丼.jpg"
   },
   "catalog-jeera-aloo": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Jeera_aloo_served_with_sprouts_and_dal.jpg/960px-Jeera_aloo_served_with_sprouts_and_dal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AJeera_aloo_served_with_sprouts_and_dal.jpg",
-    "title": "Jeera_aloo_served_with_sprouts_and_dal.jpg"
+    "url": "assets/recipes/catalog-jeera-aloo.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Jeera_aloo_served_with_sprouts_and_dal.jpg",
+    "title": "Jeera aloo served with sprouts and dal.jpg"
   },
   "catalog-jharkhand-dhuska-with-ghugni": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Appam_by_Connie_Ma.jpg/960px-Appam_by_Connie_Ma.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAppam_by_Connie_Ma.jpg",
-    "title": "Appam_by_Connie_Ma.jpg",
-    "representative": true,
-    "referenceFor": "Kerala appam vegetable stew"
+    "url": "assets/recipes/catalog-jharkhand-dhuska-with-ghugni.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=40700945",
+    "title": "Dhuska"
   },
   "catalog-kadai-paneer": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Kadai_Paneer_Recipe.JPG/960px-Kadai_Paneer_Recipe.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKadai_Paneer_Recipe.JPG",
-    "title": "Kadai_Paneer_Recipe.JPG"
+    "url": "assets/recipes/catalog-kadai-paneer.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kadai_Paneer_With_Gravy.jpg",
+    "title": "Kadai Paneer With Gravy.jpg"
   },
   "catalog-kadala-curry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Appam_by_Connie_Ma.jpg/960px-Appam_by_Connie_Ma.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAppam_by_Connie_Ma.jpg",
-    "title": "Appam_by_Connie_Ma.jpg",
-    "representative": true,
-    "referenceFor": "Kerala appam vegetable stew"
+    "url": "assets/recipes/catalog-kadala-curry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kadala_Curry_(9686012452).jpg",
+    "title": "Kadala Curry (9686012452).jpg"
   },
   "catalog-kadhi-chawal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg",
-    "representative": true,
-    "referenceFor": "Dal chawal plate"
+    "url": "assets/recipes/catalog-kadhi-chawal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kadhi_Chawal_from_India.jpg",
+    "title": "Kadhi Chawal from India.jpg"
   },
   "catalog-kala-chana-salad": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Chana_masala.jpg/960px-Chana_masala.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chana_masala.jpg",
-    "representative": true,
-    "referenceFor": "Chana masala"
+    "url": "assets/recipes/catalog-kala-chana-salad.jpg",
+    "page": "https://www.flickr.com/photos/81933928@N00/6982686744",
+    "title": "kala chana (black chickpeas) salad"
   },
   "catalog-kala-chana-sundal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Chana_masala.jpg/960px-Chana_masala.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chana_masala.jpg",
-    "representative": true,
-    "referenceFor": "Chana masala"
+    "url": "assets/recipes/catalog-kala-chana-sundal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sundal_pori.jpg",
+    "title": "Sundal pori.jpg"
   },
   "catalog-kambu-dosa": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Dosa-chutney-sambhar.jpg/960px-Dosa-chutney-sambhar.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADosa-chutney-sambhar.jpg",
-    "title": "Dosa-chutney-sambhar.jpg"
+    "url": "assets/recipes/catalog-kambu-dosa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kambu_Dosa.jpg",
+    "title": "Kambu Dosa.jpg"
   },
   "catalog-kanda-batata-poha": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Poha%2C_a_snack_made_of_flattened_rice.jpg/960px-Poha%2C_a_snack_made_of_flattened_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3APoha%2C_a_snack_made_of_flattened_rice.jpg",
-    "title": "Poha,_a_snack_made_of_flattened_rice.jpg"
+    "url": "assets/recipes/catalog-kanda-batata-poha.jpg",
+    "page": "https://www.flickr.com/photos/10559879@N00/13769498623",
+    "title": "Yamini's Batata Poha and Indian Chaat Chickpea Salad for morning tea"
   },
   "catalog-karnataka-bisi-bele-bath": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Bisi_Bele_Bath_%28Bisibelebath%29.JPG/960px-Bisi_Bele_Bath_%28Bisibelebath%29.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABisi_Bele_Bath_(Bisibelebath).JPG",
-    "title": "Bisi_Bele_Bath_(Bisibelebath).JPG"
+    "url": "assets/recipes/catalog-karnataka-bisi-bele-bath.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Bisi_Bele_Bath.jpg",
+    "title": "Bisi Bele Bath.jpg"
   },
   "catalog-karnataka-vangi-bath": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Bisi_Bele_Bath_%28Bisibelebath%29.JPG/960px-Bisi_Bele_Bath_%28Bisibelebath%29.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABisi_Bele_Bath_(Bisibelebath).JPG",
-    "title": "Bisi_Bele_Bath_(Bisibelebath).JPG",
-    "representative": true,
-    "referenceFor": "Karnataka bisi bele bath"
+    "url": "assets/recipes/catalog-karnataka-vangi-bath.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Brinjal_rice_bath.jpg",
+    "title": "Brinjal rice bath.jpg"
+  },
+  "catalog-kashmiri-chicken-yakhni": {
+    "url": "assets/recipes/catalog-kashmiri-chicken-yakhni.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_Yakhni_Pulao.jpg",
+    "title": "Chicken Yakhni Pulao.jpg"
+  },
+  "catalog-kashmiri-rogan-josh": {
+    "url": "assets/recipes/catalog-kashmiri-rogan-josh.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mutton_rogan_josh.jpg",
+    "title": "Mutton rogan josh.jpg"
   },
   "catalog-keerai-masiyal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Sambaar_kadamba.jpg/960px-Sambaar_kadamba.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASambaar_kadamba.jpg",
-    "title": "Sambaar_kadamba.jpg",
-    "representative": true,
-    "referenceFor": "Keerai sambar"
+    "url": "assets/recipes/catalog-keerai-masiyal.jpg",
+    "page": "https://www.flickr.com/photos/10852714@N08/27092621068",
+    "title": "Vendhaya Keerai + Thakkaali Paruppu Masiyal, Mithukku Vatthal( first time and it's 💯), Carrot Poriyal with Coconut."
   },
   "catalog-keerai-sambar": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Sambaar_kadamba.jpg/960px-Sambaar_kadamba.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASambaar_kadamba.jpg",
-    "title": "Sambaar_kadamba.jpg"
+    "url": "assets/recipes/catalog-keerai-sambar.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Keerai_sambar.JPG",
+    "title": "Keerai sambar.JPG"
   },
   "catalog-ker-sangri": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Besan_Gatta_curry03.jpg/960px-Besan_Gatta_curry03.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABesan_Gatta_curry03.jpg",
-    "title": "Besan_Gatta_curry03.jpg",
-    "representative": true,
-    "referenceFor": "Gatte ki sabzi"
+    "url": "assets/recipes/catalog-ker-sangri.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Ker_Sangri.jpg",
+    "title": "Ker Sangri.jpg"
   },
   "catalog-kerala-appam-vegetable-stew": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Appam_by_Connie_Ma.jpg/960px-Appam_by_Connie_Ma.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAppam_by_Connie_Ma.jpg",
-    "title": "Appam_by_Connie_Ma.jpg"
+    "url": "assets/recipes/catalog-kerala-appam-vegetable-stew.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Appam_and_stew.jpg",
+    "title": "Appam and stew.jpg"
   },
   "catalog-kerala-chicken-stew": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Chickentandoori.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chickentandoori.jpg",
-    "representative": true,
-    "referenceFor": "South Indian chicken curry"
+    "url": "assets/recipes/catalog-kerala-chicken-stew.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kerala_Chicken_Stew_(15914732695).jpg",
+    "title": "Kerala Chicken Stew (15914732695).jpg"
   },
   "catalog-kerala-egg-roast": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg/960px-Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg",
-    "representative": true,
-    "referenceFor": "Appam + egg curry"
+    "url": "assets/recipes/catalog-kerala-egg-roast.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Egg_roast_Kerala.jpg",
+    "title": "Egg roast Kerala.jpg"
   },
   "catalog-kerala-fish-moilee": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Rasam.JPG/960px-Rasam.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File:Rasam.JPG",
-    "representative": true,
-    "referenceFor": "Kerala-style fish curry"
+    "url": "assets/recipes/catalog-kerala-fish-moilee.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=40722908",
+    "title": "Fish Moilee Kerala Style (aka KeralaFish Molly)"
   },
   "catalog-kerala-puttu": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Puttu.jpg/960px-Puttu.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3APuttu.jpg",
-    "title": "Puttu.jpg"
+    "url": "assets/recipes/catalog-kerala-puttu.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Puttu_with_Kadala.JPG",
+    "title": "Puttu with Kadala.JPG"
   },
   "catalog-kerala-vegetable-stew": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Appam_by_Connie_Ma.jpg/960px-Appam_by_Connie_Ma.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAppam_by_Connie_Ma.jpg",
-    "title": "Appam_by_Connie_Ma.jpg",
-    "representative": true,
-    "referenceFor": "Kerala appam vegetable stew"
+    "url": "assets/recipes/catalog-kerala-vegetable-stew.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Appam_and_stew.jpg",
+    "title": "Appam and stew.jpg"
   },
   "catalog-khaman": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Khaman_dhokla.jpg/960px-Khaman_dhokla.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKhaman_dhokla.jpg",
-    "title": "Khaman_dhokla.jpg",
-    "representative": true,
-    "referenceFor": "Instant dhokla"
+    "url": "assets/recipes/catalog-khaman.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:SPECIAL_SURATI_KHAMAN.jpg",
+    "title": "SPECIAL SURATI KHAMAN.jpg"
   },
   "catalog-khara-bath": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Bisi_Bele_Bath_%28Bisibelebath%29.JPG/960px-Bisi_Bele_Bath_%28Bisibelebath%29.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABisi_Bele_Bath_(Bisibelebath).JPG",
-    "title": "Bisi_Bele_Bath_(Bisibelebath).JPG",
-    "representative": true,
-    "referenceFor": "Karnataka bisi bele bath"
+    "url": "assets/recipes/catalog-khara-bath.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chow_chow_bath_(_khara_bath_%26_kesari_bath_).jpg",
+    "title": "Chow chow bath ( khara bath & kesari bath ).jpg"
   },
   "catalog-kootu": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Ven_pongal_with_sambar_and_chutney.jpg/960px-Ven_pongal_with_sambar_and_chutney.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Ven_pongal_with_sambar_and_chutney.jpg",
-    "representative": true,
-    "referenceFor": "Ven pongal"
+    "url": "assets/recipes/catalog-kootu.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Cabbage_kootu.jpg",
+    "title": "Cabbage kootu.jpg"
   },
   "catalog-korean-bibimbap": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/960px-Dolsot-bibimbap.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADolsot-bibimbap.jpg",
-    "title": "Dolsot-bibimbap.jpg"
+    "url": "assets/recipes/catalog-korean-bibimbap.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Korean_bibimbap_at_Food_Court_TST.jpg",
+    "title": "Korean bibimbap at Food Court TST.jpg"
   },
   "catalog-korean-tofu-rice-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Black bean rice bowl"
+    "url": "assets/recipes/catalog-korean-tofu-rice-bowl.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tofu_kimchi_soup_and_rice_-_San_Francisco,_CA.jpg",
+    "title": "Tofu kimchi soup and rice - San Francisco, CA.jpg"
   },
   "catalog-korean-vegetable-pancakes": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Chinesechickensalad.jpg/960px-Chinesechickensalad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChinesechickensalad.jpg",
-    "title": "Chinesechickensalad.jpg",
-    "representative": true,
-    "referenceFor": "Chinese sesame cucumber salad"
+    "url": "assets/recipes/catalog-korean-vegetable-pancakes.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Korean_pancakes_and_pan-fried_foods_at_Gwangjang_Market.jpg",
+    "title": "Korean pancakes and pan-fried foods at Gwangjang Market.jpg"
   },
   "catalog-koshambari": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Bisi_Bele_Bath_%28Bisibelebath%29.JPG/960px-Bisi_Bele_Bath_%28Bisibelebath%29.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABisi_Bele_Bath_(Bisibelebath).JPG",
-    "title": "Bisi_Bele_Bath_(Bisibelebath).JPG",
-    "representative": true,
-    "referenceFor": "Karnataka bisi bele bath"
+    "url": "assets/recipes/catalog-koshambari.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kosambari.jpg",
+    "title": "Kosambari.jpg"
   },
   "catalog-kuzhi-paniyaram": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Dosa-chutney-sambhar.jpg/960px-Dosa-chutney-sambhar.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADosa-chutney-sambhar.jpg",
-    "title": "Dosa-chutney-sambhar.jpg",
-    "representative": true,
-    "referenceFor": "Adai dosa"
+    "url": "assets/recipes/catalog-kuzhi-paniyaram.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kuzhi_Paniyaram.jpg",
+    "title": "Kuzhi Paniyaram.jpg"
   },
   "catalog-lauki-chana-dal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-lauki-chana-dal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lauki_Chana_Dal_Recipe_From_North_Indian_Cuisine_By_Sonia_Goyal.jpg",
+    "title": "Lauki Chana Dal Recipe From North Indian Cuisine By Sonia Goyal.jpg"
   },
   "catalog-lauki-tomato-sabzi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg",
-    "representative": true,
-    "referenceFor": "Lauki chana dal"
+    "url": "assets/recipes/catalog-lauki-tomato-sabzi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Lauki_ki_Sabzi.jpg",
+    "title": "Lauki ki Sabzi.jpg"
   },
   "catalog-layered-celebration-cake": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Chipa_Paraguay.jpg/960px-Chipa_Paraguay.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChipa_Paraguay.jpg",
-    "title": "Chipa_Paraguay.jpg",
-    "representative": true,
-    "referenceFor": "Chocolate chip cookies"
+    "url": "assets/recipes/catalog-layered-celebration-cake.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Pound_layer_cake.jpg",
+    "title": "Pound layer cake.jpg"
   },
   "catalog-maharashtrian-misal-pav": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Kolhapuri_Misal_Pav.jpg/960px-Kolhapuri_Misal_Pav.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKolhapuri_Misal_Pav.jpg",
-    "title": "Kolhapuri_Misal_Pav.jpg"
+    "url": "assets/recipes/catalog-maharashtrian-misal-pav.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Misal_Pav,_a_Maharashtrian_snack.JPG",
+    "title": "Misal Pav, a Maharashtrian snack.JPG"
+  },
+  "catalog-malabar-prawn-curry": {
+    "url": "assets/recipes/catalog-malabar-prawn-curry.jpg",
+    "page": "https://www.flickr.com/photos/10561980@N06/3603221866",
+    "title": "Malabar Prawn Curry at Ganapati"
   },
   "catalog-malaysian-tofu-laksa": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Black bean rice bowl"
+    "url": "assets/recipes/catalog-malaysian-tofu-laksa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tofu_Singapore_Laksa_-_Banana_Tree_2024-12-20.jpg",
+    "title": "Tofu Singapore Laksa - Banana Tree 2024-12-20.jpg"
   },
   "catalog-malwa-bhutte-ka-kees": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Yongchaak_eromba_%282%29.jpg/960px-Yongchaak_eromba_%282%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AYongchaak_eromba_(2).jpg",
-    "title": "Yongchaak_eromba_(2).jpg",
-    "representative": true,
-    "referenceFor": "Manipuri eromba"
+    "url": "assets/recipes/catalog-malwa-bhutte-ka-kees.jpg",
+    "page": "https://www.vegrecipesofindia.com/bhutte-ka-kees-recipe/",
+    "title": "Bhutte ka Kees"
+  },
+  "catalog-mangalorean-chicken-ghee-roast": {
+    "url": "assets/recipes/catalog-mangalorean-chicken-ghee-roast.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_ghee_roast.jpg",
+    "title": "Chicken ghee roast.jpg"
   },
   "catalog-mangalorean-chicken-sukka": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Chickentandoori.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chickentandoori.jpg",
-    "representative": true,
-    "referenceFor": "South Indian chicken curry"
+    "url": "assets/recipes/catalog-mangalorean-chicken-sukka.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_Sukka.jpg",
+    "title": "Chicken Sukka.jpg"
   },
   "catalog-mangalorean-fish-curry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Rasam.JPG/960px-Rasam.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File:Rasam.JPG",
-    "representative": true,
-    "referenceFor": "Kerala-style fish curry"
+    "url": "assets/recipes/catalog-mangalorean-fish-curry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mangalorean_Bangude_Fish_Curry.jpg",
+    "title": "Mangalorean Bangude Fish Curry.jpg"
   },
   "catalog-mango-cream-cups": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Shrikhand_london_kastoori.jpg/960px-Shrikhand_london_kastoori.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AShrikhand_london_kastoori.jpg",
-    "title": "Shrikhand_london_kastoori.jpg",
-    "representative": true,
-    "referenceFor": "Shrikhand shortcut"
+    "url": "assets/recipes/catalog-mango-cream-cups.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mango_Mastani_and_Mango_Ice-Cream.jpg",
+    "title": "Mango Mastani and Mango Ice-Cream.jpg"
   },
   "catalog-manipuri-eromba": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Yongchaak_eromba_%282%29.jpg/960px-Yongchaak_eromba_%282%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AYongchaak_eromba_(2).jpg",
-    "title": "Yongchaak_eromba_(2).jpg"
+    "url": "assets/recipes/catalog-manipuri-eromba.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Ingredients_for_making_traditional_Meitei_food,_Eromba_(alias_Iromba,_Eronba,_Ironba)_-_Classical_Meitei_cuisine_of_Kangleipak.jpg",
+    "title": "Ingredients for making traditional Meitei food, Eromba (alias Iromba, Eronba, Ironba) - Classical Meitei cuisine of Kangleipak.jpg"
   },
   "catalog-mapo-tofu-inspired-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/KFC_Chicken_Soup.jpg/960px-KFC_Chicken_Soup.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKFC_Chicken_Soup.jpg",
-    "title": "KFC_Chicken_Soup.jpg",
-    "representative": true,
-    "referenceFor": "Vegetable pho-inspired soup"
+    "url": "assets/recipes/catalog-mapo-tofu-inspired-bowl.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mapo_Tofu_with_rice.jpg",
+    "title": "Mapo Tofu with rice.jpg"
   },
   "catalog-margherita-pizza-from-scratch": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Focaccia-erbe-olive.jpg/960px-Focaccia-erbe-olive.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AFocaccia-erbe-olive.jpg",
-    "title": "Focaccia-erbe-olive.jpg",
-    "representative": true,
-    "referenceFor": "Rosemary focaccia"
+    "url": "assets/recipes/catalog-margherita-pizza-from-scratch.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Margherita_pizza_on_plate_2.jpg",
+    "title": "Margherita pizza on plate 2.jpg"
   },
   "catalog-masala-corn-cup": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Chai_In_Sakora.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chai_In_Sakora.jpg",
-    "representative": true,
-    "referenceFor": "Masala chai"
+    "url": "assets/recipes/catalog-masala-corn-cup.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=140269152",
+    "title": "Masala corn by be hungry"
   },
   "catalog-masala-vegetable-khichdi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Khichuri-edit.jpg/960px-Khichuri-edit.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKhichuri-edit.jpg",
-    "title": "Khichuri-edit.jpg"
+    "url": "assets/recipes/catalog-masala-vegetable-khichdi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegetable_Khichdi_1.jpg",
+    "title": "Vegetable Khichdi 1.jpg"
   },
   "catalog-masoor-dal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-masoor-dal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Masoor_Dal_in_Dhaba_Style.jpg",
+    "title": "Masoor Dal in Dhaba Style.jpg"
   },
   "catalog-matar-paneer": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Matar_Paneer_2.jpg/960px-Matar_Paneer_2.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMatar_Paneer_2.jpg",
-    "title": "Matar_Paneer_2.jpg"
+    "url": "assets/recipes/catalog-matar-paneer.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Matar_Paneer_2.jpg",
+    "title": "Matar Paneer 2.jpg"
   },
   "catalog-matki-usal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Besan_Gatta_curry03.jpg/960px-Besan_Gatta_curry03.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABesan_Gatta_curry03.jpg",
-    "title": "Besan_Gatta_curry03.jpg",
-    "representative": true,
-    "referenceFor": "Gatte ki sabzi"
+    "url": "assets/recipes/catalog-matki-usal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Matki_sprout_usal_chapati_ambehalad_pickel_taak_salad.jpg",
+    "title": "Matki sprout usal chapati ambehalad pickel taak salad.jpg"
   },
   "catalog-medu-vada": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Vada_2.jpg/960px-Vada_2.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AVada_2.jpg",
-    "title": "Vada_2.jpg"
+    "url": "assets/recipes/catalog-medu-vada.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Medu_Vada_and_Sambhar.JPG",
+    "title": "Medu Vada and Sambhar.JPG"
   },
   "catalog-meghalaya-jadoh": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Bisi_Bele_Bath_%28Bisibelebath%29.JPG/960px-Bisi_Bele_Bath_%28Bisibelebath%29.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABisi_Bele_Bath_(Bisibelebath).JPG",
-    "title": "Bisi_Bele_Bath_(Bisibelebath).JPG",
-    "representative": true,
-    "referenceFor": "Karnataka bisi bele bath"
+    "url": "assets/recipes/catalog-meghalaya-jadoh.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Jadoh_in_a_Leaf.jpg",
+    "title": "Jadoh in a Leaf.jpg"
   },
   "catalog-menemen": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/MenemenIstanbul.jpg/960px-MenemenIstanbul.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMenemenIstanbul.jpg",
-    "title": "MenemenIstanbul.jpg"
+    "url": "assets/recipes/catalog-menemen.jpg",
+    "page": "https://www.flickr.com/photos/18259771@N00/5153426633",
+    "title": "breakfast: menemen"
   },
   "catalog-methi-aloo": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Aloo_Methi_%28Aaloo_Methi%29.JPG/960px-Aloo_Methi_%28Aaloo_Methi%29.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAloo_Methi_(Aaloo_Methi).JPG",
-    "title": "Aloo_Methi_(Aaloo_Methi).JPG"
+    "url": "assets/recipes/catalog-methi-aloo.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Aloo_Methi_Bhaji.jpg",
+    "title": "Aloo Methi Bhaji.jpg"
   },
   "catalog-methi-paratha": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Mintparatha2.0.jpg/960px-Mintparatha2.0.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMintparatha2.0.jpg",
-    "title": "Mintparatha2.0.jpg"
+    "url": "assets/recipes/catalog-methi-paratha.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Methi_Paratha.jpg",
+    "title": "Methi Paratha.jpg"
   },
   "catalog-microwave-sweet-potato-chaat": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Delhi_Chaat_with_saunth_chutney.jpg/960px-Delhi_Chaat_with_saunth_chutney.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADelhi_Chaat_with_saunth_chutney.jpg",
-    "title": "Delhi_Chaat_with_saunth_chutney.jpg"
+    "url": "assets/recipes/catalog-microwave-sweet-potato-chaat.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Potato_chaat_and_sweet_yoghurt.jpg",
+    "title": "Potato chaat and sweet yoghurt.jpg"
   },
   "catalog-milagai-podi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Rasam_%28closeup%29.jpg/960px-Rasam_%28closeup%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ARasam_(closeup).jpg",
-    "title": "Rasam_(closeup).jpg",
-    "representative": true,
-    "referenceFor": "Paruppu rasam"
+    "url": "assets/recipes/catalog-milagai-podi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Picture_of_Idli_milagai_podi_for_idli_and_dosa.JPG",
+    "title": "Picture of Idli milagai podi for idli and dosa.JPG"
   },
   "catalog-minestrone-soup": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Minestrone_soup.jpg/960px-Minestrone_soup.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMinestrone_soup.jpg",
-    "title": "Minestrone_soup.jpg"
+    "url": "assets/recipes/catalog-minestrone-soup.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Minestrone_soup.jpg",
+    "title": "Minestrone soup.jpg"
   },
   "catalog-mint-chaas": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Mint_lassi.jpg/960px-Mint_lassi.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMint_lassi.jpg",
-    "title": "Mint_lassi.jpg"
+    "url": "assets/recipes/catalog-mint-chaas.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mint_masala_chaas.JPG",
+    "title": "Mint masala chaas.JPG"
   },
   "catalog-mint-chutney": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Mint_lassi.jpg/960px-Mint_lassi.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMint_lassi.jpg",
-    "title": "Mint_lassi.jpg",
-    "representative": true,
-    "referenceFor": "Mint chaas"
+    "url": "assets/recipes/catalog-mint-chutney.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mint_rice_with_mint_chutney,poli_and_banana_fritters.jpg",
+    "title": "Mint rice with mint chutney,poli and banana fritters.jpg"
   },
   "catalog-mint-pulao": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Afghan_Palo.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Afghan_Palo.jpg",
-    "representative": true,
-    "referenceFor": "Vegetable pulao"
+    "url": "assets/recipes/catalog-mint-pulao.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mint_coriander_rice_pulao.jpg",
+    "title": "Mint coriander rice pulao.jpg"
   },
   "catalog-misir-wot": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Black bean rice bowl"
+    "url": "assets/recipes/catalog-misir-wot.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Misir_Wot_and_Gomen_Besiga_-_Abyssinia,_Brighton.jpg",
+    "title": "Misir Wot and Gomen Besiga - Abyssinia, Brighton.jpg"
   },
   "catalog-miso-tofu-soup": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Lentilsouparab.jpg/960px-Lentilsouparab.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ALentilsouparab.jpg",
-    "title": "Lentilsouparab.jpg",
-    "representative": true,
-    "referenceFor": "Red lentil soup"
+    "url": "assets/recipes/catalog-miso-tofu-soup.jpg",
+    "page": "https://www.flickr.com/photos/18154735@N00/479626338",
+    "title": "Miso/tofu soup"
   },
   "catalog-missi-roti": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Missi_Roti.jpg/960px-Missi_Roti.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMissi_Roti.jpg",
-    "title": "Missi_Roti.jpg"
+    "url": "assets/recipes/catalog-missi-roti.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tandoori_Missi_Roti_with_malai.JPG",
+    "title": "Tandoori Missi Roti with malai.JPG"
   },
   "catalog-mizo-vegetable-bai": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Thukpa%2C_Tibetan_noodle_in_Osaka%2C_Japan.jpg/960px-Thukpa%2C_Tibetan_noodle_in_Osaka%2C_Japan.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AThukpa%2C_Tibetan_noodle_in_Osaka%2C_Japan.jpg",
-    "title": "Thukpa,_Tibetan_noodle_in_Osaka,_Japan.jpg",
-    "representative": true,
-    "referenceFor": "Arunachal vegetable thukpa"
+    "url": "assets/recipes/catalog-mizo-vegetable-bai.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=74883440",
+    "title": "Mizo food"
   },
   "catalog-moong-dal-chilla": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-moong-dal-chilla.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=10513086",
+    "title": "Pesarattu and Ginger chutney"
   },
   "catalog-mor-kuzhambu": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Ven_pongal_with_sambar_and_chutney.jpg/960px-Ven_pongal_with_sambar_and_chutney.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Ven_pongal_with_sambar_and_chutney.jpg",
-    "representative": true,
-    "referenceFor": "Ven pongal"
+    "url": "assets/recipes/catalog-mor-kuzhambu.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Butter_milk_kuzhambu_aka_Moru_curry.jpg",
+    "title": "Butter milk kuzhambu aka Moru curry.jpg"
   },
   "catalog-moroccan-chickpea-tagine": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/GreekSalad.jpg/960px-GreekSalad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AGreekSalad.jpg",
-    "title": "GreekSalad.jpg",
-    "representative": true,
-    "referenceFor": "Greek chickpea salad"
+    "url": "assets/recipes/catalog-moroccan-chickpea-tagine.jpg",
+    "page": "https://www.flickr.com/photos/60162443@N00/4658168815",
+    "title": "Chickpea Tagine"
+  },
+  "catalog-mumbai-chicken-tikka-toastie": {
+    "url": "assets/recipes/catalog-mumbai-chicken-tikka-toastie.jpg",
+    "page": "https://www.flickr.com/photos/67669458@N00/3126261892",
+    "title": "Chicken tikka sandwich at the Orange Tree, Winchmore Hill, London N21"
   },
   "catalog-mushroom-risotto": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Risotto.jpg/960px-Risotto.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ARisotto.jpg",
-    "title": "Risotto.jpg"
+    "url": "assets/recipes/catalog-mushroom-risotto.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Mushroom_Risotto_(4789415965).jpg",
+    "title": "Mushroom Risotto (4789415965).jpg"
   },
   "catalog-naga-smoked-pork-with-axone": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg/960px-Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAlu_ar_dhonepata_diye_Boyal_machher_jhol.jpg",
-    "title": "Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg",
-    "representative": true,
-    "referenceFor": "Bengali macher jhol"
+    "url": "assets/recipes/catalog-naga-smoked-pork-with-axone.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Naga_Smoked_Pork_with_Axone_(Fermented_Soyabeans).jpg",
+    "title": "Naga Smoked Pork with Axone (Fermented Soyabeans).jpg"
   },
   "catalog-nankhatai": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Kheer.jpg/960px-Kheer.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKheer.jpg",
-    "title": "Kheer.jpg",
-    "representative": true,
-    "referenceFor": "Sabudana kheer"
+    "url": "assets/recipes/catalog-nankhatai.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=39624871",
+    "title": "Nankhatai"
   },
   "catalog-nasi-goreng": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Nasi_Goreng_Pete_Kambing.JPG/960px-Nasi_Goreng_Pete_Kambing.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3ANasi_Goreng_Pete_Kambing.JPG",
-    "title": "Nasi_Goreng_Pete_Kambing.JPG"
+    "url": "assets/recipes/catalog-nasi-goreng.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Nasi_Goreng_Kampung.jpg",
+    "title": "Nasi Goreng Kampung.jpg"
   },
   "catalog-neer-dosa": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Neer-dosa.jpg/960px-Neer-dosa.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ANeer-dosa.jpg",
-    "title": "Neer-dosa.jpg"
+    "url": "assets/recipes/catalog-neer-dosa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Neer_Dosa(_Neer_Tellavu).jpg",
+    "title": "Neer Dosa( Neer Tellavu).jpg"
   },
   "catalog-nepali-chicken-momos": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AHainanese_Chicken_Rice.jpg",
-    "title": "Hainanese_Chicken_Rice.jpg",
-    "representative": true,
-    "referenceFor": "Chicken rice skillet"
+    "url": "assets/recipes/catalog-nepali-chicken-momos.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Nepali_Chicken_momo.jpg",
+    "title": "Nepali Chicken momo.jpg"
   },
   "catalog-nepali-dal-bhat": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Dalbath.jpg/960px-Dalbath.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADalbath.jpg",
-    "title": "Dalbath.jpg"
+    "url": "assets/recipes/catalog-nepali-dal-bhat.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Nepali_dal-bhat-tarkari.jpg",
+    "title": "Nepali dal-bhat-tarkari.jpg"
   },
   "catalog-no-bake-cocoa-oat-bites": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Chocolate_milk.JPG/960px-Chocolate_milk.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChocolate_milk.JPG",
-    "title": "Chocolate_milk.JPG",
-    "representative": true,
-    "referenceFor": "Cocoa milk"
+    "url": "assets/recipes/catalog-no-bake-cocoa-oat-bites.jpg",
+    "page": "https://www.rawpixel.com/image/6054534/free-public-domain-cc0-photo",
+    "title": "No-bake cocoa oat bites"
   },
   "catalog-oats-idli": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Idli_Sambar.JPG/960px-Idli_Sambar.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AIdli_Sambar.JPG",
-    "title": "Idli_Sambar.JPG"
+    "url": "assets/recipes/catalog-oats-idli.jpg",
+    "page": "https://www.flickr.com/photos/28233229@N00/1407477621",
+    "title": "pumpkin idli"
   },
   "catalog-odia-dalma": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/M%C3%A1dl_Dalma.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AM%C3%A1dl_Dalma.jpg",
-    "title": "Mádl_Dalma.jpg"
+    "url": "assets/recipes/catalog-odia-dalma.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Odia_Dalma.jpg",
+    "title": "Odia Dalma.jpg"
   },
   "catalog-odia-santula": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/M%C3%A1dl_Dalma.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AM%C3%A1dl_Dalma.jpg",
-    "title": "Mádl_Dalma.jpg",
-    "representative": true,
-    "referenceFor": "Odia dalma"
+    "url": "assets/recipes/catalog-odia-santula.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=19537559",
+    "title": "Pani Santula"
   },
   "catalog-one-pan-chicken-pasta": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AHainanese_Chicken_Rice.jpg",
-    "title": "Hainanese_Chicken_Rice.jpg",
-    "representative": true,
-    "referenceFor": "Chicken rice skillet"
+    "url": "assets/recipes/catalog-one-pan-chicken-pasta.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_Pasta_in_White_Sauce.jpg",
+    "title": "Chicken Pasta in White Sauce.jpg"
   },
   "catalog-one-pot-chicken-pulao": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Chicken_tikka_masala.jpg/960px-Chicken_tikka_masala.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChicken_tikka_masala.jpg",
-    "title": "Chicken_tikka_masala.jpg",
-    "representative": true,
-    "referenceFor": "Chicken breast masala"
+    "url": "assets/recipes/catalog-one-pot-chicken-pulao.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Andhra_Chicken_Pulao.jpg",
+    "title": "Andhra Chicken Pulao.jpg"
   },
   "catalog-onion-uttapam": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Mini_Uttappam.jpg/960px-Mini_Uttappam.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMini_Uttappam.jpg",
-    "title": "Mini_Uttappam.jpg"
+    "url": "assets/recipes/catalog-onion-uttapam.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Onion_Uttapam_with_butter.jpg",
+    "title": "Onion Uttapam with butter.jpg"
   },
   "catalog-overnight-oats": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Idli_Sambar.JPG/960px-Idli_Sambar.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AIdli_Sambar.JPG",
-    "title": "Idli_Sambar.JPG",
-    "representative": true,
-    "referenceFor": "Oats idli"
+    "url": "assets/recipes/catalog-overnight-oats.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Protein_overnight_oats.jpg",
+    "title": "Protein overnight oats.jpg"
   },
   "catalog-pakistani-chicken-karahi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AHainanese_Chicken_Rice.jpg",
-    "title": "Hainanese_Chicken_Rice.jpg",
-    "representative": true,
-    "referenceFor": "Chicken rice skillet"
+    "url": "assets/recipes/catalog-pakistani-chicken-karahi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_Karahi.JPG",
+    "title": "Chicken Karahi.JPG"
   },
   "catalog-palak-tofu": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Palakpaneer_Rayagada_Odisha_0009.jpg/960px-Palakpaneer_Rayagada_Odisha_0009.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Palakpaneer_Rayagada_Odisha_0009.jpg",
-    "representative": true,
-    "referenceFor": "Palak paneer"
+    "url": "assets/recipes/catalog-palak-tofu.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chakra_Palak_Tofu.jpg",
+    "title": "Chakra Palak Tofu.jpg"
   },
   "catalog-paneer-butter-masala": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Popular_Indian_dish%2C_Paneer_Butter_Masala.jpg/960px-Popular_Indian_dish%2C_Paneer_Butter_Masala.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3APopular_Indian_dish%2C_Paneer_Butter_Masala.jpg",
-    "title": "Popular_Indian_dish,_Paneer_Butter_Masala.jpg"
+    "url": "assets/recipes/catalog-paneer-butter-masala.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Paneer_butter_masala_2.jpg",
+    "title": "Paneer butter masala 2.jpg"
   },
   "catalog-paneer-momos": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Palakpaneer_Rayagada_Odisha_0009.jpg/960px-Palakpaneer_Rayagada_Odisha_0009.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Palakpaneer_Rayagada_Odisha_0009.jpg",
-    "representative": true,
-    "referenceFor": "Palak paneer"
+    "url": "assets/recipes/catalog-paneer-momos.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=103389448",
+    "title": "Paneer fried momos"
   },
   "catalog-paneer-paratha": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Palakpaneer_Rayagada_Odisha_0009.jpg/960px-Palakpaneer_Rayagada_Odisha_0009.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Palakpaneer_Rayagada_Odisha_0009.jpg",
-    "representative": true,
-    "referenceFor": "Palak paneer"
+    "url": "assets/recipes/catalog-paneer-paratha.jpg",
+    "page": "https://www.flickr.com/photos/25834786@N03/3412353764",
+    "title": "Muli with paneer paratha"
   },
   "catalog-paneer-rice-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Paneer_Tikka_masala.JPG/960px-Paneer_Tikka_masala.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3APaneer_Tikka_masala.JPG",
-    "title": "Paneer_Tikka_masala.JPG",
-    "representative": true,
-    "referenceFor": "Paneer tikka wrap"
+    "url": "assets/recipes/catalog-paneer-rice-bowl.jpg",
+    "page": "https://www.flickr.com/photos/63259415@N05/8909282089",
+    "title": "Paneer Fried Rice - Easy Paneer Rice (1)"
   },
   "catalog-paneer-tikka-wrap": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Paneer_Tikka_masala.JPG/960px-Paneer_Tikka_masala.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3APaneer_Tikka_masala.JPG",
-    "title": "Paneer_Tikka_masala.JPG"
+    "url": "assets/recipes/catalog-paneer-tikka-wrap.jpg",
+    "page": "https://www.flickr.com/photos/84946201@N00/158765822",
+    "title": "Paneer Wrap at Masala Wok"
   },
   "catalog-panna-cotta": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Minestrone_soup.jpg/960px-Minestrone_soup.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMinestrone_soup.jpg",
-    "title": "Minestrone_soup.jpg",
-    "representative": true,
-    "referenceFor": "Minestrone soup"
+    "url": "assets/recipes/catalog-panna-cotta.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Panna_Cotta_(353420626).jpg",
+    "title": "Panna Cotta (353420626).jpg"
   },
   "catalog-paruppu-rasam": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Rasam_%28closeup%29.jpg/960px-Rasam_%28closeup%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ARasam_(closeup).jpg",
-    "title": "Rasam_(closeup).jpg"
+    "url": "assets/recipes/catalog-paruppu-rasam.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Traditional_Paruppu_Rasam_in_a_Tin_vessel_eiyachombu.jpg",
+    "title": "Traditional Paruppu Rasam in a Tin vessel eiyachombu.jpg"
   },
   "catalog-pav-bhaji": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Pav_Bhaji.jpg/960px-Pav_Bhaji.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3APav_Bhaji.jpg",
-    "title": "Pav_Bhaji.jpg"
+    "url": "assets/recipes/catalog-pav-bhaji.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Pav_bhaji_SWW.jpg",
+    "title": "Pav bhaji SWW.jpg"
   },
   "catalog-peanut-butter-banana-toast": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/2020-03-24_20_57_22_An_open_jar_of_Skippy_Creamy_Peanut_Butter_in_the_Dulles_section_of_Sterling%2C_Loudoun_County%2C_Virginia.jpg/960px-2020-03-24_20_57_22_An_open_jar_of_Skippy_Creamy_Peanut_Butter_in_the_Dulles_section_of_Sterling%2C_Loudoun_County%2C_Virginia.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3A2020-03-24_20_57_22_An_open_jar_of_Skippy_Creamy_Peanut_Butter_in_the_Dulles_section_of_Sterling%2C_Loudoun_County%2C_Virginia.jpg",
-    "title": "2020-03-24_20_57_22_An_open_jar_of_Skippy_Creamy_Peanut_Butter_in_the_Dulles_section_of_Sterling,_Loudoun_County,_Virginia.jpg"
+    "url": "assets/recipes/catalog-peanut-butter-banana-toast.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Peanut_butter_and_banana_on_toasted_homemade_bread_-_Massachusetts.jpg",
+    "title": "Peanut butter and banana on toasted homemade bread - Massachusetts.jpg"
   },
   "catalog-peanut-chutney": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Peanut_Salad.jpg/960px-Peanut_Salad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Peanut_Salad.jpg",
-    "representative": true,
-    "referenceFor": "Curd peanut bowl"
+    "url": "assets/recipes/catalog-peanut-chutney.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Plain_Dosa_with_Peanut_Chutney.jpg",
+    "title": "Plain Dosa with Peanut Chutney.jpg"
   },
   "catalog-penne-arrabbiata": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Penne_all%27arrabbiata.jpg/960px-Penne_all%27arrabbiata.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3APenne_all'arrabbiata.jpg",
-    "title": "Penne_all'arrabbiata.jpg"
+    "url": "assets/recipes/catalog-penne-arrabbiata.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Penne_Arrabbiata.jpg",
+    "title": "Penne Arrabbiata.jpg"
   },
   "catalog-pepper-chicken": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Chickentandoori.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chickentandoori.jpg",
-    "representative": true,
-    "referenceFor": "South Indian chicken curry"
+    "url": "assets/recipes/catalog-pepper-chicken.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Freshippo_lemon_black_pepper_chicken_drumsticks.jpg",
+    "title": "Freshippo lemon black pepper chicken drumsticks.jpg"
   },
   "catalog-pepper-rasam": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Rasam_%28closeup%29.jpg/960px-Rasam_%28closeup%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ARasam_(closeup).jpg",
-    "title": "Rasam_(closeup).jpg"
+    "url": "assets/recipes/catalog-pepper-rasam.jpg",
+    "page": "https://www.flickr.com/photos/8896896@N07/6734715853",
+    "title": "Ingredients to a hot Pepper Soup : Pepper Rasam:Kurumullake Rasam"
   },
   "catalog-peruvian-chicken-rice": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AHainanese_Chicken_Rice.jpg",
-    "title": "Hainanese_Chicken_Rice.jpg"
+    "url": "assets/recipes/catalog-peruvian-chicken-rice.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Peruvian_Chicken-with-rice_and_Ocopa.jpg",
+    "title": "Peruvian Chicken-with-rice and Ocopa.jpg"
   },
   "catalog-pesto-pasta": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Penne_all%27arrabbiata.jpg/960px-Penne_all%27arrabbiata.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3APenne_all'arrabbiata.jpg",
-    "title": "Penne_all'arrabbiata.jpg",
-    "representative": true,
-    "referenceFor": "Penne arrabbiata"
+    "url": "assets/recipes/catalog-pesto-pasta.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Pesto_pasta_-_Stierch.jpg",
+    "title": "Pesto pasta - Stierch.jpg"
   },
   "catalog-phulka": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Mintparatha2.0.jpg/960px-Mintparatha2.0.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMintparatha2.0.jpg",
-    "title": "Mintparatha2.0.jpg",
-    "representative": true,
-    "referenceFor": "Methi paratha"
+    "url": "assets/recipes/catalog-phulka.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chapati_making_at_the_Chokhi_Dhani_Resort_Panchkula_08.jpg",
+    "title": "Chapati making at the Chokhi Dhani Resort Panchkula 08.jpg"
   },
   "catalog-plain-sweet-lassi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Salt_lassi.jpg/960px-Salt_lassi.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASalt_lassi.jpg",
-    "title": "Salt_lassi.jpg"
+    "url": "assets/recipes/catalog-plain-sweet-lassi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sweet_lassi_with_roohafza.JPG",
+    "title": "Sweet lassi with roohafza.JPG"
   },
   "catalog-potato-gnocchi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Focaccia-erbe-olive.jpg/960px-Focaccia-erbe-olive.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AFocaccia-erbe-olive.jpg",
-    "title": "Focaccia-erbe-olive.jpg",
-    "representative": true,
-    "referenceFor": "Rosemary focaccia"
+    "url": "assets/recipes/catalog-potato-gnocchi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Potato_gnocchi,_aubergine_arrabiata.jpg",
+    "title": "Potato gnocchi, aubergine arrabiata.jpg"
   },
   "catalog-prawn-coconut-curry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Chickentandoori.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chickentandoori.jpg",
-    "representative": true,
-    "referenceFor": "South Indian chicken curry"
+    "url": "assets/recipes/catalog-prawn-coconut-curry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Thai_prawn_salad_with_white_fish,_prawn,_roasted_peanuts,_coconut_curry,_nuoc_cham,_and_ginger_-_Wellington,_New_Zealand.jpg",
+    "title": "Thai prawn salad with white fish, prawn, roasted peanuts, coconut curry, nuoc cham, and ginger - Wellington, New Zealand.jpg"
   },
   "catalog-prawn-pepper-fry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Chickentandoori.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chickentandoori.jpg",
-    "representative": true,
-    "referenceFor": "South Indian chicken curry"
+    "url": "assets/recipes/catalog-prawn-pepper-fry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Pepper_Prawn_Fry-Nellore-Andhra_Pradesh-DED_005.jpg",
+    "title": "Pepper Prawn Fry-Nellore-Andhra Pradesh-DED 005.jpg"
   },
   "catalog-puliyogare": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Coconut rice"
+    "url": "assets/recipes/catalog-puliyogare.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tamarind_Rice_(Puliyogare).jpg",
+    "title": "Tamarind Rice (Puliyogare).jpg"
+  },
+  "catalog-punjabi-chicken-masala": {
+    "url": "assets/recipes/catalog-punjabi-chicken-masala.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_Butter_Masala_with_Basmati_Rice.jpg",
+    "title": "Chicken Butter Masala with Basmati Rice.jpg"
   },
   "catalog-punjabi-sarson-saag": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Punjabi_Sarsoon_Ka_Saag.JPG/960px-Punjabi_Sarsoon_Ka_Saag.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3APunjabi_Sarsoon_Ka_Saag.JPG",
-    "title": "Punjabi_Sarsoon_Ka_Saag.JPG"
+    "url": "assets/recipes/catalog-punjabi-sarson-saag.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sarson-Ka-Saag.jpg",
+    "title": "Sarson-Ka-Saag.jpg"
   },
   "catalog-ragi-dosa": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dosa_at_Sri_Ganesha_Restauran%2C_Bangkok_%2844570742744%29.jpg/960px-Dosa_at_Sri_Ganesha_Restauran%2C_Bangkok_%2844570742744%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADosa_at_Sri_Ganesha_Restauran%2C_Bangkok_(44570742744).jpg",
-    "title": "Dosa_at_Sri_Ganesha_Restauran,_Bangkok_(44570742744).jpg"
+    "url": "assets/recipes/catalog-ragi-dosa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Ragi_Dosa_Mumbai.jpg",
+    "title": "Ragi Dosa Mumbai.jpg"
   },
   "catalog-ragi-idli": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Idli_Sambar.JPG/960px-Idli_Sambar.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AIdli_Sambar.JPG",
-    "title": "Idli_Sambar.JPG"
+    "url": "assets/recipes/catalog-ragi-idli.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Ragi_Idli_(Finger_Millet)_with_Sambar.jpg",
+    "title": "Ragi Idli (Finger Millet) with Sambar.jpg"
   },
   "catalog-ragi-malt": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Idli_Sambar.JPG/960px-Idli_Sambar.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AIdli_Sambar.JPG",
-    "title": "Idli_Sambar.JPG",
-    "representative": true,
-    "referenceFor": "Ragi idli"
+    "url": "assets/recipes/catalog-ragi-malt.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=16240387",
+    "title": "Ragi Porridge"
   },
   "catalog-ragi-mudde-meal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/RAGI_MUDDE.JPG/960px-RAGI_MUDDE.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File:RAGI_MUDDE.JPG",
-    "representative": true,
-    "referenceFor": "Ragi mudde + sambar"
+    "url": "assets/recipes/catalog-ragi-mudde-meal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Ragi_Mudde_-_Bassaru.jpg",
+    "title": "Ragi Mudde - Bassaru.jpg"
   },
   "catalog-ragi-rotti": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Idli_Sambar.JPG/960px-Idli_Sambar.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AIdli_Sambar.JPG",
-    "title": "Idli_Sambar.JPG",
-    "representative": true,
-    "referenceFor": "Ragi idli"
+    "url": "assets/recipes/catalog-ragi-rotti.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=137811608",
+    "title": "Ragi roti"
+  },
+  "catalog-rajasthani-laal-maas": {
+    "url": "assets/recipes/catalog-rajasthani-laal-maas.jpg",
+    "page": "https://www.flickr.com/photos/11798710@N00/13241200745",
+    "title": "Laal Maas"
   },
   "catalog-rajasthani-panchmel-dal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-rajasthani-panchmel-dal.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=131419505",
+    "title": "Dal Panchmel"
   },
   "catalog-rajma-rice-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Rajma%2C_kidney_beans%2C_served_with_chawal%2C_rice.jpg/960px-Rajma%2C_kidney_beans%2C_served_with_chawal%2C_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ARajma%2C_kidney_beans%2C_served_with_chawal%2C_rice.jpg",
-    "title": "Rajma,_kidney_beans,_served_with_chawal,_rice.jpg"
+    "url": "assets/recipes/catalog-rajma-rice-bowl.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Rajma_Chawal_Rajma_Rice.jpg",
+    "title": "Rajma Chawal Rajma Rice.jpg"
   },
   "catalog-rasmalai": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Gulab_Jamun.jpg/960px-Gulab_Jamun.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AGulab_Jamun.jpg",
-    "title": "Gulab_Jamun.jpg",
-    "representative": true,
-    "referenceFor": "Gulab jamun from khoya"
+    "url": "assets/recipes/catalog-rasmalai.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Rasmalai_4.jpg",
+    "title": "Rasmalai 4.jpg"
   },
   "catalog-rava-dosa": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dosa_at_Sri_Ganesha_Restauran%2C_Bangkok_%2844570742744%29.jpg/960px-Dosa_at_Sri_Ganesha_Restauran%2C_Bangkok_%2844570742744%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADosa_at_Sri_Ganesha_Restauran%2C_Bangkok_(44570742744).jpg",
-    "title": "Dosa_at_Sri_Ganesha_Restauran,_Bangkok_(44570742744).jpg"
+    "url": "assets/recipes/catalog-rava-dosa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Rava_dosa.JPG",
+    "title": "Rava dosa.JPG"
   },
   "catalog-rava-idli": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Rava_Idli_%286005561226%29.jpg/960px-Rava_Idli_%286005561226%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ARava_Idli_(6005561226).jpg",
-    "title": "Rava_Idli_(6005561226).jpg"
+    "url": "assets/recipes/catalog-rava-idli.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:MTR_Rava_Idli.jpg",
+    "title": "MTR Rava Idli.jpg"
   },
   "catalog-raw-banana-fry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Phat_naem_sai_khai.jpg/960px-Phat_naem_sai_khai.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3APhat_naem_sai_khai.jpg",
-    "title": "Phat_naem_sai_khai.jpg",
-    "representative": true,
-    "referenceFor": "Bamboo shoot stir-fry"
+    "url": "assets/recipes/catalog-raw-banana-fry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Raw_Banana_Fry_FoodBells_of_WELLBELLS_Guntur_AndhraPradesh.jpg",
+    "title": "Raw Banana Fry FoodBells of WELLBELLS Guntur AndhraPradesh.jpg"
   },
   "catalog-red-lentil-soup": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Lentilsouparab.jpg/960px-Lentilsouparab.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ALentilsouparab.jpg",
-    "title": "Lentilsouparab.jpg"
+    "url": "assets/recipes/catalog-red-lentil-soup.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Liat_Portal_for_Foodie_Disorder_-_Red_lentil_soup_with_dumplings.jpg",
+    "title": "Liat Portal for Foodie Disorder - Red lentil soup with dumplings.jpg"
   },
   "catalog-rosemary-focaccia": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Focaccia-erbe-olive.jpg/960px-Focaccia-erbe-olive.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AFocaccia-erbe-olive.jpg",
-    "title": "Focaccia-erbe-olive.jpg"
+    "url": "assets/recipes/catalog-rosemary-focaccia.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Rosemary_Focaccia.jpg",
+    "title": "Rosemary Focaccia.jpg"
   },
   "catalog-russian-buckwheat-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Black bean rice bowl"
+    "url": "assets/recipes/catalog-russian-buckwheat-bowl.jpg",
+    "page": "https://www.flickr.com/photos/29285241@N03/2907111810",
+    "title": "toasted buckwheat porridge"
   },
   "catalog-sabudana-kheer": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Kheer.jpg/960px-Kheer.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKheer.jpg",
-    "title": "Kheer.jpg"
+    "url": "assets/recipes/catalog-sabudana-kheer.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sabudana_Kheer_,_A_dist_of_Rajasthan.jpg",
+    "title": "Sabudana Kheer , A dist of Rajasthan.jpg"
   },
   "catalog-sabudana-khichdi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Khichuri-edit.jpg/960px-Khichuri-edit.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKhichuri-edit.jpg",
-    "title": "Khichuri-edit.jpg"
+    "url": "assets/recipes/catalog-sabudana-khichdi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sabudana_Khichdi_with_Sweet_curd.JPG",
+    "title": "Sabudana Khichdi with Sweet curd.JPG"
   },
   "catalog-salted-buttermilk": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Mint_lassi.jpg/960px-Mint_lassi.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMint_lassi.jpg",
-    "title": "Mint_lassi.jpg",
-    "representative": true,
-    "referenceFor": "Mint chaas"
+    "url": "assets/recipes/catalog-salted-buttermilk.jpg",
+    "page": "https://www.flickr.com/photos/57155801@N00/6808623",
+    "title": "Chaas at Bobby Dhaba"
   },
   "catalog-sattu-cooler": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Salt_lassi.jpg/960px-Salt_lassi.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASalt_lassi.jpg",
-    "title": "Salt_lassi.jpg",
-    "representative": true,
-    "referenceFor": "Plain sweet lassi"
+    "url": "assets/recipes/catalog-sattu-cooler.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sattu_Ghol.jpg",
+    "title": "Sattu Ghol.jpg"
   },
   "catalog-semiya-payasam": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Kheer.jpg/960px-Kheer.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKheer.jpg",
-    "title": "Kheer.jpg"
+    "url": "assets/recipes/catalog-semiya-payasam.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Semiya_payasam,_Alappuzha.jpg",
+    "title": "Semiya payasam, Alappuzha.jpg"
   },
   "catalog-semiya-upma": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/A_photo_of_Upma.jpg/960px-A_photo_of_Upma.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:A_photo_of_Upma.jpg",
-    "representative": true,
-    "referenceFor": "Vegetable upma"
+    "url": "assets/recipes/catalog-semiya-upma.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Traditional_Vermicelli_Upma_(Semiya_Upma)_with_Fresh_Vegetables.jpg",
+    "title": "Traditional Vermicelli Upma (Semiya Upma) with Fresh Vegetables.jpg"
   },
   "catalog-set-cheesecake-jars": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dosa_at_Sri_Ganesha_Restauran%2C_Bangkok_%2844570742744%29.jpg/960px-Dosa_at_Sri_Ganesha_Restauran%2C_Bangkok_%2844570742744%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADosa_at_Sri_Ganesha_Restauran%2C_Bangkok_(44570742744).jpg",
-    "title": "Dosa_at_Sri_Ganesha_Restauran,_Bangkok_(44570742744).jpg",
-    "representative": true,
-    "referenceFor": "Set dosa"
+    "url": "assets/recipes/catalog-set-cheesecake-jars.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Cheesecake_in_a_jar.jpg",
+    "title": "Cheesecake in a jar.jpg"
   },
   "catalog-set-dosa": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dosa_at_Sri_Ganesha_Restauran%2C_Bangkok_%2844570742744%29.jpg/960px-Dosa_at_Sri_Ganesha_Restauran%2C_Bangkok_%2844570742744%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADosa_at_Sri_Ganesha_Restauran%2C_Bangkok_(44570742744).jpg",
-    "title": "Dosa_at_Sri_Ganesha_Restauran,_Bangkok_(44570742744).jpg"
+    "url": "assets/recipes/catalog-set-dosa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Set_Dosa_1.jpg",
+    "title": "Set Dosa 1.jpg"
   },
   "catalog-shahi-tukda-shortcut": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Shrikhand_london_kastoori.jpg/960px-Shrikhand_london_kastoori.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AShrikhand_london_kastoori.jpg",
-    "title": "Shrikhand_london_kastoori.jpg",
-    "representative": true,
-    "referenceFor": "Shrikhand shortcut"
+    "url": "assets/recipes/catalog-shahi-tukda-shortcut.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Shahi_Tukda_PK011.jpg",
+    "title": "Shahi Tukda PK011.jpg"
   },
   "catalog-shakshuka": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/NCI_flour_tortillas.jpg/960px-NCI_flour_tortillas.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ANCI_flour_tortillas.jpg",
-    "title": "NCI_flour_tortillas.jpg",
-    "representative": true,
-    "referenceFor": "Spanish tortilla"
+    "url": "assets/recipes/catalog-shakshuka.jpg",
+    "page": "https://www.flickr.com/photos/34948727@N00/15305126182",
+    "title": "Shakshuka with hot smoked salmon and capers at Bowery to Williamsburg in Melbourne"
   },
   "catalog-shortcrust-tart-shells": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Banana_bread_slices.jpg/960px-Banana_bread_slices.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABanana_bread_slices.jpg",
-    "title": "Banana_bread_slices.jpg",
-    "representative": true,
-    "referenceFor": "Eggless banana bread"
+    "url": "assets/recipes/catalog-shortcrust-tart-shells.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Custard_tart_emerging_from_wrapper.jpg",
+    "title": "Custard tart emerging from wrapper.jpg"
   },
   "catalog-shrikhand-shortcut": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Shrikhand_london_kastoori.jpg/960px-Shrikhand_london_kastoori.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AShrikhand_london_kastoori.jpg",
-    "title": "Shrikhand_london_kastoori.jpg"
+    "url": "assets/recipes/catalog-shrikhand-shortcut.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Shrikhand.JPG",
+    "title": "Shrikhand.JPG"
   },
   "catalog-shukto": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Shukto_-_Behala_Manton%2C_Kolkata_-_West_Bengal_-_IMG-20210322-WA0013.jpg/960px-Shukto_-_Behala_Manton%2C_Kolkata_-_West_Bengal_-_IMG-20210322-WA0013.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AShukto_-_Behala_Manton%2C_Kolkata_-_West_Bengal_-_IMG-20210322-WA0013.jpg",
-    "title": "Shukto_-_Behala_Manton,_Kolkata_-_West_Bengal_-_IMG-20210322-WA0013.jpg"
+    "url": "assets/recipes/catalog-shukto.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Shukto-Ahare_Bangla_2016_DSC_7615.jpg",
+    "title": "Shukto-Ahare Bangla 2016 DSC 7615.jpg"
   },
   "catalog-sikkim-vegetable-momos": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Momo_nepal.jpg/960px-Momo_nepal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMomo_nepal.jpg",
-    "title": "Momo_nepal.jpg"
+    "url": "assets/recipes/catalog-sikkim-vegetable-momos.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegetable_Momos_-_Yak_Yeti_Yak_2025-07-23.jpg",
+    "title": "Vegetable Momos - Yak Yeti Yak 2025-07-23.jpg"
   },
   "catalog-silky-chocolate-sauce": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Banana_bread_slices.jpg/960px-Banana_bread_slices.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABanana_bread_slices.jpg",
-    "title": "Banana_bread_slices.jpg",
-    "representative": true,
-    "referenceFor": "Eggless banana bread"
+    "url": "assets/recipes/catalog-silky-chocolate-sauce.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Piece_of_chocolate_cake_on_a_white_plate_decorated_with_chocolate_sauce.jpg",
+    "title": "Piece of chocolate cake on a white plate decorated with chocolate sauce.jpg"
   },
   "catalog-simple-fish-fry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Rasam.JPG/960px-Rasam.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File:Rasam.JPG",
-    "representative": true,
-    "referenceFor": "Kerala-style fish curry"
+    "url": "assets/recipes/catalog-simple-fish-fry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Fried_fish_of_Bangladesh.jpg",
+    "title": "Fried fish of Bangladesh.jpg"
   },
   "catalog-simple-miso-broth": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Chinesechickensalad.jpg/960px-Chinesechickensalad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChinesechickensalad.jpg",
-    "title": "Chinesechickensalad.jpg",
-    "representative": true,
-    "referenceFor": "Chinese sesame cucumber salad"
+    "url": "assets/recipes/catalog-simple-miso-broth.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Pholiota_microspora_miso_soup_001.jpg",
+    "title": "Pholiota microspora miso soup 001.jpg"
   },
   "catalog-sindhi-dal-pakwan": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-sindhi-dal-pakwan.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dal_Pakwan.JPG",
+    "title": "Dal Pakwan.JPG"
   },
   "catalog-singapore-egg-fried-rice": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Eierbal.jpg/960px-Eierbal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AEierbal.jpg",
-    "title": "Eierbal.jpg"
+    "url": "assets/recipes/catalog-singapore-egg-fried-rice.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Egg_fried_rice.jpg",
+    "title": "Egg fried rice.jpg"
   },
   "catalog-skillet-garlic-bread": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Inuit_bannock.JPG/960px-Inuit_bannock.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AInuit_bannock.JPG",
-    "title": "Inuit_bannock.JPG"
+    "url": "assets/recipes/catalog-skillet-garlic-bread.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Garlic_bread_baguettes_2.jpg",
+    "title": "Garlic bread baguettes 2.jpg"
   },
   "catalog-skillet-vegetable-lasagna": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Inuit_bannock.JPG/960px-Inuit_bannock.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AInuit_bannock.JPG",
-    "title": "Inuit_bannock.JPG",
-    "representative": true,
-    "referenceFor": "Skillet garlic bread"
+    "url": "assets/recipes/catalog-skillet-vegetable-lasagna.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegetable_Lasagna_10-07_to_22_439.jpg",
+    "title": "Vegetable Lasagna 10-07 to 22 439.jpg"
   },
   "catalog-sooji-sheera": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Shrikhand_london_kastoori.jpg/960px-Shrikhand_london_kastoori.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AShrikhand_london_kastoori.jpg",
-    "title": "Shrikhand_london_kastoori.jpg",
-    "representative": true,
-    "referenceFor": "Shrikhand shortcut"
+    "url": "assets/recipes/catalog-sooji-sheera.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sooji_Halwa_(Rava_Sheera).jpg",
+    "title": "Sooji Halwa (Rava Sheera).jpg"
   },
   "catalog-south-indian-potato-roast": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Delhi_Chaat_with_saunth_chutney.jpg/960px-Delhi_Chaat_with_saunth_chutney.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADelhi_Chaat_with_saunth_chutney.jpg",
-    "title": "Delhi_Chaat_with_saunth_chutney.jpg",
-    "representative": true,
-    "referenceFor": "Microwave sweet potato chaat"
+    "url": "assets/recipes/catalog-south-indian-potato-roast.jpg",
+    "page": "https://www.makepotato.com/south-indian-roast-potatoes/",
+    "title": "South Indian roast potatoes"
   },
   "catalog-soy-keema-pav": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Kolhapuri_Misal_Pav.jpg/960px-Kolhapuri_Misal_Pav.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKolhapuri_Misal_Pav.jpg",
-    "title": "Kolhapuri_Misal_Pav.jpg",
-    "representative": true,
-    "referenceFor": "Maharashtrian misal pav"
+    "url": "assets/recipes/catalog-soy-keema-pav.jpg",
+    "page": "https://www.flickr.com/photos/22598380@N07/2658577614",
+    "title": "Keema Pav"
   },
   "catalog-soya-chunk-curry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg",
-    "representative": true,
-    "referenceFor": "Toor dal fry"
+    "url": "assets/recipes/catalog-soya-chunk-curry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Nutrela_Soya_Chunks_Curry.jpg",
+    "title": "Nutrela Soya Chunks Curry.jpg"
   },
   "catalog-soya-granule-bhurji": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Homemade_Paneer_Bhurji_cooked_in_pan_India.jpg/960px-Homemade_Paneer_Bhurji_cooked_in_pan_India.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Homemade_Paneer_Bhurji_cooked_in_pan_India.jpg",
-    "representative": true,
-    "referenceFor": "Paneer bhurji"
+    "url": "assets/recipes/catalog-soya-granule-bhurji.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Soya_Granules_Bhurji.jpg",
+    "title": "Soya Granules Bhurji.jpg"
   },
   "catalog-soya-vegetable-pulao": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Afghan_Palo.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Afghan_Palo.jpg",
-    "representative": true,
-    "referenceFor": "Vegetable pulao"
+    "url": "assets/recipes/catalog-soya-vegetable-pulao.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Soya_Curry_with_Matar_rice_and_Gulab_Jamun.jpg",
+    "title": "Soya Curry with Matar rice and Gulab Jamun.jpg"
   },
   "catalog-spaghetti-aglio-e-olio": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Spaghetti_aglio%2C_olio_e_peperoncino_%2816284859030%29.jpg/960px-Spaghetti_aglio%2C_olio_e_peperoncino_%2816284859030%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASpaghetti_aglio%2C_olio_e_peperoncino_(16284859030).jpg",
-    "title": "Spaghetti_aglio,_olio_e_peperoncino_(16284859030).jpg"
+    "url": "assets/recipes/catalog-spaghetti-aglio-e-olio.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Spaghetti_aglio_e_olio_KB.jpg",
+    "title": "Spaghetti aglio e olio KB.jpg"
   },
   "catalog-spanish-tortilla": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/NCI_flour_tortillas.jpg/960px-NCI_flour_tortillas.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ANCI_flour_tortillas.jpg",
-    "title": "NCI_flour_tortillas.jpg"
+    "url": "assets/recipes/catalog-spanish-tortilla.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Spanish_Tortilla_(5845088254).jpg",
+    "title": "Spanish Tortilla (5845088254).jpg"
   },
   "catalog-spinach-omelette": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Nargesi_omelette.jpg/960px-Nargesi_omelette.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ANargesi_omelette.jpg",
-    "title": "Nargesi_omelette.jpg"
+    "url": "assets/recipes/catalog-spinach-omelette.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Spinach_omelette_(3278835124).jpg",
+    "title": "Spinach omelette (3278835124).jpg"
   },
   "catalog-sprouted-moong-chaat": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Delhi_Chaat_with_saunth_chutney.jpg/960px-Delhi_Chaat_with_saunth_chutney.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADelhi_Chaat_with_saunth_chutney.jpg",
-    "title": "Delhi_Chaat_with_saunth_chutney.jpg"
+    "url": "assets/recipes/catalog-sprouted-moong-chaat.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Moong_Chaat.JPG",
+    "title": "Moong Chaat.JPG"
   },
   "catalog-sri-lankan-coconut-sambol": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Coconut rice"
+    "url": "assets/recipes/catalog-sri-lankan-coconut-sambol.jpg",
+    "page": "https://www.flickr.com/photos/62878116@N00/7790951984",
+    "title": "Coconut Sambol"
   },
   "catalog-sri-lankan-parippu": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Black bean rice bowl"
+    "url": "assets/recipes/catalog-sri-lankan-parippu.jpg",
+    "page": "https://www.flickr.com/photos/57841116@N03/53816018642",
+    "title": "Brown rice with spinach channa dal and Sri Lankan beetroot curry"
   },
   "catalog-steamed-vegetable-bao": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Chinesechickensalad.jpg/960px-Chinesechickensalad.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChinesechickensalad.jpg",
-    "title": "Chinesechickensalad.jpg",
-    "representative": true,
-    "referenceFor": "Chinese sesame cucumber salad"
+    "url": "assets/recipes/catalog-steamed-vegetable-bao.jpg",
+    "page": "https://www.flickr.com/photos/73554588@N00/4359758881",
+    "title": "vegetable bao"
   },
   "catalog-stovetop-chocolate-pudding": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Paneer_Tikka_masala.JPG/960px-Paneer_Tikka_masala.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3APaneer_Tikka_masala.JPG",
-    "title": "Paneer_Tikka_masala.JPG",
-    "representative": true,
-    "referenceFor": "Stovetop paneer tikka"
+    "url": "assets/recipes/catalog-stovetop-chocolate-pudding.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chocolate_Pudding_2.jpg",
+    "title": "Chocolate Pudding 2.jpg"
   },
   "catalog-stovetop-margherita-pizza": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Paneer_Tikka_masala.JPG/960px-Paneer_Tikka_masala.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3APaneer_Tikka_masala.JPG",
-    "title": "Paneer_Tikka_masala.JPG",
-    "representative": true,
-    "referenceFor": "Stovetop paneer tikka"
+    "url": "assets/recipes/catalog-stovetop-margherita-pizza.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Margherita_pizza_on_plate.jpg",
+    "title": "Margherita pizza on plate.jpg"
   },
   "catalog-stovetop-paneer-tikka": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Paneer_Tikka_masala.JPG/960px-Paneer_Tikka_masala.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3APaneer_Tikka_masala.JPG",
-    "title": "Paneer_Tikka_masala.JPG"
+    "url": "assets/recipes/catalog-stovetop-paneer-tikka.jpg",
+    "page": "https://www.flickr.com/photos/7237430@N05/502307082",
+    "title": "Paneer Tikka - Coming From Oven"
   },
   "catalog-stovetop-vanilla-custard": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Paneer_Tikka_masala.JPG/960px-Paneer_Tikka_masala.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3APaneer_Tikka_masala.JPG",
-    "title": "Paneer_Tikka_masala.JPG",
-    "representative": true,
-    "referenceFor": "Stovetop paneer tikka"
+    "url": "assets/recipes/catalog-stovetop-vanilla-custard.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Blueberry_%26_Vanilla_Custard_Brioche_-_GAIL%27s_Bakery_2026-06-09.jpg",
+    "title": "Blueberry & Vanilla Custard Brioche - GAIL's Bakery 2026-06-09.jpg"
   },
   "catalog-sweet-cinnamon-toast": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Creamed_Eggs.png/960px-Creamed_Eggs.png",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACreamed_Eggs.png",
-    "title": "Creamed_Eggs.png",
-    "representative": true,
-    "referenceFor": "Beans on toast"
+    "url": "assets/recipes/catalog-sweet-cinnamon-toast.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Cinnamon_Toast_Crunch.jpg",
+    "title": "Cinnamon Toast Crunch.jpg"
   },
   "catalog-tamago-rice-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Eierbal.jpg/960px-Eierbal.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AEierbal.jpg",
-    "title": "Eierbal.jpg",
-    "representative": true,
-    "referenceFor": "Singapore egg fried rice"
+    "url": "assets/recipes/catalog-tamago-rice-bowl.jpg",
+    "page": "https://www.flickr.com/photos/10559879@N00/27736797974",
+    "title": "Tamago Kake Gohan for Sunday breakfast"
   },
   "catalog-tamarind-sevai": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Sevai_plain320.jpg/960px-Sevai_plain320.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASevai_plain320.jpg",
-    "title": "Sevai_plain320.jpg"
+    "url": "assets/recipes/catalog-tamarind-sevai.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tam_lem_coc_sevai.jpg",
+    "title": "Tam lem coc sevai.jpg"
+  },
+  "catalog-tamil-meen-kuzhambu-rice": {
+    "url": "assets/recipes/catalog-tamil-meen-kuzhambu-rice.jpg",
+    "page": "https://commons.wikimedia.org/w/index.php?curid=40990786",
+    "title": "Sheela Meen Kuzhambu"
   },
   "catalog-tamil-ven-pongal-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Ven_pongal_with_sambar_and_chutney.jpg/960px-Ven_pongal_with_sambar_and_chutney.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AVen_pongal_with_sambar_and_chutney.jpg",
-    "title": "Ven_pongal_with_sambar_and_chutney.jpg"
+    "url": "assets/recipes/catalog-tamil-ven-pongal-bowl.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Ven_Pongal_with_cashew.jpg",
+    "title": "Ven Pongal with cashew.jpg"
   },
   "catalog-tawa-chicken-tikka": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Chicken_tikka_by_fatima.jpg/960px-Chicken_tikka_by_fatima.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChicken_tikka_by_fatima.jpg",
-    "title": "Chicken_tikka_by_fatima.jpg"
+    "url": "assets/recipes/catalog-tawa-chicken-tikka.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tawa_Chicken.JPG",
+    "title": "Tawa Chicken.JPG"
+  },
+  "catalog-telangana-gongura-mutton": {
+    "url": "assets/recipes/catalog-telangana-gongura-mutton.jpg",
+    "page": "https://www.flickr.com/photos/10559879@N00/18331729644",
+    "title": "Butter chicken, gongura mutton with kenaf leaves, palak paneer - Swadesh, Glenhuntly"
   },
   "catalog-telangana-sarva-pindi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Litti_Chokha_2.jpg/960px-Litti_Chokha_2.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ALitti_Chokha_2.jpg",
-    "title": "Litti_Chokha_2.jpg",
-    "representative": true,
-    "referenceFor": "Bihari litti chokha"
+    "url": "assets/recipes/catalog-telangana-sarva-pindi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sarvapindi_,_mango_pickle_-_aavakai.jpg",
+    "title": "Sarvapindi , mango pickle - aavakai.jpg"
   },
   "catalog-tempeh-rice-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Black bean rice bowl"
+    "url": "assets/recipes/catalog-tempeh-rice-bowl.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Emirates_CGK-DXB_Great_local_breakfast_short_before_landing_(spicy_rice_with_shrimps_and_tempeh)_(34377273765).jpg",
+    "title": "Emirates CGK-DXB Great local breakfast short before landing (spicy rice with shrimps and tempeh) (34377273765).jpg"
   },
   "catalog-thai-basil-chicken": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AHainanese_Chicken_Rice.jpg",
-    "title": "Hainanese_Chicken_Rice.jpg",
-    "representative": true,
-    "referenceFor": "Chicken rice skillet"
+    "url": "assets/recipes/catalog-thai-basil-chicken.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Thai_basil_chicken_(20976874546).jpg",
+    "title": "Thai basil chicken (20976874546).jpg"
   },
   "catalog-thai-basil-tofu": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Black bean rice bowl"
+    "url": "assets/recipes/catalog-thai-basil-tofu.jpg",
+    "page": "https://www.flickr.com/photos/21001756@N06/3118514171",
+    "title": "tofu pad thai"
   },
   "catalog-thatte-idli": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Idli_Sambar.JPG/960px-Idli_Sambar.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AIdli_Sambar.JPG",
-    "title": "Idli_Sambar.JPG"
+    "url": "assets/recipes/catalog-thatte-idli.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Thatte_Idli_(2).jpg",
+    "title": "Thatte Idli (2).jpg"
   },
   "catalog-theeyal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Sambar%26Avial.jpg/960px-Sambar%26Avial.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASambar%26Avial.jpg",
-    "title": "Sambar&Avial.jpg",
-    "representative": true,
-    "referenceFor": "Avial"
+    "url": "assets/recipes/catalog-theeyal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:BREADFRUIT_THEEYAL.JPG",
+    "title": "BREADFRUIT THEEYAL.JPG"
   },
   "catalog-three-bean-chilli": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Black bean rice bowl"
+    "url": "assets/recipes/catalog-three-bean-chilli.jpg",
+    "page": "https://www.flickr.com/photos/25977089@N00/15014652224",
+    "title": "Three-bean Chili"
   },
   "catalog-tinda-masala": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Chana_masala.jpg/960px-Chana_masala.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chana_masala.jpg",
-    "representative": true,
-    "referenceFor": "Chana masala"
+    "url": "assets/recipes/catalog-tinda-masala.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tinda_Masala.JPG",
+    "title": "Tinda Masala.JPG"
   },
   "catalog-tiramisu": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/960px-Dolsot-bibimbap.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADolsot-bibimbap.jpg",
-    "title": "Dolsot-bibimbap.jpg",
-    "representative": true,
-    "referenceFor": "Korean bibimbap"
+    "url": "assets/recipes/catalog-tiramisu.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tiramisu_dessert.jpg",
+    "title": "Tiramisu dessert.jpg"
   },
   "catalog-tofu-bhurji": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Homemade_Paneer_Bhurji_cooked_in_pan_India.jpg/960px-Homemade_Paneer_Bhurji_cooked_in_pan_India.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Homemade_Paneer_Bhurji_cooked_in_pan_India.jpg",
-    "representative": true,
-    "referenceFor": "Paneer bhurji"
+    "url": "assets/recipes/catalog-tofu-bhurji.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Cinnamon_raisin_vegan_french_toast_and_curry_tofu_scramble_(3383908508).jpg",
+    "title": "Cinnamon raisin vegan french toast and curry tofu scramble (3383908508).jpg"
   },
   "catalog-tofu-pepper-fry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg",
-    "representative": true,
-    "referenceFor": "Toor dal fry"
+    "url": "assets/recipes/catalog-tofu-pepper-fry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Black_pepper_tofu_fried_udon_-_Stir_Fry_by_CK.jpg",
+    "title": "Black pepper tofu fried udon - Stir Fry by CK.jpg"
   },
   "catalog-tomato-basil-bruschetta": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Cheddar_cheese_sandwich.jpg/960px-Cheddar_cheese_sandwich.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACheddar_cheese_sandwich.jpg",
-    "title": "Cheddar_cheese_sandwich.jpg",
-    "representative": true,
-    "referenceFor": "Tomato cheese sandwich"
+    "url": "assets/recipes/catalog-tomato-basil-bruschetta.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Bruschetta_with_tomato_and_basil_dishes.jpg",
+    "title": "Bruschetta with tomato and basil dishes.jpg"
   },
   "catalog-tomato-basil-pasta": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Spaghetti_aglio%2C_olio_e_peperoncino_%2816284859030%29.jpg/960px-Spaghetti_aglio%2C_olio_e_peperoncino_%2816284859030%29.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ASpaghetti_aglio%2C_olio_e_peperoncino_(16284859030).jpg",
-    "title": "Spaghetti_aglio,_olio_e_peperoncino_(16284859030).jpg",
-    "representative": true,
-    "referenceFor": "Spaghetti aglio e olio"
+    "url": "assets/recipes/catalog-tomato-basil-pasta.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tomato_and_basil_pasta_(4925750112).jpg",
+    "title": "Tomato and basil pasta (4925750112).jpg"
   },
   "catalog-tomato-cheese-sandwich": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Cheddar_cheese_sandwich.jpg/960px-Cheddar_cheese_sandwich.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACheddar_cheese_sandwich.jpg",
-    "title": "Cheddar_cheese_sandwich.jpg"
+    "url": "assets/recipes/catalog-tomato-cheese-sandwich.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Grilled_cheese_sandwich_with_roasted_tomato_soup.jpg",
+    "title": "Grilled cheese sandwich with roasted tomato soup.jpg"
   },
   "catalog-tomato-chutney": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "Tomato rice"
+    "url": "assets/recipes/catalog-tomato-chutney.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tomato_Chutney_3.jpg",
+    "title": "Tomato Chutney 3.jpg"
   },
   "catalog-tomato-rice": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg"
+    "url": "assets/recipes/catalog-tomato-rice.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tomato_Rice_up-close_(1862224148).jpg",
+    "title": "Tomato Rice up-close (1862224148).jpg"
   },
   "catalog-toor-dal-fry": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-toor-dal-fry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Toor_dal_rasam.JPG",
+    "title": "Toor dal rasam.JPG"
   },
   "catalog-tripura-chakhwi": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg/960px-Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AAlu_ar_dhonepata_diye_Boyal_machher_jhol.jpg",
-    "title": "Alu_ar_dhonepata_diye_Boyal_machher_jhol.jpg",
-    "representative": true,
-    "referenceFor": "Bengali macher jhol"
-  },
-  "catalog-tuna-curd-sandwich": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/White%2C_Brown%2C_Red_%26_Wild_rice.jpg/960px-White%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AWhite%2C_Brown%2C_Red_%26_Wild_rice.jpg",
-    "title": "White,_Brown,_Red_&_Wild_rice.jpg",
-    "representative": true,
-    "referenceFor": "High-protein curd rice"
+    "url": "assets/recipes/catalog-tripura-chakhwi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chakhwi.jpg",
+    "title": "Chakhwi.jpg"
   },
   "catalog-tuna-tomato-pasta": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Cheddar_cheese_sandwich.jpg/960px-Cheddar_cheese_sandwich.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ACheddar_cheese_sandwich.jpg",
-    "title": "Cheddar_cheese_sandwich.jpg",
-    "representative": true,
-    "referenceFor": "Tomato cheese sandwich"
+    "url": "assets/recipes/catalog-tuna-tomato-pasta.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Pasta_with_tomato_sauce,_capers_and_tuna_(50540741211).jpg",
+    "title": "Pasta with tomato sauce, capers and tuna (50540741211).jpg"
   },
   "catalog-undhiyu": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Kolhapuri_Misal_Pav.jpg/960px-Kolhapuri_Misal_Pav.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKolhapuri_Misal_Pav.jpg",
-    "title": "Kolhapuri_Misal_Pav.jpg",
-    "representative": true,
-    "referenceFor": "Maharashtrian misal pav"
+    "url": "assets/recipes/catalog-undhiyu.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Undhiyu.jpg",
+    "title": "Undhiyu.jpg"
   },
   "catalog-up-vegetable-tehri": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/6/63/Dall_Khichdi.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADall_Khichdi.jpg",
-    "title": "Dall_Khichdi.jpg",
-    "representative": true,
-    "referenceFor": "Haryanvi bajra khichdi"
+    "url": "assets/recipes/catalog-up-vegetable-tehri.jpg",
+    "page": "https://www.flickr.com/photos/44521275@N00/337854694",
+    "title": "Vegetable pulao"
   },
   "catalog-usal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Besan_Gatta_curry03.jpg/960px-Besan_Gatta_curry03.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ABesan_Gatta_curry03.jpg",
-    "title": "Besan_Gatta_curry03.jpg",
-    "representative": true,
-    "referenceFor": "Gatte ki sabzi"
+    "url": "assets/recipes/catalog-usal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Moong_usal_misal_pav.jpg",
+    "title": "Moong usal misal pav.jpg"
   },
   "catalog-uttarakhand-kafuli": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/A_photo_of_Upma.jpg/960px-A_photo_of_Upma.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AA_photo_of_Upma.jpg",
-    "title": "A_photo_of_Upma.jpg",
-    "representative": true,
-    "referenceFor": "Andhra pesarattu-upma plate"
+    "url": "assets/recipes/catalog-uttarakhand-kafuli.jpg",
+    "page": "https://www.flickr.com/photos/58246614@N00/2111915965",
+    "title": "Potato & Spinach Curry"
   },
   "catalog-vanilla-cupcakes": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Chipa_Paraguay.jpg/960px-Chipa_Paraguay.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AChipa_Paraguay.jpg",
-    "title": "Chipa_Paraguay.jpg",
-    "representative": true,
-    "referenceFor": "Chocolate chip cookies"
+    "url": "assets/recipes/catalog-vanilla-cupcakes.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegan_Vanilla_Cupcakes_-_Cream_Method_(4485057451).jpg",
+    "title": "Vegan Vanilla Cupcakes - Cream Method (4485057451).jpg"
   },
   "catalog-vatha-kuzhambu": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Ven_pongal_with_sambar_and_chutney.jpg/960px-Ven_pongal_with_sambar_and_chutney.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Ven_pongal_with_sambar_and_chutney.jpg",
-    "representative": true,
-    "referenceFor": "Ven pongal"
+    "url": "assets/recipes/catalog-vatha-kuzhambu.jpg",
+    "page": "https://www.flickr.com/photos/21930907@N08/8571566612",
+    "title": "Brahmin style Vatha kuzhambu"
   },
   "catalog-vegan-bibimbap-table": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Dalbath.jpg/960px-Dalbath.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADalbath.jpg",
-    "title": "Dalbath.jpg",
-    "representative": true,
-    "referenceFor": "Nepali dal bhat"
+    "url": "assets/recipes/catalog-vegan-bibimbap-table.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegan_bibimbap_in_Kyiv,_Ukraine._2025.jpg",
+    "title": "Vegan bibimbap in Kyiv, Ukraine. 2025.jpg"
   },
   "catalog-vegetable-fried-rice": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Yeung_Chow_Fried_Rice_in_Hong_Kong_Fast_Food_Shop.JPG/960px-Yeung_Chow_Fried_Rice_in_Hong_Kong_Fast_Food_Shop.JPG",
-    "page": "https://commons.wikimedia.org/wiki/File%3AYeung_Chow_Fried_Rice_in_Hong_Kong_Fast_Food_Shop.JPG",
-    "title": "Yeung_Chow_Fried_Rice_in_Hong_Kong_Fast_Food_Shop.JPG"
+    "url": "assets/recipes/catalog-vegetable-fried-rice.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegetable_fried_rice_from_Kerala.jpg",
+    "title": "Vegetable fried rice from Kerala.jpg"
   },
   "catalog-vegetable-momos": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Momo101.jpg/960px-Momo101.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AMomo101.jpg",
-    "title": "Momo101.jpg"
+    "url": "assets/recipes/catalog-vegetable-momos.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegetable_Momos_in_Shillong.jpg",
+    "title": "Vegetable Momos in Shillong.jpg"
   },
   "catalog-vegetable-pho-inspired-soup": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/KFC_Chicken_Soup.jpg/960px-KFC_Chicken_Soup.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKFC_Chicken_Soup.jpg",
-    "title": "KFC_Chicken_Soup.jpg"
+    "url": "assets/recipes/catalog-vegetable-pho-inspired-soup.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegetable_pho_and_spring_rolls_(43702095594).jpg",
+    "title": "Vegetable pho and spring rolls (43702095594).jpg"
   },
   "catalog-vietnamese-noodle-bowl": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Hainanese_Chicken_Rice.jpg/960px-Hainanese_Chicken_Rice.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AHainanese_Chicken_Rice.jpg",
-    "title": "Hainanese_Chicken_Rice.jpg",
-    "representative": true,
-    "referenceFor": "Chicken rice skillet"
+    "url": "assets/recipes/catalog-vietnamese-noodle-bowl.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vietnamese_Noodle_Bowl_for_dinner,_mine_with_beef_and_spring_rolls,_the_others_had_tofu._So_pleased_with_how_it_turned_out!_-mycookingadventures_(27250549139).jpg",
+    "title": "Vietnamese Noodle Bowl for dinner, mine with beef and spring rolls, the others had tofu. So pleased with how it turned out! -mycookingadventures (27250549139).jpg"
   },
   "catalog-vietnamese-summer-rolls": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/KFC_Chicken_Soup.jpg/960px-KFC_Chicken_Soup.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3AKFC_Chicken_Soup.jpg",
-    "title": "KFC_Chicken_Soup.jpg",
-    "representative": true,
-    "referenceFor": "Vegetable pho-inspired soup"
+    "url": "assets/recipes/catalog-vietnamese-summer-rolls.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vietnamese_summer_rolls_%26_peanut_sauce.jpg",
+    "title": "Vietnamese summer rolls & peanut sauce.jpg"
   },
   "catalog-yellow-moong-dal": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Dal_Makhani.jpg/960px-Dal_Makhani.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3ADal_Makhani.jpg",
-    "title": "Dal_Makhani.jpg"
+    "url": "assets/recipes/catalog-yellow-moong-dal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Moong_Dal.jpg",
+    "title": "Moong Dal.jpg"
   },
-  "creatine-water": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Lemonade_-_27682817724.jpg/960px-Lemonade_-_27682817724.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Lemonade_-_27682817724.jpg",
-    "representative": true,
-    "referenceFor": "Nimbu water"
+  "chana-masala": {
+    "url": "assets/recipes/chana-masala.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chana_Masala_-_Mohammed_-_Spice_Of_Life_2024-05-27.jpg",
+    "title": "Chana Masala - Mohammed - Spice Of Life 2024-05-27.jpg"
+  },
+  "chicken-biryani": {
+    "url": "assets/recipes/chicken-biryani.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chicken_Biryani_with_Boiled_Egg.jpg",
+    "title": "Chicken Biryani with Boiled Egg.jpg"
+  },
+  "chicken-curry": {
+    "url": "assets/recipes/chicken-curry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:South_Indian_Chicken_curry.jpg",
+    "title": "South Indian Chicken curry.jpg"
+  },
+  "curd-peanut-bowl": {
+    "url": "assets/recipes/curd-peanut-bowl.jpg",
+    "page": "https://cookpad.com/eng/recipes/5174327",
+    "title": "Curd bowl with roasted peanuts"
+  },
+  "curd-rice": {
+    "url": "assets/recipes/curd-rice.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Curd_rice_in_ICH_Bhopal.jpg",
+    "title": "Curd rice in ICH Bhopal.jpg"
+  },
+  "dosa": {
+    "url": "assets/recipes/dosa.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Dosa_Classic.jpg",
+    "title": "Dosa Classic.jpg"
+  },
+  "egg-bhurji": {
+    "url": "assets/recipes/egg-bhurji.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Spicy_egg_bhurji_@_the_eggfactory.jpg",
+    "title": "Spicy egg bhurji @ the eggfactory.jpg"
+  },
+  "egg-curry": {
+    "url": "assets/recipes/egg-curry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Egg_drop_curry_-_my_home_Bangalore_-_Karnataka_-pic_11.jpg",
+    "title": "Egg drop curry - my home Bangalore - Karnataka -pic 11.jpg"
+  },
+  "fish-curry": {
+    "url": "assets/recipes/fish-curry.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kerala_Style_Fish_Curry.JPG",
+    "title": "Kerala Style Fish Curry.JPG"
+  },
+  "fried-egg": {
+    "url": "assets/recipes/fried-egg.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:02021_0912_(6)_Fried_egg_in_the_basket.jpg",
+    "title": "02021 0912 (6) Fried egg in the basket.jpg"
+  },
+  "idli": {
+    "url": "assets/recipes/idli.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Idli_Sambar-Noida-UP-SP004.jpg",
+    "title": "Idli Sambar-Noida-UP-SP004.jpg"
+  },
+  "lemon-rice": {
+    "url": "assets/recipes/lemon-rice.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Chitranna_(Lemon_Rice)_prepared_by_an_indian_woman.jpg",
+    "title": "Chitranna (Lemon Rice) prepared by an indian woman.jpg"
+  },
+  "lemon-water": {
+    "url": "assets/recipes/lemon-water.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Nimbu_Soda_Or_Lemon_Soda.jpg",
+    "title": "Nimbu Soda Or Lemon Soda.jpg"
+  },
+  "masala-chai": {
+    "url": "assets/recipes/masala-chai.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Masala_Chai.JPG",
+    "title": "Masala Chai.JPG"
+  },
+  "masala-omelette": {
+    "url": "assets/recipes/masala-omelette.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Masala_omelette_with_bread_toasties.jpg",
+    "title": "Masala omelette with bread toasties.jpg"
+  },
+  "milk-oats": {
+    "url": "assets/recipes/milk-oats.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Post_Honey_Bunches_of_Oats_%E2%80%93_Sweetened_Cereal_with_Oats_%26_Honey,_with_milk.jpg",
+    "title": "Post Honey Bunches of Oats – Sweetened Cereal with Oats & Honey, with milk.jpg"
+  },
+  "moong-khichdi": {
+    "url": "assets/recipes/moong-khichdi.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:MoongDal_Khichdi.jpg",
+    "title": "MoongDal Khichdi.jpg"
+  },
+  "nimbu-pani": {
+    "url": "assets/recipes/nimbu-pani.jpg",
+    "page": "https://www.flickr.com/photos/28747587@N00/2546780165",
+    "title": "Matheran Nimbu Pani"
+  },
+  "palak-paneer": {
+    "url": "assets/recipes/palak-paneer.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Palak_Paneer_curry_on_plate.jpg",
+    "title": "Palak Paneer curry on plate.jpg"
+  },
+  "paneer-bhurji": {
+    "url": "assets/recipes/paneer-bhurji.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Homemade_Paneer_Bhurji_cooked_in_pan_India.jpg",
+    "title": "Homemade Paneer Bhurji cooked in pan India.jpg"
+  },
+  "paratha": {
+    "url": "assets/recipes/paratha.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Aaloo_plain_paratha.jpg",
+    "title": "Aaloo plain paratha.jpg"
+  },
+  "pesarattu": {
+    "url": "assets/recipes/pesarattu.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Pesarattu.jpg",
+    "title": "Pesarattu.jpg"
   },
   "plain-rice": {
-    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg/960px-20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File%3A20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg",
-    "title": "20201102.Hengnan.Hybrid_rice_Sanyou-1.6.jpg"
+    "url": "assets/recipes/plain-rice.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Cooked_white_rice.jpg",
+    "title": "Cooked white rice.jpg"
+  },
+  "poha": {
+    "url": "assets/recipes/poha.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Kanda_Poha_is_Favourite_Breakfast_of_Maharashtrian_Peoples.jpg",
+    "title": "Kanda Poha is Favourite Breakfast of Maharashtrian Peoples.jpg"
+  },
+  "ragi-meal": {
+    "url": "assets/recipes/ragi-meal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:RAGI_MUDDE.JPG",
+    "title": "RAGI MUDDE.JPG"
+  },
+  "rajma": {
+    "url": "assets/recipes/rajma.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Rajma_Masala_(32081557778).jpg",
+    "title": "Rajma Masala (32081557778).jpg"
+  },
+  "rasam": {
+    "url": "assets/recipes/rasam.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Tomato_Rasam_-_Home_Made.JPG",
+    "title": "Tomato Rasam - Home Made.JPG"
+  },
+  "roti": {
+    "url": "assets/recipes/roti.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:James_Martin_Adhikary_Checking_Roti.jpg",
+    "title": "James Martin Adhikary Checking Roti.jpg"
+  },
+  "sambar": {
+    "url": "assets/recipes/sambar.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sambar_deer_skeleton_at_MAV-USP.jpg",
+    "title": "Sambar deer skeleton at MAV-USP.jpg"
+  },
+  "sambar-meal": {
+    "url": "assets/recipes/sambar-meal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Sambar_Recipe_By_Sonia_Goyal.jpg",
+    "title": "Sambar Recipe By Sonia Goyal.jpg"
+  },
+  "tadka-dal": {
+    "url": "assets/recipes/tadka-dal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Daal_Tadka_with_Steamed_Rice.jpg",
+    "title": "Daal Tadka with Steamed Rice.jpg"
+  },
+  "upma": {
+    "url": "assets/recipes/upma.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Vegetable_Upma.JPG",
+    "title": "Vegetable Upma.JPG"
+  },
+  "uttapam": {
+    "url": "assets/recipes/uttapam.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Uttapam_dosa.jpg",
+    "title": "Uttapam dosa.jpg"
+  },
+  "veg-pulao": {
+    "url": "assets/recipes/veg-pulao.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:VEGETABLE_PULAO_~_An_Indian_cuisine_made_from_fried_rice_mixed_with_fried_vegetables.jpg",
+    "title": "VEGETABLE PULAO ~ An Indian cuisine made from fried rice mixed with fried vegetables.jpg"
+  },
+  "ven-pongal": {
+    "url": "assets/recipes/ven-pongal.jpg",
+    "page": "https://commons.wikimedia.org/wiki/File:Ven_Pongal_%26_sakkarai_pongal_with_vada_%26_bonda.jpg",
+    "title": "Ven Pongal & sakkarai pongal with vada & bonda.jpg"
   }
 };

@@ -13,19 +13,19 @@ The roadmap converts broad techniques into familiar home-food missions:
 1. **Boot Sequence** covers setup, clean water, measuring, mixing, and cleanup.
 2. **Heat Handshake** covers boiling, simmering, timers, milk, eggs, oats, and rice.
 3. **Pan Driver** covers pan heat, sautéing, eggs, poha, upma, and paneer bhurji.
-4. **Tadka System** covers seasoning, tempering, dal, lemon rice, curd rice, rasam, sambar, and poriyal.
-5. **One-Pot Engine** covers rice-to-water ratios, legumes, pressure cooking, khichdi, pongal, chana, rajma, and pulao.
-6. **Curry Architecture** covers aromatics, powdered spices, vegetables, eggs, paneer, chicken, fish, and doneness.
+4. **Tadka & Seasoning** covers seasoning, tempering, dal, lemon rice, curd rice, rasam, sambar, and poriyal.
+5. **One-Pot Confidence** covers rice-to-water ratios, legumes, pressure cooking, khichdi, pongal, chana, rajma, and pulao.
+6. **Layered Curries** covers aromatics, powdered spices, vegetables, eggs, paneer, chicken, fish, and doneness.
 7. **Dough & Fermentation** covers atta dough, rolling, fermented batter, steaming, and tawa control through roti, idli, dosa, uttapam, pesarattu, and appam.
-8. **Full-Stack Meals** covers sequencing, multitasking, balanced plates, leftovers, and full South and North Indian meals.
+8. **Complete Meals** covers sequencing, multitasking, balanced plates, leftovers, and full South and North Indian meals.
 
 Recipes stay open. Stages control recommendations, not permission.
 
-## Catalogue expansion for engineer cooks
+## Catalogue expansion principles
 
 The 370-dish catalogue emphasises short assembly jobs, handheld meals, bowls, one-pan meals, one-pot meals, batch cooking, compact full meals, and complete speciality paths for desserts, Italian cooking, and Pan-Asian cooking. This follows beginner programmes that use practical formats to teach planning, preparation, and cooking at home without requiring a professional setup.
 
-For the target audience, the catalogue gives extra weight to induction, tawa, saucepan, mixer, and pressure-cooker workflows; eggs, paneer, soy, pulses, chicken, and fish; repeatable rice and flatbread systems; and meals that can be portioned for one person. Regional exploration is represented as association rather than exclusive ownership because Indian food traditions frequently cross present-day state boundaries.
+The catalogue gives extra weight to induction, tawa, saucepan, mixer, and pressure-cooker workflows; eggs, paneer, soy, pulses, chicken, fish, seafood, pork, and mutton; repeatable rice and flatbread methods; and meals that can be portioned for one person. Regional exploration is represented as association rather than exclusive ownership because Indian food traditions frequently cross present-day state boundaries.
 
 The collection layer contains one representative cooking quest for each of India's 28 states and a 24-country world passport. Map dishes are exploration prompts, not claims that one dish fully represents a state or country.
 
