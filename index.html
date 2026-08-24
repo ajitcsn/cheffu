@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ff6b35">
+  <meta name="description" content="Cheffu is a beginner-friendly Indian cooking roadmap for protein-conscious engineer cooks.">
+  <title>Cheffu Roadmap</title>
+  <link rel="icon" type="image/png" href="cheffu-tara-logo.png">
+  <link rel="apple-touch-icon" href="cheffu-tara-logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" type="button" data-route="home" aria-label="Go to home">
+        <img class="brand-logo" src="cheffu-wordmark.png" alt="Cheffu">
+      </button>
+
+      <div class="topbar-actions">
+        <div class="topbar-diet" id="global-diet-filter" aria-label="Diet preference"></div>
+        <div class="streak-pill" title="Cook on consecutive days">
+          <span aria-hidden="true">🔥</span>
+          <strong id="top-streak">0</strong>
+          <span>day streak</span>
+        </div>
+        <button class="icon-button" id="settings-button" type="button" aria-label="Open settings">⚙</button>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section class="view" id="view-home" data-view="home" aria-labelledby="home-heading"></section>
+      <section class="view" id="view-skills" data-view="skills" aria-labelledby="skills-heading" hidden></section>
+      <section class="view" id="view-dishes" data-view="dishes" aria-labelledby="dishes-heading" hidden></section>
+      <section class="view" id="view-collections" data-view="collections" aria-labelledby="collections-heading" hidden></section>
+      <section class="view" id="view-roadmap" data-view="roadmap" aria-labelledby="roadmap-heading" hidden></section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Primary navigation">
+      <button class="nav-item" type="button" data-route="dishes" aria-keyshortcuts="1" title="Dishes · hotkey 1">
+        <span aria-hidden="true">◉</span><span>Dishes</span><kbd>1</kbd>
+      </button>
+      <button class="nav-item" type="button" data-route="skills" aria-keyshortcuts="2" title="Skills · hotkey 2">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false"><path d="M13.4 1.8 4.8 13.2h6.1l-1 9 9.3-12.2h-6.3l.5-8.2Z"/></svg>
+        </span><span>Skills</span><kbd>2</kbd>
+      </button>
+      <button class="nav-item is-active nav-item--today" type="button" data-route="home" aria-current="page" aria-keyshortcuts="3" title="Today · hotkey 3">
+        <span aria-hidden="true">⌂</span><span>Today</span><kbd>3</kbd>
+      </button>
+      <button class="nav-item" type="button" data-route="collections" aria-keyshortcuts="4" title="Collections · hotkey 4">
+        <span aria-hidden="true">◆</span><span>Collections</span><kbd>4</kbd>
+      </button>
+      <button class="nav-item" type="button" data-route="roadmap" aria-keyshortcuts="5" title="Roadmap · hotkey 5">
+        <span class="nav-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M10 2h4l4.5 20h-13L10 2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M12 4.5v3m0 3v3m0 3v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </span><span>Roadmap</span><kbd>5</kbd>
+      </button>
+    </nav>
+  </div>
+
+  <dialog class="sheet" id="cook-dialog" aria-labelledby="cook-dialog-title">
+    <div id="cook-dialog-content"></div>
+  </dialog>
+
+  <dialog class="sheet settings-sheet" id="settings-dialog" aria-labelledby="settings-heading">
+    <form method="dialog">
+      <div class="sheet-head">
+        <div>
+          <p class="eyebrow">Local prototype</p>
+          <h2 id="settings-heading">Settings</h2>
+        </div>
+        <button class="icon-button" value="cancel" aria-label="Close settings">×</button>
+      </div>
+      <p>Your progress is saved only in this browser.</p>
+      <button class="button button-secondary" id="change-name" type="button">Change player name</button>
+      <button class="button button-danger" id="reset-progress" type="button">Reset all progress</button>
+    </form>
+  </dialog>
+
+  <dialog class="sheet name-sheet" id="name-dialog" aria-labelledby="name-heading">
+    <form id="name-form">
+      <div class="name-dialog-icon" aria-hidden="true"><img src="cheffu-tara-logo.png" alt=""></div>
+      <p class="eyebrow">Create your kitchen save</p>
+      <h2 id="name-heading">What should Cheffu call you?</h2>
+      <p>Your name and all game progress stay in this browser.</p>
+      <label class="name-field"><span>Player name</span><input id="player-name-input" name="playerName" type="text" maxlength="30" autocomplete="name" required placeholder="Enter your name"></label>
+      <button class="button button-primary button-large" type="submit">Start my kitchen</button>
+    </form>
+  </dialog>
+
+  <div class="toast-region" id="toast-region" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="data.js"></script>
+  <script src="catalog-expansion.js"></script>
+  <script src="recipe-photos.js"></script>
+  <script src="title-catalog.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
