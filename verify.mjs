@@ -65,6 +65,10 @@ for (const asset of ["aanya-welcome.png", "aanya-skills.png", "aanya-streak.png"
 assert.ok(appSource.includes("aanyaHomePanel") && appSource.includes("AANYA'S PICK"), "Home must include one reactive Aanya recommendation");
 assert.ok(appSource.includes("aanya-day-plan") && appSource.includes("TRAIN THIS SKILL") && appSource.includes("YOUR REWARD"), "Aanya must connect today's skill, dish, and reward in one plan");
 assert.ok(!appSource.includes('<section class="daily-card">'), "Home must not duplicate Aanya's recommendation in a separate daily card");
+assert.ok(appSource.includes("homeRouteHub") && appSource.includes("Quick kitchen check-ins"), "Home must link to the other main pages with contextual prompts");
+assert.ok(appSource.includes("navNotificationCount") && appSource.includes("markRouteSeen") && appSource.includes("navSeen"), "Navigation notices must track pending page actions and clear after a visit");
+assert.equal((index.match(/class="nav-notification"/g) || []).length, 4, "Each non-home navigation item needs a notification badge");
+assert.ok(styles.includes(".home-route-grid") && styles.includes(".nav-notification[hidden]"), "Home shortcuts and navigation badges need responsive styling");
 const aanyaVariationFiles = fs.readdirSync(new URL("./aanya-variations/", import.meta.url)).filter((file) => file.endsWith(".jpg"));
 assert.equal(aanyaVariationFiles.length, 12, "Aanya expression deck must contain 12 additional poses");
 assert.ok(aanyaVariationFiles.every((file) => appSource.includes(`aanya-variations/${file}`)), "Every Aanya expression must be available to the automatic home commentary");

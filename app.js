@@ -45,7 +45,8 @@
     checkpointClaims: {},
     dietPreference: "Veg",
     equippedTitleId: "kitchen-visitor",
-    playerName: ""
+    playerName: "",
+    navSeen: {}
   };
 
   let state = loadState();
@@ -124,6 +125,50 @@
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
+  }
+
+  function navMetric(route) {
+    if (route === "dishes") return completedRecipeIds().length;
+    if (route === "skills") return skills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
+    if (route === "collections") return badges.filter((badge) => badgeProgress(badge).complete).length + unlockedTitles().length;
+    if (route === "roadmap") return levelInfo().unlockedStage + 1;
+    return 0;
+  }
+
+  function navUnseenGrowth(route) {
+    const seen = state.navSeen?.[route];
+    return Math.max(0, navMetric(route) - (seen?.value || 0));
+  }
+
+  function navNotificationCount(route) {
+    const seen = state.navSeen?.[route];
+    const growth = navUnseenGrowth(route);
+    if (growth) return growth;
+    if (route === "dishes" && navMetric(route) === 0) return 0;
+    return seen?.date === localDateKey() ? 0 : 1;
+  }
+
+  function markRouteSeen(route) {
+    if (route === "home") return;
+    const snapshot = { date: localDateKey(), value: navMetric(route) };
+    const seen = state.navSeen?.[route];
+    if (seen?.date === snapshot.date && seen?.value === snapshot.value) return;
+    state.navSeen = { ...(state.navSeen || {}), [route]: snapshot };
+    saveState();
+  }
+
+  function updateNavNotifications() {
+    navItems.forEach((item) => {
+      const route = item.dataset.route;
+      const count = route === "home" ? 0 : navNotificationCount(route);
+      const badge = item.querySelector(".nav-notification");
+      if (badge) {
+        badge.hidden = count === 0;
+        badge.textContent = count > 9 ? "9+" : String(count);
+      }
+      const label = item.dataset.navLabel || "Today";
+      item.setAttribute("aria-label", count ? `${label}, ${count} pending ${count === 1 ? "action" : "actions"}` : label);
+    });
   }
 
   function dayDifference(fromKey, toKey) {
@@ -361,6 +406,73 @@
       </section>`;
   }
 
+  function homeRouteHub(primary, badge, badgeStatus) {
+    const cooked = completedRecipeIds().map(getRecipe).filter(Boolean);
+    const suggestedSkill = primary.skillIds
+      .map((id) => skills.find((skill) => skill.id === id))
+      .filter(Boolean)
+      .sort((a, b) => (state.skillXp[a.id] || 0) - (state.skillXp[b.id] || 0) || a.name.localeCompare(b.name))[0] || skills[0];
+    const currentStage = stages[levelInfo().unlockedStage];
+    const dishGrowth = navUnseenGrowth("dishes");
+    const skillGrowth = navUnseenGrowth("skills");
+    const collectionGrowth = navUnseenGrowth("collections");
+    const roadmapGrowth = navUnseenGrowth("roadmap");
+    const prompts = [
+      {
+        route: "dishes",
+        icon: "🍽️",
+        label: "Dishes",
+        reason: dishGrowth
+          ? `${dishGrowth} new dish ${dishGrowth === 1 ? "card" : "cards"} to view`
+          : cooked.length ? `${cooked.length} collected, choose one to revisit` : "See where completed dishes collect"
+      },
+      {
+        route: "skills",
+        icon: "⚡",
+        label: "Skills",
+        reason: skillGrowth
+          ? `${skillGrowth} new ${skillGrowth === 1 ? "skill" : "skills"} discovered`
+          : `Train ${suggestedSkill.name} next`
+      },
+      {
+        route: "collections",
+        icon: "🏅",
+        label: "Collections",
+        reason: collectionGrowth
+          ? `${collectionGrowth} new ${collectionGrowth === 1 ? "reward" : "rewards"} unlocked`
+          : `${Math.max(0, badge.target - badgeStatus.value)} steps to ${badge.name}`
+      },
+      {
+        route: "roadmap",
+        icon: "🗺️",
+        label: "Roadmap",
+        reason: roadmapGrowth
+          ? `${currentStage.name} is now open`
+          : `Continue the ${currentStage.name} path`
+      }
+    ];
+
+    return `
+      <section class="home-route-hub" aria-labelledby="home-route-hub-heading">
+        <div class="home-route-hub-heading">
+          <div><p class="eyebrow">Also waiting for you</p><h2 id="home-route-hub-heading">Quick kitchen check-ins</h2></div>
+          <small>Red badges mark something worth checking.</small>
+        </div>
+        <div class="home-route-grid">
+          ${prompts.map((prompt) => {
+            const count = navNotificationCount(prompt.route);
+            return `
+              <button class="home-route-button" type="button" data-route="${prompt.route}" aria-label="Open ${prompt.label}: ${escapeHtml(prompt.reason)}${count ? `. ${count} pending ${count === 1 ? "action" : "actions"}` : ""}">
+                <span class="home-route-icon" aria-hidden="true">${prompt.icon}</span>
+                <span class="home-route-copy"><strong>${prompt.label}</strong><small>${escapeHtml(prompt.reason)}</small></span>
+                <span class="home-route-arrow" aria-hidden="true">→</span>
+                ${count ? `<span class="home-route-notification" aria-hidden="true">${count > 9 ? "9+" : count}</span>` : ""}
+              </button>`;
+          }).join("")}
+        </div>
+      </section>`;
+  }
+
   function renderHome() {
     const container = document.querySelector("#view-home");
     const info = levelInfo();
@@ -415,6 +527,8 @@
         </section>
 
         ${aanyaHomePanel(totalCooks, learnedSkills, badge, progress, primary)}
+
+        ${homeRouteHub(primary, badge, progress)}
 
         <section class="home-badge-shelf" aria-labelledby="badge-shelf-heading">
           <div class="section-heading"><div><p class="eyebrow">Your collectibles</p><h2 id="badge-shelf-heading">Badge cabinet</h2></div><button class="text-button" data-route="collections" type="button">Open collections →</button></div>
@@ -1112,8 +1226,11 @@
 
   function routeTo(route) {
     const validRoute = ["home", "skills", "dishes", "collections", "roadmap"].includes(route) ? route : "home";
+    const previousRoute = activeRoute;
     if (location.hash !== `#${validRoute}`) history.pushState(null, "", `#${validRoute}`);
     activeRoute = validRoute;
+    markRouteSeen(validRoute);
+    if (validRoute === "home" && previousRoute !== "home") renderHome();
     views.forEach((view) => { view.hidden = view.dataset.view !== validRoute; });
     navItems.forEach((item) => {
       const active = item.dataset.route === validRoute;
@@ -1121,6 +1238,7 @@
       if (active) item.setAttribute("aria-current", "page");
       else item.removeAttribute("aria-current");
     });
+    updateNavNotifications();
     window.scrollTo({ top: 0, behavior: "smooth" });
     document.title = `${validRoute[0].toUpperCase()}${validRoute.slice(1)} · Cheffu`;
   }
