@@ -6,6 +6,8 @@
   --line: #dfe6da;
   --orange: #ff6b35;
   --orange-deep: #d94716;
+  --orange-action: #c53a0d;
+  --orange-action-hover: #a8320c;
   --yellow: #ffd84d;
   --lime: #b9e85b;
   --green: #1f7a4c;
@@ -20,6 +22,9 @@
   --radius-md: 20px;
   --radius-sm: 13px;
   --content: 1180px;
+  --tap-target: 44px;
+  --mobile-gutter: 14px;
+  --mobile-nav-height: 78px;
 }
 
 * {
@@ -27,13 +32,17 @@
 }
 
 html {
+  overflow-x: clip;
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   position: relative;
   margin: 0;
   min-width: 320px;
+  min-height: 100dvh;
+  overflow-x: clip;
   color: var(--ink);
   background:
     radial-gradient(circle at 8% 8%, rgba(255, 216, 77, 0.3), transparent 22rem),
@@ -65,6 +74,7 @@ button,
 a,
 select {
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 button {
@@ -261,8 +271,20 @@ p {
 
 main {
   width: min(calc(100% - 32px), var(--content));
+  min-width: 0;
   margin: 0 auto;
   padding: 40px 0 132px;
+}
+
+.view,
+.home-grid,
+.daily-card,
+.aanya-companion,
+.filter-bar,
+.map-layout,
+.world-map-stack,
+.title-vault {
+  min-width: 0;
 }
 
 .view[hidden] {
@@ -465,7 +487,7 @@ main {
 .quest-label {
   padding: 7px 10px;
   color: white;
-  background: var(--orange-deep);
+  background: var(--orange-action);
   font-size: 0.72rem;
   letter-spacing: 0.08em;
 }
@@ -527,12 +549,12 @@ main {
 
 .button-primary {
   color: white;
-  background: var(--orange);
+  background: var(--orange-action);
   box-shadow: 4px 5px 0 var(--ink);
 }
 
 .button-primary:hover {
-  background: var(--orange-deep);
+  background: var(--orange-action-hover);
   box-shadow: 5px 7px 0 var(--ink);
 }
 
@@ -2717,7 +2739,7 @@ main {
 }
 
 .nav-item.is-active {
-  color: white;
+  color: var(--ink);
   background: var(--orange);
 }
 
@@ -3698,6 +3720,549 @@ main {
 @media (max-width: 350px) {
   .brand > span:last-child {
     display: none;
+  }
+}
+
+/* Phone-first interaction layer. Desktop keeps the richer layouts above. */
+@media (max-width: 700px) {
+  body {
+    min-width: 0;
+  }
+
+  .topbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 10px;
+    width: 100%;
+    min-height: 0;
+    padding: max(8px, env(safe-area-inset-top)) var(--mobile-gutter) 8px;
+    border-bottom: 1px solid rgba(24, 37, 29, 0.08);
+  }
+
+  .topbar-actions {
+    display: contents;
+  }
+
+  .brand {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .brand-logo {
+    width: clamp(118px, 39vw, 146px);
+  }
+
+  .streak-pill {
+    display: none;
+  }
+
+  #settings-button {
+    grid-column: 2;
+    grid-row: 1;
+    width: var(--tap-target);
+    height: var(--tap-target);
+  }
+
+  .topbar-diet {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+  }
+
+  .topbar-diet .diet-segment {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    padding: 3px;
+  }
+
+  .topbar-diet .diet-segment-button {
+    min-height: var(--tap-target);
+    padding: 7px 5px;
+    font-size: 0.75rem;
+  }
+
+  .topbar-diet .diet-segment-button > span {
+    display: inline;
+  }
+
+  main {
+    width: 100%;
+    padding: 16px var(--mobile-gutter) calc(var(--mobile-nav-height) + 28px + env(safe-area-inset-bottom));
+  }
+
+  h1,
+  .page-head h1 {
+    font-size: clamp(2.1rem, 10.5vw, 3.1rem);
+    line-height: 1;
+  }
+
+  h2 {
+    font-size: clamp(1.4rem, 7vw, 2rem);
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.35rem, 11.5vw, 3.35rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .page-head {
+    gap: 14px;
+    margin-bottom: 20px;
+    padding-top: 4px;
+  }
+
+  .page-head p:last-child {
+    margin-bottom: 0;
+  }
+
+  .summary-chip {
+    width: 100%;
+    padding: 10px 14px;
+    text-align: left;
+  }
+
+  .home-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .hero-copy { order: 1; }
+  .level-panel { order: 2; }
+  .daily-card { order: 3; }
+  .aanya-companion { order: 4; }
+  .dashboard-card { order: 5; }
+  .incentive-card { order: 6; }
+  .home-badge-shelf { order: 7; }
+  .alternatives-section { order: 8; }
+
+  .hero-copy {
+    padding: 6px 0 2px;
+  }
+
+  .equipped-title {
+    margin-top: 12px;
+  }
+
+  .level-panel {
+    gap: 12px;
+    padding: 14px;
+    border-radius: 17px;
+    box-shadow: 4px 5px 0 var(--ink);
+  }
+
+  .daily-card {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .daily-visual {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .daily-content {
+    padding: 20px 16px 22px;
+  }
+
+  .daily-content h2 {
+    font-size: clamp(2rem, 10vw, 2.65rem);
+  }
+
+  .daily-content .button,
+  .aanya-action,
+  .compact-recipe-copy .button {
+    width: 100%;
+  }
+
+  .incentive-card,
+  .dashboard-card {
+    min-height: 0;
+    padding: 18px 16px;
+  }
+
+  .incentive-card {
+    grid-template-columns: 76px 1fr;
+    gap: 14px;
+  }
+
+  .badge-art {
+    width: 74px;
+    height: 86px;
+  }
+
+  .badge-art span {
+    font-size: 2rem;
+  }
+
+  .dashboard-numbers {
+    margin-bottom: 10px;
+  }
+
+  .aanya-companion {
+    min-height: 0;
+    border-radius: 22px;
+  }
+
+  .aanya-companion-art {
+    min-height: 220px;
+  }
+
+  .aanya-companion-art img {
+    max-height: 250px;
+  }
+
+  .aanya-companion-copy {
+    gap: 12px;
+    padding: 20px 16px 22px;
+  }
+
+  .aanya-companion-top {
+    flex-direction: column;
+  }
+
+  .aanya-speech {
+    padding: 12px;
+  }
+
+  .home-badge-shelf,
+  .daily-filter-card,
+  .skill-hero,
+  .skill-cluster,
+  .practice-results,
+  .title-vault {
+    padding: 16px;
+  }
+
+  .section-heading {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .section-heading > .text-button {
+    align-self: stretch;
+  }
+
+  .compact-card-grid,
+  .dish-collection-grid,
+  .skill-grid,
+  .title-grid,
+  .collectible-grid {
+    gap: 12px;
+  }
+
+  .compact-recipe-card,
+  .collection-card,
+  .title-card {
+    border-radius: 17px;
+  }
+
+  .compact-recipe-copy,
+  .collection-copy {
+    padding: 16px;
+  }
+
+  .filter-bar,
+  .micro-skill-toolbar,
+  .title-toolbar {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding: 10px;
+  }
+
+  .filter-bar .diet-segment,
+  .micro-skill-toolbar .search-field,
+  .search-field {
+    grid-column: auto;
+  }
+
+  .search-field input,
+  .filter-bar select,
+  .micro-skill-toolbar select,
+  .name-field input {
+    min-height: var(--tap-target);
+    font-size: 16px;
+  }
+
+  .skill-hero {
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+  }
+
+  .skill-hero-icon {
+    width: 58px;
+    height: 58px;
+  }
+
+  .skill-hero .button {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .skill-view-switch {
+    position: sticky;
+    z-index: 8;
+    top: calc(126px + env(safe-area-inset-top));
+    width: 100%;
+    margin-bottom: 16px;
+    padding: 4px;
+    box-shadow: 3px 4px 0 var(--ink);
+  }
+
+  .skill-tree-scroll {
+    margin-inline: -1px;
+  }
+
+  .roadmap-track-picker,
+  .title-category-tabs {
+    margin-inline: calc(-1 * var(--mobile-gutter));
+    padding-inline: var(--mobile-gutter);
+    scroll-padding-inline: var(--mobile-gutter);
+    scrollbar-width: none;
+  }
+
+  .roadmap-track-picker::-webkit-scrollbar,
+  .title-category-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .roadmap-track-picker {
+    grid-auto-columns: minmax(252px, 86%);
+  }
+
+  .roadmap-track-card {
+    min-height: 124px;
+  }
+
+  .selected-roadmap-banner {
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .stage-body {
+    margin-bottom: 18px;
+  }
+
+  .roadmap-recipe {
+    min-height: 76px;
+  }
+
+  .roadmap-recipe-xp {
+    justify-self: start;
+  }
+
+  .collection-overview > div:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .title-card {
+    min-height: 0;
+  }
+
+  .map-collection-heading {
+    padding: 18px 16px;
+  }
+
+  .map-layout,
+  .world-map-stack {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .map-checklist {
+    max-height: none;
+    padding-right: 0;
+  }
+
+  .map-marker {
+    width: var(--tap-target);
+    height: var(--tap-target);
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .map-marker::before {
+    position: absolute;
+    inset: 7px;
+    border: 2px solid var(--ink);
+    border-radius: 50% 50% 50% 8px;
+    background: white;
+    box-shadow: 2px 2px 0 var(--ink);
+    content: "";
+  }
+
+  .map-marker.is-complete {
+    background: transparent;
+  }
+
+  .map-marker.is-complete::before {
+    background: var(--green);
+  }
+
+  .map-marker span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .bottom-nav {
+    right: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 6px max(6px, env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(6px, env(safe-area-inset-left));
+    border-width: 2px 0 0;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -8px 28px rgba(24, 37, 29, 0.16);
+    transform: none;
+  }
+
+  .nav-item {
+    min-width: 0;
+    min-height: 58px;
+    padding: 5px 2px;
+    font-size: clamp(0.57rem, 2.65vw, 0.68rem);
+  }
+
+  .nav-item kbd {
+    display: none;
+  }
+
+  .nav-item > span:nth-child(2) {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sheet {
+    inset-block: auto 0;
+    width: 100%;
+    max-width: none;
+    max-height: calc(100dvh - max(8px, env(safe-area-inset-top)));
+    margin: auto 0 0;
+    border-radius: 24px 24px 0 0;
+  }
+
+  #cook-dialog-content,
+  .settings-sheet form,
+  .name-sheet form {
+    max-height: calc(100dvh - max(8px, env(safe-area-inset-top)));
+    padding: 20px var(--mobile-gutter) calc(18px + env(safe-area-inset-bottom));
+    scrollbar-gutter: auto;
+  }
+
+  .sheet-head {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .sheet-head h2 {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+  }
+
+  .dish-picture--sheet {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+  }
+
+  .mission-steps {
+    margin-top: 20px;
+    padding-top: 18px;
+  }
+
+  .mission-step {
+    min-height: 64px;
+    padding: 10px;
+  }
+
+  .sheet-actions {
+    position: sticky;
+    z-index: 6;
+    bottom: calc(-18px - env(safe-area-inset-bottom));
+    margin: 20px calc(-1 * var(--mobile-gutter)) 0;
+    padding: 14px var(--mobile-gutter) calc(14px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 -10px 22px rgba(24, 37, 29, 0.08);
+    backdrop-filter: blur(12px);
+  }
+
+  .sheet-actions small {
+    font-size: 0.7rem;
+  }
+
+  .button,
+  .text-button,
+  .diet-segment-button,
+  .title-category-button,
+  .title-equip-button,
+  .stage-expand-button,
+  .map-check-item {
+    min-height: var(--tap-target);
+  }
+
+  .text-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 2px;
+  }
+
+  .photo-credit,
+  .map-credit {
+    display: inline-flex;
+    min-height: var(--tap-target);
+    align-items: center;
+    padding-inline: 11px;
+  }
+
+  .toast-region {
+    right: var(--mobile-gutter);
+    bottom: calc(var(--mobile-nav-height) + 14px + env(safe-area-inset-bottom));
+    width: calc(100% - (var(--mobile-gutter) * 2));
+  }
+}
+
+@media (max-width: 370px) {
+  :root {
+    --mobile-gutter: 11px;
+  }
+
+  .topbar-diet .diet-segment-button {
+    font-size: 0.69rem;
+  }
+
+  .daily-content,
+  .aanya-companion-copy,
+  .home-badge-shelf,
+  .daily-filter-card,
+  .skill-hero,
+  .skill-cluster,
+  .practice-results,
+  .title-vault {
+    padding-inline: 13px;
+  }
+
+  .collection-overview {
+    grid-template-columns: 1fr;
+  }
+
+  .collection-overview > div:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+}
+
+@media (hover: none) {
+  .button:hover,
+  .collection-card:hover,
+  .roadmap-track-card:hover,
+  .roadmap-recipe:hover,
+  .branch-skill-node:hover {
+    transform: none;
   }
 }
 

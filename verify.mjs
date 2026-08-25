@@ -55,6 +55,7 @@ assert.ok(titles.filter((title) => title.condition.type === "recipeCooks").every
 
 const index = fs.readFileSync(new URL("./index.html", import.meta.url), "utf8");
 const appSource = fs.readFileSync(new URL("./app.js", import.meta.url), "utf8");
+const styles = fs.readFileSync(new URL("./styles.css", import.meta.url), "utf8");
 assert.ok(fs.existsSync(new URL("./cheffu-aanya-logo.png", import.meta.url)), "Cheffu must include the Aanya mascot logo asset");
 assert.ok(index.includes("cheffu-aanya-logo.png"), "Header and app metadata must use the Aanya mascot logo");
 for (const asset of ["aanya-welcome.png", "aanya-skills.png", "aanya-streak.png", "aanya-challenge.png"]) {
@@ -69,7 +70,7 @@ assert.ok(!appSource.includes("data-aanya-pose") && !appSource.includes("data-aa
 assert.ok(!/Ayyo|Seri/.test(appSource), "Aanya's dialogue must use a friendly, region-neutral voice");
 assert.ok(!appSource.includes("TODAY'S 1× QUEST") && appSource.includes("TODAY'S RECOMMENDATION"), "Daily recommendation wording must stay clear");
 assert.ok(!dataSource.includes("Boot Sequence") && dataSource.includes("Kitchen First Steps"), "Beginner roadmap wording must use plain language");
-assert.ok(!fs.readFileSync(new URL("./styles.css", import.meta.url), "utf8").includes('.nav-item[data-route="dishes"]'), "Dishes navigation must not have a special highlight");
+assert.ok(!styles.includes('.nav-item[data-route="dishes"]'), "Dishes navigation must not have a special highlight");
 assert.ok(fs.existsSync(new URL("./cheffu-wordmark.png", import.meta.url)), "Cheffu must include the illustrated wordmark");
 assert.ok(index.includes("cheffu-wordmark.png"), "Header must use the illustrated Cheffu wordmark");
 for (const file of ["styles.css", "data.js", "catalog-expansion.js", "recipe-photos.js", "title-catalog.js", "app.js"]) {
@@ -84,6 +85,10 @@ assert.ok(index.includes('class="nav-icon"') && !index.includes(">⚡<") && !ind
 assert.ok(!appSource.includes("All diets"), "Diet lanes must stay visible instead of using an All diets option");
 assert.ok(appSource.includes("equippedTitleId") && appSource.includes("renderTitleVault"), "Titles must be unlockable and equippable in Collections");
 assert.ok(appSource.includes("playerName") && appSource.includes("openNameDialog"), "Player name must be requested and saved locally");
+assert.ok(index.includes("viewport-fit=cover"), "Mobile viewport must support device safe areas");
+assert.ok(styles.includes("--tap-target: 44px") && styles.includes("safe-area-inset-bottom"), "Mobile controls must retain 44px targets and safe-area spacing");
+assert.ok(styles.includes("overflow-x: clip") && styles.includes("@media (max-width: 700px)"), "Mobile layout must prevent page overflow and keep its phone breakpoint");
+assert.ok(appSource.includes('matchMedia("(max-width: 700px)").matches ? "list" : "tree"'), "Skills must default to the scan-friendly list on phones");
 const guidedTrackIds = ["morning", "dal-legume", "veg-curry", "rice-onepot", "family-meals", "plant-protein-fast", "plant-protein-meals", "egg-meat-protein", "one-pot", "dough", "south-tiffin", "south-meals", "north", "west", "east-ne", "sweet", "pan-asian", "italian", "world-foundations", "world-showpieces"];
 assert.ok(guidedTrackIds.every((id) => appSource.includes(`id: "${id}"`)), "Roadmap must retain all 20 focused guided paths");
 

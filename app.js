@@ -53,7 +53,7 @@
   let roadmapFilters = { search: "", region: "all", diet: state.dietPreference, track: "morning" };
   let skillFilters = { search: "", status: "all" };
   let titleFilters = { search: "", category: "all" };
-  let skillView = "tree";
+  let skillView = window.matchMedia("(max-width: 700px)").matches ? "list" : "tree";
   let selectedSkillCluster = null;
   const expandedRoadmapStages = new Set();
 
