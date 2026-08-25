@@ -284,11 +284,9 @@
       </div>`;
   }
 
-  function aanyaHomePanel(totalCooks, learnedSkills, titleCount, badge, badgeStatus, primary) {
+  function aanyaHomePanel(totalCooks, learnedSkills, badge, badgeStatus, primary) {
     const today = localDateKey();
     const playerName = state.playerName || "Chef";
-    const info = levelInfo();
-    const remainingBadge = Math.max(0, badge.target - badgeStatus.value);
     const pendingCook = Object.entries(state.completedSteps || {}).map(([key, completed]) => {
       if (!key.endsWith(`-${today}`) || !completed.length) return null;
       const recipe = getRecipe(key.slice(0, -(today.length + 1)));
@@ -309,37 +307,56 @@
     if (state.lastCookDate === today) image = stableHash(`${today}-${totalCooks}`) % 2 ? "aanya-variations/proud-plating.jpg?v=3" : "aanya-variations/full-content.jpg?v=3";
 
     const targetRecipe = pendingCook?.recipe || primary;
-    const targetSkills = targetRecipe.skillIds.slice(0, 2).map((id) => skills.find((skill) => skill.id === id)?.name).filter(Boolean);
+    const suggestedSkill = targetRecipe.skillIds
+      .map((id) => skills.find((skill) => skill.id === id))
+      .filter(Boolean)
+      .sort((a, b) => (state.skillXp[a.id] || 0) - (state.skillXp[b.id] || 0) || a.name.localeCompare(b.name))[0] || skills[0];
+    const suggestedSkillXp = state.skillXp[suggestedSkill.id] || 0;
+    const suggestedSkillState = skillState(suggestedSkillXp);
+    const skillXpReward = 18 + targetRecipe.stage * 2;
+    const remainingRecipeXp = Math.max(0, targetRecipe.xp - (pendingCook?.bankedXp || 0));
+    const collectionReward = state.cooks[targetRecipe.id]?.count ? "Cook count +1" : "New dish card";
     let heading;
     let comment;
     let actionLabel;
     if (pendingCook) {
       heading = `Hey ${playerName}, ${targetRecipe.name} is waiting for us!`;
-      comment = `You already finished ${pendingCook.completed} of ${targetRecipe.steps.length} safe checkpoints, and Cheffu has banked ${pendingCook.bankedXp} XP for you. Open the dish, continue from the checked step, and finish the full list to unlock its dish card and remaining XP. Come back when you are ready. I was enjoying our kitchen time.`;
+      comment = `You already finished ${pendingCook.completed} of ${targetRecipe.steps.length} safe checkpoints and banked ${pendingCook.bankedXp} XP. Let us finish the dish, practise ${suggestedSkill.name}, and collect the remaining reward.`;
       actionLabel = `Continue ${targetRecipe.name}`;
     } else if (totalCooks === 0) {
       heading = `${playerName}, I found a gentle first win for us.`;
-      comment = `Start with ${targetRecipe.name}: ${targetRecipe.minutes} minutes, about ${targetRecipe.protein} g protein, and ${targetRecipe.xp} XP. Tap each checkpoint only after your hands are safe; Cheffu banks up to 30% XP if you pause. Finish every step to unlock the dish card. I will stay right here and guide you through it.`;
+      comment = `Today we will train ${suggestedSkill.name} by making ${targetRecipe.name}. It takes about ${targetRecipe.minutes} minutes, and I will guide you through every safe checkpoint.`;
       actionLabel = `Cook ${targetRecipe.name} with Aanya`;
     } else {
-      const xpToLevel = Math.max(0, info.needed - info.current);
-      heading = `${playerName}, I think ${targetRecipe.name} is your smartest next move.`;
-      comment = `It takes ${targetRecipe.minutes} minutes, gives ${targetRecipe.xp} XP, has about ${targetRecipe.protein} g protein, and practises ${targetSkills.join(" and ") || "useful kitchen skills"}. You are ${xpToLevel} XP from Level ${Math.min(MAX_LEVEL, info.level + 1)}, at ${badgeStatus.value}/${badge.target} for ${badge.name}, with ${learnedSkills} skills and ${titleCount}/100 titles discovered. Finish every checkpoint so Cheffu awards the dish card, skill XP, and streak credit. I would love to cook this one with you, so save me a plate, okay?`;
+      heading = `${playerName}, here is your smartest kitchen move today.`;
+      comment = `${suggestedSkill.name} is the least-practised skill in today’s recommendation. Cooking ${targetRecipe.name} trains it through a real ${targetRecipe.minutes}-minute mission instead of an isolated exercise.`;
       actionLabel = `Cook ${targetRecipe.name} with Aanya`;
     }
     return `
       <section class="aanya-companion" aria-labelledby="aanya-companion-heading">
-        <div class="aanya-companion-art"><img src="${image}" alt="Chibi Aanya sharing your cooking progress"></div>
+        <div class="aanya-companion-art"><img src="${image}" alt="Chibi Aanya guiding today's cooking plan"></div>
         <div class="aanya-companion-copy">
-          <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's kitchen commentary</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA'S PICK</span></div>
+          <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's plan for today</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA'S PICK</span></div>
           <div class="aanya-speech"><span aria-hidden="true">💬</span><p>${escapeHtml(comment)}</p></div>
-          <div class="aanya-progress-chips">
-            <span><strong>${totalCooks}</strong> cooks</span>
-            <span><strong>${learnedSkills}</strong> skills</span>
-            <span><strong>${state.streak}</strong> streak</span>
-            <span><strong>${titleCount}</strong> titles</span>
+          <ol class="aanya-day-plan" aria-label="Today's suggested training plan">
+            <li class="aanya-plan-step">
+              <span class="aanya-plan-number">1</span>
+              <div><small>TRAIN THIS SKILL</small><strong>${suggestedSkill.icon} ${escapeHtml(suggestedSkill.name)}</strong><span>${escapeHtml(suggestedSkillState.name)} · ${suggestedSkillXp} skill XP</span></div>
+            </li>
+            <li class="aanya-plan-step">
+              <span class="aanya-plan-number">2</span>
+              <div><small>TODAY'S RECOMMENDATION</small><strong>${targetRecipe.emoji} ${escapeHtml(targetRecipe.name)}</strong><span>${targetRecipe.minutes} min · ~${targetRecipe.protein} g protein</span></div>
+            </li>
+            <li class="aanya-plan-step aanya-plan-step--reward">
+              <span class="aanya-plan-number">3</span>
+              <div><small>YOUR REWARD</small><strong>+${pendingCook ? remainingRecipeXp : targetRecipe.xp} XP ${pendingCook ? "remaining" : "total"}</strong><span>+${skillXpReward} skill XP · ${collectionReward}</span></div>
+            </li>
+          </ol>
+          <div class="aanya-plan-progress"><span>Next badge</span><strong>${badge.icon} ${escapeHtml(badge.name)}</strong><span>${badgeStatus.value}/${badge.target}</span></div>
+          <div class="aanya-plan-actions">
+            <button class="button button-primary aanya-action" type="button" data-open-recipe="${targetRecipe.id}">${escapeHtml(actionLabel)} →</button>
+            <button class="text-button" type="button" data-skill-dishes="${suggestedSkill.id}">Other ways to train ${escapeHtml(suggestedSkill.name)}</button>
           </div>
-          <button class="button button-primary aanya-action" type="button" data-open-recipe="${targetRecipe.id}">${escapeHtml(actionLabel)} →</button>
         </div>
       </section>`;
   }
@@ -354,7 +371,6 @@
     const nextStage = stages[info.unlockedStage];
     const totalCooks = Object.values(state.cooks).reduce((sum, cook) => sum + (cook.count || 0), 0);
     const learnedSkills = skills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
-    const titleCount = unlockedTitles().length;
 
     container.innerHTML = `
       <div class="home-grid">
@@ -398,7 +414,7 @@
           <button class="text-button" data-route="roadmap" type="button">Explore ${escapeHtml(nextStage.name)} lessons →</button>
         </section>
 
-        ${aanyaHomePanel(totalCooks, learnedSkills, titleCount, badge, progress, primary)}
+        ${aanyaHomePanel(totalCooks, learnedSkills, badge, progress, primary)}
 
         <section class="home-badge-shelf" aria-labelledby="badge-shelf-heading">
           <div class="section-heading"><div><p class="eyebrow">Your collectibles</p><h2 id="badge-shelf-heading">Badge cabinet</h2></div><button class="text-button" data-route="collections" type="button">Open collections →</button></div>
@@ -407,26 +423,6 @@
               const itemProgress = badgeProgress(item);
               return `<div class="badge-shelf-item ${itemProgress.complete ? "is-earned" : ""}" title="${escapeHtml(item.description)}"><span>${item.icon}</span><strong>${escapeHtml(item.name)}</strong><small>${itemProgress.value}/${item.target}</small></div>`;
             }).join("")}
-          </div>
-        </section>
-
-        <section class="daily-card">
-          <div class="daily-visual">${picture(primary, "hero")}</div>
-          <div class="daily-content">
-            <div class="daily-topline">
-              <span class="quest-label">TODAY'S RECOMMENDATION</span>
-              <span class="difficulty-pill">${escapeHtml(primary.difficulty)}</span>
-            </div>
-            <p class="eyebrow">Stage ${primary.stage}: ${escapeHtml(stages[primary.stage].name)}</p>
-            <h2>${escapeHtml(primary.name)}</h2>
-            <p>${escapeHtml(primary.summary)}</p>
-            ${recipeMeta(primary)}
-            <div class="skill-chip-row">
-              ${primary.skillIds.slice(0, 4).map((id) => `<span>${skills.find((skill) => skill.id === id)?.icon || "⚡"} ${escapeHtml(skills.find((skill) => skill.id === id)?.name || id)}</span>`).join("")}
-            </div>
-            <button class="button button-primary button-large" type="button" data-open-recipe="${primary.id}">
-              ${state.cooks[primary.id]?.count ? "Cook it again" : "Start today's quest"} <span>→</span>
-            </button>
           </div>
         </section>
 
