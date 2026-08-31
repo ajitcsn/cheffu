@@ -723,89 +723,248 @@ main {
   line-height: 1.52;
 }
 
-.aanya-day-plan {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.aanya-plan-step {
-  position: relative;
-  display: grid;
-  grid-template-columns: 34px minmax(0, 1fr);
+.quest-deck-status {
+  display: flex;
   align-items: center;
-  gap: 9px;
-  min-width: 0;
-  min-height: 94px;
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  background: rgba(255, 255, 255, 0.86);
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--green);
+  font-size: 0.65rem;
+  letter-spacing: 0.09em;
 }
 
-.aanya-plan-step:not(:last-child)::after {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  right: -15px;
-  display: grid;
-  width: 20px;
-  height: 20px;
-  place-items: center;
-  border: 1px solid var(--ink);
+.quest-deck-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.quest-deck-dots i {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: var(--yellow);
-  content: "→";
-  font-size: 0.7rem;
-  font-weight: 950;
-  transform: translateY(-50%);
+  background: rgba(24, 37, 29, 0.22);
 }
 
-.aanya-plan-step--reward {
+.quest-deck-dots i.is-active {
+  width: 19px;
+  border-radius: 999px;
+  background: var(--orange-action);
+}
+
+.quest-deck-lock {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border-radius: 50%;
+  background: #eaf7dc;
+  font-size: 0.78rem;
+}
+
+.quest-card-stack {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+.quest-card-stack.is-choosing {
+  padding: 0 8px 10px 0;
+}
+
+.quest-card-shadow {
+  position: absolute;
+  z-index: 0;
+  inset: 8px 0 0 8px;
+  border: 1px solid var(--ink);
+  border-radius: 20px;
+  background: #ffe4a1;
+}
+
+.quest-card-shadow--back {
+  inset: 14px -6px -6px 14px;
+  background: #f4c7ae;
+  transform: rotate(1.4deg);
+}
+
+.quest-swipe-card {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  background: white;
+  box-shadow: 5px 6px 0 rgba(24, 37, 29, 0.2);
+  cursor: grab;
+  outline: none;
+  touch-action: pan-y;
+  transform: translate3d(var(--swipe-x, 0), 0, 0) rotate(var(--swipe-rotation, 0));
+  transform-origin: 50% 100%;
+  transition: transform 220ms ease, box-shadow 180ms ease;
+  user-select: none;
+}
+
+.quest-swipe-card.is-dragging {
+  cursor: grabbing;
+  transition: none;
+}
+
+.quest-swipe-card img {
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+.quest-swipe-card.is-locked {
+  border-color: var(--green);
+  cursor: default;
+  touch-action: auto;
+}
+
+.quest-swipe-card.is-complete {
+  box-shadow: 5px 6px 0 var(--green);
+}
+
+.quest-swipe-card:focus-visible {
+  outline: 4px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+.quest-swipe-card.is-passing {
+  animation: quest-pass-out 260ms ease-in forwards;
+}
+
+.quest-swipe-card.is-accepting {
+  animation: quest-accept-out 260ms ease-in forwards;
+}
+
+.dish-picture--quest {
+  height: 190px;
+}
+
+.quest-aanya-stamp {
+  position: absolute;
+  z-index: 5;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 9px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--yellow);
+  box-shadow: 2px 3px 0 var(--ink);
+  font-size: 0.68rem;
+}
+
+.quest-swipe-verdict {
+  position: absolute;
+  z-index: 6;
+  top: 82px;
+  padding: 7px 10px;
+  border: 3px solid currentColor;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  font-size: 1rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.quest-swipe-verdict--pass {
+  left: 16px;
+  color: #c83232;
+  transform: rotate(-9deg);
+}
+
+.quest-swipe-verdict--accept {
+  right: 16px;
+  color: #208447;
+  transform: rotate(9deg);
+}
+
+.quest-card-copy {
+  padding: 15px 16px 16px;
+}
+
+.quest-card-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.quest-card-heading h3,
+.quest-card-heading p {
+  margin-bottom: 0;
+}
+
+.quest-card-heading h3 {
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  line-height: 1.05;
+}
+
+.quest-card-copy > p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 9px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.quest-card-copy .meta-row {
+  margin: 10px 0;
+}
+
+.quest-card-outcomes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.quest-card-outcomes > div {
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f8faf5;
+}
+
+.quest-card-outcomes > div.quest-card-reward {
   border-color: #83b936;
   background: #f4ffe6;
 }
 
-.aanya-plan-number {
-  display: grid;
-  width: 32px;
-  height: 32px;
-  place-items: center;
-  border: 2px solid var(--ink);
-  border-radius: 10px;
-  background: var(--yellow);
-  box-shadow: 2px 2px 0 var(--ink);
-  font-weight: 950;
-}
-
-.aanya-plan-step small,
-.aanya-plan-step strong,
-.aanya-plan-step div > span {
+.quest-card-outcomes small,
+.quest-card-outcomes strong,
+.quest-card-outcomes span {
   display: block;
 }
 
-.aanya-plan-step small {
-  margin-bottom: 3px;
+.quest-card-outcomes small {
   color: var(--green);
-  font-size: 0.58rem;
+  font-size: 0.57rem;
   font-weight: 950;
   letter-spacing: 0.07em;
 }
 
-.aanya-plan-step strong {
+.quest-card-outcomes strong {
+  margin-top: 3px;
   overflow: hidden;
-  font-size: 0.82rem;
-  line-height: 1.18;
+  font-size: 0.76rem;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.aanya-plan-step div > span {
-  margin-top: 4px;
+.quest-card-outcomes span {
+  margin-top: 3px;
   color: var(--ink-soft);
-  font-size: 0.66rem;
+  font-size: 0.61rem;
   font-weight: 750;
   line-height: 1.25;
 }
@@ -837,6 +996,74 @@ main {
 
 .aanya-action {
   align-self: flex-start;
+}
+
+.quest-swipe-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.quest-swipe-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 50px;
+  padding: 8px 12px;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  background: white;
+  box-shadow: 3px 4px 0 var(--ink);
+  cursor: pointer;
+}
+
+.quest-swipe-button > span {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.quest-swipe-button--pass > span {
+  color: #b82c2c;
+  background: #ffe9e9;
+}
+
+.quest-swipe-button--accept {
+  color: white;
+  background: var(--green);
+}
+
+.quest-swipe-button--accept > span {
+  color: var(--green);
+  background: white;
+}
+
+.quest-swipe-button:active {
+  box-shadow: 1px 2px 0 var(--ink);
+  transform: translate(2px, 2px);
+}
+
+.quest-swipe-instructions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin: -4px 2px 0;
+  color: var(--ink-soft);
+  font-size: 0.64rem;
+  font-weight: 750;
+}
+
+@keyframes quest-pass-out {
+  to { opacity: 0; transform: translate3d(-125%, 8px, 0) rotate(-12deg); }
+}
+
+@keyframes quest-accept-out {
+  to { opacity: 0; transform: translate3d(125%, 8px, 0) rotate(12deg); }
 }
 
 .home-route-hub {
@@ -3405,23 +3632,6 @@ main {
   .aanya-companion {
     grid-template-columns: minmax(220px, 280px) 1fr;
   }
-
-  .aanya-day-plan {
-    grid-template-columns: 1fr;
-  }
-
-  .aanya-plan-step {
-    min-height: 76px;
-  }
-
-  .aanya-plan-step:not(:last-child)::after {
-    top: auto;
-    right: auto;
-    bottom: -15px;
-    left: 17px;
-    content: "↓";
-    transform: none;
-  }
 }
 
 @media (max-width: 700px) {
@@ -4083,7 +4293,6 @@ main {
   .dashboard-card { order: 5; }
   .incentive-card { order: 6; }
   .home-badge-shelf { order: 7; }
-  .alternatives-section { order: 8; }
 
   .hero-copy {
     padding: 6px 0 2px;
@@ -4154,11 +4363,11 @@ main {
   }
 
   .aanya-companion-art {
-    min-height: 220px;
+    min-height: 180px;
   }
 
   .aanya-companion-art img {
-    max-height: 250px;
+    max-height: 210px;
   }
 
   .aanya-companion-copy {
@@ -4174,23 +4383,43 @@ main {
     padding: 12px;
   }
 
-  .aanya-day-plan {
-    grid-template-columns: 1fr;
+  .dish-picture--quest {
+    height: 180px;
+  }
+
+  .quest-card-copy {
+    padding: 13px;
+  }
+
+  .quest-card-heading {
     gap: 8px;
   }
 
-  .aanya-plan-step {
-    min-height: 76px;
-    padding: 10px;
+  .quest-card-heading h3 {
+    font-size: 1.35rem;
   }
 
-  .aanya-plan-step:not(:last-child)::after {
-    top: auto;
-    right: auto;
-    bottom: -14px;
-    left: 17px;
-    content: "↓";
-    transform: none;
+  .quest-card-outcomes {
+    grid-template-columns: 1fr;
+  }
+
+  .quest-swipe-actions {
+    gap: 8px;
+  }
+
+  .quest-swipe-button {
+    min-height: var(--tap-target);
+    padding: 7px 8px;
+    font-size: 0.72rem;
+  }
+
+  .quest-swipe-button > span {
+    width: 24px;
+    height: 24px;
+  }
+
+  .quest-swipe-instructions {
+    font-size: 0.58rem;
   }
 
   .aanya-plan-progress {

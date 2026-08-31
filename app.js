@@ -46,7 +46,8 @@
     dietPreference: "Veg",
     equippedTitleId: "kitchen-visitor",
     playerName: "",
-    navSeen: {}
+    navSeen: {},
+    dailyQuest: {}
   };
 
   let state = loadState();
@@ -287,6 +288,59 @@
     return [...untried, ...tried].slice(0, 3);
   }
 
+  function dailyQuestDeck() {
+    const picks = dailyPicks();
+    const saved = state.dailyQuest || {};
+    const isCurrent = saved.date === localDateKey() && saved.diet === state.dietPreference;
+    const index = isCurrent && Number.isInteger(saved.index) ? ((saved.index % picks.length) + picks.length) % picks.length : 0;
+    const accepted = isCurrent ? getRecipe(saved.acceptedRecipeId) : null;
+    const validAccepted = accepted && dietMatches(accepted, state.dietPreference) ? accepted : null;
+    return {
+      picks,
+      index,
+      accepted: validAccepted,
+      recipe: validAccepted || picks[index]
+    };
+  }
+
+  function setDailyQuest(recipeId = null, index = 0) {
+    state.dailyQuest = {
+      date: localDateKey(),
+      diet: state.dietPreference,
+      index,
+      acceptedRecipeId: recipeId
+    };
+    saveState();
+  }
+
+  function refreshHome() {
+    renderHome();
+  }
+
+  function passDailyQuest() {
+    const deck = dailyQuestDeck();
+    const nextIndex = (deck.index + 1) % deck.picks.length;
+    setDailyQuest(null, nextIndex);
+    refreshHome();
+    showToast(`Passed for today · Aanya dealt ${deck.picks[nextIndex].name}.`);
+  }
+
+  function acceptDailyQuest(recipeId) {
+    const deck = dailyQuestDeck();
+    const acceptedIndex = Math.max(0, deck.picks.findIndex((recipe) => recipe.id === recipeId));
+    const recipe = getRecipe(recipeId);
+    if (!recipe) return;
+    setDailyQuest(recipe.id, acceptedIndex);
+    refreshHome();
+    showToast(`${recipe.emoji} ${recipe.name} locked as today's quest.`);
+  }
+
+  function reopenDailyQuestDeck() {
+    const deck = dailyQuestDeck();
+    setDailyQuest(null, deck.index);
+    refreshHome();
+  }
+
   function badgeProgress(badge) {
     const cooked = completedRecipeIds().map(getRecipe).filter(Boolean);
     let value = 0;
@@ -329,7 +383,7 @@
       </div>`;
   }
 
-  function aanyaHomePanel(totalCooks, learnedSkills, badge, badgeStatus, primary) {
+  function aanyaHomePanel(totalCooks, learnedSkills, badge, badgeStatus, questDeck) {
     const today = localDateKey();
     const playerName = state.playerName || "Chef";
     const pendingCook = Object.entries(state.completedSteps || {}).map(([key, completed]) => {
@@ -351,7 +405,10 @@
     if (pendingCook) image = "aanya-variations/surprised-o.jpg?v=3";
     if (state.lastCookDate === today) image = stableHash(`${today}-${totalCooks}`) % 2 ? "aanya-variations/proud-plating.jpg?v=3" : "aanya-variations/full-content.jpg?v=3";
 
-    const targetRecipe = pendingCook?.recipe || primary;
+    const targetRecipe = pendingCook?.recipe || questDeck.recipe;
+    const isChoosing = !pendingCook && !questDeck.accepted;
+    const isAccepted = !pendingCook && Boolean(questDeck.accepted);
+    const isCompleted = isAccepted && state.cooks[targetRecipe.id]?.lastCooked === today;
     const suggestedSkill = targetRecipe.skillIds
       .map((id) => skills.find((skill) => skill.id === id))
       .filter(Boolean)
@@ -360,50 +417,137 @@
     const suggestedSkillState = skillState(suggestedSkillXp);
     const skillXpReward = 18 + targetRecipe.stage * 2;
     const remainingRecipeXp = Math.max(0, targetRecipe.xp - (pendingCook?.bankedXp || 0));
-    const collectionReward = state.cooks[targetRecipe.id]?.count ? "Cook count +1" : "New dish card";
+    const targetCook = state.cooks[targetRecipe.id];
+    const earnsFirstDish = !targetCook?.count || (isCompleted && targetCook.count === 1 && targetCook.firstCooked === today);
+    const firstCookBonus = earnsFirstDish ? 20 : 0;
+    const questXpReward = (pendingCook ? remainingRecipeXp : targetRecipe.xp) + firstCookBonus;
+    const collectionReward = earnsFirstDish ? "New dish card" : "Cook count +1";
     let heading;
     let comment;
-    let actionLabel;
     if (pendingCook) {
       heading = `Hey ${playerName}, ${targetRecipe.name} is waiting for us!`;
       comment = `You already finished ${pendingCook.completed} of ${targetRecipe.steps.length} safe checkpoints and banked ${pendingCook.bankedXp} XP. Let us finish the dish, practise ${suggestedSkill.name}, and collect the remaining reward.`;
-      actionLabel = `Continue ${targetRecipe.name}`;
+    } else if (isCompleted) {
+      heading = `${playerName}, today's quest is complete!`;
+      comment = `${targetRecipe.name} is in your dish collection, ${suggestedSkill.name} gained XP, and your reward is banked. That is a real kitchen win.`;
+    } else if (isAccepted) {
+      heading = `${playerName}, your quest is locked in.`;
+      comment = `You chose my ${targetRecipe.name} recommendation. It trains ${suggestedSkill.name}, fits a ${targetRecipe.minutes}-minute session, and pays out ${questXpReward} XP when every checkpoint is complete.`;
     } else if (totalCooks === 0) {
-      heading = `${playerName}, I found a gentle first win for us.`;
-      comment = `Today we will train ${suggestedSkill.name} by making ${targetRecipe.name}. It takes about ${targetRecipe.minutes} minutes, and I will guide you through every safe checkpoint.`;
-      actionLabel = `Cook ${targetRecipe.name} with Aanya`;
+      heading = `${playerName}, I dealt you a gentle first quest.`;
+      comment = `I recommend ${targetRecipe.name} because it trains ${suggestedSkill.name} in about ${targetRecipe.minutes} minutes. Swipe right to accept it, or left and I will find another fit.`;
     } else {
-      heading = `${playerName}, here is your smartest kitchen move today.`;
-      comment = `${suggestedSkill.name} is the least-practised skill in today’s recommendation. Cooking ${targetRecipe.name} trains it through a real ${targetRecipe.minutes}-minute mission instead of an isolated exercise.`;
-      actionLabel = `Cook ${targetRecipe.name} with Aanya`;
+      heading = `${playerName}, I have a quest recommendation for you.`;
+      comment = `I picked ${targetRecipe.name} because ${suggestedSkill.name} is the least-practised skill in this dish. Swipe right to make it today's quest, or left to see my next pick.`;
     }
     return `
       <section class="aanya-companion" aria-labelledby="aanya-companion-heading">
         <div class="aanya-companion-art"><img src="${image}" alt="Chibi Aanya guiding today's cooking plan"></div>
         <div class="aanya-companion-copy">
-          <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's plan for today</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA'S PICK</span></div>
+          <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's quest deck</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA RECOMMENDS</span></div>
           <div class="aanya-speech"><span aria-hidden="true">💬</span><p>${escapeHtml(comment)}</p></div>
-          <ol class="aanya-day-plan" aria-label="Today's suggested training plan">
-            <li class="aanya-plan-step">
-              <span class="aanya-plan-number">1</span>
-              <div><small>TRAIN THIS SKILL</small><strong>${suggestedSkill.icon} ${escapeHtml(suggestedSkill.name)}</strong><span>${escapeHtml(suggestedSkillState.name)} · ${suggestedSkillXp} skill XP</span></div>
-            </li>
-            <li class="aanya-plan-step">
-              <span class="aanya-plan-number">2</span>
-              <div><small>TODAY'S RECOMMENDATION</small><strong>${targetRecipe.emoji} ${escapeHtml(targetRecipe.name)}</strong><span>${targetRecipe.minutes} min · ~${targetRecipe.protein} g protein</span></div>
-            </li>
-            <li class="aanya-plan-step aanya-plan-step--reward">
-              <span class="aanya-plan-number">3</span>
-              <div><small>YOUR REWARD</small><strong>+${pendingCook ? remainingRecipeXp : targetRecipe.xp} XP ${pendingCook ? "remaining" : "total"}</strong><span>+${skillXpReward} skill XP · ${collectionReward}</span></div>
-            </li>
-          </ol>
-          <div class="aanya-plan-progress"><span>Next badge</span><strong>${badge.icon} ${escapeHtml(badge.name)}</strong><span>${badgeStatus.value}/${badge.target}</span></div>
-          <div class="aanya-plan-actions">
-            <button class="button button-primary aanya-action" type="button" data-open-recipe="${targetRecipe.id}">${escapeHtml(actionLabel)} →</button>
-            <button class="text-button" type="button" data-skill-dishes="${suggestedSkill.id}">Other ways to train ${escapeHtml(suggestedSkill.name)}</button>
+          <div class="quest-deck-status">
+            <strong>${pendingCook ? "QUEST IN PROGRESS" : isCompleted ? "QUEST COMPLETE" : isAccepted ? "TODAY'S QUEST LOCKED" : `RECOMMENDATION ${questDeck.index + 1} OF ${questDeck.picks.length}`}</strong>
+            ${isChoosing ? `<span class="quest-deck-dots" aria-label="Recommendation ${questDeck.index + 1} of ${questDeck.picks.length}">${questDeck.picks.map((recipe, index) => `<i class="${index === questDeck.index ? "is-active" : ""}" aria-hidden="true"></i>`).join("")}</span>` : `<span class="quest-deck-lock" aria-hidden="true">${isCompleted ? "✓" : "🔒"}</span>`}
           </div>
-        </div>
+          <div class="quest-card-stack ${isChoosing ? "is-choosing" : "is-locked"}">
+            ${isChoosing ? '<span class="quest-card-shadow quest-card-shadow--back" aria-hidden="true"></span><span class="quest-card-shadow quest-card-shadow--middle" aria-hidden="true"></span>' : ""}
+            <article class="quest-swipe-card ${isAccepted || pendingCook ? "is-locked" : ""} ${isCompleted ? "is-complete" : ""}" ${isChoosing ? `data-quest-swipe-card="${targetRecipe.id}" tabindex="0" aria-describedby="quest-swipe-instructions"` : ""}>
+              <span class="quest-swipe-verdict quest-swipe-verdict--pass" aria-hidden="true">NOT TODAY</span>
+              <span class="quest-swipe-verdict quest-swipe-verdict--accept" aria-hidden="true">QUEST ON!</span>
+              <span class="quest-aanya-stamp"><span aria-hidden="true">👩🏽‍🍳</span><strong>Aanya recommends</strong></span>
+              ${picture(targetRecipe, "quest")}
+              <div class="quest-card-copy">
+                <div class="quest-card-heading"><div><p class="eyebrow">Stage ${targetRecipe.stage} · ${escapeHtml(targetRecipe.region)}</p><h3>${targetRecipe.emoji} ${escapeHtml(targetRecipe.name)}</h3></div><span class="difficulty-pill">${escapeHtml(targetRecipe.difficulty)}</span></div>
+                <p>${escapeHtml(targetRecipe.summary)}</p>
+                ${recipeMeta(targetRecipe)}
+                <div class="quest-card-outcomes">
+                  <div><small>SKILL TO TRAIN</small><strong>${suggestedSkill.icon} ${escapeHtml(suggestedSkill.name)}</strong><span>${escapeHtml(suggestedSkillState.name)} · ${suggestedSkillXp} XP now</span></div>
+                  <div class="quest-card-reward"><small>QUEST REWARD</small><strong>+${questXpReward} XP</strong><span>+${skillXpReward} skill XP · ${collectionReward}</span></div>
+                </div>
+              </div>
+            </article>
+          </div>
+          ${isChoosing ? `
+            <div class="quest-swipe-actions">
+              <button class="quest-swipe-button quest-swipe-button--pass" type="button" data-pass-daily-quest aria-label="Pass on ${escapeHtml(targetRecipe.name)} and show another recommendation"><span aria-hidden="true">×</span><strong>Not today</strong></button>
+              <button class="quest-swipe-button quest-swipe-button--accept" type="button" data-accept-daily-quest="${targetRecipe.id}" aria-label="Accept ${escapeHtml(targetRecipe.name)} as today's quest"><span aria-hidden="true">✓</span><strong>Accept quest</strong></button>
+            </div>
+            <p class="quest-swipe-instructions" id="quest-swipe-instructions"><span>← Swipe left to pass</span><span>Swipe right to accept →</span></p>` : `
+            <div class="aanya-plan-progress"><span>Next badge</span><strong>${badge.icon} ${escapeHtml(badge.name)}</strong><span>${badgeStatus.value}/${badge.target}</span></div>
+            <div class="aanya-plan-actions">
+              ${isCompleted ? `<button class="button button-primary aanya-action" type="button" data-route="dishes">View earned dish card →</button>` : `<button class="button button-primary aanya-action" type="button" data-open-recipe="${targetRecipe.id}">${pendingCook ? "Continue" : "Start"} ${escapeHtml(targetRecipe.name)} →</button>`}
+              ${isAccepted && !isCompleted ? '<button class="text-button" type="button" data-reopen-daily-quest>Choose a different quest</button>' : `<button class="text-button" type="button" data-skill-dishes="${suggestedSkill.id}">Train ${escapeHtml(suggestedSkill.name)} again</button>`}
+            </div>`}
+          </div>
       </section>`;
+  }
+
+  function animateQuestChoice(card, choice) {
+    if (!card || card.dataset.committing) return;
+    card.dataset.committing = "true";
+    card.classList.remove("is-dragging");
+    card.classList.add(choice === "accept" ? "is-accepting" : "is-passing");
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 260;
+    window.setTimeout(() => {
+      if (choice === "accept") acceptDailyQuest(card.dataset.questSwipeCard);
+      else passDailyQuest();
+    }, delay);
+  }
+
+  function wireQuestSwipe() {
+    const card = document.querySelector("#view-home [data-quest-swipe-card]");
+    if (!card) return;
+    let pointerId = null;
+    let startX = 0;
+    let currentX = 0;
+
+    const resetCard = () => {
+      pointerId = null;
+      currentX = 0;
+      card.classList.remove("is-dragging");
+      card.style.removeProperty("--swipe-x");
+      card.style.removeProperty("--swipe-rotation");
+      card.querySelectorAll(".quest-swipe-verdict").forEach((verdict) => verdict.style.removeProperty("opacity"));
+    };
+
+    const finishSwipe = () => {
+      if (pointerId === null) return;
+      const threshold = Math.min(110, card.getBoundingClientRect().width * 0.24);
+      if (Math.abs(currentX) >= threshold) animateQuestChoice(card, currentX > 0 ? "accept" : "pass");
+      else resetCard();
+    };
+
+    card.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0 || event.target.closest("a, button")) return;
+      pointerId = event.pointerId;
+      startX = event.clientX;
+      currentX = 0;
+      card.setPointerCapture?.(event.pointerId);
+      card.classList.add("is-dragging");
+    });
+
+    card.addEventListener("pointermove", (event) => {
+      if (event.pointerId !== pointerId) return;
+      currentX = event.clientX - startX;
+      const rotation = Math.max(-9, Math.min(9, currentX / 18));
+      const opacity = Math.min(1, Math.abs(currentX) / 90);
+      card.style.setProperty("--swipe-x", `${currentX}px`);
+      card.style.setProperty("--swipe-rotation", `${rotation}deg`);
+      card.querySelector(".quest-swipe-verdict--accept").style.opacity = currentX > 0 ? opacity : 0;
+      card.querySelector(".quest-swipe-verdict--pass").style.opacity = currentX < 0 ? opacity : 0;
+      if (Math.abs(currentX) > 8) event.preventDefault();
+    });
+
+    card.addEventListener("pointerup", (event) => {
+      if (event.pointerId === pointerId) finishSwipe();
+    });
+    card.addEventListener("pointercancel", resetCard);
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+      event.preventDefault();
+      animateQuestChoice(card, event.key === "ArrowRight" ? "accept" : "pass");
+    });
   }
 
   function homeRouteHub(primary, badge, badgeStatus) {
@@ -476,8 +620,8 @@
   function renderHome() {
     const container = document.querySelector("#view-home");
     const info = levelInfo();
-    const picks = dailyPicks();
-    const primary = picks[0];
+    const questDeck = dailyQuestDeck();
+    const primary = questDeck.recipe;
     const badge = nextBadge();
     const progress = badgeProgress(badge);
     const nextStage = stages[info.unlockedStage];
@@ -526,7 +670,7 @@
           <button class="text-button" data-route="roadmap" type="button">Explore ${escapeHtml(nextStage.name)} lessons →</button>
         </section>
 
-        ${aanyaHomePanel(totalCooks, learnedSkills, badge, progress, primary)}
+        ${aanyaHomePanel(totalCooks, learnedSkills, badge, progress, questDeck)}
 
         ${homeRouteHub(primary, badge, progress)}
 
@@ -540,16 +684,9 @@
           </div>
         </section>
 
-        <section class="alternatives-section">
-          <div class="section-heading">
-            <div><p class="eyebrow">Two side quests</p><h2>Hungry for more? Continue with these dishes.</h2></div>
-            <button class="text-button" data-route="roadmap" type="button">See full roadmap →</button>
-          </div>
-          <div class="compact-card-grid">
-            ${picks.slice(1).map(compactRecipeCard).join("")}
-          </div>
-        </section>
       </div>`;
+    wireQuestSwipe();
+    wireImageFallbacks(container);
   }
 
   function dietFilterButtons(activeDiet, scope) {
@@ -1292,14 +1429,24 @@
 
     const dietButton = event.target.closest("[data-diet-scope]");
     if (dietButton?.dataset.dietScope === "global") {
+      const dietChanged = state.dietPreference !== dietButton.dataset.dietValue;
       state.dietPreference = dietButton.dataset.dietValue;
+      if (dietChanged) state.dailyQuest = {};
       roadmapFilters.diet = state.dietPreference;
       saveState();
       renderHome();
       renderRoadmap();
       renderGlobalDietFilter();
-      wireImageFallbacks(document.querySelector("#view-home"));
     }
+
+    const passQuestButton = event.target.closest("[data-pass-daily-quest]");
+    if (passQuestButton) animateQuestChoice(document.querySelector("[data-quest-swipe-card]"), "pass");
+
+    const acceptQuestButton = event.target.closest("[data-accept-daily-quest]");
+    if (acceptQuestButton) animateQuestChoice(document.querySelector("[data-quest-swipe-card]"), "accept");
+
+    const reopenQuestButton = event.target.closest("[data-reopen-daily-quest]");
+    if (reopenQuestButton) reopenDailyQuestDeck();
 
     const trackButton = event.target.closest("[data-roadmap-track]");
     if (trackButton) {
