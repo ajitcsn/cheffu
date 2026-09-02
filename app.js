@@ -479,8 +479,8 @@
       heading = `${playerName}, your quest is locked in.`;
       comment = `You chose my ${targetRecipe.name} recommendation. It trains ${suggestedSkill.name}, fits a ${targetRecipe.minutes}-minute session, and pays out ${questXpReward} XP when every checkpoint is complete.`;
     } else if (totalCooks === 0) {
-      heading = `${playerName}, I dealt you a gentle first quest.`;
-      comment = `I recommend ${targetRecipe.name} because it trains ${suggestedSkill.name} in about ${targetRecipe.minutes} minutes.${canPass ? " Swipe right to accept it, or left and I will find another fit." : " Accept it when you are ready."}`;
+      heading = `Hi ${playerName}! Here's an easy first dish.`;
+      comment = `${targetRecipe.name} trains ${suggestedSkill.name} in about ${targetRecipe.minutes} minutes.${canPass ? " Swipe right if you're up for the challenge! Swipe left and I'll find you something else to make 🥄" : " Accept it when you are ready."}`;
     } else {
       heading = `${playerName}, I have a quest recommendation for you.`;
       comment = `I picked ${targetRecipe.name} because ${suggestedSkill.name} is the least-practised skill in this dish.${canPass ? " Swipe right to make it today's quest, or left to see my next pick." : " Make it today's quest when you are ready."}`;
