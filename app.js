@@ -56,6 +56,7 @@
   let activeRoute = "home";
   let roadmapFilters = { search: "", region: "all", diet: state.dietPreference, track: "morning" };
   let skillFilters = { search: "", status: "all" };
+  let dishFilters = { search: "" };
   let titleFilters = { search: "", category: "all" };
   let skillView = "tree";
   let selectedSkillCluster = null;
@@ -278,6 +279,10 @@
     return true;
   }
 
+  function availableSkills() {
+    return skills.filter((skill) => recipes.some((recipe) => dietMatches(recipe, state.dietPreference) && recipe.skillIds.includes(skill.id)));
+  }
+
   function dailyPicks(diet = state.dietPreference) {
     const info = levelInfo();
     const completed = new Set(completedRecipeIds());
@@ -305,24 +310,20 @@
     const preferences = state.questPreferences || defaultState.questPreferences;
     const isCurrent = saved.date === localDateKey() && saved.diet === state.dietPreference && saved.time === preferences.time && saved.goal === preferences.goal;
     const index = isCurrent && Number.isInteger(saved.index) ? ((saved.index % picks.length) + picks.length) % picks.length : 0;
-    const accepted = isCurrent ? getRecipe(saved.acceptedRecipeId) : null;
-    const validAccepted = accepted && dietMatches(accepted, state.dietPreference) ? accepted : null;
     return {
       picks,
       index,
-      accepted: validAccepted,
-      recipe: validAccepted || picks[index]
+      recipe: picks[index]
     };
   }
 
-  function setDailyQuest(recipeId = null, index = 0) {
+  function setDailyQuest(index = 0) {
     state.dailyQuest = {
       date: localDateKey(),
       diet: state.dietPreference,
       index,
       time: (state.questPreferences || defaultState.questPreferences).time,
-      goal: (state.questPreferences || defaultState.questPreferences).goal,
-      acceptedRecipeId: recipeId
+      goal: (state.questPreferences || defaultState.questPreferences).goal
     };
     saveState();
   }
@@ -333,26 +334,23 @@
 
   function passDailyQuest() {
     const deck = dailyQuestDeck();
+    if (deck.picks.length < 2) {
+      showToast("This is Aanya's best fit right now. Try changing the time or goal above.");
+      return;
+    }
     const nextIndex = (deck.index + 1) % deck.picks.length;
-    setDailyQuest(null, nextIndex);
+    setDailyQuest(nextIndex);
     refreshHome();
-    showToast(`Passed for today · Aanya dealt ${deck.picks[nextIndex].name}.`);
+    showToast(`🍳 Here's another idea from Aanya: ${deck.picks[nextIndex].name}.`);
   }
 
   function acceptDailyQuest(recipeId) {
     const deck = dailyQuestDeck();
-    const acceptedIndex = Math.max(0, deck.picks.findIndex((recipe) => recipe.id === recipeId));
     const recipe = getRecipe(recipeId);
     if (!recipe) return;
-    setDailyQuest(recipe.id, acceptedIndex);
-    refreshHome();
-    showToast(`${recipe.emoji} ${recipe.name} locked as today's quest.`);
-  }
-
-  function reopenDailyQuestDeck() {
-    const deck = dailyQuestDeck();
-    setDailyQuest(null, deck.index);
-    refreshHome();
+    setDailyQuest(Math.max(0, deck.picks.findIndex((pick) => pick.id === recipe.id)));
+    showToast(`${recipe.emoji} Great choice. Start when you're ready.`);
+    openRecipe(recipe.id);
   }
 
   function updateQuestPreference(key, value) {
@@ -450,10 +448,8 @@
     if (state.lastCookDate === today) image = stableHash(`${today}-${totalCooks}`) % 2 ? "aanya-variations/proud-plating.jpg?v=3" : "aanya-variations/full-content.jpg?v=3";
 
     const targetRecipe = pendingCook?.recipe || questDeck.recipe;
-    const isChoosing = !pendingCook && !questDeck.accepted;
+    const isChoosing = !pendingCook;
     const canPass = isChoosing && questDeck.picks.length > 1;
-    const isAccepted = !pendingCook && Boolean(questDeck.accepted);
-    const isCompleted = isAccepted && state.cooks[targetRecipe.id]?.lastCooked === today;
     const suggestedSkill = targetRecipe.skillIds
       .map((id) => skills.find((skill) => skill.id === id))
       .filter(Boolean)
@@ -463,44 +459,38 @@
     const skillXpReward = 18 + targetRecipe.stage * 2;
     const remainingRecipeXp = Math.max(0, targetRecipe.xp - (pendingCook?.bankedXp || 0));
     const targetCook = state.cooks[targetRecipe.id];
-    const earnsFirstDish = !targetCook?.count || (isCompleted && targetCook.count === 1 && targetCook.firstCooked === today);
+    const earnsFirstDish = !targetCook?.count;
     const firstCookBonus = earnsFirstDish ? 20 : 0;
     const questXpReward = (pendingCook ? remainingRecipeXp : targetRecipe.xp) + firstCookBonus;
     const collectionReward = earnsFirstDish ? "New dish card" : "Cook count +1";
     let heading;
     let comment;
     if (pendingCook) {
-      heading = `Hey ${playerName}, ${targetRecipe.name} is waiting for us!`;
-      comment = `You already finished ${pendingCook.completed} of ${targetRecipe.steps.length} safe checkpoints and banked ${pendingCook.bankedXp} XP. Let us finish the dish, practise ${suggestedSkill.name}, and collect the remaining reward.`;
-    } else if (isCompleted) {
-      heading = `${playerName}, today's quest is complete!`;
-      comment = `${targetRecipe.name} is in your dish collection, ${suggestedSkill.name} gained XP, and your reward is banked. That is a real kitchen win.`;
-    } else if (isAccepted) {
-      heading = `${playerName}, your quest is locked in.`;
-      comment = `You chose my ${targetRecipe.name} recommendation. It trains ${suggestedSkill.name}, fits a ${targetRecipe.minutes}-minute session, and pays out ${questXpReward} XP when every checkpoint is complete.`;
+      heading = `Hey ${playerName}, ${targetRecipe.name} is waiting for you.`;
+      comment = `You already finished ${pendingCook.completed} of ${targetRecipe.steps.length} checkpoints and banked ${pendingCook.bankedXp} XP. Finish whenever you are ready and collect the remaining reward.`;
     } else if (totalCooks === 0) {
       heading = `Hi ${playerName}! Here's an easy first dish.`;
       comment = `${targetRecipe.name} trains ${suggestedSkill.name} in about ${targetRecipe.minutes} minutes.${canPass ? " Swipe right if you're up for the challenge! Swipe left and I'll find you something else to make 🥄" : " Accept it when you are ready."}`;
     } else {
-      heading = `${playerName}, I have a quest recommendation for you.`;
-      comment = `I picked ${targetRecipe.name} because ${suggestedSkill.name} is the least-practised skill in this dish.${canPass ? " Swipe right to make it today's quest, or left to see my next pick." : " Make it today's quest when you are ready."}`;
+      heading = `${playerName}, here's a dish idea for today.`;
+      comment = `I picked ${targetRecipe.name} because ${suggestedSkill.name} is the least-practised skill in this dish.${canPass ? " Swipe right to cook it, or left for another idea." : " Cook it whenever you are ready."}`;
     }
     return `
       <section class="aanya-companion" aria-labelledby="aanya-companion-heading">
         <div class="aanya-companion-art"><img src="${image}" alt="Chibi Aanya guiding today's cooking plan"></div>
         <div class="aanya-companion-copy">
-          <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's quest deck</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA RECOMMENDS</span></div>
+          <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's dish ideas</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA RECOMMENDS</span></div>
           <div class="aanya-speech"><span aria-hidden="true">💬</span><p>${escapeHtml(comment)}</p></div>
-          ${!pendingCook && !isCompleted ? questContextPicker() : ""}
+          ${!pendingCook ? questContextPicker() : ""}
           <div class="quest-deck-status">
-            <strong>${pendingCook ? "QUEST IN PROGRESS" : isCompleted ? "QUEST COMPLETE" : isAccepted ? "TODAY'S QUEST LOCKED" : `RECOMMENDATION ${questDeck.index + 1} OF ${questDeck.picks.length}`}</strong>
-            ${isChoosing ? `<span class="quest-deck-dots" aria-label="Recommendation ${questDeck.index + 1} of ${questDeck.picks.length}">${questDeck.picks.map((recipe, index) => `<i class="${index === questDeck.index ? "is-active" : ""}" aria-hidden="true"></i>`).join("")}</span>` : `<span class="quest-deck-lock" aria-hidden="true">${isCompleted ? "✓" : "🔒"}</span>`}
+            <strong>${pendingCook ? "COOK IN PROGRESS" : `AANYA'S IDEA ${questDeck.index + 1} OF ${questDeck.picks.length}`}</strong>
+            ${isChoosing ? `<span class="quest-deck-dots" aria-label="Aanya idea ${questDeck.index + 1} of ${questDeck.picks.length}">${questDeck.picks.map((recipe, index) => `<i class="${index === questDeck.index ? "is-active" : ""}" aria-hidden="true"></i>`).join("")}</span>` : `<span class="quest-deck-lock" aria-hidden="true">⏳</span>`}
           </div>
           <div class="quest-card-stack ${isChoosing ? "is-choosing" : "is-locked"}">
             ${isChoosing ? '<span class="quest-card-shadow quest-card-shadow--back" aria-hidden="true"></span><span class="quest-card-shadow quest-card-shadow--middle" aria-hidden="true"></span>' : ""}
-            <article class="quest-swipe-card ${isAccepted || pendingCook ? "is-locked" : ""} ${isCompleted ? "is-complete" : ""}" ${isChoosing ? `data-quest-swipe-card="${targetRecipe.id}" tabindex="0" aria-describedby="quest-swipe-instructions"` : ""}>
-              <span class="quest-swipe-verdict quest-swipe-verdict--pass" aria-hidden="true">NOT TODAY</span>
-              <span class="quest-swipe-verdict quest-swipe-verdict--accept" aria-hidden="true">QUEST ON!</span>
+            <article class="quest-swipe-card ${pendingCook ? "is-locked" : ""}" ${isChoosing ? `data-quest-swipe-card="${targetRecipe.id}" tabindex="0" aria-describedby="quest-swipe-instructions"` : ""}>
+              <span class="quest-swipe-verdict quest-swipe-verdict--pass" aria-hidden="true">ANOTHER IDEA</span>
+              <span class="quest-swipe-verdict quest-swipe-verdict--accept" aria-hidden="true">COOK THIS</span>
               <span class="quest-aanya-stamp"><span aria-hidden="true">👩🏽‍🍳</span><strong>Aanya recommends</strong></span>
               ${picture(targetRecipe, "quest")}
               <div class="quest-card-copy">
@@ -509,21 +499,22 @@
                 ${recipeMeta(targetRecipe)}
                 <div class="quest-card-outcomes">
                   <div><small>SKILL TO TRAIN</small><strong>${suggestedSkill.icon} ${escapeHtml(suggestedSkill.name)}</strong><span>${escapeHtml(suggestedSkillState.name)} · ${suggestedSkillXp} XP now</span></div>
-                  <div class="quest-card-reward"><small>QUEST REWARD</small><strong>+${questXpReward} XP</strong><span>+${skillXpReward} skill XP · ${collectionReward}</span></div>
+                  <div class="quest-card-reward"><small>COOKING REWARD</small><strong>+${questXpReward} XP</strong><span>+${skillXpReward} skill XP · ${collectionReward}</span></div>
                 </div>
+                ${isChoosing ? `<p class="quest-swipe-instructions" id="quest-swipe-instructions">${canPass ? "Drag this card: ← another idea · cook this →" : "Drag this card right to cook this →"}</p>` : ""}
               </div>
             </article>
           </div>
           ${isChoosing ? `
             <div class="quest-swipe-actions ${canPass ? "" : "quest-swipe-actions--single"}">
-              ${canPass ? `<button class="quest-swipe-button quest-swipe-button--pass" type="button" data-pass-daily-quest aria-label="Pass on ${escapeHtml(targetRecipe.name)} and show another recommendation"><span aria-hidden="true">×</span><strong>Not today</strong></button>` : ""}
-              <button class="quest-swipe-button quest-swipe-button--accept" type="button" data-accept-daily-quest="${targetRecipe.id}" aria-label="Accept ${escapeHtml(targetRecipe.name)} as today's quest"><span aria-hidden="true">✓</span><strong>Accept quest</strong></button>
+              ${canPass ? `<button class="quest-swipe-button quest-swipe-button--pass" type="button" data-pass-daily-quest aria-label="Show another dish idea instead of ${escapeHtml(targetRecipe.name)}"><span aria-hidden="true">←</span><strong>Another idea</strong></button>` : ""}
+              <button class="quest-swipe-button quest-swipe-button--accept" type="button" data-accept-daily-quest="${targetRecipe.id}" aria-label="Open ${escapeHtml(targetRecipe.name)} to cook it"><span aria-hidden="true">→</span><strong>Cook this</strong></button>
             </div>
-            <p class="quest-swipe-instructions" id="quest-swipe-instructions">${canPass ? "<span>← Swipe left to pass</span><span>Swipe right to accept →</span>" : "<span>Swipe right to accept →</span>"}</p>` : `
+            <button class="text-button aanya-browse-dishes" type="button" data-route="dishes">Or browse every dish →</button>` : `
             <div class="aanya-plan-progress"><span>Next badge</span><strong>${badge.icon} ${escapeHtml(badge.name)}</strong><span>${badgeStatus.value}/${badge.target}</span></div>
             <div class="aanya-plan-actions">
-              ${isCompleted ? `<button class="button button-primary aanya-action" type="button" data-route="dishes">View earned dish card →</button>` : `<button class="button button-primary aanya-action" type="button" data-open-recipe="${targetRecipe.id}">${pendingCook ? "Continue" : "Start"} ${escapeHtml(targetRecipe.name)} →</button>`}
-              ${isAccepted && !isCompleted ? '<button class="text-button" type="button" data-reopen-daily-quest>Choose a different quest</button>' : `<button class="text-button" type="button" data-skill-dishes="${suggestedSkill.id}">Train ${escapeHtml(suggestedSkill.name)} again</button>`}
+              <button class="button button-primary aanya-action" type="button" data-open-recipe="${targetRecipe.id}">Continue ${escapeHtml(targetRecipe.name)} →</button>
+              <button class="text-button" type="button" data-route="dishes">Browse every dish →</button>
             </div>`}
           </div>
       </section>`;
@@ -614,7 +605,7 @@
         label: "Dishes",
         reason: dishGrowth
           ? `${dishGrowth} new dish ${dishGrowth === 1 ? "card" : "cards"} to view`
-          : cooked.length ? `${cooked.length} collected, choose one to revisit` : "See where completed dishes collect"
+          : cooked.length ? `${cooked.length} made, browse every recipe` : `Browse all ${recipes.filter((recipe) => dietMatches(recipe, state.dietPreference)).length} recipes`
       },
       {
         route: "skills",
@@ -775,15 +766,16 @@
 
   function renderSkills() {
     const container = document.querySelector("#view-skills");
-    const learned = skills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
-    const strongest = [...skills].sort((a, b) => (state.skillXp[b.id] || 0) - (state.skillXp[a.id] || 0))[0];
+    const visibleSkillSet = availableSkills();
+    const learned = visibleSkillSet.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
+    const strongest = [...visibleSkillSet].sort((a, b) => (state.skillXp[b.id] || 0) - (state.skillXp[a.id] || 0))[0] || skills[0];
     const visibleSkills = filteredSkills();
-    if (!selectedSkillCluster) selectedSkillCluster = strongest.cluster;
+    if (!selectedSkillCluster || !visibleSkillSet.some((skill) => skill.cluster === selectedSkillCluster)) selectedSkillCluster = strongest.cluster;
 
     container.innerHTML = `
       <header class="page-head">
         <div><p class="eyebrow">Your capability map</p><h1 id="skills-heading">Micro-skills learned</h1><p>Every small kitchen action has its own progression. Skills grow only when a completed dish uses them.</p></div>
-        <div class="summary-chip"><strong>${learned} / ${skills.length}</strong><span>micro-skills discovered</span></div>
+        <div class="summary-chip"><strong>${learned} / ${visibleSkillSet.length}</strong><span>skills for your preference</span></div>
       </header>
 
       <section class="skill-hero">
@@ -812,11 +804,12 @@
   }
 
   function renderSkillTree() {
-    const clusters = [...new Set(skills.map((skill) => skill.cluster))];
+    const visibleSkillSet = availableSkills();
+    const clusters = [...new Set(visibleSkillSet.map((skill) => skill.cluster))];
     const centre = { x: 500, y: 310 };
     const nodes = clusters.map((cluster, index) => {
       const angle = (-Math.PI / 2) + (index * Math.PI * 2) / clusters.length;
-      const clusterSkills = skills.filter((skill) => skill.cluster === cluster);
+      const clusterSkills = visibleSkillSet.filter((skill) => skill.cluster === cluster);
       const practised = clusterSkills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
       return {
         cluster,
@@ -832,7 +825,7 @@
       <section class="skill-tree-shell" aria-labelledby="tree-title">
         <div class="tree-heading">
           <div><p class="eyebrow">Connected capability tree</p><h2 id="tree-title">Kitchen Confidence</h2><p>Choose a coloured skill family to inspect its micro-skill branch.</p></div>
-          <div class="tree-total"><strong>${skills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length}</strong><span>nodes lit</span></div>
+          <div class="tree-total"><strong>${visibleSkillSet.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length}</strong><span>nodes lit</span></div>
         </div>
 
         <div class="skill-tree-scroll" tabindex="0" aria-label="Scrollable overview of the cooking skill tree">
@@ -840,7 +833,7 @@
             <svg class="tree-connections" viewBox="0 0 1000 620" aria-hidden="true" preserveAspectRatio="none">
               ${nodes.map((node) => `<line class="${node.practised ? "is-lit" : ""}" x1="${centre.x}" y1="${centre.y}" x2="${node.x}" y2="${node.y}" style="--edge-colour:${node.colour}"></line>`).join("")}
             </svg>
-            <div class="tree-root" style="left:${centre.x / 10}%;top:${centre.y / 6.2}%"><span>🧑‍🍳</span><strong>Kitchen<br>Confidence</strong><small>${Math.round((skills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length / skills.length) * 100)}% conquered</small></div>
+            <div class="tree-root" style="left:${centre.x / 10}%;top:${centre.y / 6.2}%"><span>🧑‍🍳</span><strong>Kitchen<br>Confidence</strong><small>${Math.round((visibleSkillSet.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length / visibleSkillSet.length) * 100)}% conquered</small></div>
             ${nodes.map((node) => `
               <button class="skill-system-node ${selectedSkillCluster === node.cluster ? "is-selected" : ""} ${node.practised ? "is-lit" : ""}" type="button" data-graph-cluster="${escapeHtml(node.cluster)}" style="left:${node.x / 10}%;top:${node.y / 6.2}%;--cluster-colour:${node.colour}" aria-label="Open ${escapeHtml(node.cluster)}, ${node.practised} of ${node.total} practised">
                 <span>${node.icon}</span><strong>${escapeHtml(node.cluster)}</strong><small>${node.practised}/${node.total}</small>
@@ -862,7 +855,7 @@
   }
 
   function renderSelectedSkillBranch() {
-    const clusterSkills = skills.filter((skill) => skill.cluster === selectedSkillCluster);
+    const clusterSkills = availableSkills().filter((skill) => skill.cluster === selectedSkillCluster);
     const style = clusterStyles[selectedSkillCluster] || { colour: "#ff6b35", icon: "⚡" };
     const practised = clusterSkills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
     return `
@@ -890,7 +883,7 @@
 
   function filteredSkills() {
     const search = skillFilters.search.trim().toLowerCase();
-    return skills.filter((skill) => {
+    return availableSkills().filter((skill) => {
       const xp = state.skillXp[skill.id] || 0;
       const status = skillState(xp);
       const matchesSearch = !search || [skill.name, skill.description, skill.cluster].join(" ").toLowerCase().includes(search);
@@ -904,11 +897,12 @@
 
   function renderSkillClusters() {
     const visibleSkills = filteredSkills();
-    const clusters = [...new Set(skills.map((skill) => skill.cluster))];
+    const available = availableSkills();
+    const clusters = [...new Set(available.map((skill) => skill.cluster))];
     const markup = clusters.map((cluster) => {
       const clusterSkills = visibleSkills.filter((skill) => skill.cluster === cluster);
       if (!clusterSkills.length) return "";
-      const allClusterSkills = skills.filter((skill) => skill.cluster === cluster);
+      const allClusterSkills = available.filter((skill) => skill.cluster === cluster);
       const practised = allClusterSkills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
       return `
         <section class="skill-cluster">
@@ -935,14 +929,19 @@
     const cooked = completedRecipeIds()
       .map(getRecipe)
       .filter(Boolean)
+      .filter((recipe) => dietMatches(recipe, state.dietPreference))
       .sort((a, b) => (state.cooks[b.id]?.lastCooked || "").localeCompare(state.cooks[a.id]?.lastCooked || ""));
+    const available = filteredDishes();
 
     container.innerHTML = `
       <header class="page-head">
-        <div><p class="eyebrow">Your edible collection</p><h1 id="dishes-heading">Dishes cooked</h1><p>Every card marks something you cooked and learned from.</p></div>
-        <div class="summary-chip"><strong>${cooked.length} / ${recipes.length}</strong><span>dish cards found</span></div>
+        <div><p class="eyebrow">Cook anything you feel like</p><h1 id="dishes-heading">Dishes</h1><p>Aanya's idea is optional. Pick any dish that fits your preference and earn the same rewards when you cook it.</p></div>
+        <div class="summary-chip"><strong>${cooked.length} / ${recipes.filter((recipe) => dietMatches(recipe, state.dietPreference)).length}</strong><span>dishes made</span></div>
       </header>
-      ${cooked.length ? `
+
+      <section class="dish-made-section" aria-labelledby="dishes-made-heading">
+        <div class="section-heading"><div><p class="eyebrow">Made by you</p><h2 id="dishes-made-heading">Your cooked dishes</h2></div><span class="tiny-tag">${cooked.length} made</span></div>
+        ${cooked.length ? `
         <div class="dish-collection-grid">
           ${cooked.map((recipe) => `
             <article class="collection-card">
@@ -955,18 +954,28 @@
                 <div class="collection-bottom"><strong>Cooked ×${state.cooks[recipe.id].count}</strong><button class="text-button" type="button" data-open-recipe="${recipe.id}">Cook again →</button></div>
               </div>
             </article>`).join("")}
-        </div>` : `
-        <section class="empty-state">
-          <div class="empty-art" aria-hidden="true">🍽️</div>
-          <p class="eyebrow">Collection empty</p>
-          <h2>Your first dish card is one tiny cook away.</h2>
-          <p>Start with the two-minute mission. It genuinely counts.</p>
-          <button class="button button-primary" type="button" data-route="home">Go to today's quest</button>
-        </section>`}`;
+        </div>` : `<div class="empty-state compact-empty"><div class="empty-art" aria-hidden="true">🍽️</div><h3>Your first cooked dish will appear here.</h3><p>Choose anything from the full recipe list below.</p></div>`}
+      </section>
+
+      <section class="dish-library" aria-labelledby="dish-library-heading">
+        <div class="section-heading"><div><p class="eyebrow">Every compatible recipe</p><h2 id="dish-library-heading">Browse all dishes</h2><p>${recipes.filter((recipe) => dietMatches(recipe, state.dietPreference)).length} dishes fit your ${escapeHtml(state.dietPreference === "Non-vegetarian" ? "Non-veg" : state.dietPreference)} preference.</p></div></div>
+        <label class="search-field dish-search"><span aria-hidden="true">⌕</span><input id="dishes-search" type="search" value="${escapeHtml(dishFilters.search)}" placeholder="Search dishes, cuisines, regions…" aria-label="Search dishes"></label>
+        <strong class="dish-result-count" id="dish-result-count">${available.length} shown</strong>
+        <div class="compact-card-grid" id="dish-library-grid">${available.map(compactRecipeCard).join("") || `<div class="empty-state compact-empty"><div class="empty-art">🔎</div><h3>No dishes match that search.</h3></div>`}</div>
+      </section>`;
+  }
+
+  function filteredDishes() {
+    const search = dishFilters.search.trim().toLowerCase();
+    return recipes.filter((recipe) => {
+      const matchesDiet = dietMatches(recipe, state.dietPreference);
+      const matchesSearch = !search || [recipe.name, recipe.cuisine, recipe.region, recipe.description, recipe.tags?.join(" ")].join(" ").toLowerCase().includes(search);
+      return matchesDiet && matchesSearch;
+    });
   }
 
   function themedCollectionProgress(collection) {
-    const cooked = completedRecipeIds().map(getRecipe).filter(Boolean);
+    const cooked = completedRecipeIds().map(getRecipe).filter(Boolean).filter((recipe) => dietMatches(recipe, state.dietPreference));
     if (collection.tag === "world") {
       return new Set(cooked.filter((recipe) => recipe.country && recipe.country !== "India").map((recipe) => recipe.country)).size;
     }
@@ -974,6 +983,13 @@
       return cooked.filter((recipe) => recipe.region === "South India" && recipe.tags?.includes("breakfast")).length;
     }
     return cooked.filter((recipe) => recipe.tags?.includes(collection.tag)).length;
+  }
+
+  function eligibleMapItems(items) {
+    return items.filter((item) => {
+      const recipe = getRecipe(item.dishId);
+      return recipe && dietMatches(recipe, state.dietPreference);
+    });
   }
 
   function renderMapMarkers(items, type) {
@@ -1060,8 +1076,10 @@
 
   function renderCollections() {
     const container = document.querySelector("#view-collections");
-    const indiaComplete = collectionConfig.indiaStates.filter((item) => state.cooks[item.dishId]?.count).length;
-    const worldComplete = collectionConfig.worldCountries.filter((item) => state.cooks[item.dishId]?.count).length;
+    const indiaItems = eligibleMapItems(collectionConfig.indiaStates);
+    const worldItems = eligibleMapItems(collectionConfig.worldCountries);
+    const indiaComplete = indiaItems.filter((item) => state.cooks[item.dishId]?.count).length;
+    const worldComplete = worldItems.filter((item) => state.cooks[item.dishId]?.count).length;
     const themedComplete = collectionConfig.themed.filter((item) => themedCollectionProgress(item) >= item.target).length;
     const titleComplete = unlockedTitles().length;
 
@@ -1072,8 +1090,8 @@
       </header>
 
       <section class="collection-overview">
-        <div><span>🇮🇳</span><strong>${indiaComplete}/28</strong><small>Indian states</small></div>
-        <div><span>🌍</span><strong>${worldComplete}/${collectionConfig.worldCountries.length}</strong><small>World passport</small></div>
+        <div><span>🇮🇳</span><strong>${indiaComplete}/${indiaItems.length}</strong><small>Indian states</small></div>
+        <div><span>🌍</span><strong>${worldComplete}/${worldItems.length}</strong><small>World passport</small></div>
         <div><span>🏅</span><strong>${themedComplete}/${collectionConfig.themed.length}</strong><small>Sets completed</small></div>
         <div><span>🍽️</span><strong>${completedRecipeIds().length}/${recipes.length}</strong><small>Dish cards</small></div>
         <div><span>👑</span><strong>${titleComplete}/${titleCatalog.length}</strong><small>Titles earned</small></div>
@@ -1083,31 +1101,31 @@
 
       <section class="map-collection map-collection--india">
         <div class="map-collection-heading">
-          <div><p class="eyebrow">Grand collection 01</p><h2>India State Plate</h2><p>Cook one associated dish from every state. Labels indicate association, not exclusive ownership.</p></div>
-          <div class="map-collection-score"><strong>${indiaComplete}/28</strong><span>states tasted</span></div>
+          <div><p class="eyebrow">Grand collection 01</p><h2>India State Plate</h2><p>Cook one compatible associated dish from every state. Labels indicate association, not exclusive ownership.</p></div>
+          <div class="map-collection-score"><strong>${indiaComplete}/${indiaItems.length}</strong><span>states tasted</span></div>
         </div>
         <div class="map-layout">
           <div class="map-visual map-visual--india">
             <img src="${collectionConfig.maps.india.url}" alt="Outline map of India" loading="lazy" referrerpolicy="no-referrer">
-            ${renderMapMarkers(collectionConfig.indiaStates, "india")}
+            ${renderMapMarkers(indiaItems, "india")}
             <a class="map-credit" href="${collectionConfig.maps.india.page}" target="_blank" rel="noreferrer">${escapeHtml(collectionConfig.maps.india.credit)} ↗</a>
           </div>
-          <div class="map-checklist" aria-label="Indian state dishes">${renderMapChecklist(collectionConfig.indiaStates)}</div>
+          <div class="map-checklist" aria-label="Indian state dishes">${renderMapChecklist(indiaItems)}</div>
         </div>
       </section>
 
       <section class="map-collection map-collection--world">
         <div class="map-collection-heading">
-          <div><p class="eyebrow">Grand collection 02</p><h2>World Kitchen Passport</h2><p>Start with accessible stovetop dishes, then unlock more ambitious international recipes.</p></div>
-          <div class="map-collection-score"><strong>${worldComplete}/${collectionConfig.worldCountries.length}</strong><span>passport stamps</span></div>
+          <div><p class="eyebrow">Grand collection 02</p><h2>World Kitchen Passport</h2><p>Start with accessible compatible dishes, then unlock more ambitious international recipes.</p></div>
+          <div class="map-collection-score"><strong>${worldComplete}/${worldItems.length}</strong><span>passport stamps</span></div>
         </div>
         <div class="world-map-stack">
           <div class="map-visual map-visual--world">
             <img src="${collectionConfig.maps.world.url}" alt="Blank world map with country borders" loading="lazy" referrerpolicy="no-referrer">
-            ${renderMapMarkers(collectionConfig.worldCountries, "world")}
+            ${renderMapMarkers(worldItems, "world")}
             <a class="map-credit" href="${collectionConfig.maps.world.page}" target="_blank" rel="noreferrer">${escapeHtml(collectionConfig.maps.world.credit)} ↗</a>
           </div>
-          <div class="passport-strip" aria-label="World cuisine dishes">${renderMapChecklist(collectionConfig.worldCountries)}</div>
+          <div class="passport-strip" aria-label="World cuisine dishes">${renderMapChecklist(worldItems)}</div>
         </div>
       </section>
 
@@ -1324,7 +1342,7 @@
           <div><strong id="checkpoint-xp-count">+${bankedXp}/${xpCap} XP</strong><span>banked</span></div>
         </div>
         <div class="checkpoint-progress"><span id="checkpoint-progress-fill" style="width:${Math.round((checked.size / recipe.steps.length) * 100)}%"></span></div>
-        <div class="mission-heading"><div><p class="eyebrow">Selectable mission checklist</p><h3>Do the action. Then tap when your hands are safe.</h3></div><span id="step-count">${checked.size}/${recipe.steps.length}</span></div>
+        <div class="mission-heading"><div><p class="eyebrow">Recipe checklist</p><h3>Cook at your own pace.</h3></div><span id="step-count">${checked.size}/${recipe.steps.length}</span></div>
         ${recipe.steps.map((step, index) => `
           <button class="mission-step ${checked.has(index) ? "is-done" : ""}" type="button" data-toggle-step="${index}" data-recipe-id="${recipe.id}">
             <span>${checked.has(index) ? "✓" : index + 1}</span><strong>${escapeHtml(step)}</strong><small>${claimed.has(index) ? "XP banked" : `+${checkpointXpForStep(recipe, index)} XP`}</small>
@@ -1431,10 +1449,10 @@
     const skill = skills.find((item) => item.id === skillId);
     routeTo("roadmap");
     const path = document.querySelector("#roadmap-path");
-    const matching = recipes.filter((recipe) => recipe.skillIds.includes(skillId));
+    const matching = recipes.filter((recipe) => dietMatches(recipe, state.dietPreference) && recipe.skillIds.includes(skillId));
     path.innerHTML = `
       <section class="practice-results">
-        <div class="section-heading"><div><p class="eyebrow">Practice path</p><h2>${skill.icon} ${escapeHtml(skill.name)}</h2><p>${escapeHtml(skill.description)}</p></div><button class="text-button" id="show-all-roadmap" type="button">Show full roadmap →</button></div>
+        <div class="section-heading"><div><p class="eyebrow">Recipes that teach this skill</p><h2>${skill.icon} ${escapeHtml(skill.name)}</h2><p>${escapeHtml(skill.description)}</p></div><button class="text-button" id="show-all-roadmap" type="button">Show full roadmap →</button></div>
         <div class="compact-card-grid">${matching.slice(0, 8).map(compactRecipeCard).join("")}</div>
       </section>`;
   }
@@ -1513,6 +1531,9 @@
       roadmapFilters.diet = state.dietPreference;
       saveState();
       renderHome();
+      renderSkills();
+      renderDishes();
+      renderCollections();
       renderRoadmap();
       renderGlobalDietFilter();
     }
@@ -1528,9 +1549,6 @@
 
     const acceptQuestButton = event.target.closest("[data-accept-daily-quest]");
     if (acceptQuestButton) animateQuestChoice(document.querySelector("[data-quest-swipe-card]"), "accept");
-
-    const reopenQuestButton = event.target.closest("[data-reopen-daily-quest]");
-    if (reopenQuestButton) reopenDailyQuestDeck();
 
     const trackButton = event.target.closest("[data-roadmap-track]");
     if (trackButton) {
@@ -1625,6 +1643,13 @@
       skillFilters.search = event.target.value;
       document.querySelector("#skill-cluster-list").innerHTML = renderSkillClusters();
       document.querySelector("#skill-result-count").textContent = `${filteredSkills().length} shown`;
+    }
+    if (event.target.matches("#dishes-search")) {
+      dishFilters.search = event.target.value;
+      const available = filteredDishes();
+      document.querySelector("#dish-library-grid").innerHTML = available.map(compactRecipeCard).join("") || `<div class="empty-state compact-empty"><div class="empty-art">🔎</div><h3>No dishes match that search.</h3></div>`;
+      document.querySelector("#dish-result-count").textContent = `${available.length} shown`;
+      wireImageFallbacks(document.querySelector("#dish-library-grid"));
     }
     if (event.target.matches("#title-search")) {
       titleFilters.search = event.target.value;

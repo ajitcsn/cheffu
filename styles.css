@@ -4855,3 +4855,52 @@ main {
   .skill-first-focus .button, .skill-first-focus .text-button { grid-column: 1 / -1; width: 100%; }
   .title-preview-grid, .recipe-readiness-grid { grid-template-columns: 1fr; }
 }
+
+.settings-diet {
+  display: grid;
+  gap: 7px;
+  margin: 18px 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #f8faf5;
+}
+
+.settings-diet > strong { font-size: 0.82rem; }
+.settings-diet > span { color: var(--ink-soft); font-size: 0.72rem; }
+.settings-diet .diet-segment { width: 100%; }
+
+.dish-made-section,
+.dish-library {
+  margin-top: 30px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: var(--shadow-small);
+}
+
+.dish-library { background: linear-gradient(145deg, #effbe5, #fff); }
+.dish-library .section-heading { margin-bottom: 14px; }
+.dish-library .section-heading p { max-width: 550px; margin: 4px 0 0; color: var(--ink-soft); font-size: 0.8rem; }
+.dish-search { max-width: 560px; margin-bottom: 10px; }
+.dish-result-count { display: block; margin: 0 0 14px; color: var(--ink-soft); font-size: 0.72rem; }
+
+.quest-card-copy .quest-swipe-instructions {
+  display: block;
+  margin: 12px 0 0;
+  padding: 8px 10px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: #f8faf5;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.quest-swipe-verdict--pass { color: #9a6900; background: #fff6cb; }
+.aanya-browse-dishes { align-self: center; }
+
+@media (max-width: 700px) {
+  .dish-made-section,
+  .dish-library { margin-top: 20px; padding: 16px; }
+}

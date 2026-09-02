@@ -62,12 +62,12 @@ for (const asset of ["aanya-welcome.png", "aanya-skills.png", "aanya-streak.png"
   assert.ok(fs.existsSync(new URL(`./${asset}`, import.meta.url)), `Home companion asset missing: ${asset}`);
   assert.ok(appSource.includes(asset), `Home companion must use ${asset}`);
 }
-assert.ok(appSource.includes("aanyaHomePanel") && appSource.includes("Aanya's quest deck"), "Home must include one reactive Aanya recommendation");
+assert.ok(appSource.includes("aanyaHomePanel") && appSource.includes("Aanya's dish ideas"), "Home must include one reactive Aanya recommendation");
 assert.ok(appSource.includes("AANYA RECOMMENDS") && appSource.includes("Aanya recommends"), "The quest card must visibly identify Aanya as its recommender");
-assert.ok(appSource.includes("quest-swipe-card") && appSource.includes("data-pass-daily-quest") && appSource.includes("data-accept-daily-quest"), "Home must expose one swipeable daily quest with accessible action buttons");
-assert.ok(appSource.includes("dailyQuestDeck") && appSource.includes("acceptedRecipeId") && appSource.includes("data-reopen-daily-quest"), "The accepted daily quest must persist and remain changeable before cooking");
-assert.ok(appSource.includes('addEventListener("pointerdown"') && appSource.includes('event.key === "ArrowRight"'), "Quest selection must support touch, pointer, and keyboard input");
-assert.ok(appSource.includes("SKILL TO TRAIN") && appSource.includes("QUEST REWARD"), "Each quest card must connect the dish to its skill and reward");
+assert.ok(appSource.includes("quest-swipe-card") && appSource.includes("data-pass-daily-quest") && appSource.includes("data-accept-daily-quest"), "Home must expose one swipeable Aanya suggestion with accessible action buttons");
+assert.ok(appSource.includes("dailyQuestDeck") && appSource.includes("ANOTHER IDEA") && appSource.includes("COOK THIS"), "Aanya's suggestion deck must have clear left and right outcomes");
+assert.ok(appSource.includes('addEventListener("pointerdown"') && appSource.includes('event.key === "ArrowRight"'), "Aanya suggestions must support touch, pointer, and keyboard input");
+assert.ok(appSource.includes("SKILL TO TRAIN") && appSource.includes("COOKING REWARD"), "Each suggestion card must connect the dish to its skill and reward");
 assert.ok(!appSource.includes('<section class="daily-card">'), "Home must not duplicate Aanya's recommendation in a separate daily card");
 assert.ok(!appSource.includes("Two side quests") && !appSource.includes("picks.slice(1)"), "Home must show one recommendation card at a time");
 assert.ok(appSource.includes("homeRouteHub") && appSource.includes("Quick kitchen check-ins"), "Home must link to the other main pages with contextual prompts");
@@ -81,6 +81,10 @@ assert.ok(aanyaVariationFiles.every((file) => appSource.includes(`aanya-variatio
 assert.ok(!appSource.includes("data-aanya-pose") && !appSource.includes("data-aanya-cycle") && !appSource.includes("More moods"), "Aanya commentary must not expose manual mood choices");
 assert.ok(!/Ayyo|Seri/.test(appSource), "Aanya's dialogue must use a friendly, region-neutral voice");
 assert.ok(!appSource.includes("TODAY'S 1× QUEST") && appSource.includes("AANYA RECOMMENDS"), "Daily recommendation wording must stay clear");
+assert.ok(index.includes('class="settings-diet"') && !index.includes('class="topbar-diet"'), "Diet preference must live in Settings instead of the top bar");
+assert.ok(appSource.includes("function availableSkills") && appSource.includes("function eligibleMapItems"), "Diet preference must filter Skills and recipe-linked Collections");
+assert.ok(appSource.includes('id="dishes-search"') && appSource.includes("Browse all dishes"), "Dishes must expose a searchable recipe library");
+assert.ok(!appSource.includes("Do the action. Then tap when your hands are safe."), "Recipe checklist heading must avoid the removed safety-action line");
 assert.ok(!dataSource.includes("Boot Sequence") && dataSource.includes("Kitchen First Steps"), "Beginner roadmap wording must use plain language");
 assert.ok(!styles.includes('.nav-item[data-route="dishes"]'), "Dishes navigation must not have a special highlight");
 assert.ok(fs.existsSync(new URL("./cheffu-wordmark.png", import.meta.url)), "Cheffu must include the illustrated wordmark");
