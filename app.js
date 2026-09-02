@@ -57,9 +57,8 @@
   let roadmapFilters = { search: "", region: "all", diet: state.dietPreference, track: "morning" };
   let skillFilters = { search: "", status: "all" };
   let titleFilters = { search: "", category: "all" };
-  let skillView = window.matchMedia("(max-width: 700px)").matches ? "list" : "tree";
+  let skillView = "tree";
   let selectedSkillCluster = null;
-  let skillLibraryExpanded = false;
   let titleVaultExpanded = false;
   let roadmapCatalogueExpanded = false;
   const expandedRoadmapStages = new Set();
@@ -781,23 +780,6 @@
     const visibleSkills = filteredSkills();
     if (!selectedSkillCluster) selectedSkillCluster = strongest.cluster;
 
-    if (learned === 0 && !skillLibraryExpanded) {
-      const questRecipe = dailyQuestDeck().recipe;
-      const recommended = questRecipe.skillIds.map((id) => skills.find((skill) => skill.id === id)).filter(Boolean)[0] || skills[0];
-      container.innerHTML = `
-        <header class="page-head">
-          <div><p class="eyebrow">Your first capability</p><h1 id="skills-heading">Start with one kitchen move</h1><p>Skills light up as you cook. There is no homework list to study first.</p></div>
-          <div class="summary-chip"><strong>0 / ${skills.length}</strong><span>micro-skills discovered</span></div>
-        </header>
-        <section class="skill-first-focus">
-          <div class="skill-hero-icon">${recommended.icon}</div>
-          <div><p class="eyebrow">Aanya's next skill</p><h2>${escapeHtml(recommended.name)}</h2><p>${escapeHtml(questRecipe.name)} is your fastest way to practise it today.</p></div>
-          <button class="button button-primary" type="button" data-skill-dishes="${recommended.id}">See the practice mission</button>
-          <button class="text-button" type="button" data-open-skill-library>Explore all ${skills.length} skills</button>
-        </section>`;
-      return;
-    }
-
     container.innerHTML = `
       <header class="page-head">
         <div><p class="eyebrow">Your capability map</p><h1 id="skills-heading">Micro-skills learned</h1><p>Every small kitchen action has its own progression. Skills grow only when a completed dish uses them.</p></div>
@@ -807,7 +789,7 @@
       <section class="skill-hero">
         <div class="skill-hero-icon">${strongest.icon}</div>
         <div><p class="eyebrow">Strongest skill</p><h2>${escapeHtml(strongest.name)}</h2><p>${state.skillXp[strongest.id] || 0} skill XP · ${skillState(state.skillXp[strongest.id] || 0).name}</p></div>
-        <button class="button button-secondary" type="button" data-skill-dishes="${strongest.id}">Find a practice dish</button>
+        <button class="button button-secondary" type="button" data-skill-dishes="${strongest.id}">Find dishes that teach it</button>
       </section>
 
       <div class="skill-view-switch" role="group" aria-label="Choose skill view">
@@ -1592,11 +1574,6 @@
     const skillViewButton = event.target.closest("[data-skill-view]");
     if (skillViewButton) {
       skillView = skillViewButton.dataset.skillView;
-      renderSkills();
-    }
-
-    if (event.target.closest("[data-open-skill-library]")) {
-      skillLibraryExpanded = true;
       renderSkills();
     }
 

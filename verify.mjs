@@ -100,7 +100,7 @@ assert.ok(appSource.includes("playerName") && appSource.includes("openNameDialog
 assert.ok(index.includes("viewport-fit=cover"), "Mobile viewport must support device safe areas");
 assert.ok(styles.includes("--tap-target: 44px") && styles.includes("safe-area-inset-bottom"), "Mobile controls must retain 44px targets and safe-area spacing");
 assert.ok(styles.includes("overflow-x: clip") && styles.includes("@media (max-width: 700px)"), "Mobile layout must prevent page overflow and keep its phone breakpoint");
-assert.ok(appSource.includes('matchMedia("(max-width: 700px)").matches ? "list" : "tree"'), "Skills must default to the scan-friendly list on phones");
+assert.ok(appSource.includes('let skillView = "tree"'), "Skills must show the connected tree by default on every device");
 const guidedTrackIds = ["morning", "dal-legume", "veg-curry", "rice-onepot", "family-meals", "plant-protein-fast", "plant-protein-meals", "egg-meat-protein", "one-pot", "dough", "south-tiffin", "south-meals", "north", "west", "east-ne", "sweet", "pan-asian", "italian", "world-foundations", "world-showpieces"];
 assert.ok(guidedTrackIds.every((id) => appSource.includes(`id: "${id}"`)), "Roadmap must retain all 20 focused guided paths");
 
