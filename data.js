@@ -355,6 +355,61 @@
     r("chicken-biryani", "Hyderabadi-style chicken biryani", 7, "Hyderabadi", "South India", "Non-vegetarian", 90, 38, 250, "Showpiece", ["multitask", "rice", "spice", "doneness", "protein", "storage"], photos.biryani, "🏆", "Your capstone: marination, par-cooked rice, layering, sealed cooking, doneness, and service.", ["Read the whole recipe, marinate chicken in the refrigerator, and prepare every component.", "Cook the masala and chicken using separate clean tools for raw contact.", "Par-cook rice, layer with the chicken, and seal for dum cooking.", "Verify chicken temperature, rest, open away from your face, and fluff gently."], "Use a food thermometer for chicken. Prevent cross-contamination and refrigerate leftovers promptly.")
   ].filter(Boolean);
 
+  const starterRecipeGuides = {
+    "nimbu-pani": {
+      serves: "1 glass",
+      equipment: ["1 tall glass", "teaspoon", "citrus squeezer or small knife"],
+      ingredients: ["250 ml safe drinking water", "½ lemon", "1 tsp sugar", "1 small pinch salt"],
+      swaps: "Use lime instead of lemon. Leave out sugar for a sharper drink."
+    },
+    "lemon-water": {
+      serves: "1 glass",
+      equipment: ["1 tall glass", "teaspoon", "citrus squeezer or small knife"],
+      ingredients: ["250 ml safe drinking water", "½ lemon", "1 small pinch salt"],
+      swaps: "Use lime instead of lemon. Add a little sugar only if you want a sweeter drink."
+    },
+    "banana-badam-milkshake": {
+      serves: "1 large glass",
+      equipment: ["mixer or blender", "1 glass", "measuring cup"],
+      ingredients: ["1 medium banana", "250 ml milk or unsweetened soy milk", "6 soaked almonds", "1 pinch cardamom, optional"],
+      swaps: "Use any unsweetened plant milk. Skip almonds for a nut-free version."
+    },
+    "curd-peanut-bowl": {
+      serves: "1 bowl",
+      equipment: ["mixing bowl", "spoon", "small knife and board"],
+      ingredients: ["200 g plain curd or unsweetened plant yoghurt", "2 tbsp roasted peanuts", "½ small tomato", "1 pinch salt", "½ tsp roasted cumin powder, optional"],
+      swaps: "Use sunflower or pumpkin seeds for a peanut-free bowl."
+    },
+    "masala-chai": {
+      serves: "1 cup",
+      equipment: ["small saucepan", "strainer", "measuring cup"],
+      ingredients: ["180 ml water", "120 ml milk or soy milk", "1 tsp tea leaves", "1 to 2 tsp sugar", "1 small piece ginger or 1 pinch cardamom"],
+      swaps: "Use cardamom if you do not have ginger. Keep the milk and water ratio the same."
+    },
+    "boiled-eggs": {
+      serves: "1 person",
+      equipment: ["small saucepan with lid", "slotted spoon", "bowl of cool water"],
+      ingredients: ["2 eggs", "enough water to cover the eggs by 2 cm", "salt and pepper, optional"],
+      swaps: "No egg substitute applies here. Choose a plant-based starter mission if you avoid eggs."
+    },
+    "milk-oats": {
+      serves: "1 bowl",
+      equipment: ["small saucepan", "measuring cup", "spoon"],
+      ingredients: ["½ cup rolled oats", "250 ml milk or unsweetened soy milk", "1 pinch salt", "1 tsp sugar or honey, optional", "fruit or nuts, optional"],
+      swaps: "Use water for half the milk if you want a lighter bowl. Use seeds for a nut-free topping."
+    },
+    "plain-rice": {
+      serves: "2 small portions",
+      equipment: ["small saucepan with tight lid", "measuring cup", "fine sieve or bowl"],
+      ingredients: ["½ cup regular white rice", "1 cup water", "1 small pinch salt, optional"],
+      swaps: "This ratio is for regular white rice on the stovetop. Use the packet ratio for brown, basmati, or parboiled rice."
+    }
+  };
+
+  recipes.forEach((recipe) => {
+    if (starterRecipeGuides[recipe.id]) recipe.guide = starterRecipeGuides[recipe.id];
+  });
+
   const skillExpansion = {
     setup: ["recipe-scan", "clear-counter", "tool-identification", "mise-en-place", "handle-inward", "stove-shutdown"],
     hygiene: ["hand-wash", "surface-clean", "produce-rinse", "clean-as-you-go", "kitchen-reset"],

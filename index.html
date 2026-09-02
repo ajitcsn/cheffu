@@ -39,8 +39,8 @@
     </main>
 
     <nav class="bottom-nav" aria-label="Primary navigation">
-      <button class="nav-item" type="button" data-route="dishes" data-nav-label="Dishes" aria-keyshortcuts="1" title="Dishes · hotkey 1">
-        <span aria-hidden="true">◉</span><span>Dishes</span><kbd>1</kbd><span class="nav-notification" aria-hidden="true" hidden></span>
+      <button class="nav-item" type="button" data-route="dishes" data-nav-label="My dishes" aria-keyshortcuts="1" title="My dishes · hotkey 1">
+        <span aria-hidden="true">◉</span><span>My dishes</span><kbd>1</kbd><span class="nav-notification" aria-hidden="true" hidden></span>
       </button>
       <button class="nav-item" type="button" data-route="skills" data-nav-label="Skills" aria-keyshortcuts="2" title="Skills · hotkey 2">
         <span class="nav-icon" aria-hidden="true">
@@ -86,11 +86,11 @@
   <dialog class="sheet name-sheet" id="name-dialog" aria-labelledby="name-heading">
     <form id="name-form">
       <div class="name-dialog-icon" aria-hidden="true"><img src="cheffu-aanya-logo.png" alt=""></div>
-      <p class="eyebrow">Create your kitchen save</p>
+      <p class="eyebrow">Optional kitchen save name</p>
       <h2 id="name-heading">What should Cheffu call you?</h2>
-      <p>Your name and all game progress stay in this browser.</p>
-      <label class="name-field"><span>Player name</span><input id="player-name-input" name="playerName" type="text" maxlength="30" autocomplete="name" required placeholder="Enter your name"></label>
-      <button class="button button-primary button-large" type="submit">Start my kitchen</button>
+      <p>You can add this later. Your cooking progress stays in this browser.</p>
+      <label class="name-field"><span>Player name</span><input id="player-name-input" name="playerName" type="text" maxlength="30" autocomplete="name" placeholder="Enter your name"></label>
+      <div class="name-dialog-actions"><button class="button button-primary button-large" type="submit">Save name</button><button class="text-button" id="skip-name" type="button">Cook as Chef for now</button></div>
     </form>
   </dialog>
 

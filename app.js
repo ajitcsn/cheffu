@@ -47,7 +47,8 @@
     equippedTitleId: "kitchen-visitor",
     playerName: "",
     navSeen: {},
-    dailyQuest: {}
+    dailyQuest: {},
+    questPreferences: { time: "20", goal: "confidence" }
   };
 
   let state = loadState();
@@ -57,6 +58,9 @@
   let titleFilters = { search: "", category: "all" };
   let skillView = window.matchMedia("(max-width: 700px)").matches ? "list" : "tree";
   let selectedSkillCluster = null;
+  let skillLibraryExpanded = false;
+  let titleVaultExpanded = false;
+  let roadmapCatalogueExpanded = false;
   const expandedRoadmapStages = new Set();
 
   const clusterStyles = {
@@ -278,9 +282,16 @@
     const info = levelInfo();
     const completed = new Set(completedRecipeIds());
     const dietPool = recipes.filter((recipe) => dietMatches(recipe, diet));
-    const ready = dietPool.filter((recipe) => recipe.stage <= info.unlockedStage);
-    const nextUp = dietPool.filter((recipe) => recipe.stage > info.unlockedStage).sort((a, b) => a.stage - b.stage);
-    const pool = [...ready, ...nextUp].slice(0, Math.max(3, ready.length));
+    const preferences = state.questPreferences || defaultState.questPreferences;
+    const starterPool = dietPool.filter((recipe) => recipe.guide);
+    const isStarterPhase = completed.size < 3 && starterPool.length >= 1;
+    const ready = (isStarterPhase ? starterPool : dietPool).filter((recipe) => recipe.stage <= info.unlockedStage);
+    const nextUp = (isStarterPhase ? starterPool : dietPool).filter((recipe) => recipe.stage > info.unlockedStage).sort((a, b) => a.stage - b.stage);
+    const basePool = [...ready, ...nextUp].slice(0, Math.max(3, ready.length));
+    const timeLimit = Number(preferences.time);
+    const timePool = Number.isFinite(timeLimit) ? basePool.filter((recipe) => recipe.minutes <= timeLimit) : basePool;
+    const proteinPool = preferences.goal === "protein" ? timePool.filter((recipe) => recipe.protein >= 10) : timePool;
+    const pool = proteinPool.length >= 3 ? proteinPool : timePool.length >= 3 ? timePool : basePool;
     const seed = `${localDateKey()}-${info.unlockedStage}-${diet}`;
     const sorted = [...pool].sort((a, b) => stableHash(`${seed}-${a.id}`) - stableHash(`${seed}-${b.id}`));
     const untried = sorted.filter((recipe) => !completed.has(recipe.id));
@@ -291,7 +302,8 @@
   function dailyQuestDeck() {
     const picks = dailyPicks();
     const saved = state.dailyQuest || {};
-    const isCurrent = saved.date === localDateKey() && saved.diet === state.dietPreference;
+    const preferences = state.questPreferences || defaultState.questPreferences;
+    const isCurrent = saved.date === localDateKey() && saved.diet === state.dietPreference && saved.time === preferences.time && saved.goal === preferences.goal;
     const index = isCurrent && Number.isInteger(saved.index) ? ((saved.index % picks.length) + picks.length) % picks.length : 0;
     const accepted = isCurrent ? getRecipe(saved.acceptedRecipeId) : null;
     const validAccepted = accepted && dietMatches(accepted, state.dietPreference) ? accepted : null;
@@ -308,6 +320,8 @@
       date: localDateKey(),
       diet: state.dietPreference,
       index,
+      time: (state.questPreferences || defaultState.questPreferences).time,
+      goal: (state.questPreferences || defaultState.questPreferences).goal,
       acceptedRecipeId: recipeId
     };
     saveState();
@@ -338,6 +352,15 @@
   function reopenDailyQuestDeck() {
     const deck = dailyQuestDeck();
     setDailyQuest(null, deck.index);
+    refreshHome();
+  }
+
+  function updateQuestPreference(key, value) {
+    const current = state.questPreferences || defaultState.questPreferences;
+    if (current[key] === value) return;
+    state.questPreferences = { ...current, [key]: value };
+    state.dailyQuest = {};
+    saveState();
     refreshHome();
   }
 
@@ -383,6 +406,27 @@
       </div>`;
   }
 
+  function questContextPicker() {
+    const preferences = state.questPreferences || defaultState.questPreferences;
+    const timeOptions = [
+      { value: "10", label: "10 min" },
+      { value: "20", label: "20 min" },
+      { value: "40", label: "40 min" }
+    ];
+    const goalOptions = [
+      { value: "confidence", label: "Gentle win" },
+      { value: "protein", label: "More protein" }
+    ];
+    return `
+      <section class="quest-context" aria-label="Shape today's recommendation">
+        <div><strong>Make today realistic</strong><small>Aanya will deal a better fit.</small></div>
+        <div class="quest-context-controls">
+          <div class="quest-context-group" role="group" aria-label="Time available">${timeOptions.map((option) => `<button type="button" data-quest-time="${option.value}" aria-pressed="${preferences.time === option.value}" class="${preferences.time === option.value ? "is-active" : ""}">${option.label}</button>`).join("")}</div>
+          <div class="quest-context-group" role="group" aria-label="Today's goal">${goalOptions.map((option) => `<button type="button" data-quest-goal="${option.value}" aria-pressed="${preferences.goal === option.value}" class="${preferences.goal === option.value ? "is-active" : ""}">${option.label}</button>`).join("")}</div>
+        </div>
+      </section>`;
+  }
+
   function aanyaHomePanel(totalCooks, learnedSkills, badge, badgeStatus, questDeck) {
     const today = localDateKey();
     const playerName = state.playerName || "Chef";
@@ -407,6 +451,7 @@
 
     const targetRecipe = pendingCook?.recipe || questDeck.recipe;
     const isChoosing = !pendingCook && !questDeck.accepted;
+    const canPass = isChoosing && questDeck.picks.length > 1;
     const isAccepted = !pendingCook && Boolean(questDeck.accepted);
     const isCompleted = isAccepted && state.cooks[targetRecipe.id]?.lastCooked === today;
     const suggestedSkill = targetRecipe.skillIds
@@ -435,10 +480,10 @@
       comment = `You chose my ${targetRecipe.name} recommendation. It trains ${suggestedSkill.name}, fits a ${targetRecipe.minutes}-minute session, and pays out ${questXpReward} XP when every checkpoint is complete.`;
     } else if (totalCooks === 0) {
       heading = `${playerName}, I dealt you a gentle first quest.`;
-      comment = `I recommend ${targetRecipe.name} because it trains ${suggestedSkill.name} in about ${targetRecipe.minutes} minutes. Swipe right to accept it, or left and I will find another fit.`;
+      comment = `I recommend ${targetRecipe.name} because it trains ${suggestedSkill.name} in about ${targetRecipe.minutes} minutes.${canPass ? " Swipe right to accept it, or left and I will find another fit." : " Accept it when you are ready."}`;
     } else {
       heading = `${playerName}, I have a quest recommendation for you.`;
-      comment = `I picked ${targetRecipe.name} because ${suggestedSkill.name} is the least-practised skill in this dish. Swipe right to make it today's quest, or left to see my next pick.`;
+      comment = `I picked ${targetRecipe.name} because ${suggestedSkill.name} is the least-practised skill in this dish.${canPass ? " Swipe right to make it today's quest, or left to see my next pick." : " Make it today's quest when you are ready."}`;
     }
     return `
       <section class="aanya-companion" aria-labelledby="aanya-companion-heading">
@@ -446,6 +491,7 @@
         <div class="aanya-companion-copy">
           <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's quest deck</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA RECOMMENDS</span></div>
           <div class="aanya-speech"><span aria-hidden="true">💬</span><p>${escapeHtml(comment)}</p></div>
+          ${!pendingCook && !isCompleted ? questContextPicker() : ""}
           <div class="quest-deck-status">
             <strong>${pendingCook ? "QUEST IN PROGRESS" : isCompleted ? "QUEST COMPLETE" : isAccepted ? "TODAY'S QUEST LOCKED" : `RECOMMENDATION ${questDeck.index + 1} OF ${questDeck.picks.length}`}</strong>
             ${isChoosing ? `<span class="quest-deck-dots" aria-label="Recommendation ${questDeck.index + 1} of ${questDeck.picks.length}">${questDeck.picks.map((recipe, index) => `<i class="${index === questDeck.index ? "is-active" : ""}" aria-hidden="true"></i>`).join("")}</span>` : `<span class="quest-deck-lock" aria-hidden="true">${isCompleted ? "✓" : "🔒"}</span>`}
@@ -469,11 +515,11 @@
             </article>
           </div>
           ${isChoosing ? `
-            <div class="quest-swipe-actions">
-              <button class="quest-swipe-button quest-swipe-button--pass" type="button" data-pass-daily-quest aria-label="Pass on ${escapeHtml(targetRecipe.name)} and show another recommendation"><span aria-hidden="true">×</span><strong>Not today</strong></button>
+            <div class="quest-swipe-actions ${canPass ? "" : "quest-swipe-actions--single"}">
+              ${canPass ? `<button class="quest-swipe-button quest-swipe-button--pass" type="button" data-pass-daily-quest aria-label="Pass on ${escapeHtml(targetRecipe.name)} and show another recommendation"><span aria-hidden="true">×</span><strong>Not today</strong></button>` : ""}
               <button class="quest-swipe-button quest-swipe-button--accept" type="button" data-accept-daily-quest="${targetRecipe.id}" aria-label="Accept ${escapeHtml(targetRecipe.name)} as today's quest"><span aria-hidden="true">✓</span><strong>Accept quest</strong></button>
             </div>
-            <p class="quest-swipe-instructions" id="quest-swipe-instructions"><span>← Swipe left to pass</span><span>Swipe right to accept →</span></p>` : `
+            <p class="quest-swipe-instructions" id="quest-swipe-instructions">${canPass ? "<span>← Swipe left to pass</span><span>Swipe right to accept →</span>" : "<span>Swipe right to accept →</span>"}</p>` : `
             <div class="aanya-plan-progress"><span>Next badge</span><strong>${badge.icon} ${escapeHtml(badge.name)}</strong><span>${badgeStatus.value}/${badge.target}</span></div>
             <div class="aanya-plan-actions">
               ${isCompleted ? `<button class="button button-primary aanya-action" type="button" data-route="dishes">View earned dish card →</button>` : `<button class="button button-primary aanya-action" type="button" data-open-recipe="${targetRecipe.id}">${pendingCook ? "Continue" : "Start"} ${escapeHtml(targetRecipe.name)} →</button>`}
@@ -734,6 +780,23 @@
     const visibleSkills = filteredSkills();
     if (!selectedSkillCluster) selectedSkillCluster = strongest.cluster;
 
+    if (learned === 0 && !skillLibraryExpanded) {
+      const questRecipe = dailyQuestDeck().recipe;
+      const recommended = questRecipe.skillIds.map((id) => skills.find((skill) => skill.id === id)).filter(Boolean)[0] || skills[0];
+      container.innerHTML = `
+        <header class="page-head">
+          <div><p class="eyebrow">Your first capability</p><h1 id="skills-heading">Start with one kitchen move</h1><p>Skills light up as you cook. There is no homework list to study first.</p></div>
+          <div class="summary-chip"><strong>0 / ${skills.length}</strong><span>micro-skills discovered</span></div>
+        </header>
+        <section class="skill-first-focus">
+          <div class="skill-hero-icon">${recommended.icon}</div>
+          <div><p class="eyebrow">Aanya's next skill</p><h2>${escapeHtml(recommended.name)}</h2><p>${escapeHtml(questRecipe.name)} is your fastest way to practise it today.</p></div>
+          <button class="button button-primary" type="button" data-skill-dishes="${recommended.id}">See the practice mission</button>
+          <button class="text-button" type="button" data-open-skill-library>Explore all ${skills.length} skills</button>
+        </section>`;
+      return;
+    }
+
     container.innerHTML = `
       <header class="page-head">
         <div><p class="eyebrow">Your capability map</p><h1 id="skills-heading">Micro-skills learned</h1><p>Every small kitchen action has its own progression. Skills grow only when a completed dish uses them.</p></div>
@@ -985,6 +1048,15 @@
     const earned = unlockedTitles().length;
     const equipped = equippedTitle();
     const categories = [...new Set(titleCatalog.map((title) => title.category))];
+    if (earned <= 1 && !titleVaultExpanded) {
+      const nextTitles = titleCatalog.filter((title) => !titleProgress(title).complete).slice(0, 3);
+      return `
+        <section class="title-vault title-vault--preview">
+          <div class="title-vault-head"><div><p class="eyebrow">Your next rewards</p><h2>Title Vault</h2><p>Unlock a title by cooking. Your next three are enough to aim at today.</p></div><div class="equipped-title-card"><span>${equipped.icon}</span><div><small>Equipped title</small><strong>${escapeHtml(equipped.name)}</strong></div></div></div>
+          <div class="title-preview-grid">${nextTitles.map((title) => { const progress = titleProgress(title); return `<article class="title-preview-card"><span>${title.icon}</span><div><strong>${escapeHtml(title.name)}</strong><small>${escapeHtml(title.requirement)}</small><b>${progress.value}/${progress.total}</b></div></article>`; }).join("")}</div>
+          <button class="text-button" type="button" data-open-title-vault>Browse all ${titleCatalog.length} titles</button>
+        </section>`;
+    }
     return `
       <section class="title-vault">
         <div class="title-vault-head">
@@ -1105,7 +1177,10 @@
   }
 
   function renderRoadmapTrackPicker() {
-    return roadmapTracks.map((track) => {
+    const isFirstChoice = completedRecipeIds().length < 3 && !roadmapCatalogueExpanded;
+    const starterTrackIds = ["morning", "plant-protein-fast", "one-pot"];
+    const visibleTracks = isFirstChoice ? roadmapTracks.filter((track) => starterTrackIds.includes(track.id)) : roadmapTracks;
+    return `${visibleTracks.map((track) => {
       const matching = trackRecipes(track.id, false);
       const complete = matching.filter((recipe) => state.cooks[recipe.id]?.count).length;
       const active = track.id === roadmapFilters.track;
@@ -1115,7 +1190,7 @@
           <span><strong>${escapeHtml(track.name)}</strong><small>${escapeHtml(track.description)}</small></span>
           <span class="roadmap-track-progress">${complete}/${matching.length}</span>
         </button>`;
-    }).join("");
+    }).join("")}${isFirstChoice ? `<button class="roadmap-track-card roadmap-track-card--more" type="button" data-expand-roadmap-catalogue><span class="roadmap-track-icon">🗺️</span><span><strong>Explore every path</strong><small>Open the full set of ${roadmapTracks.length - 1} guided cooking paths when you are ready.</small></span></button>` : ""}`;
   }
 
   function renderRoadmap() {
@@ -1125,7 +1200,7 @@
     const selectedComplete = selectedRecipes.filter((recipe) => state.cooks[recipe.id]?.count).length;
     container.innerHTML = `
       <header class="page-head roadmap-head">
-        <div><p class="eyebrow">Choose a speciality · ${roadmapTracks.length - 1} guided paths + open catalogue</p><h1 id="roadmap-heading">What kind of Chef are you going to be?</h1><p>Pick a focused path. Guided roadmaps are deliberately similar in size; Open Catalogue is the complete library.</p></div>
+        <div><p class="eyebrow">${completedRecipeIds().length < 3 && !roadmapCatalogueExpanded ? "Start with one easy route" : `Choose a speciality · ${roadmapTracks.length - 1} guided paths + open catalogue`}</p><h1 id="roadmap-heading">What kind of Chef are you going to be?</h1><p>${completedRecipeIds().length < 3 && !roadmapCatalogueExpanded ? "Three beginner-friendly routes first. You can open the full catalogue whenever you want." : "Pick a focused path. Guided roadmaps are deliberately similar in size; Open Catalogue is the complete library."}</p></div>
         <div class="summary-chip"><strong>${selectedComplete} / ${selectedRecipes.length}</strong><span>${escapeHtml(selectedTrack.name)} missions</span></div>
       </header>
 
@@ -1215,6 +1290,25 @@
     return base + (index < cap % recipe.steps.length ? 1 : 0);
   }
 
+  function recipeReadinessPanel(recipe) {
+    if (!recipe.guide) {
+      return `
+        <section class="recipe-readiness recipe-readiness--limited">
+          <div><p class="eyebrow">Practice mission</p><h3>Technique guide available</h3><p>This catalogue mission teaches the method and safety checkpoints. Detailed ingredient packs are currently available for the guided starter path.</p></div>
+          <button class="text-button" type="button" data-route="home">Choose a guided starter →</button>
+        </section>`;
+    }
+    return `
+      <section class="recipe-readiness" aria-labelledby="recipe-readiness-heading">
+        <div class="recipe-readiness-head"><div><p class="eyebrow">Before you cook</p><h3 id="recipe-readiness-heading">Set yourself up for a calm win</h3></div><span>${escapeHtml(recipe.guide.serves)}</span></div>
+        <div class="recipe-readiness-grid">
+          <div><strong>Ingredients</strong><ul>${recipe.guide.ingredients.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>
+          <div><strong>Equipment</strong><ul>${recipe.guide.equipment.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>
+        </div>
+        <p class="recipe-readiness-swap"><strong>Easy swap:</strong> ${escapeHtml(recipe.guide.swaps)}</p>
+      </section>`;
+  }
+
   function openRecipe(recipeId) {
     const recipe = getRecipe(recipeId);
     if (!recipe) return;
@@ -1231,6 +1325,7 @@
         <div><p class="eyebrow">Stage ${recipe.stage} · ${escapeHtml(stages[recipe.stage].name)}</p><h2 id="cook-dialog-title">${escapeHtml(recipe.name)}</h2></div>
         <button class="icon-button" type="button" data-close-dialog aria-label="Close recipe">×</button>
       </div>
+      ${recipeReadinessPanel(recipe)}
       <div class="recipe-sheet-grid">
         <div>${picture(recipe, "sheet")}</div>
         <div class="recipe-sheet-info">
@@ -1439,6 +1534,12 @@
       renderGlobalDietFilter();
     }
 
+    const questTimeButton = event.target.closest("[data-quest-time]");
+    if (questTimeButton) updateQuestPreference("time", questTimeButton.dataset.questTime);
+
+    const questGoalButton = event.target.closest("[data-quest-goal]");
+    if (questGoalButton) updateQuestPreference("goal", questGoalButton.dataset.questGoal);
+
     const passQuestButton = event.target.closest("[data-pass-daily-quest]");
     if (passQuestButton) animateQuestChoice(document.querySelector("[data-quest-swipe-card]"), "pass");
 
@@ -1491,6 +1592,21 @@
     if (skillViewButton) {
       skillView = skillViewButton.dataset.skillView;
       renderSkills();
+    }
+
+    if (event.target.closest("[data-open-skill-library]")) {
+      skillLibraryExpanded = true;
+      renderSkills();
+    }
+
+    if (event.target.closest("[data-open-title-vault]")) {
+      titleVaultExpanded = true;
+      renderCollections();
+    }
+
+    if (event.target.closest("[data-expand-roadmap-catalogue]")) {
+      roadmapCatalogueExpanded = true;
+      renderRoadmap();
     }
 
     const graphClusterButton = event.target.closest("[data-graph-cluster]");
@@ -1559,10 +1675,15 @@
     openNameDialog();
   });
 
+  document.querySelector("#skip-name").addEventListener("click", () => closeDialog(nameDialog));
+
   nameForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const playerName = nameInput.value.trim().replace(/\s+/g, " ");
-    if (!playerName) return;
+    if (!playerName) {
+      closeDialog(nameDialog);
+      return;
+    }
     state.playerName = playerName;
     saveState();
     closeDialog(nameDialog);
@@ -1604,5 +1725,4 @@
   window.addEventListener("popstate", () => routeTo(location.hash.slice(1) || "home"));
   activeRoute = location.hash.slice(1) || "home";
   renderAll();
-  if (!state.playerName) openNameDialog();
 })();
