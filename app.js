@@ -279,8 +279,16 @@
     return true;
   }
 
+  function isDietLockedSkill(skill) {
+    return state.dietPreference === "Veg" && skill.cluster === "Eggs & Protein";
+  }
+
   function availableSkills() {
-    return skills.filter((skill) => recipes.some((recipe) => dietMatches(recipe, state.dietPreference) && recipe.skillIds.includes(skill.id)));
+    return skills.filter((skill) => !isDietLockedSkill(skill) && recipes.some((recipe) => dietMatches(recipe, state.dietPreference) && recipe.skillIds.includes(skill.id)));
+  }
+
+  function treeSkills() {
+    return skills.filter((skill) => isDietLockedSkill(skill) || recipes.some((recipe) => dietMatches(recipe, state.dietPreference) && recipe.skillIds.includes(skill.id)));
   }
 
   function dailyPicks(diet = state.dietPreference) {
@@ -805,18 +813,21 @@
 
   function renderSkillTree() {
     const visibleSkillSet = availableSkills();
-    const clusters = [...new Set(visibleSkillSet.map((skill) => skill.cluster))];
+    const treeSkillSet = treeSkills();
+    const clusters = [...new Set(treeSkillSet.map((skill) => skill.cluster))];
     const centre = { x: 500, y: 310 };
     const nodes = clusters.map((cluster, index) => {
       const angle = (-Math.PI / 2) + (index * Math.PI * 2) / clusters.length;
-      const clusterSkills = visibleSkillSet.filter((skill) => skill.cluster === cluster);
-      const practised = clusterSkills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
+      const clusterSkills = treeSkillSet.filter((skill) => skill.cluster === cluster);
+      const locked = isDietLockedSkill(clusterSkills[0]);
+      const practised = locked ? 0 : clusterSkills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
       return {
         cluster,
         x: Math.round(centre.x + Math.cos(angle) * 382),
         y: Math.round(centre.y + Math.sin(angle) * 224),
         practised,
         total: clusterSkills.length,
+        locked,
         ...clusterStyles[cluster]
       };
     });
@@ -831,12 +842,12 @@
         <div class="skill-tree-scroll" tabindex="0" aria-label="Scrollable overview of the cooking skill tree">
           <div class="skill-tree-canvas">
             <svg class="tree-connections" viewBox="0 0 1000 620" aria-hidden="true" preserveAspectRatio="none">
-              ${nodes.map((node) => `<line class="${node.practised ? "is-lit" : ""}" x1="${centre.x}" y1="${centre.y}" x2="${node.x}" y2="${node.y}" style="--edge-colour:${node.colour}"></line>`).join("")}
+              ${nodes.map((node) => `<line class="${node.practised && !node.locked ? "is-lit" : ""}" x1="${centre.x}" y1="${centre.y}" x2="${node.x}" y2="${node.y}" style="--edge-colour:${node.colour}"></line>`).join("")}
             </svg>
             <div class="tree-root" style="left:${centre.x / 10}%;top:${centre.y / 6.2}%"><span>🧑‍🍳</span><strong>Kitchen<br>Confidence</strong><small>${Math.round((visibleSkillSet.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length / visibleSkillSet.length) * 100)}% conquered</small></div>
             ${nodes.map((node) => `
-              <button class="skill-system-node ${selectedSkillCluster === node.cluster ? "is-selected" : ""} ${node.practised ? "is-lit" : ""}" type="button" data-graph-cluster="${escapeHtml(node.cluster)}" style="left:${node.x / 10}%;top:${node.y / 6.2}%;--cluster-colour:${node.colour}" aria-label="Open ${escapeHtml(node.cluster)}, ${node.practised} of ${node.total} practised">
-                <span>${node.icon}</span><strong>${escapeHtml(node.cluster)}</strong><small>${node.practised}/${node.total}</small>
+              <button class="skill-system-node ${selectedSkillCluster === node.cluster ? "is-selected" : ""} ${node.practised ? "is-lit" : ""} ${node.locked ? "is-diet-locked" : ""}" type="button" ${node.locked ? "disabled" : `data-graph-cluster="${escapeHtml(node.cluster)}"`} style="left:${node.x / 10}%;top:${node.y / 6.2}%;--cluster-colour:${node.colour}" aria-label="${node.locked ? `${escapeHtml(node.cluster)} is unavailable while Veg is selected` : `Open ${escapeHtml(node.cluster)}, ${node.practised} of ${node.total} practised`}">
+                <span>${node.icon}</span><strong>${escapeHtml(node.cluster)}</strong><small>${node.locked ? "Veg unavailable" : `${node.practised}/${node.total}`}</small>
               </button>`).join("")}
           </div>
         </div>

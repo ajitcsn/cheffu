@@ -1710,6 +1710,24 @@ main {
   box-shadow: 5px 6px 0 var(--ink);
 }
 
+.skill-system-node.is-diet-locked {
+  border-color: #bcc3bc;
+  background: #edf0ed;
+  box-shadow: none;
+  color: #7b847d;
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.78;
+}
+
+.skill-system-node.is-diet-locked:hover,
+.skill-system-node.is-diet-locked:focus-visible {
+  transform: translate(-50%, -50%);
+  box-shadow: none;
+}
+
+.skill-system-node.is-diet-locked > span { background: #c3c8c4; }
+
 .skill-system-node > span {
   display: grid;
   width: 31px;

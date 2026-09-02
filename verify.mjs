@@ -83,6 +83,7 @@ assert.ok(!/Ayyo|Seri/.test(appSource), "Aanya's dialogue must use a friendly, r
 assert.ok(!appSource.includes("TODAY'S 1× QUEST") && appSource.includes("AANYA RECOMMENDS"), "Daily recommendation wording must stay clear");
 assert.ok(index.includes('class="settings-diet"') && !index.includes('class="topbar-diet"'), "Diet preference must live in Settings instead of the top bar");
 assert.ok(appSource.includes("function availableSkills") && appSource.includes("function eligibleMapItems"), "Diet preference must filter Skills and recipe-linked Collections");
+assert.ok(appSource.includes("isDietLockedSkill") && styles.includes(".skill-system-node.is-diet-locked"), "Veg users must see Eggs & Protein as a locked skill-tree branch");
 assert.ok(appSource.includes('id="dishes-search"') && appSource.includes("Browse all dishes"), "Dishes must expose a searchable recipe library");
 assert.ok(!appSource.includes("Do the action. Then tap when your hands are safe."), "Recipe checklist heading must avoid the removed safety-action line");
 assert.ok(!dataSource.includes("Boot Sequence") && dataSource.includes("Kitchen First Steps"), "Beginner roadmap wording must use plain language");
