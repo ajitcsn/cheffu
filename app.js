@@ -46,6 +46,7 @@
     dietPreference: "Veg",
     equippedTitleId: "kitchen-visitor",
     playerName: "",
+    hasSeenNamePrompt: false,
     navSeen: {},
     dailyQuest: {},
     questPreferences: { time: "20", goal: "confidence" }
@@ -1675,16 +1676,23 @@
     openNameDialog();
   });
 
-  document.querySelector("#skip-name").addEventListener("click", () => closeDialog(nameDialog));
+  document.querySelector("#skip-name").addEventListener("click", () => {
+    state.hasSeenNamePrompt = true;
+    saveState();
+    closeDialog(nameDialog);
+  });
 
   nameForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const playerName = nameInput.value.trim().replace(/\s+/g, " ");
     if (!playerName) {
+      state.hasSeenNamePrompt = true;
+      saveState();
       closeDialog(nameDialog);
       return;
     }
     state.playerName = playerName;
+    state.hasSeenNamePrompt = true;
     saveState();
     closeDialog(nameDialog);
     renderHome();
@@ -1725,4 +1733,5 @@
   window.addEventListener("popstate", () => routeTo(location.hash.slice(1) || "home"));
   activeRoute = location.hash.slice(1) || "home";
   renderAll();
+  if (!state.hasSeenNamePrompt) openNameDialog();
 })();
