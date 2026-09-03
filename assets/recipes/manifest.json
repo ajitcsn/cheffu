@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-08-24T15:27:36.569Z",
-  "total": 378,
+  "total": 369,
   "items": [
     {
       "recipeId": "aloo-gobi",
@@ -2110,21 +2110,6 @@
       "height": 540
     },
     {
-      "recipeId": "catalog-hung-curd-sandwich",
-      "recipeName": "Hung curd sandwich",
-      "query": "yogurt sandwich",
-      "localPath": "assets/recipes/catalog-hung-curd-sandwich.jpg",
-      "sourceTitle": "File:Airan Айран yogurt drink and sandwich. Plovdiv station.jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:Airan_%D0%90%D0%B9%D1%80%D0%B0%D0%BD_yogurt_drink_and_sandwich._Plovdiv_station.jpg",
-      "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Airan_%D0%90%D0%B9%D1%80%D0%B0%D0%BD_yogurt_drink_and_sandwich._Plovdiv_station.jpg/960px-Airan_%D0%90%D0%B9%D1%80%D0%B0%D0%BD_yogurt_drink_and_sandwich._Plovdiv_station.jpg",
-      "license": "CC BY 2.0",
-      "artist": "Sharon Hahn Darlin",
-      "credit": "https://www.flickr.com/photos/sharonhahndarlin/51397757294/",
-      "score": 65,
-      "width": 720,
-      "height": 540
-    },
-    {
       "recipeId": "catalog-idiyappam",
       "recipeName": "Idiyappam",
       "query": "Idiyappam",
@@ -3162,23 +3147,6 @@
       "height": 540
     },
     {
-      "recipeId": "catalog-mizo-vegetable-bai",
-      "recipeName": "Mizo vegetable bai",
-      "query": "Mizo bai",
-      "localPath": "assets/recipes/catalog-mizo-vegetable-bai.jpg",
-      "sourceTitle": "Mizo food",
-      "sourcePage": "https://commons.wikimedia.org/w/index.php?curid=74883440",
-      "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/4/40/Mizo_food.jpg",
-      "license": "BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
-      "artist": "Coolcolney",
-      "credit": "\"Mizo food\" by Coolcolney is licensed under CC BY-SA 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/.",
-      "score": 34,
-      "width": 1026,
-      "height": 577,
-      "catalog": "Openverse"
-    },
-    {
       "recipeId": "catalog-moong-dal-chilla",
       "recipeName": "Moong dal chilla",
       "query": "pesarattu",
@@ -3743,21 +3711,6 @@
       "height": 960
     },
     {
-      "recipeId": "catalog-phulka",
-      "recipeName": "Phulka",
-      "query": "chapati",
-      "localPath": "assets/recipes/catalog-phulka.jpg",
-      "sourceTitle": "File:Chapati making at the Chokhi Dhani Resort Panchkula 08.jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:Chapati_making_at_the_Chokhi_Dhani_Resort_Panchkula_08.jpg",
-      "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Chapati_making_at_the_Chokhi_Dhani_Resort_Panchkula_08.jpg/960px-Chapati_making_at_the_Chokhi_Dhani_Resort_Panchkula_08.jpg",
-      "license": "CC BY-SA 4.0",
-      "artist": "Kritzolina",
-      "credit": "Own work",
-      "score": 91,
-      "width": 720,
-      "height": 1080
-    },
-    {
       "recipeId": "catalog-plain-sweet-lassi",
       "recipeName": "Plain sweet lassi",
       "query": "sweet lassi",
@@ -4126,23 +4079,6 @@
       "score": 115,
       "width": 720,
       "height": 405
-    },
-    {
-      "recipeId": "catalog-salted-buttermilk",
-      "recipeName": "Salted buttermilk",
-      "query": "chaas buttermilk",
-      "localPath": "assets/recipes/catalog-salted-buttermilk.jpg",
-      "sourceTitle": "Chaas at Bobby Dhaba",
-      "sourcePage": "https://www.flickr.com/photos/57155801@N00/6808623",
-      "sourceImage": "https://live.staticflickr.com/8/6808623_4ace0407f0_b.jpg",
-      "license": "BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
-      "artist": "bluesmoon",
-      "credit": "\"Chaas at Bobby Dhaba\" by bluesmoon is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/.",
-      "score": 35,
-      "width": 1024,
-      "height": 679,
-      "catalog": "Openverse"
     },
     {
       "recipeId": "catalog-sattu-cooler",
@@ -4679,21 +4615,6 @@
       "score": 106,
       "width": 720,
       "height": 542
-    },
-    {
-      "recipeId": "catalog-sweet-cinnamon-toast",
-      "recipeName": "Sweet cinnamon toast",
-      "query": "cinnamon toast",
-      "localPath": "assets/recipes/catalog-sweet-cinnamon-toast.jpg",
-      "sourceTitle": "File:Cinnamon Toast Crunch.jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:Cinnamon_Toast_Crunch.jpg",
-      "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Cinnamon_Toast_Crunch.jpg/960px-Cinnamon_Toast_Crunch.jpg",
-      "license": "CC BY-SA 4.0",
-      "artist": "Th78blue",
-      "credit": "Own work",
-      "score": 106,
-      "width": 720,
-      "height": 658
     },
     {
       "recipeId": "catalog-tamago-rice-bowl",
@@ -5461,21 +5382,6 @@
       "height": 540
     },
     {
-      "recipeId": "lemon-water",
-      "recipeName": "Nimbu water",
-      "query": "Nimbu water",
-      "localPath": "assets/recipes/lemon-water.jpg",
-      "sourceTitle": "File:Nimbu Soda Or Lemon Soda.jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:Nimbu_Soda_Or_Lemon_Soda.jpg",
-      "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Nimbu_Soda_Or_Lemon_Soda.jpg/960px-Nimbu_Soda_Or_Lemon_Soda.jpg",
-      "license": "CC BY-SA 4.0",
-      "artist": "Manjeshwari poet mysore",
-      "credit": "Own work",
-      "score": 40,
-      "width": 720,
-      "height": 907
-    },
-    {
       "recipeId": "masala-chai",
       "recipeName": "Masala chai",
       "query": "Masala chai",
@@ -5534,23 +5440,6 @@
       "score": 102,
       "width": 720,
       "height": 540
-    },
-    {
-      "recipeId": "nimbu-pani",
-      "recipeName": "Nimbu pani",
-      "query": "nimbu pani",
-      "localPath": "assets/recipes/nimbu-pani.jpg",
-      "sourceTitle": "Matheran Nimbu Pani",
-      "sourcePage": "https://www.flickr.com/photos/28747587@N00/2546780165",
-      "sourceImage": "https://live.staticflickr.com/3104/2546780165_bdc0cb21f9.jpg",
-      "license": "BY-SA 2.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
-      "artist": "Ankur P",
-      "credit": "\"Matheran Nimbu Pani\" by Ankur P is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/.",
-      "score": 110,
-      "width": 375,
-      "height": 500,
-      "catalog": "Openverse"
     },
     {
       "recipeId": "palak-paneer",
@@ -5686,36 +5575,6 @@
       "score": 115,
       "width": 720,
       "height": 540
-    },
-    {
-      "recipeId": "roti",
-      "recipeName": "Soft roti",
-      "query": "Soft roti",
-      "localPath": "assets/recipes/roti.jpg",
-      "sourceTitle": "File:James Martin Adhikary Checking Roti.jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:James_Martin_Adhikary_Checking_Roti.jpg",
-      "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/James_Martin_Adhikary_Checking_Roti.jpg/960px-James_Martin_Adhikary_Checking_Roti.jpg",
-      "license": "CC BY-SA 4.0",
-      "artist": "Jmadhikary",
-      "credit": "Own work",
-      "score": 37,
-      "width": 720,
-      "height": 480
-    },
-    {
-      "recipeId": "sambar",
-      "recipeName": "Everyday sambar",
-      "query": "sambar",
-      "localPath": "assets/recipes/sambar.jpg",
-      "sourceTitle": "File:Sambar deer skeleton at MAV-USP.jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:Sambar_deer_skeleton_at_MAV-USP.jpg",
-      "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Sambar_deer_skeleton_at_MAV-USP.jpg/960px-Sambar_deer_skeleton_at_MAV-USP.jpg",
-      "license": "CC BY-SA 4.0",
-      "artist": "Museum of Veterinary Anatomy FMVZ USP / Wagner Souza e Silva, edited by Rodrigo Tetsuo Argenton",
-      "credit": "Museum of Veterinary Anatomy FMVZ USP",
-      "score": 110,
-      "width": 720,
-      "height": 720
     },
     {
       "recipeId": "sambar-meal",

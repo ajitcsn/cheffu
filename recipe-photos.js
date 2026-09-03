@@ -686,9 +686,9 @@ window.CHEFFU_RECIPE_PHOTOS = {
     "title": "Hummus plate.jpg"
   },
   "catalog-hung-curd-sandwich": {
-    "url": "assets/recipes/catalog-hung-curd-sandwich.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Airan_%D0%90%D0%B9%D1%80%D0%B0%D0%BD_yogurt_drink_and_sandwich._Plovdiv_station.jpg",
-    "title": "Airan Айран yogurt drink and sandwich. Plovdiv station.jpg"
+    "url": "https://d1mxd7n691o8sz.cloudfront.net/static/recipe/recipe/2022-07/Hung_Curd_Sandwich-332d043a14594fef97ce6eace1414ffa.png",
+    "page": "https://www.betheshyft.com/recipes/hung-curd-sandwich/",
+    "title": "Hung Curd Sandwich"
   },
   "catalog-idiyappam": {
     "url": "assets/recipes/catalog-idiyappam.jpg",
@@ -1031,9 +1031,9 @@ window.CHEFFU_RECIPE_PHOTOS = {
     "title": "Tandoori Missi Roti with malai.JPG"
   },
   "catalog-mizo-vegetable-bai": {
-    "url": "assets/recipes/catalog-mizo-vegetable-bai.jpg",
-    "page": "https://commons.wikimedia.org/w/index.php?curid=74883440",
-    "title": "Mizo food"
+    "url": "https://rootsandleisure.com/wp-content/uploads/2019/07/1-2.jpg",
+    "page": "https://rootsandleisure.com/cauliflower-stalk-bai-priya-iyer/",
+    "title": "Cauliflower stalk bai"
   },
   "catalog-moong-dal-chilla": {
     "url": "assets/recipes/catalog-moong-dal-chilla.jpg",
@@ -1216,9 +1216,9 @@ window.CHEFFU_RECIPE_PHOTOS = {
     "title": "Pesto pasta - Stierch.jpg"
   },
   "catalog-phulka": {
-    "url": "assets/recipes/catalog-phulka.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Chapati_making_at_the_Chokhi_Dhani_Resort_Panchkula_08.jpg",
-    "title": "Chapati making at the Chokhi Dhani Resort Panchkula 08.jpg"
+    "url": "https://cdn.dotpe.in/longtail/store-items/6542799/0GfXDVrx.jpeg",
+    "page": "https://www.srisadguruhomefoods.co.in/product/21971209/PHULKA-ROTI",
+    "title": "Phulka roti"
   },
   "catalog-plain-sweet-lassi": {
     "url": "assets/recipes/catalog-plain-sweet-lassi.jpg",
@@ -1341,9 +1341,9 @@ window.CHEFFU_RECIPE_PHOTOS = {
     "title": "Sabudana Khichdi with Sweet curd.JPG"
   },
   "catalog-salted-buttermilk": {
-    "url": "assets/recipes/catalog-salted-buttermilk.jpg",
-    "page": "https://www.flickr.com/photos/57155801@N00/6808623",
-    "title": "Chaas at Bobby Dhaba"
+    "url": "https://nomadparadise.com/wp-content/uploads/2022/12/indian-drinks-19-720x1080.jpg",
+    "page": "https://nomadparadise.com/indian-drinks/",
+    "title": "Chilled spiced buttermilk"
   },
   "catalog-sattu-cooler": {
     "url": "assets/recipes/catalog-sattu-cooler.jpg",
@@ -1521,9 +1521,9 @@ window.CHEFFU_RECIPE_PHOTOS = {
     "title": "Blueberry & Vanilla Custard Brioche - GAIL's Bakery 2026-06-09.jpg"
   },
   "catalog-sweet-cinnamon-toast": {
-    "url": "assets/recipes/catalog-sweet-cinnamon-toast.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Cinnamon_Toast_Crunch.jpg",
-    "title": "Cinnamon Toast Crunch.jpg"
+    "url": "https://www.girlversusdough.com/wp-content/uploads/2025/06/cinnamon-toast-recipe-golden-crust.jpg",
+    "page": "https://www.girlversusdough.com/cinnamon-toast-recipe/",
+    "title": "Cinnamon toast"
   },
   "catalog-tamago-rice-bowl": {
     "url": "assets/recipes/catalog-tamago-rice-bowl.jpg",
@@ -1776,9 +1776,9 @@ window.CHEFFU_RECIPE_PHOTOS = {
     "title": "Chitranna (Lemon Rice) prepared by an indian woman.jpg"
   },
   "lemon-water": {
-    "url": "assets/recipes/lemon-water.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Nimbu_Soda_Or_Lemon_Soda.jpg",
-    "title": "Nimbu Soda Or Lemon Soda.jpg"
+    "url": "https://snapcalorie-webflow-website.s3.us-east-2.amazonaws.com/media/food_pics_v2/medium/nimbu_paani.jpg",
+    "page": "https://www.snapcalorie.com/nutrition/nimbu_paani_nutrition.html",
+    "title": "Nimbu pani"
   },
   "masala-chai": {
     "url": "assets/recipes/masala-chai.jpg",
@@ -1801,9 +1801,9 @@ window.CHEFFU_RECIPE_PHOTOS = {
     "title": "MoongDal Khichdi.jpg"
   },
   "nimbu-pani": {
-    "url": "assets/recipes/nimbu-pani.jpg",
-    "page": "https://www.flickr.com/photos/28747587@N00/2546780165",
-    "title": "Matheran Nimbu Pani"
+    "url": "https://s3.us-east-2.amazonaws.com/pfimg1/013/6f/bd/6fbd6fac73e708447f0f5b05d086d494_1280m.jpg",
+    "page": "https://www.punchfork.com/recipe/Nimbu-Pani-Cook-with-Manali",
+    "title": "Nimbu pani"
   },
   "palak-paneer": {
     "url": "assets/recipes/palak-paneer.jpg",
@@ -1851,14 +1851,14 @@ window.CHEFFU_RECIPE_PHOTOS = {
     "title": "Tomato Rasam - Home Made.JPG"
   },
   "roti": {
-    "url": "assets/recipes/roti.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:James_Martin_Adhikary_Checking_Roti.jpg",
-    "title": "James Martin Adhikary Checking Roti.jpg"
+    "url": "https://tasteforlifeproducts.com/cdn/shop/files/phulka_1.jpg?v=1772686477&width=3000",
+    "page": "https://tasteforlifeproducts.com/products/2-m-p-sihore-wheat-phulka-atta-medium",
+    "title": "Soft phulka roti"
   },
   "sambar": {
-    "url": "assets/recipes/sambar.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Sambar_deer_skeleton_at_MAV-USP.jpg",
-    "title": "Sambar deer skeleton at MAV-USP.jpg"
+    "url": "https://www.cookwithmanali.com/wp-content/uploads/2019/05/Sambar.jpg",
+    "page": "https://www.cookwithmanali.com/sambar/",
+    "title": "Everyday South Indian sambar"
   },
   "sambar-meal": {
     "url": "assets/recipes/sambar-meal.jpg",
