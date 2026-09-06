@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-08-24T15:27:36.569Z",
-  "total": 369,
+  "total": 378,
   "items": [
     {
       "recipeId": "aloo-gobi",
@@ -5665,6 +5665,87 @@
       "score": 115,
       "width": 720,
       "height": 405
+    },
+    {
+      "recipeId": "nimbu-pani",
+      "recipeName": "Nimbu pani",
+      "query": "nimbu pani Indian lemonade glass lemon mint",
+      "localPath": "assets/recipes/nimbu-pani.jpg",
+      "sourceTitle": "Nimbu pani",
+      "sourcePage": "https://www.punchfork.com/recipe/Nimbu-Pani-Cook-with-Manali",
+      "sourceImage": "https://s3.us-east-2.amazonaws.com/pfimg1/013/6f/bd/6fbd6fac73e708447f0f5b05d086d494_1280m.jpg"
+    },
+    {
+      "recipeId": "lemon-water",
+      "recipeName": "Nimbu water",
+      "query": "nimbu water lemon drink Indian",
+      "localPath": "assets/recipes/lemon-water.jpg",
+      "sourceTitle": "Nimbu pani",
+      "sourcePage": "https://www.snapcalorie.com/nutrition/nimbu_paani_nutrition.html",
+      "sourceImage": "https://snapcalorie-webflow-website.s3.us-east-2.amazonaws.com/media/food_pics_v2/medium/nimbu_paani.jpg"
+    },
+    {
+      "recipeId": "sambar",
+      "recipeName": "Everyday sambar",
+      "query": "South Indian sambar bowl vegetables curry leaves",
+      "localPath": "assets/recipes/sambar.jpg",
+      "sourceTitle": "Everyday South Indian sambar",
+      "sourcePage": "https://www.cookwithmanali.com/sambar/",
+      "sourceImage": "https://www.cookwithmanali.com/wp-content/uploads/2019/05/Sambar.jpg"
+    },
+    {
+      "recipeId": "roti",
+      "recipeName": "Soft roti",
+      "query": "soft roti chapati stack Indian flatbread",
+      "localPath": "assets/recipes/roti.jpg",
+      "sourceTitle": "Soft phulka roti",
+      "sourcePage": "https://tasteforlifeproducts.com/products/2-m-p-sihore-wheat-phulka-atta-medium",
+      "sourceImage": "https://tasteforlifeproducts.com/cdn/shop/files/phulka_1.jpg?v=1772686477&width=3000"
+    },
+    {
+      "recipeId": "catalog-salted-buttermilk",
+      "recipeName": "Salted buttermilk",
+      "query": "salted buttermilk chaas Indian drink glass",
+      "localPath": "assets/recipes/catalog-salted-buttermilk.jpg",
+      "sourceTitle": "Chilled spiced buttermilk",
+      "sourcePage": "https://nomadparadise.com/indian-drinks/",
+      "sourceImage": "https://nomadparadise.com/wp-content/uploads/2022/12/indian-drinks-19-720x1080.jpg"
+    },
+    {
+      "recipeId": "catalog-hung-curd-sandwich",
+      "recipeName": "Hung curd sandwich",
+      "query": "hung curd sandwich Indian food photography",
+      "localPath": "assets/recipes/catalog-hung-curd-sandwich.png",
+      "sourceTitle": "Hung curd sandwich",
+      "sourcePage": "https://www.betheshyft.com/recipes/hung-curd-sandwich/",
+      "sourceImage": "https://d1mxd7n691o8sz.cloudfront.net/static/recipe/recipe/2022-07/Hung_Curd_Sandwich-332d043a14594fef97ce6eace1414ffa.png"
+    },
+    {
+      "recipeId": "catalog-mizo-vegetable-bai",
+      "recipeName": "Mizo vegetable bai",
+      "query": "Mizo vegetable bai",
+      "localPath": "assets/recipes/catalog-mizo-vegetable-bai.jpg",
+      "sourceTitle": "Cauliflower stalk bai",
+      "sourcePage": "https://rootsandleisure.com/cauliflower-stalk-bai-priya-iyer/",
+      "sourceImage": "https://rootsandleisure.com/wp-content/uploads/2019/07/1-2.jpg"
+    },
+    {
+      "recipeId": "catalog-phulka",
+      "recipeName": "Phulka",
+      "query": "phulka roti Indian chapati stack",
+      "localPath": "assets/recipes/catalog-phulka.jpg",
+      "sourceTitle": "Phulka roti",
+      "sourcePage": "https://www.srisadguruhomefoods.co.in/product/21971209/PHULKA-ROTI",
+      "sourceImage": "https://cdn.dotpe.in/longtail/store-items/6542799/0GfXDVrx.jpeg"
+    },
+    {
+      "recipeId": "catalog-sweet-cinnamon-toast",
+      "recipeName": "Sweet cinnamon toast",
+      "query": "sweet cinnamon toast slices food photography",
+      "localPath": "assets/recipes/catalog-sweet-cinnamon-toast.jpg",
+      "sourceTitle": "Cinnamon toast",
+      "sourcePage": "https://www.girlversusdough.com/cinnamon-toast-recipe/",
+      "sourceImage": "https://www.girlversusdough.com/wp-content/uploads/2025/06/cinnamon-toast-recipe-golden-crust.jpg"
     }
   ]
 }

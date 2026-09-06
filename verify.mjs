@@ -39,17 +39,14 @@ assert.ok(collectionConfig.indiaStates.every((item) => recipeIds.has(item.dishId
 assert.ok(collectionConfig.worldCountries.every((item) => recipeIds.has(item.dishId)), "Every passport country needs a linked dish");
 assert.ok(recipes.every((recipe) => recipe.photo || sourcedPhotos[recipe.id]), "Every recipe needs source-linked imagery");
 assert.equal(Object.keys(sourcedPhotos).length, recipes.length, "Every recipe must use a researched image asset");
-const externalPhotoIds = new Set(["nimbu-pani", "lemon-water", "sambar", "roti", "catalog-salted-buttermilk", "catalog-hung-curd-sandwich", "catalog-mizo-vegetable-bai", "catalog-phulka", "catalog-sweet-cinnamon-toast"]);
-assert.ok(Object.entries(sourcedPhotos).every(([recipeId, photo]) => photo.page && (photo.url.startsWith("assets/recipes/") || externalPhotoIds.has(recipeId) && photo.url.startsWith("https://"))), "Recipe images must be local or an approved direct image link with a source page");
-assert.deepEqual(new Set(Object.entries(sourcedPhotos).filter(([, photo]) => photo.url.startsWith("https://")).map(([recipeId]) => recipeId)), externalPhotoIds, "Only the approved replacements may use direct image links");
-assert.ok(Object.values(sourcedPhotos).filter((photo) => photo.url.startsWith("assets/recipes/")).every((photo) => {
+assert.ok(Object.values(sourcedPhotos).every((photo) => photo.url.startsWith("assets/recipes/") && photo.page), "Recipe images must be local and retain a source page");
+assert.ok(Object.values(sourcedPhotos).every((photo) => {
   const file = new URL(`./${photo.url}`, import.meta.url);
   return fs.existsSync(file) && fs.statSync(file).size > 1000;
 }), "Every recipe image file must exist and contain image data");
 const photoManifest = JSON.parse(fs.readFileSync(new URL("./assets/recipes/manifest.json", import.meta.url), "utf8"));
-const localPhotoIds = new Set(Object.entries(sourcedPhotos).filter(([, photo]) => photo.url.startsWith("assets/recipes/")).map(([recipeId]) => recipeId));
-assert.equal(photoManifest.total, localPhotoIds.size, "Recipe image manifest must cover the local-image catalogue");
-assert.deepEqual(new Set(photoManifest.items.map((item) => item.recipeId)), localPhotoIds, "Recipe image manifest IDs must match local image assets");
+assert.equal(photoManifest.total, recipes.length, "Recipe image manifest must cover the full catalogue");
+assert.deepEqual(new Set(photoManifest.items.map((item) => item.recipeId)), recipeIds, "Recipe image manifest IDs must match recipe IDs");
 assert.equal(titles.length, 100, "Collections must expose exactly 100 titles");
 assert.equal(titleIds.size, titles.length, "Title IDs must be unique");
 assert.ok(titles.every((title) => title.description && title.requirement && title.condition), "Every title needs flavour text and an unlock rule");
