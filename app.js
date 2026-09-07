@@ -7,7 +7,6 @@
   const STORAGE_KEY = "cheffu-roadmap-state-v1";
   const XP_PER_LEVEL = 140;
   const MAX_LEVEL = 30;
-
   const titleCatalog = window.CHEFFU_TITLE_CATALOG || [];
 
   const roadmapTracks = [
@@ -538,9 +537,10 @@
     if (!recipe.photo) {
       return `<div class="dish-picture dish-picture--${size} dish-picture--illustrated" role="img" aria-label="Illustration for ${escapeHtml(recipe.name)}"><span>${recipe.emoji}</span><small>${escapeHtml(recipe.name)}</small></div>`;
     }
+    const isPriorityImage = size === "quest";
     return `
       <figure class="dish-picture dish-picture--${size} ${recipe.photo.representative ? "dish-picture--reference" : ""}">
-        <img src="${recipe.photo.url}" alt="${escapeHtml(recipe.name)}" loading="lazy" referrerpolicy="no-referrer">
+        <img src="${recipe.photo.url}" alt="${escapeHtml(recipe.name)}" loading="${isPriorityImage ? "eager" : "lazy"}"${isPriorityImage ? ' fetchpriority="high"' : ""} referrerpolicy="no-referrer">
         <a class="photo-credit" href="${recipe.photo.page}" target="_blank" rel="noreferrer" aria-label="Open photo source for ${escapeHtml(recipe.name)}" title="${recipe.photo.representative ? `Related-dish reference: ${escapeHtml(recipe.photo.referenceFor)}` : `Photo of ${escapeHtml(recipe.name)}`}">${recipe.photo.representative ? "related-dish reference ↗" : "photo ↗"}</a>
       </figure>`;
   }
@@ -589,18 +589,7 @@
       })
       .filter(Boolean)
       .sort((a, b) => b.date.localeCompare(a.date))[0];
-    const sceneImages = [
-      "aanya-challenge.png", "aanya-skills.png", "aanya-streak.png",
-      "aanya-variations/surprised-o.jpg?v=3", "aanya-variations/cutting-glance.jpg?v=3",
-      "aanya-variations/hot-pot-towel.jpg?v=3", "aanya-variations/pizza-spin.jpg?v=3",
-      "aanya-variations/mortar-pestle.jpg?v=3", "aanya-variations/icing-taste.jpg?v=3",
-      "aanya-variations/embarrassed-flour.jpg?v=3", "aanya-variations/full-content.jpg?v=3",
-      "aanya-variations/onion-tears.jpg?v=3", "aanya-variations/burnt-toast.jpg?v=3",
-      "aanya-variations/fridge-detective.jpg?v=3", "aanya-variations/proud-plating.jpg?v=3"
-    ];
-    let image = totalCooks === 0 ? "aanya-welcome.png" : sceneImages[stableHash(`${today}-${totalCooks}-${learnedSkills}`) % sceneImages.length];
-    if (pendingCook) image = "aanya-variations/surprised-o.jpg?v=3";
-    if (state.lastCookDate === today) image = stableHash(`${today}-${totalCooks}`) % 2 ? "aanya-variations/proud-plating.jpg?v=3" : "aanya-variations/full-content.jpg?v=3";
+    const image = "aanya-variations/proud-plating.jpg?v=3";
 
     const targetRecipe = pendingCook?.recipe || questDeck.recipe;
     const isChoosing = !pendingCook;
@@ -637,7 +626,7 @@
       <section class="aanya-companion" aria-labelledby="aanya-companion-heading">
         <div class="aanya-companion-copy">
           <div class="aanya-guide-intro">
-            <div class="aanya-companion-art"><img src="${image}" alt="Aanya, your friendly cooking guide"></div>
+            <div class="aanya-companion-art"><img src="${image}" alt="Aanya proudly presenting a finished dish"></div>
             <div class="aanya-guide-message">
               <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's idea for you</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA'S PICK</span></div>
               <div class="aanya-speech"><span aria-hidden="true">💬</span><p>${escapeHtml(comment)}</p></div>
@@ -1768,11 +1757,14 @@
   function wireImageFallbacks(root = document) {
     root.querySelectorAll(".dish-picture img:not([data-wired])").forEach((image) => {
       image.dataset.wired = "true";
-      image.addEventListener("error", () => {
+      const showFallback = () => {
         const figure = image.closest(".dish-picture");
+        if (!figure || !image.isConnected) return;
         figure.classList.add("dish-picture--illustrated");
         image.replaceWith(Object.assign(document.createElement("span"), { textContent: "🍲" }));
-      }, { once: true });
+      };
+      image.addEventListener("error", showFallback, { once: true });
+      if (image.complete && image.naturalWidth === 0) showFallback();
     });
   }
 

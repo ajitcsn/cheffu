@@ -66,8 +66,9 @@ assert.ok(fs.existsSync(new URL("./cheffu-aanya-logo.png", import.meta.url)), "C
 assert.ok(index.includes("cheffu-aanya-logo.png"), "Header and app metadata must use the Aanya mascot logo");
 for (const asset of ["aanya-welcome.png", "aanya-skills.png", "aanya-streak.png", "aanya-challenge.png"]) {
   assert.ok(fs.existsSync(new URL(`./${asset}`, import.meta.url)), `Home companion asset missing: ${asset}`);
-  assert.ok(appSource.includes(asset), `Home companion must use ${asset}`);
 }
+assert.ok(appSource.includes('const image = "aanya-variations/proud-plating.jpg?v=3"'), "Home must use one fixed Aanya variation");
+assert.ok(!appSource.includes("sceneImages") && !appSource.includes("AANYA_VARIATION_IMAGES") && !appSource.includes("aanyaCycle"), "Home must not cycle Aanya variations");
 assert.ok(appSource.includes("aanyaHomePanel") && appSource.includes("Aanya's idea for you"), "Home must include one reactive Aanya recommendation");
 assert.ok(appSource.includes("AANYA'S PICK") && appSource.includes("Aanya recommends"), "The quest card must visibly identify Aanya as its recommender");
 assert.ok(appSource.includes("quest-swipe-card") && appSource.includes("data-pass-daily-quest") && appSource.includes("data-accept-daily-quest"), "Home must expose one swipeable Aanya suggestion with accessible action buttons");
@@ -83,7 +84,8 @@ assert.ok(styles.includes(".home-route-grid") && styles.includes(".nav-notificat
 assert.ok(styles.includes(".quest-swipe-card") && styles.includes("touch-action: pan-y") && styles.includes("quest-accept-out"), "The quest deck needs responsive swipe styling and feedback");
 const aanyaVariationFiles = fs.readdirSync(new URL("./aanya-variations/", import.meta.url)).filter((file) => file.endsWith(".jpg"));
 assert.equal(aanyaVariationFiles.length, 12, "Aanya expression deck must contain 12 additional poses");
-assert.ok(aanyaVariationFiles.every((file) => appSource.includes(`aanya-variations/${file}`)), "Every Aanya expression must be available to the automatic home commentary");
+const aanyaVeoPrompts = fs.readFileSync(new URL("./AANYA_VEO_ANIMATION_PROMPTS.md", import.meta.url), "utf8");
+assert.ok(aanyaVariationFiles.every((file) => aanyaVeoPrompts.includes(`\`${file}\``)), "Every Aanya variation must have a separate Veo prompt");
 assert.ok(!appSource.includes("data-aanya-pose") && !appSource.includes("data-aanya-cycle") && !appSource.includes("More moods"), "Aanya commentary must not expose manual mood choices");
 assert.ok(!/Ayyo|Seri/.test(appSource), "Aanya's dialogue must use a friendly, region-neutral voice");
 assert.ok(!appSource.includes("TODAY'S 1× QUEST") && appSource.includes("AANYA'S PICK"), "Daily recommendation wording must stay clear");
