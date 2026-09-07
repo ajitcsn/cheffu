@@ -3565,6 +3565,16 @@ main {
   background: var(--yellow);
 }
 
+.toast--suggestion {
+  color: var(--ink);
+  background: linear-gradient(135deg, var(--brand-cream), #fff0b3);
+  box-shadow: 5px 6px 0 var(--orange);
+}
+
+.toast--suggestion strong {
+  color: var(--orange-action);
+}
+
 .toast strong {
   font-size: 0.75rem;
   letter-spacing: 0.08em;
