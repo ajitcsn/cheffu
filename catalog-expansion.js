@@ -555,6 +555,49 @@
     if (/\b(breakfast|chai|oats?|eggs?|omelette|poha|upma|idli|dosa|uttapam|pongal)\b/i.test(recipe.name) && !recipe.tags.includes("breakfast")) recipe.tags.push("breakfast");
   });
 
+  function draftGuideFor(recipe) {
+    const name = recipe.name.toLowerCase();
+    const isDrink = /water|lassi|chaas|cooler|malt|coffee|cocoa|milk/.test(name);
+    const isBread = /roti|paratha|thepla|naan|pancake|dosa|idli|uttapam|momos|bao|focaccia|pizza|bread|chilla|dhokla|vada/.test(name);
+    const isSweet = /halwa|kheer|custard|cake|brownie|cookie|muffin|tart|cheesecake|pudding|payasam|jamun|rasmalai|tiramisu|caramel|cocoa|cinnamon|banana|fruit|parfait|bites|compote|sauce|shrikhand/.test(name);
+    const isRice = /rice|pulao|biryani|khichdi|pongal|bhat|risotto|fried rice|noodle|sevai|pasta|spaghetti|gnocchi|lasagna/.test(name);
+    const isSoup = /soup|rasam|stew|broth|kadhi|sambar|dal|chilli|chili|tagine|pho|moilee|curry|jhol|yakhni|vindaloo|karahi|rogan/.test(name);
+    const isAnimalProtein = recipe.diet === "Non-vegetarian" || recipe.diet === "Egg";
+    const baseIngredients = isDrink
+      ? ["Use the liquid and flavouring quantities from a trusted recipe for this dish", "safe drinking water or the specified milk", "salt or sweetener only if the recipe calls for it"]
+      : isBread
+        ? ["Use the flour, batter, or dough quantities from a trusted recipe for this dish", "water added gradually", "oil or ghee as specified", "salt to taste"]
+        : isSweet
+          ? ["Use the measured ingredient list from a trusted recipe for this dish", "the specified sweetener", "fat or dairy as specified", "salt only if the recipe calls for it"]
+          : isAnimalProtein
+            ? [`${recipe.name}: use a trusted recipe for the exact protein amount`, "fresh aromatics and spices as specified", "oil or other cooking fat as specified", "salt to taste"]
+            : isRice
+              ? [`${recipe.name}: use a trusted recipe for the grain-to-liquid ratio`, "fresh aromatics, vegetables, or protein as specified", "oil or ghee as specified", "salt to taste"]
+              : isSoup
+                ? [`${recipe.name}: use a trusted recipe for exact vegetables, legumes, or protein`, "measured cooking liquid", "aromatics and spices as specified", "salt to taste"]
+                : [`${recipe.name}: use a trusted recipe for the exact ingredient list`, "fresh aromatics or vegetables as specified", "oil or cooking fat as specified", "salt to taste"];
+    const equipment = isDrink ? ["measuring cup", "mixing glass or bowl", "spoon"] : isBread ? ["mixing bowl", "stable board", "heavy pan or steamer"] : isRice ? ["measuring cup", "saucepan or pot with lid", "spoon"] : ["stable board and knife", "heavy pan or pot", "measuring spoons"];
+    return {
+      status: "draft",
+      serves: recipe.stage <= 2 ? "1 to 2 portions" : "2 to 4 portions",
+      equipment,
+      ingredients: baseIngredients,
+      swaps: "Confirm substitutions with the trusted recipe before cooking, especially for allergens and animal products.",
+      reviewNote: "This guide is a structured draft. Confirm the exact quantities, timings, and regional method from a trusted source before cooking.",
+      source: null
+    };
+  }
+
+  data.recipes.forEach((recipe) => {
+    if (recipe.guide) {
+      recipe.guide.status = "reviewed";
+      recipe.guide.reviewNote = "Starter guide reviewed for this prototype. Follow normal food-safety practices and adjust to your ingredients.";
+      recipe.guide.source ||= null;
+    } else {
+      recipe.guide = draftGuideFor(recipe);
+    }
+  });
+
   const indiaStates = [
     ["Andhra Pradesh", "catalog-andhra-pesarattu-upma-plate", 57, 72], ["Arunachal Pradesh", "catalog-arunachal-vegetable-thukpa", 86, 24],
     ["Assam", "catalog-assamese-masor-tenga", 84, 34], ["Bihar", "catalog-bihari-litti-chokha", 64, 39],

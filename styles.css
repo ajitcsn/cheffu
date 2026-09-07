@@ -4921,6 +4921,11 @@ main {
   cursor: pointer;
 }
 
+.recipe-format-tag.is-draft {
+  color: #7a5b18;
+  background: #fff3c2;
+}
+
 .dish-made-section,
 .dish-library {
   margin-top: 30px;

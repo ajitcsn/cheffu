@@ -410,6 +410,10 @@
     return state.dietPreference === "Veg" && skill.cluster === "Eggs & Protein";
   }
 
+  function isReviewedGuide(recipe) {
+    return recipe?.guide?.status === "reviewed";
+  }
+
   function availableSkills() {
     return skills.filter((skill) => !isDietLockedSkill(skill) && recipes.some((recipe) => dietMatches(recipe, state.dietPreference) && recipe.skillIds.includes(skill.id)));
   }
@@ -423,8 +427,8 @@
     const completed = new Set(completedRecipeIds());
     const dietPool = recipes.filter((recipe) => dietMatches(recipe, diet));
     const preferences = state.questPreferences || defaultState.questPreferences;
-    const guidedPool = dietPool.filter((recipe) => recipe.guide);
-    const recommendationPool = guidedPool.length >= 3 ? guidedPool : dietPool;
+    const guidedPool = dietPool.filter(isReviewedGuide);
+    const recommendationPool = guidedPool.length ? guidedPool : dietPool;
     const ready = recommendationPool.filter((recipe) => recipe.stage <= info.unlockedStage);
     const nextUp = recommendationPool.filter((recipe) => recipe.stage > info.unlockedStage).sort((a, b) => a.stage - b.stage);
     const basePool = [...ready, ...nextUp].slice(0, Math.max(3, ready.length));
@@ -544,7 +548,7 @@
     return `
       <div class="meta-row">
         <span>⏱ ${recipe.minutes} min</span>
-        ${recipe.guide ? `<span>💪 ~${recipe.protein} g / serving</span>` : recipe.protein >= 15 ? "<span>💪 Protein-focused</span>" : ""}
+        ${isReviewedGuide(recipe) ? `<span>💪 ~${recipe.protein} g / serving</span>` : recipe.protein >= 15 ? "<span>💪 Protein-focused</span>" : ""}
         <span>⚡ ${recipe.xp} XP</span>
       </div>`;
   }
@@ -651,7 +655,7 @@
               <span class="quest-aanya-stamp"><span aria-hidden="true">👩🏽‍🍳</span><strong>Aanya recommends</strong></span>
               ${picture(targetRecipe, "quest")}
               <div class="quest-card-copy">
-                <div class="quest-card-heading"><div><p class="eyebrow">${targetRecipe.guide ? "Guided recipe" : "Technique mission"} · Stage ${targetRecipe.stage} · ${escapeHtml(targetRecipe.region)}</p><h3>${targetRecipe.emoji} ${escapeHtml(targetRecipe.name)}</h3></div><span class="difficulty-pill">${escapeHtml(targetRecipe.difficulty)}</span></div>
+                <div class="quest-card-heading"><div><p class="eyebrow">${isReviewedGuide(targetRecipe) ? "Reviewed guide" : "Draft guide"} · Stage ${targetRecipe.stage} · ${escapeHtml(targetRecipe.region)}</p><h3>${targetRecipe.emoji} ${escapeHtml(targetRecipe.name)}</h3></div><span class="difficulty-pill">${escapeHtml(targetRecipe.difficulty)}</span></div>
                 <p>${escapeHtml(targetRecipe.summary)}</p>
                 ${recipeMeta(targetRecipe)}
                 <div class="quest-card-outcomes">
@@ -908,11 +912,11 @@
       <article class="compact-recipe-card">
         ${picture(recipe, "compact")}
         <div class="compact-recipe-copy">
-          <div><span class="tiny-tag recipe-format-tag ${recipe.guide ? "is-guided" : ""}">${recipe.guide ? "✓ Guided recipe" : "Technique mission"}</span><span class="tiny-tag">Stage ${recipe.stage}</span><span class="tiny-tag">${escapeHtml(recipe.region)}</span></div>
+          <div><span class="tiny-tag recipe-format-tag ${isReviewedGuide(recipe) ? "is-guided" : "is-draft"}">${isReviewedGuide(recipe) ? "✓ Reviewed guide" : "Draft · check amounts"}</span><span class="tiny-tag">Stage ${recipe.stage}</span><span class="tiny-tag">${escapeHtml(recipe.region)}</span></div>
           <h3>${escapeHtml(recipe.name)}</h3>
           <p class="recipe-description">${escapeHtml(recipe.description)}</p>
           ${recipeMeta(recipe)}
-          <button class="button button-secondary" type="button" data-open-recipe="${recipe.id}">${recipe.guide ? "Start cooking" : "Open practice"}</button>
+          <button class="button button-secondary" type="button" data-open-recipe="${recipe.id}">${isReviewedGuide(recipe) ? "Start cooking" : "Review draft"}</button>
         </div>
       </article>`;
   }
@@ -1163,7 +1167,7 @@
       const matchesDiet = dietMatches(recipe, state.dietPreference);
       const matchesSearch = !search || [recipe.name, recipe.cuisine, recipe.region, recipe.description, recipe.tags?.join(" ")].join(" ").toLowerCase().includes(search);
       const matchesGoal = dishFilters.goal === "all"
-        || (dishFilters.goal === "guided" && Boolean(recipe.guide))
+        || (dishFilters.goal === "guided" && isReviewedGuide(recipe))
         || (dishFilters.goal === "quick" && recipe.minutes <= 20)
         || (dishFilters.goal === "protein" && recipe.protein >= 15);
       return matchesDiet && matchesSearch && matchesGoal;
@@ -1469,7 +1473,7 @@
               ${displayedRecipes.map((recipe) => `
                 <button class="roadmap-recipe ${state.cooks[recipe.id]?.count ? "is-complete" : ""}" type="button" data-open-recipe="${recipe.id}">
                   <span class="roadmap-recipe-icon">${recipe.emoji}</span>
-                  <span class="roadmap-recipe-main"><strong>${escapeHtml(recipe.name)}</strong><small>${escapeHtml(recipe.description)}</small><small>${escapeHtml(recipe.cuisine)} · ${recipe.minutes} min${recipe.guide ? ` · ~${recipe.protein} g protein / serving` : recipe.protein >= 15 ? " · Protein-focused" : ""}</small></span>
+                  <span class="roadmap-recipe-main"><strong>${escapeHtml(recipe.name)}</strong><small>${escapeHtml(recipe.description)}</small><small>${escapeHtml(recipe.cuisine)} · ${recipe.minutes} min${isReviewedGuide(recipe) ? ` · ~${recipe.protein} g protein / serving` : recipe.protein >= 15 ? " · Protein-focused" : ""}</small></span>
                   <span class="roadmap-recipe-xp">${state.cooks[recipe.id]?.count ? "✓ Cooked" : `+${recipe.xp} XP`}</span>
                 </button>`).join("")}
             </div>
@@ -1490,12 +1494,11 @@
   }
 
   function recipeReadinessPanel(recipe) {
-    if (!recipe.guide) {
-      return `
-        <section class="recipe-readiness recipe-readiness--limited">
-          <div><p class="eyebrow">Technique mission</p><h3>Bring a trusted recipe for exact amounts</h3><p>Cheffu will coach the sequence, safety checks, and skills. Ingredient quantities are still being added to this dish.</p></div>
-        </section>`;
-    }
+    if (!isReviewedGuide(recipe)) return `
+      <section class="recipe-readiness recipe-readiness--limited">
+        <div><p class="eyebrow">Draft guide · review before cooking</p><h3>Use a trusted recipe for exact amounts</h3><p>${escapeHtml(recipe.guide.reviewNote)}</p></div>
+        <div class="recipe-readiness-grid"><div><strong>Draft ingredients</strong><ul>${recipe.guide.ingredients.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div><div><strong>Equipment</strong><ul>${recipe.guide.equipment.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div></div>
+      </section>`;
     return `
       <details class="recipe-readiness" open>
         <summary><span><small class="eyebrow">Before you cook</small><strong id="recipe-readiness-heading">Check what you need</strong></span><span class="recipe-serves">${escapeHtml(recipe.guide.serves)}</span></summary>
@@ -1522,7 +1525,7 @@
 
     cookDialogContent.innerHTML = `
       <div class="sheet-head">
-        <div><p class="eyebrow">${recipe.guide ? "Guided recipe" : "Technique mission"} · Stage ${recipe.stage}</p><h2 id="cook-dialog-title">${escapeHtml(recipe.name)}</h2></div>
+        <div><p class="eyebrow">${isReviewedGuide(recipe) ? "Reviewed guide" : "Draft guide"} · Stage ${recipe.stage}</p><h2 id="cook-dialog-title">${escapeHtml(recipe.name)}</h2></div>
         <button class="icon-button" type="button" data-close-dialog aria-label="Close recipe">×</button>
       </div>
       <div class="recipe-sheet-grid">

@@ -25,6 +25,8 @@ assert.equal(recipeIds.size, recipes.length, "Recipe IDs must be unique");
 assert.ok(recipes.length >= 378, "Roadmap should offer at least 378 missions");
 assert.ok(skills.length >= 100, "The skill system must remain granular");
 assert.ok(recipes.every((recipe) => recipe.steps.length >= 4), "Every mission needs at least four safe steps");
+assert.ok(recipes.every((recipe) => recipe.guide && ["reviewed", "draft"].includes(recipe.guide.status)), "Every recipe must expose a reviewed or draft guide");
+assert.ok(recipes.every((recipe) => recipe.guide.ingredients?.length && recipe.guide.equipment?.length && recipe.guide.reviewNote), "Every recipe guide must disclose ingredients, equipment, and review status");
 assert.ok(recipes.every((recipe) => recipe.description && recipe.description.includes(recipe.name)), "Every dish needs a dish-specific description");
 assert.ok(recipes.every((recipe) => recipe.skillIds.every((id) => skillIds.has(id))), "Every recipe skill must exist");
 assert.ok(skills.every((skill) => recipes.some((recipe) => recipe.skillIds.includes(skill.id))), "Every micro-skill needs a practice dish");
@@ -120,4 +122,6 @@ assert.ok(appSource.includes('let skillView = "tree"'), "Skills must show the co
 const guidedTrackIds = ["morning", "dal-legume", "veg-curry", "rice-onepot", "family-meals", "plant-protein-fast", "plant-protein-meals", "egg-meat-protein", "one-pot", "dough", "south-tiffin", "south-meals", "north", "west", "east-ne", "sweet", "pan-asian", "italian", "world-foundations", "world-showpieces"];
 assert.ok(guidedTrackIds.every((id) => appSource.includes(`id: "${id}"`)), "Roadmap must retain all 20 focused guided paths");
 
-console.log(`Verified ${recipes.length} recipes, ${skills.length} skills, ${stages.length} stages, ${badges.length} badges, and ${titles.length} titles.`);
+const reviewedGuides = recipes.filter((recipe) => recipe.guide.status === "reviewed").length;
+const draftGuides = recipes.length - reviewedGuides;
+console.log(`Verified ${recipes.length} recipe records (${reviewedGuides} reviewed guides, ${draftGuides} drafts), ${skills.length} skills, ${stages.length} stages, ${badges.length} badges, and ${titles.length} titles.`);
