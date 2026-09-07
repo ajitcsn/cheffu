@@ -444,7 +444,13 @@
     const dietPool = recipes.filter((recipe) => dietMatches(recipe, diet));
     const preferences = state.questPreferences || defaultState.questPreferences;
     const guidedPool = dietPool.filter(isReviewedGuide);
-    const recommendationPool = guidedPool.length ? guidedPool : dietPool;
+    const allUntried = dietPool.filter((recipe) => !completed.has(recipe.id));
+    const guidedUntried = guidedPool.filter((recipe) => !completed.has(recipe.id));
+    const recommendationPool = guidedUntried.length
+      ? guidedUntried
+      : allUntried.length
+        ? allUntried
+        : guidedPool.length ? guidedPool : dietPool;
     const ready = recommendationPool.filter((recipe) => recipe.stage <= info.unlockedStage);
     const nextUp = recommendationPool.filter((recipe) => recipe.stage > info.unlockedStage).sort((a, b) => a.stage - b.stage);
     const basePool = [...ready, ...nextUp].slice(0, Math.max(3, ready.length));
@@ -458,9 +464,7 @@
       const firstRecipeId = preferences.goal === "protein" ? "curd-peanut-bowl" : "nimbu-pani";
       sorted.sort((a, b) => Number(b.id === firstRecipeId) - Number(a.id === firstRecipeId));
     }
-    const untried = sorted.filter((recipe) => !completed.has(recipe.id));
-    const tried = sorted.filter((recipe) => completed.has(recipe.id));
-    return [...untried, ...tried].slice(0, 3);
+    return sorted.slice(0, 3);
   }
 
   function dailyQuestDeck() {

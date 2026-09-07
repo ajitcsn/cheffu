@@ -76,6 +76,7 @@ assert.ok(appSource.includes("aanyaHomePanel") && appSource.includes("Aanya's id
 assert.ok(appSource.includes("AANYA'S PICK") && appSource.includes("Aanya recommends"), "The quest card must visibly identify Aanya as its recommender");
 assert.ok(appSource.includes("quest-swipe-card") && appSource.includes("data-pass-daily-quest") && appSource.includes("data-accept-daily-quest"), "Home must expose one swipeable Aanya suggestion with accessible action buttons");
 assert.ok(appSource.includes("dailyQuestDeck") && appSource.includes("ANOTHER IDEA") && appSource.includes("COOK THIS"), "Aanya's suggestion deck must have clear left and right outcomes");
+assert.ok(appSource.includes("const guidedUntried") && appSource.includes("const allUntried") && !appSource.includes("[...untried, ...tried]"), "Quest recommendations must exclude cooked dishes until the compatible catalogue is exhausted");
 assert.ok(appSource.includes('"Aanya\'s deck", "suggestion"') && styles.includes(".toast--suggestion"), "Aanya's next-dish feedback must use a neutral, non-success colour");
 assert.ok(appSource.includes('addEventListener("pointerdown"') && appSource.includes('event.key === "ArrowRight"'), "Aanya suggestions must support touch, pointer, and keyboard input");
 assert.ok(appSource.includes("SKILL TO TRAIN") && appSource.includes("COOKING REWARD"), "Each suggestion card must connect the dish to its skill and reward");
