@@ -119,6 +119,8 @@ assert.ok(appSource.includes("serviceWorker.register"), "The app shell must regi
 assert.ok(fs.existsSync(new URL("./manifest.webmanifest", import.meta.url)) && fs.existsSync(new URL("./service-worker.js", import.meta.url)), "PWA install and offline assets must exist");
 assert.ok(fs.existsSync(new URL("./vercel.json", import.meta.url)), "Vercel security header configuration must exist");
 assert.ok(styles.includes("--tap-target: 44px") && styles.includes("safe-area-inset-bottom"), "Mobile controls must retain 44px targets and safe-area spacing");
+assert.ok(styles.includes("--brand-cream: #fcf5e7") && styles.includes(".topbar #settings-button"), "Header must visually match the Cheffu wordmark");
+assert.ok(appSource.includes('cookDialog.classList.add("is-complete")') && styles.includes(".sheet.is-complete") && styles.includes("object-fit: contain"), "Cook completion must use a roomy responsive celebration layout");
 assert.ok(styles.includes("overflow-x: clip") && styles.includes("@media (max-width: 700px)"), "Mobile layout must prevent page overflow and keep its phone breakpoint");
 assert.ok(appSource.includes('let skillView = "tree"'), "Skills must show the connected tree by default on every device");
 const guidedTrackIds = ["morning", "dal-legume", "veg-curry", "rice-onepot", "family-meals", "plant-protein-fast", "plant-protein-meals", "egg-meat-protein", "one-pot", "dough", "south-tiffin", "south-meals", "north", "west", "east-ne", "sweet", "pan-asian", "italian", "world-foundations", "world-showpieces"];

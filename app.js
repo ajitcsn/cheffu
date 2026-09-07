@@ -1531,6 +1531,8 @@
   function openRecipe(recipeId) {
     const recipe = getRecipe(recipeId);
     if (!recipe) return;
+    cookDialog.classList.remove("is-complete");
+    cookDialog.setAttribute("aria-labelledby", "cook-dialog-title");
     const learnedSkillNames = recipe.skillIds.map((id) => skills.find((skill) => skill.id === id)).filter(Boolean);
     const stepKey = activeStepKey(recipe);
     const checked = new Set(state.completedSteps[stepKey] || []);
@@ -1622,8 +1624,11 @@
       ...reward.badges.map((item) => `${item.icon} ${item.name}`),
       ...reward.titles.slice(0, 2).map((item) => `${item.icon} ${item.name}`)
     ];
+    cookDialog.classList.add("is-complete");
+    cookDialog.setAttribute("aria-labelledby", "cook-complete-heading");
     cookDialogContent.innerHTML = `
       <section class="cook-complete" aria-labelledby="cook-complete-heading">
+        <button class="icon-button cook-complete-close" type="button" data-close-dialog aria-label="Close celebration">×</button>
         <div class="cook-complete-art"><img src="aanya-variations/proud-plating.jpg?v=3" alt="Aanya proudly presenting your finished dish"></div>
         <div class="cook-complete-copy">
           <p class="eyebrow">Dish complete</p>
@@ -1647,7 +1652,11 @@
         </div>
       </section>`;
     wireImageFallbacks(cookDialogContent);
-    window.setTimeout(() => cookDialogContent.querySelector("#cook-complete-heading")?.focus(), 0);
+    window.setTimeout(() => {
+      const heading = cookDialogContent.querySelector("#cook-complete-heading");
+      cookDialogContent.scrollTop = 0;
+      heading?.focus({ preventScroll: true });
+    }, 0);
   }
 
   function completeRecipe(recipeId) {
