@@ -22,8 +22,8 @@ window.CHEFFU_RECIPE_PHOTOS = {
   },
   "banana-badam-milkshake": {
     "url": "assets/recipes/banana-badam-milkshake.jpg",
-    "page": "https://commons.wikimedia.org/wiki/File:Strawberry_and_banana_milkshake,_May_2005.jpg",
-    "title": "Strawberry and banana milkshake, May 2005.jpg"
+    "page": "https://sweetify.in/blogs/recipes/banana-almond-milkshake",
+    "title": "Banana almond milkshake"
   },
   "beans-poriyal": {
     "url": "assets/recipes/beans-poriyal.jpg",
@@ -1732,8 +1732,8 @@ window.CHEFFU_RECIPE_PHOTOS = {
   },
   "curd-peanut-bowl": {
     "url": "assets/recipes/curd-peanut-bowl.jpg",
-    "page": "https://cookpad.com/eng/recipes/5174327",
-    "title": "Curd bowl with roasted peanuts"
+    "page": "https://www.tine.no/oppskrifter/lunsj-og-smaretter/yoghurt/yoghurt-med-notter-chili-og-honning",
+    "title": "Yogurt with nuts, chilli, and cucumber"
   },
   "curd-rice": {
     "url": "assets/recipes/curd-rice.jpg",
@@ -1774,11 +1774,6 @@ window.CHEFFU_RECIPE_PHOTOS = {
     "url": "assets/recipes/lemon-rice.jpg",
     "page": "https://commons.wikimedia.org/wiki/File:Chitranna_(Lemon_Rice)_prepared_by_an_indian_woman.jpg",
     "title": "Chitranna (Lemon Rice) prepared by an indian woman.jpg"
-  },
-  "lemon-water": {
-    "url": "assets/recipes/lemon-water.jpg",
-    "page": "https://www.snapcalorie.com/nutrition/nimbu_paani_nutrition.html",
-    "title": "Nimbu pani"
   },
   "masala-chai": {
     "url": "assets/recipes/masala-chai.jpg",

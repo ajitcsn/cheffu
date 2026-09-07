@@ -61,6 +61,7 @@
   let skillFilters = { search: "", status: "all" };
   let dishFilters = { search: "", goal: "all" };
   let dishResultLimit = 12;
+  let dishObserver = null;
   let titleFilters = { search: "", category: "all" };
   let skillView = "tree";
   let selectedSkillCluster = null;
@@ -439,7 +440,7 @@
     const seed = `${localDateKey()}-${info.unlockedStage}-${diet}`;
     const sorted = [...pool].sort((a, b) => stableHash(`${seed}-${a.id}`) - stableHash(`${seed}-${b.id}`));
     if (completed.size === 0) {
-      const firstRecipeId = preferences.goal === "protein" ? "curd-peanut-bowl" : "lemon-water";
+      const firstRecipeId = preferences.goal === "protein" ? "curd-peanut-bowl" : "nimbu-pani";
       sorted.sort((a, b) => Number(b.id === firstRecipeId) - Number(a.id === firstRecipeId));
     }
     const untried = sorted.filter((recipe) => !completed.has(recipe.id));
@@ -679,6 +680,7 @@
             </div>`}
           </div>
       </section>`;
+    observeDishSentinel();
   }
 
   function animateQuestChoice(card, choice) {
@@ -1151,7 +1153,31 @@
     return `
       <strong class="dish-result-count" id="dish-result-count">Showing ${shown.length} of ${available.length}</strong>
       <div class="compact-card-grid" id="dish-library-grid">${shown.map(compactRecipeCard).join("") || `<div class="empty-state compact-empty"><div class="empty-art">🔎</div><h3>No dishes match those filters.</h3><p>Try a shorter name or choose All.</p></div>`}</div>
-      ${shown.length < available.length ? `<button class="button button-secondary dish-load-more" type="button" data-load-more-dishes>Show ${Math.min(12, available.length - shown.length)} more dishes</button>` : ""}`;
+      ${shown.length < available.length ? `<div class="dish-scroll-sentinel" data-dish-scroll-sentinel role="status" aria-live="polite">Loading more dishes as you scroll…</div>` : ""}`;
+  }
+
+  function observeDishSentinel() {
+    dishObserver?.disconnect();
+    dishObserver = null;
+    const sentinel = document.querySelector("[data-dish-scroll-sentinel]");
+    if (!sentinel || !("IntersectionObserver" in window)) return;
+    dishObserver = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      const total = filteredDishes().length;
+      if (dishResultLimit >= total) return;
+      dishResultLimit = Math.min(dishResultLimit + 12, total);
+      updateDishLibraryResults();
+    }, { rootMargin: "0px 0px 420px" });
+    dishObserver.observe(sentinel);
+  }
+
+  function loadDishesNearBottom() {
+    if (activeRoute !== "dishes" || !document.querySelector("[data-dish-scroll-sentinel]")) return;
+    const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 560;
+    const total = filteredDishes().length;
+    if (!nearBottom || dishResultLimit >= total) return;
+    dishResultLimit = Math.min(dishResultLimit + 12, total);
+    updateDishLibraryResults();
   }
 
   function updateDishLibraryResults() {
@@ -1159,6 +1185,7 @@
     if (!results) return;
     results.innerHTML = renderDishLibraryResults();
     wireImageFallbacks(results);
+    observeDishSentinel();
   }
 
   function filteredDishes() {
@@ -1802,11 +1829,6 @@
       document.querySelector("#dishes-search")?.focus({ preventScroll: true });
     }
 
-    if (event.target.closest("[data-load-more-dishes]")) {
-      dishResultLimit += 12;
-      updateDishLibraryResults();
-    }
-
     if (event.target.closest("[data-focus-dish-search]")) {
       document.querySelector("#dishes-search")?.scrollIntoView({ behavior: "smooth", block: "center" });
       window.setTimeout(() => document.querySelector("#dishes-search")?.focus(), 300);
@@ -2005,6 +2027,7 @@
   });
 
   window.addEventListener("popstate", () => routeTo(location.hash.slice(1) || "home"));
+  window.addEventListener("scroll", loadDishesNearBottom, { passive: true });
   if ("serviceWorker" in navigator && location.protocol === "https:") {
     window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(() => {}));
   }

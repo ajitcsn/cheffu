@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-08-24T15:27:36.569Z",
-  "total": 378,
+  "total": 377,
   "items": [
     {
       "recipeId": "aloo-gobi",
@@ -67,15 +67,15 @@
       "recipeName": "Banana badam milkshake",
       "query": "banana milkshake",
       "localPath": "assets/recipes/banana-badam-milkshake.jpg",
-      "sourceTitle": "File:Strawberry and banana milkshake, May 2005.jpg",
-      "sourcePage": "https://commons.wikimedia.org/wiki/File:Strawberry_and_banana_milkshake,_May_2005.jpg",
-      "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/2/23/Strawberry_and_banana_milkshake%2C_May_2005.jpg",
-      "license": "CC BY 2.0",
-      "artist": "Dicemanic",
-      "credit": "Flickr : Milkshake",
-      "score": 107,
-      "width": 720,
-      "height": 960
+      "sourceTitle": "Banana almond milkshake",
+      "sourcePage": "https://sweetify.in/blogs/recipes/banana-almond-milkshake",
+      "sourceImage": "https://cdn.shopify.com/s/files/1/0818/3821/1359/files/Banana_almond_milkshake_thumbnail.png?v=1727760106",
+      "license": "SEE SOURCE TERMS",
+      "artist": "Sweetify",
+      "credit": "Image used under source terms",
+      "score": 100,
+      "width": 568,
+      "height": 568
     },
     {
       "recipeId": "beans-poriyal",
@@ -5252,12 +5252,12 @@
       "recipeName": "Curd peanut bowl",
       "query": "yogurt bowl",
       "localPath": "assets/recipes/curd-peanut-bowl.jpg",
-      "sourceTitle": "Curd bowl with roasted peanuts",
-      "sourcePage": "https://cookpad.com/eng/recipes/5174327",
-      "sourceImage": "https://img-global.cpcdn.com/steps/82b6e93d32a9a36c/400x400cq80/photo.jpg",
+      "sourceTitle": "Yogurt with nuts, chilli, and cucumber",
+      "sourcePage": "https://www.tine.no/oppskrifter/lunsj-og-smaretter/yoghurt/yoghurt-med-notter-chili-og-honning",
+      "sourceImage": "https://www.tine.no/_/recipeimage/w_1200%2Ch_900%2Cc_fill%2Cx_1024%2Cy_576%2Cg_xy_center/recipeimage/fdaidxbax8etwgb3bgyr.jpg",
       "license": "SEE SOURCE TERMS",
-      "artist": "Dr Swati Rai",
-      "credit": "",
+      "artist": "TINE",
+      "credit": "Image used under source terms",
       "score": 100,
       "catalog": "Web image search"
     },
@@ -5674,15 +5674,6 @@
       "sourceTitle": "Nimbu pani",
       "sourcePage": "https://www.punchfork.com/recipe/Nimbu-Pani-Cook-with-Manali",
       "sourceImage": "https://s3.us-east-2.amazonaws.com/pfimg1/013/6f/bd/6fbd6fac73e708447f0f5b05d086d494_1280m.jpg"
-    },
-    {
-      "recipeId": "lemon-water",
-      "recipeName": "Nimbu water",
-      "query": "nimbu water lemon drink Indian",
-      "localPath": "assets/recipes/lemon-water.jpg",
-      "sourceTitle": "Nimbu pani",
-      "sourcePage": "https://www.snapcalorie.com/nutrition/nimbu_paani_nutrition.html",
-      "sourceImage": "https://snapcalorie-webflow-website.s3.us-east-2.amazonaws.com/media/food_pics_v2/medium/nimbu_paani.jpg"
     },
     {
       "recipeId": "sambar",

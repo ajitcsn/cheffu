@@ -304,7 +304,6 @@
 
   const recipes = [
     r("nimbu-pani", "Nimbu pani", 0, "Indian everyday", "Pan-Indian", "Vegan", 5, 0, 35, "Zero heat", ["setup", "measuring", "mixing", "hygiene"], photos.lemonade, "🍋", "Your tutorial mission: measure lemon, water, salt, and sugar, then reset the counter.", ["Wash and dry your hands, then rinse the lemon.", "Measure safe drinking water into a clean glass.", "Squeeze in lemon, add a small pinch of salt and sugar, then stir until dissolved.", "Taste, adjust gently, and wash the glass and spoon."], "Use clean drinking water and a stable knife or citrus squeezer."),
-    r("lemon-water", "Nimbu water", 0, "Indian everyday", "Pan-Indian", "Vegan", 4, 0, 40, "Zero heat", ["setup", "measuring", "mixing", "hygiene"], photos.lemonade, "🍋", "Learn measuring, dissolving, tasting, and a complete cleanup in four minutes.", ["Wash the lemon and your hands.", "Add water, lemon juice, and a small pinch of salt.", "Stir, taste, and adjust once.", "Wash the glass and spoon."], "Use clean drinking water and a clean knife or lemon squeezer."),
     r("banana-badam-milkshake", "Banana badam milkshake", 0, "Indian everyday", "Pan-Indian", "Vegetarian", 7, 10, 55, "Appliance", ["setup", "measuring", "mixing", "protein", "hygiene"], photos.milk, "🥤", "A first appliance win with milk, banana, soaked almonds, and cardamom.", ["Check the mixer jar is clean and unplugged while loading.", "Add milk, banana, soaked almonds, and a pinch of cardamom.", "Close fully, blend in short pulses, then unplug.", "Pour, rinse the jar immediately, and wash it safely."], "Never put hands or tools in a plugged-in blender jar. Check for nut allergies."),
     r("curd-peanut-bowl", "Curd peanut bowl", 0, "Protein snack", "Pan-Indian", "Vegetarian", 6, 15, 55, "No heat", ["measuring", "mixing", "seasoning", "protein", "hygiene"], photos.peanut, "🥜", "Curd, roasted peanuts, cucumber, salt, and chilli become a real high-protein snack.", ["Wash the cucumber and your hands.", "Measure curd and roasted peanuts into a bowl.", "Add chopped or grated cucumber, salt, and chilli.", "Mix, taste once, and refrigerate leftovers promptly."], "Use ready-roasted peanuts and check for peanut or dairy allergies."),
 
@@ -361,12 +360,6 @@
       equipment: ["1 tall glass", "teaspoon", "citrus squeezer or small knife"],
       ingredients: ["250 ml safe drinking water", "½ lemon", "1 tsp sugar", "1 small pinch salt"],
       swaps: "Use lime instead of lemon. Leave out sugar for a sharper drink."
-    },
-    "lemon-water": {
-      serves: "1 glass",
-      equipment: ["1 tall glass", "teaspoon", "citrus squeezer or small knife"],
-      ingredients: ["250 ml safe drinking water", "½ lemon", "1 small pinch salt"],
-      swaps: "Use lime instead of lemon. Add a little sugar only if you want a sweeter drink."
     },
     "banana-badam-milkshake": {
       serves: "1 large glass",
@@ -439,7 +432,6 @@
 
   const recipeSpecificSkills = {
     "nimbu-pani": ["teaspoon-measure", "dissolve", "taste-adjust"],
-    "lemon-water": ["sieve-strain", "sour-balance"],
     "banana-badam-milkshake": ["blend-load", "pulse-blend", "allergen-check"],
     "curd-peanut-bowl": ["salad-toss", "dice-tomato", "chop-chilli", "allergen-check", "balanced-plate"],
     "masala-chai": ["sieve-strain", "boil-over-control", "tablespoon-measure"],

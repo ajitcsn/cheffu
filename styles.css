@@ -5168,9 +5168,14 @@ main {
   background: var(--green);
 }
 
-.dish-load-more {
-  width: min(100%, 420px);
+.dish-scroll-sentinel {
+  display: grid;
+  min-height: 44px;
+  place-items: center;
   margin: 18px auto 2px;
+  color: var(--ink-soft);
+  font-size: 0.72rem;
+  font-weight: 800;
 }
 
 .roadmap-swipe-hint {

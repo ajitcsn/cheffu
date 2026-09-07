@@ -22,7 +22,7 @@ const titleIds = new Set(titles.map((title) => title.id));
 
 assert.equal(stages.length, 8, "Roadmap must have eight stages");
 assert.equal(recipeIds.size, recipes.length, "Recipe IDs must be unique");
-assert.ok(recipes.length >= 378, "Roadmap should offer at least 378 missions");
+assert.ok(recipes.length >= 377, "Roadmap should offer at least 377 missions");
 assert.ok(skills.length >= 100, "The skill system must remain granular");
 assert.ok(recipes.every((recipe) => recipe.steps.length >= 4), "Every mission needs at least four safe steps");
 assert.ok(recipes.every((recipe) => recipe.guide && ["reviewed", "draft"].includes(recipe.guide.status)), "Every recipe must expose a reviewed or draft guide");
