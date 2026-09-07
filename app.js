@@ -86,6 +86,7 @@
 
   const views = [...document.querySelectorAll("[data-view]")];
   const navItems = [...document.querySelectorAll(".nav-item")];
+  const topbar = document.querySelector(".topbar");
   const cookDialog = document.querySelector("#cook-dialog");
   const cookDialogContent = document.querySelector("#cook-dialog-content");
   const settingsDialog = document.querySelector("#settings-dialog");
@@ -93,6 +94,21 @@
   const nameForm = document.querySelector("#name-form");
   const nameInput = document.querySelector("#player-name-input");
   const toastRegion = document.querySelector("#toast-region");
+  let lastWindowScrollY = Math.max(0, window.scrollY);
+  let topbarScrollFrame = 0;
+
+  function updateTopbarVisibility() {
+    topbarScrollFrame = 0;
+    const currentY = Math.max(0, window.scrollY);
+    if (currentY <= 24 || currentY < lastWindowScrollY) topbar.classList.remove("is-hidden");
+    else if (currentY > 72 && currentY > lastWindowScrollY) topbar.classList.add("is-hidden");
+    lastWindowScrollY = currentY;
+  }
+
+  function handleTopbarScroll() {
+    if (topbarScrollFrame) return;
+    topbarScrollFrame = window.requestAnimationFrame(updateTopbarVisibility);
+  }
 
   function loadState() {
     try {
@@ -2029,6 +2045,7 @@
 
   window.addEventListener("popstate", () => routeTo(location.hash.slice(1) || "home"));
   window.addEventListener("scroll", loadDishesNearBottom, { passive: true });
+  window.addEventListener("scroll", handleTopbarScroll, { passive: true });
   if ("serviceWorker" in navigator && location.protocol === "https:") {
     window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(() => {}));
   }

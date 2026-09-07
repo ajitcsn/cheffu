@@ -6178,6 +6178,16 @@ main {
   background: var(--brand-cream);
   box-shadow: 0 5px 0 var(--orange), 0 10px 22px rgba(24, 37, 29, 0.1);
   backdrop-filter: none;
+  transition: transform 220ms cubic-bezier(.22, .9, .35, 1), opacity 160ms ease, visibility 0s linear;
+  will-change: transform;
+}
+
+.topbar.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(calc(-100% - 22px));
+  pointer-events: none;
+  transition: transform 220ms cubic-bezier(.55, 0, 1, .45), opacity 150ms ease, visibility 0s linear 220ms;
 }
 
 .brand-logo {
@@ -6206,6 +6216,13 @@ main {
 .topbar #settings-button:active {
   transform: translate(2px, 2px);
   box-shadow: 1px 1px 0 var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar,
+  .topbar.is-hidden {
+    transition: none;
+  }
 }
 
 /* Completion is a celebration screen, not another recipe sheet. */
