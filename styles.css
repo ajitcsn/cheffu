@@ -6008,6 +6008,29 @@ main {
   }
 }
 
+/* Keep skill counts inside their node when a family name wraps. */
+.skill-system-node {
+  grid-template-columns: 31px minmax(0, 1fr) auto;
+  min-width: 0;
+}
+
+.skill-system-node > span,
+.skill-system-node strong,
+.skill-system-node small {
+  min-width: 0;
+}
+
+.skill-system-node strong {
+  overflow-wrap: anywhere;
+}
+
+.skill-system-node small {
+  min-width: 30px;
+  padding-inline: 4px;
+  text-align: center;
+  white-space: nowrap;
+}
+
 /* Aanya is the guide, so her presence should read at a glance. */
 .aanya-companion {
   overflow: hidden;
