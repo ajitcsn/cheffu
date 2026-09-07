@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="cheffu-wordmark.png" alt="Cheffu" width="360">
+  <img src="assets/brand/cheffu-wordmark.png" alt="Cheffu" width="360">
 </p>
 
 <p align="center">
@@ -21,15 +21,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/screenshots/cheffu-home-mobile.png" alt="Cheffu Today screen on mobile" width="31%">
-  <img src="assets/screenshots/cheffu-skill-tree-mobile.png" alt="Cheffu connected cooking skill tree on mobile" width="31%">
-  <img src="assets/screenshots/cheffu-dish-library-mobile.png" alt="Cheffu searchable dish library on mobile" width="31%">
-</p>
-
-<p align="center"><sub>Today · Connected skill tree · Searchable dish library</sub></p>
-
-<p align="center">
-  <img src="assets/screenshots/cheffu-cook-complete-mobile.png" alt="Cheffu cook completion celebration with Aanya" width="340">
+  <img src="assets/screenshots/cheffu-cook-complete-desktop.png" alt="Cheffu cook completion celebration with Aanya on a laptop" width="100%">
 </p>
 
 <p align="center"><sub>A completed cook awards XP, develops skills, extends the streak, and moves the next reward forward.</sub></p>
@@ -123,11 +115,9 @@ Cheffu/
 ├── recipe-photos.js           Local recipe imagery with source credits
 ├── title-catalog.js           100 unlockable titles
 ├── verify.mjs                 Automated content validation
-├── assets/                    Decorative interface assets
-├── aanya-variations/          Aanya's cooking expressions
+├── assets/                    Brand, Aanya, recipe, and screenshot assets
 ├── scripts/                   Catalogue image research utilities
-├── CURRICULUM.md              Cooking curriculum rationale
-└── *_PROMPT.md                Reusable character and logo briefs
+└── CURRICULUM.md              Cooking curriculum rationale
 ```
 
 ## Progress and privacy
@@ -154,7 +144,7 @@ Map sources:
 - [India states and union territories](https://commons.wikimedia.org/wiki/File:India_states_and_union_territories_map.svg), Planemad and contributors, CC BY-SA 3.0.
 - [World map configurable](https://commons.wikimedia.org/wiki/File:World_map_configurable.svg), Heitordp, CC0.
 
-The original Cheffu wordmark and Aanya character assets were created for this prototype. Reusable generation briefs are available in [`CHEFFU_LOGO_PROMPT.md`](CHEFFU_LOGO_PROMPT.md) and [`AANYA_COMPANION_PROMPTS.md`](AANYA_COMPANION_PROMPTS.md).
+The original Cheffu wordmark and Aanya character assets were created for this prototype and live under `assets/brand` and `assets/aanya`.
 
 ## Current status
 

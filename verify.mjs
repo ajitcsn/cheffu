@@ -63,16 +63,14 @@ const index = fs.readFileSync(new URL("./index.html", import.meta.url), "utf8");
 const readme = fs.readFileSync(new URL("./README.md", import.meta.url), "utf8");
 const appSource = fs.readFileSync(new URL("./app.js", import.meta.url), "utf8");
 const styles = fs.readFileSync(new URL("./styles.css", import.meta.url), "utf8");
-for (const screenshot of ["cheffu-home-desktop.png", "cheffu-home-mobile.png", "cheffu-skill-tree-mobile.png", "cheffu-dish-library-mobile.png", "cheffu-cook-complete-mobile.png"]) {
+for (const screenshot of ["cheffu-home-desktop.png", "cheffu-cook-complete-desktop.png"]) {
   assert.ok(fs.existsSync(new URL(`./assets/screenshots/${screenshot}`, import.meta.url)), `README screenshot missing: ${screenshot}`);
   assert.ok(readme.includes(`assets/screenshots/${screenshot}`), `README must display screenshot: ${screenshot}`);
 }
-assert.ok(fs.existsSync(new URL("./cheffu-aanya-logo.png", import.meta.url)), "Cheffu must include the Aanya mascot logo asset");
-assert.ok(index.includes("cheffu-aanya-logo.png"), "Header and app metadata must use the Aanya mascot logo");
-for (const asset of ["aanya-welcome.png", "aanya-skills.png", "aanya-streak.png", "aanya-challenge.png"]) {
-  assert.ok(fs.existsSync(new URL(`./${asset}`, import.meta.url)), `Home companion asset missing: ${asset}`);
-}
-assert.ok(appSource.includes('const image = "aanya-variations/proud-plating.jpg?v=3"'), "Home must use one fixed Aanya variation");
+assert.ok(fs.existsSync(new URL("./assets/brand/cheffu-aanya-logo.png", import.meta.url)), "Cheffu must include the Aanya mascot logo asset");
+assert.ok(index.includes("assets/brand/cheffu-aanya-logo.png"), "Header and app metadata must use the Aanya mascot logo");
+assert.ok(fs.existsSync(new URL("./assets/aanya/welcome.png", import.meta.url)), "Aanya welcome asset missing");
+assert.ok(appSource.includes('const image = "assets/aanya/variations/proud-plating.jpg?v=3"'), "Home must use one fixed Aanya variation");
 assert.ok(!appSource.includes("sceneImages") && !appSource.includes("AANYA_VARIATION_IMAGES") && !appSource.includes("aanyaCycle"), "Home must not cycle Aanya variations");
 assert.ok(appSource.includes("aanyaHomePanel") && appSource.includes("Aanya's idea for you"), "Home must include one reactive Aanya recommendation");
 assert.ok(appSource.includes("AANYA'S PICK") && appSource.includes("Aanya recommends"), "The quest card must visibly identify Aanya as its recommender");
@@ -87,10 +85,8 @@ assert.ok(appSource.includes("navNotificationCount") && appSource.includes("mark
 assert.equal((index.match(/class="nav-notification"/g) || []).length, 4, "Each non-home navigation item needs a notification badge");
 assert.ok(styles.includes(".home-route-grid") && styles.includes(".nav-notification[hidden]"), "Home shortcuts and navigation badges need responsive styling");
 assert.ok(styles.includes(".quest-swipe-card") && styles.includes("touch-action: pan-y") && styles.includes("quest-accept-out"), "The quest deck needs responsive swipe styling and feedback");
-const aanyaVariationFiles = fs.readdirSync(new URL("./aanya-variations/", import.meta.url)).filter((file) => file.endsWith(".jpg"));
+const aanyaVariationFiles = fs.readdirSync(new URL("./assets/aanya/variations/", import.meta.url)).filter((file) => file.endsWith(".jpg"));
 assert.equal(aanyaVariationFiles.length, 12, "Aanya expression deck must contain 12 additional poses");
-const aanyaVeoPrompts = fs.readFileSync(new URL("./AANYA_VEO_ANIMATION_PROMPTS.md", import.meta.url), "utf8");
-assert.ok(aanyaVariationFiles.every((file) => aanyaVeoPrompts.includes(`\`${file}\``)), "Every Aanya variation must have a separate Veo prompt");
 assert.ok(!appSource.includes("data-aanya-pose") && !appSource.includes("data-aanya-cycle") && !appSource.includes("More moods"), "Aanya commentary must not expose manual mood choices");
 assert.ok(!/Ayyo|Seri/.test(appSource), "Aanya's dialogue must use a friendly, region-neutral voice");
 assert.ok(!appSource.includes("TODAY'S 1× QUEST") && appSource.includes("AANYA'S PICK"), "Daily recommendation wording must stay clear");
@@ -101,8 +97,8 @@ assert.ok(appSource.includes('id="dishes-search"') && appSource.includes("Browse
 assert.ok(!appSource.includes("Do the action. Then tap when your hands are safe."), "Recipe checklist heading must avoid the removed safety-action line");
 assert.ok(!dataSource.includes("Boot Sequence") && dataSource.includes("Kitchen First Steps"), "Beginner roadmap wording must use plain language");
 assert.ok(!styles.includes('.nav-item[data-route="dishes"]'), "Dishes navigation must not have a special highlight");
-assert.ok(fs.existsSync(new URL("./cheffu-wordmark.png", import.meta.url)), "Cheffu must include the illustrated wordmark");
-assert.ok(index.includes("cheffu-wordmark.png"), "Header must use the illustrated Cheffu wordmark");
+assert.ok(fs.existsSync(new URL("./assets/brand/cheffu-wordmark.png", import.meta.url)), "Cheffu must include the illustrated wordmark");
+assert.ok(index.includes("assets/brand/cheffu-wordmark.png"), "Header must use the illustrated Cheffu wordmark");
 for (const file of ["styles.css", "data.js", "catalog-expansion.js", "recipe-photos.js", "title-catalog.js", "app.js"]) {
   assert.ok(index.includes(file), `index.html must load ${file}`);
 }
@@ -122,7 +118,10 @@ assert.ok(index.includes('rel="manifest"') && index.includes("og:title"), "Produ
 assert.ok(appSource.includes("downloadProgressBackup") && appSource.includes("restoreProgressBackup"), "Local-first progress must support private backup and restore");
 assert.ok(appSource.includes("serviceWorker.register"), "The app shell must register its offline worker on HTTPS");
 assert.ok(fs.existsSync(new URL("./manifest.webmanifest", import.meta.url)) && fs.existsSync(new URL("./service-worker.js", import.meta.url)), "PWA install and offline assets must exist");
-assert.ok(fs.existsSync(new URL("./vercel.json", import.meta.url)), "Vercel security header configuration must exist");
+const rootFiles = fs.readdirSync(new URL("./", import.meta.url));
+assert.ok(!rootFiles.some((file) => /\.(png|jpe?g|webp)$/i.test(file)), "Raster images must live under assets, not in the repository root");
+assert.ok(!rootFiles.some((file) => /(?:PRD|PROMPT)/i.test(file)), "Planning and generation prompt files must stay out of the production repository");
+assert.ok(!rootFiles.includes("vercel.json"), "Hosting-specific Vercel configuration must stay out of the repository");
 assert.ok(styles.includes("--tap-target: 44px") && styles.includes("safe-area-inset-bottom"), "Mobile controls must retain 44px targets and safe-area spacing");
 assert.ok(styles.includes("--brand-cream: #fcf5e7") && styles.includes(".topbar #settings-button") && styles.includes("width: min(calc(100% - 32px), var(--content))"), "Header must be contained and visually match the Cheffu wordmark");
 assert.ok(appSource.includes("handleTopbarScroll") && styles.includes(".topbar.is-hidden"), "Header must hide on downward scrolling and return on upward scrolling");

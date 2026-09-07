@@ -605,7 +605,7 @@
       })
       .filter(Boolean)
       .sort((a, b) => b.date.localeCompare(a.date))[0];
-    const image = "aanya-variations/proud-plating.jpg?v=3";
+    const image = "assets/aanya/variations/proud-plating.jpg?v=3";
 
     const targetRecipe = pendingCook?.recipe || questDeck.recipe;
     const isChoosing = !pendingCook;
@@ -1645,7 +1645,7 @@
     cookDialogContent.innerHTML = `
       <section class="cook-complete" aria-labelledby="cook-complete-heading">
         <button class="icon-button cook-complete-close" type="button" data-close-dialog aria-label="Close celebration">×</button>
-        <div class="cook-complete-art"><img src="aanya-variations/proud-plating.jpg?v=3" alt="Aanya proudly presenting your finished dish"></div>
+        <div class="cook-complete-art"><img src="assets/aanya/variations/proud-plating.jpg?v=3" alt="Aanya proudly presenting your finished dish"></div>
         <div class="cook-complete-copy">
           <p class="eyebrow">Dish complete</p>
           <h2 id="cook-complete-heading" tabindex="-1">You cooked ${escapeHtml(recipe.name)}!</h2>
