@@ -377,7 +377,7 @@
     "curd-peanut-bowl": {
       serves: "1 bowl",
       equipment: ["mixing bowl", "spoon", "small knife and board"],
-      ingredients: ["200 g plain curd or unsweetened plant yoghurt", "2 tbsp roasted peanuts", "½ small tomato", "1 pinch salt", "½ tsp roasted cumin powder, optional"],
+      ingredients: ["200 g plain curd or unsweetened plant yoghurt", "2 tbsp roasted peanuts", "½ small cucumber", "1 small pinch chilli powder", "1 pinch salt", "½ tsp roasted cumin powder, optional"],
       swaps: "Use sunflower or pumpkin seeds for a peanut-free bowl."
     },
     "masala-chai": {

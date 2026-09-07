@@ -71,14 +71,14 @@
     <form method="dialog">
       <div class="sheet-head">
         <div>
-          <p class="eyebrow">Local prototype</p>
+          <p class="eyebrow">Your kitchen</p>
           <h2 id="settings-heading">Settings</h2>
         </div>
         <button class="icon-button" value="cancel" aria-label="Close settings">×</button>
       </div>
-      <p>Your progress is saved only in this browser.</p>
+      <p>Your progress stays private and is saved only in this browser.</p>
       <div class="settings-diet"><strong>Diet preference</strong><span>Used to show dishes and collections that fit you.</span><div id="global-diet-filter" aria-label="Diet preference"></div></div>
-      <button class="button button-secondary" id="change-name" type="button">Change player name</button>
+      <button class="button button-secondary" id="change-name" type="button">Change your name</button>
       <button class="button button-danger" id="reset-progress" type="button">Reset all progress</button>
     </form>
   </dialog>
@@ -86,11 +86,12 @@
   <dialog class="sheet name-sheet" id="name-dialog" aria-labelledby="name-heading">
     <form id="name-form">
       <div class="name-dialog-icon" aria-hidden="true"><img src="cheffu-aanya-logo.png" alt=""></div>
-      <p class="eyebrow">Optional kitchen save name</p>
-      <h2 id="name-heading">What should Cheffu call you?</h2>
-      <p>You can add this later. Your cooking progress stays in this browser.</p>
-      <label class="name-field"><span>Player name</span><input id="player-name-input" name="playerName" type="text" maxlength="30" autocomplete="name" placeholder="Enter your name"></label>
-      <div class="name-dialog-actions"><button class="button button-primary button-large" type="submit">Save name</button><button class="text-button" id="skip-name" type="button">Cook as Chef for now</button></div>
+      <p class="eyebrow">Meet your cooking guide</p>
+      <h2 id="name-heading">What should Aanya call you?</h2>
+      <p>Tell her what you eat so every dish suggestion fits from the start.</p>
+      <label class="name-field"><span>Your name, optional</span><input id="player-name-input" name="playerName" type="text" maxlength="30" autocomplete="name" placeholder="Enter your name"></label>
+      <fieldset class="onboarding-diet"><legend>What do you eat?</legend><div id="onboarding-diet-filter"></div><small>Vegetarian hides egg and meat. “Includes egg” also shows vegetarian dishes. “Everything” shows the full library.</small></fieldset>
+      <div class="name-dialog-actions"><button class="button button-primary button-large" type="submit">Enter my kitchen</button><button class="text-button" id="skip-name" type="button">Continue as Chef</button></div>
     </form>
   </dialog>
 

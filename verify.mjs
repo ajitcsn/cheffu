@@ -28,6 +28,10 @@ assert.ok(recipes.every((recipe) => recipe.steps.length >= 4), "Every mission ne
 assert.ok(recipes.every((recipe) => recipe.description && recipe.description.includes(recipe.name)), "Every dish needs a dish-specific description");
 assert.ok(recipes.every((recipe) => recipe.skillIds.every((id) => skillIds.has(id))), "Every recipe skill must exist");
 assert.ok(skills.every((skill) => recipes.some((recipe) => recipe.skillIds.includes(skill.id))), "Every micro-skill needs a practice dish");
+for (const id of ["catalog-eggless-chocolate-mug-cake", "catalog-eggless-banana-bread", "catalog-chickpea-shakshuka"]) {
+  const recipe = recipes.find((item) => item.id === id);
+  assert.ok(recipe && !recipe.skillIds.includes("crack-egg"), `${id} must not be classified as an egg mission`);
+}
 assert.ok(stages.every((stage) => recipes.some((recipe) => recipe.stage === stage.id)), "Every stage needs recipes");
 assert.ok(recipes.some((recipe) => recipe.region === "South India"), "South Indian path is required");
 assert.ok(recipes.some((recipe) => recipe.region === "North India"), "North Indian path is required");
@@ -62,15 +66,15 @@ for (const asset of ["aanya-welcome.png", "aanya-skills.png", "aanya-streak.png"
   assert.ok(fs.existsSync(new URL(`./${asset}`, import.meta.url)), `Home companion asset missing: ${asset}`);
   assert.ok(appSource.includes(asset), `Home companion must use ${asset}`);
 }
-assert.ok(appSource.includes("aanyaHomePanel") && appSource.includes("Aanya's dish ideas"), "Home must include one reactive Aanya recommendation");
-assert.ok(appSource.includes("AANYA RECOMMENDS") && appSource.includes("Aanya recommends"), "The quest card must visibly identify Aanya as its recommender");
+assert.ok(appSource.includes("aanyaHomePanel") && appSource.includes("Aanya's idea for you"), "Home must include one reactive Aanya recommendation");
+assert.ok(appSource.includes("AANYA'S PICK") && appSource.includes("Aanya recommends"), "The quest card must visibly identify Aanya as its recommender");
 assert.ok(appSource.includes("quest-swipe-card") && appSource.includes("data-pass-daily-quest") && appSource.includes("data-accept-daily-quest"), "Home must expose one swipeable Aanya suggestion with accessible action buttons");
 assert.ok(appSource.includes("dailyQuestDeck") && appSource.includes("ANOTHER IDEA") && appSource.includes("COOK THIS"), "Aanya's suggestion deck must have clear left and right outcomes");
 assert.ok(appSource.includes('addEventListener("pointerdown"') && appSource.includes('event.key === "ArrowRight"'), "Aanya suggestions must support touch, pointer, and keyboard input");
 assert.ok(appSource.includes("SKILL TO TRAIN") && appSource.includes("COOKING REWARD"), "Each suggestion card must connect the dish to its skill and reward");
 assert.ok(!appSource.includes('<section class="daily-card">'), "Home must not duplicate Aanya's recommendation in a separate daily card");
 assert.ok(!appSource.includes("Two side quests") && !appSource.includes("picks.slice(1)"), "Home must show one recommendation card at a time");
-assert.ok(appSource.includes("homeRouteHub") && appSource.includes("Quick kitchen check-ins"), "Home must link to the other main pages with contextual prompts");
+assert.ok(appSource.includes("homeRouteHub") && appSource.includes("Your next moves"), "Home must link to the other main pages with contextual prompts");
 assert.ok(appSource.includes("navNotificationCount") && appSource.includes("markRouteSeen") && appSource.includes("navSeen"), "Navigation notices must track pending page actions and clear after a visit");
 assert.equal((index.match(/class="nav-notification"/g) || []).length, 4, "Each non-home navigation item needs a notification badge");
 assert.ok(styles.includes(".home-route-grid") && styles.includes(".nav-notification[hidden]"), "Home shortcuts and navigation badges need responsive styling");
@@ -80,7 +84,7 @@ assert.equal(aanyaVariationFiles.length, 12, "Aanya expression deck must contain
 assert.ok(aanyaVariationFiles.every((file) => appSource.includes(`aanya-variations/${file}`)), "Every Aanya expression must be available to the automatic home commentary");
 assert.ok(!appSource.includes("data-aanya-pose") && !appSource.includes("data-aanya-cycle") && !appSource.includes("More moods"), "Aanya commentary must not expose manual mood choices");
 assert.ok(!/Ayyo|Seri/.test(appSource), "Aanya's dialogue must use a friendly, region-neutral voice");
-assert.ok(!appSource.includes("TODAY'S 1× QUEST") && appSource.includes("AANYA RECOMMENDS"), "Daily recommendation wording must stay clear");
+assert.ok(!appSource.includes("TODAY'S 1× QUEST") && appSource.includes("AANYA'S PICK"), "Daily recommendation wording must stay clear");
 assert.ok(index.includes('class="settings-diet"') && !index.includes('class="topbar-diet"'), "Diet preference must live in Settings instead of the top bar");
 assert.ok(appSource.includes("function availableSkills") && appSource.includes("function eligibleMapItems"), "Diet preference must filter Skills and recipe-linked Collections");
 assert.ok(appSource.includes("isDietLockedSkill") && styles.includes(".skill-system-node.is-diet-locked"), "Veg users must see Eggs & Protein as a locked skill-tree branch");
@@ -102,6 +106,8 @@ assert.ok(index.includes('class="nav-icon"') && !index.includes(">⚡<") && !ind
 assert.ok(!appSource.includes("All diets"), "Diet lanes must stay visible instead of using an All diets option");
 assert.ok(appSource.includes("equippedTitleId") && appSource.includes("renderTitleVault"), "Titles must be unlockable and equippable in Collections");
 assert.ok(appSource.includes("playerName") && appSource.includes("openNameDialog"), "Player name must be requested and saved locally");
+assert.ok(index.includes("What do you eat?") && appSource.includes("renderOnboardingDietFilter"), "First-time setup must collect dietary preference");
+assert.ok(appSource.includes("Guided recipe") && appSource.includes("Technique mission"), "Recipe completeness must be visible before a cook starts");
 assert.ok(index.includes("viewport-fit=cover"), "Mobile viewport must support device safe areas");
 assert.ok(styles.includes("--tap-target: 44px") && styles.includes("safe-area-inset-bottom"), "Mobile controls must retain 44px targets and safe-area spacing");
 assert.ok(styles.includes("overflow-x: clip") && styles.includes("@media (max-width: 700px)"), "Mobile layout must prevent page overflow and keep its phone breakpoint");

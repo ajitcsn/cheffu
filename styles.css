@@ -4922,3 +4922,1045 @@ main {
   .dish-made-section,
   .dish-library { margin-top: 20px; padding: 16px; }
 }
+
+/* V1 polish: keep the core cook loop close, clear, and mobile-first. */
+.hero-subtitle {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px 9px;
+}
+
+.hero-subtitle strong,
+.hero-subtitle span:nth-child(2) {
+  font-size: 0.82rem;
+}
+
+.hero-subtitle span:nth-child(2) {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #eef3e9;
+  font-weight: 800;
+}
+
+.hero-subtitle span:last-child {
+  flex-basis: 100%;
+}
+
+.aanya-companion {
+  display: block;
+  min-height: 0;
+  background: linear-gradient(145deg, #fff9ec, #fff3ce);
+}
+
+.aanya-companion-copy {
+  border: 0;
+}
+
+.aanya-guide-intro {
+  display: grid;
+  grid-template-columns: 104px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+
+.aanya-companion-art {
+  width: 104px;
+  min-height: 0;
+  aspect-ratio: 1;
+  border: 2px solid var(--ink);
+  border-radius: 28px;
+  background: #fff4df;
+  box-shadow: 4px 5px 0 var(--ink);
+}
+
+.aanya-companion-art::after {
+  width: 38px;
+  height: 38px;
+}
+
+.aanya-companion-art img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: cover;
+}
+
+.aanya-guide-message {
+  min-width: 0;
+}
+
+.aanya-guide-message .aanya-speech {
+  margin-top: 10px;
+}
+
+.quest-context {
+  padding: 0;
+  border: 1px solid #bfd49d;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.quest-context summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 12px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.74rem;
+}
+
+.quest-context summary::-webkit-details-marker,
+.recipe-readiness summary::-webkit-details-marker {
+  display: none;
+}
+
+.quest-context summary::after {
+  content: "+";
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.quest-context[open] summary::after {
+  content: "−";
+}
+
+.quest-context summary small {
+  margin-left: auto;
+  color: var(--ink-soft);
+  font-weight: 750;
+}
+
+.quest-context-controls {
+  padding: 0 12px 12px;
+}
+
+.recipe-format-tag {
+  color: #715d39;
+  background: #fff5d6;
+}
+
+.recipe-format-tag.is-guided {
+  color: var(--green);
+  background: #e8f8dc;
+}
+
+.dish-empty-state {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 1px dashed #adbaa9;
+  border-radius: 14px;
+  background: #fbfcf8;
+}
+
+.dish-empty-state > span {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 14px;
+  background: #eef3e9;
+  font-size: 1.55rem;
+}
+
+.dish-empty-state h3,
+.dish-empty-state p {
+  margin: 0;
+}
+
+.dish-empty-state p {
+  margin-top: 3px;
+  font-size: 0.76rem;
+}
+
+.dish-discovery-bar {
+  position: sticky;
+  z-index: 9;
+  top: 76px;
+  display: grid;
+  gap: 9px;
+  margin: 0 -6px 12px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow-small);
+  backdrop-filter: blur(12px);
+}
+
+.dish-search {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+.dish-filter-chips {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 1px;
+  scrollbar-width: none;
+}
+
+.dish-filter-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.dish-filter-chips button {
+  flex: 0 0 auto;
+  min-height: 36px;
+  padding: 6px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #f8faf5;
+  cursor: pointer;
+  font-size: 0.7rem;
+  font-weight: 850;
+}
+
+.dish-filter-chips button.is-active {
+  border-color: var(--green);
+  color: white;
+  background: var(--green);
+}
+
+.dish-load-more {
+  width: min(100%, 420px);
+  margin: 18px auto 2px;
+}
+
+.roadmap-swipe-hint {
+  margin: -15px 4px 8px;
+  color: var(--green);
+  font-size: 0.72rem;
+  font-weight: 850;
+}
+
+.recipe-readiness {
+  margin: 20px 0 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.recipe-readiness summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 58px;
+  padding: 12px 16px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.recipe-readiness summary > span:first-child > * {
+  display: block;
+}
+
+.recipe-readiness summary .eyebrow {
+  margin: 0 0 2px;
+  font-size: 0.62rem;
+}
+
+.recipe-readiness summary::after {
+  content: "⌄";
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+.recipe-readiness[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.recipe-serves {
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: white;
+  font-size: 0.64rem;
+  font-weight: 900;
+}
+
+.recipe-readiness-content {
+  padding: 0 16px 14px;
+}
+
+.recipe-readiness--limited {
+  margin-top: 20px;
+  padding: 14px 16px;
+}
+
+.cook-complete {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.75fr) minmax(0, 1.25fr);
+  min-height: 620px;
+  overflow: hidden;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #fff8d8, #eefbdc);
+}
+
+.cook-complete-art {
+  min-height: 100%;
+  background: #fff2d7;
+}
+
+.cook-complete-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.cook-complete-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(24px, 5vw, 46px);
+}
+
+.cook-complete-copy h2 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+}
+
+.cook-reward-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0 14px;
+}
+
+.cook-reward-grid > div {
+  padding: 12px 9px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.cook-reward-grid span,
+.cook-reward-grid strong,
+.cook-reward-grid small {
+  display: block;
+}
+
+.cook-reward-grid span {
+  font-size: 1.25rem;
+}
+
+.cook-reward-grid strong {
+  margin-top: 4px;
+  font-size: 0.9rem;
+}
+
+.cook-reward-grid small,
+.cook-next-target small {
+  color: var(--ink-soft);
+  font-size: 0.63rem;
+  font-weight: 750;
+}
+
+.cook-unlocks {
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: var(--ink);
+  background: white;
+  font-size: 0.78rem;
+}
+
+.cook-next-target {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 12px;
+  border: 1px solid #bfd49d;
+  border-radius: 14px;
+  background: #f5ffe9;
+}
+
+.cook-next-target > span {
+  font-size: 1.8rem;
+}
+
+.cook-next-target strong,
+.cook-next-target small {
+  display: block;
+}
+
+.cook-next-target .mini-progress {
+  margin: 6px 0 3px;
+}
+
+.cook-complete-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.cook-return-cue {
+  margin: 14px 0 0;
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.onboarding-diet {
+  margin: 0 0 18px;
+  padding: 0;
+  border: 0;
+  text-align: left;
+}
+
+.onboarding-diet legend {
+  margin-bottom: 7px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.onboarding-diet .diet-segment {
+  width: 100%;
+}
+
+.onboarding-diet > small {
+  display: block;
+  margin-top: 8px;
+  color: var(--ink-soft);
+  font-size: 0.66rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 700px) {
+  .topbar {
+    padding-block: max(6px, env(safe-area-inset-top)) 6px;
+  }
+
+  .brand-logo {
+    width: clamp(112px, 35vw, 134px);
+  }
+
+  main {
+    padding-top: 10px;
+  }
+
+  .home-grid {
+    gap: 12px;
+  }
+
+  .hero-copy { order: 1; }
+  .aanya-companion { order: 2; }
+  .home-route-hub { order: 3; }
+  .level-panel { order: 4; }
+  .dashboard-card { order: 5; }
+  .incentive-card { order: 6; }
+  .home-badge-shelf { order: 7; }
+
+  .hero-copy {
+    padding: 2px 0 0;
+  }
+
+  .hero-copy .eyebrow {
+    margin-bottom: 3px;
+    font-size: 0.67rem;
+  }
+
+  .hero-copy h1 {
+    margin-bottom: 5px;
+    font-size: clamp(1.85rem, 9vw, 2.35rem);
+    line-height: 1;
+  }
+
+  .hero-subtitle {
+    margin: 0;
+    font-size: 0.78rem;
+  }
+
+  .hero-subtitle span:last-child {
+    flex-basis: auto;
+  }
+
+  .aanya-companion {
+    border-width: 1.5px;
+    border-radius: 20px;
+    box-shadow: 0 10px 28px rgba(24, 37, 29, 0.14);
+  }
+
+  .aanya-companion-copy {
+    gap: 9px;
+    padding: 14px;
+  }
+
+  .aanya-guide-intro {
+    grid-template-columns: 62px minmax(0, 1fr);
+    align-items: start;
+    gap: 11px;
+  }
+
+  .aanya-companion-art {
+    width: 62px;
+    border-radius: 18px;
+    box-shadow: 2px 3px 0 var(--ink);
+  }
+
+  .aanya-companion-top {
+    display: grid;
+    gap: 5px;
+  }
+
+  .aanya-companion-top .eyebrow {
+    margin-bottom: 3px;
+    font-size: 0.6rem;
+  }
+
+  .aanya-companion-top h2 {
+    font-size: clamp(1.15rem, 5.6vw, 1.45rem);
+    line-height: 1.05;
+  }
+
+  .aanya-live-pill {
+    grid-row: 1;
+    width: fit-content;
+    padding: 4px 7px;
+    font-size: 0.52rem;
+  }
+
+  .aanya-guide-message .aanya-speech {
+    grid-template-columns: 1fr;
+    margin-top: 7px;
+    padding: 8px 10px;
+    border-width: 1px;
+    box-shadow: none;
+  }
+
+  .aanya-speech > span {
+    display: none;
+  }
+
+  .aanya-speech p {
+    font-size: 0.74rem;
+    line-height: 1.38;
+  }
+
+  .quest-context summary {
+    min-height: 40px;
+    padding-block: 6px;
+  }
+
+  .quest-context-controls {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .quest-context-group {
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+  }
+
+  .quest-context-group + .quest-context-group {
+    padding-left: 6px;
+  }
+
+  .quest-deck-status {
+    font-size: 0.58rem;
+  }
+
+  .quest-card-stack.is-choosing {
+    padding: 0 5px 6px 0;
+  }
+
+  .dish-picture--quest {
+    height: 132px;
+  }
+
+  .quest-aanya-stamp {
+    top: 8px;
+    left: 8px;
+    padding: 4px 7px;
+    border-width: 1px;
+    box-shadow: 1px 2px 0 var(--ink);
+    font-size: 0.57rem;
+  }
+
+  .quest-card-copy {
+    padding: 10px;
+  }
+
+  .quest-card-heading h3 {
+    font-size: 1.15rem;
+  }
+
+  .quest-card-heading .difficulty-pill {
+    padding: 5px 7px;
+    font-size: 0.62rem;
+  }
+
+  .quest-card-copy > p:not(.quest-swipe-instructions) {
+    display: none;
+  }
+
+  .quest-card-copy .meta-row {
+    margin: 7px 0;
+  }
+
+  .quest-card-copy .meta-row span {
+    padding: 4px 6px;
+    font-size: 0.62rem;
+  }
+
+  .quest-card-outcomes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .quest-card-outcomes > div {
+    padding: 7px;
+  }
+
+  .quest-card-outcomes strong {
+    font-size: 0.67rem;
+  }
+
+  .quest-card-outcomes span {
+    font-size: 0.55rem;
+  }
+
+  .quest-card-copy .quest-swipe-instructions {
+    margin-top: 7px;
+    padding: 6px;
+    font-size: 0.55rem;
+  }
+
+  .quest-swipe-actions {
+    gap: 7px;
+  }
+
+  .quest-swipe-button {
+    min-height: 44px;
+    padding: 6px 7px;
+  }
+
+  .aanya-browse-dishes {
+    min-height: 34px;
+    padding: 4px;
+    font-size: 0.74rem;
+  }
+
+  .home-route-hub {
+    padding: 14px;
+  }
+
+  .home-route-hub-heading small {
+    font-size: 0.66rem;
+  }
+
+  .page-head {
+    gap: 9px;
+    margin-bottom: 14px;
+    padding-top: 0;
+  }
+
+  .page-head h1 {
+    margin-bottom: 6px;
+    font-size: clamp(2rem, 10vw, 2.65rem);
+  }
+
+  .page-head > div:first-child > p:last-child {
+    font-size: 0.9rem;
+    line-height: 1.42;
+  }
+
+  .summary-chip {
+    width: fit-content;
+    padding: 7px 11px;
+    border-width: 1.5px;
+    border-radius: 12px;
+    box-shadow: 2px 3px 0 var(--ink);
+  }
+
+  .summary-chip strong,
+  .summary-chip span {
+    display: inline;
+  }
+
+  .summary-chip strong {
+    margin-right: 5px;
+    font-size: 0.88rem;
+  }
+
+  .summary-chip span {
+    font-size: 0.64rem;
+  }
+
+  .skill-hero {
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 12px;
+  }
+
+  .skill-hero-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .skill-hero h2 {
+    font-size: 1.15rem;
+  }
+
+  .skill-hero p:not(.eyebrow) {
+    font-size: 0.72rem;
+  }
+
+  .skill-hero .button {
+    min-height: 40px;
+    padding-block: 7px;
+    font-size: 0.76rem;
+  }
+
+  .skill-view-switch {
+    top: calc(58px + env(safe-area-inset-top));
+    margin-bottom: 12px;
+  }
+
+  .dish-made-section,
+  .dish-library {
+    margin-top: 14px;
+    padding: 14px;
+  }
+
+  .dish-empty-state {
+    grid-template-columns: auto minmax(0, 1fr);
+    padding: 10px;
+  }
+
+  .dish-empty-state > span {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dish-empty-state .text-button {
+    grid-column: 2;
+    justify-self: start;
+    min-height: 34px;
+    padding: 3px 0;
+  }
+
+  .dish-library .section-heading p {
+    font-size: 0.72rem;
+  }
+
+  .dish-discovery-bar {
+    top: calc(58px + env(safe-area-inset-top));
+  }
+
+  .compact-recipe-card {
+    grid-template-columns: 112px minmax(0, 1fr);
+    min-height: 200px;
+  }
+
+  .compact-recipe-card .dish-picture {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+  }
+
+  .compact-recipe-copy {
+    padding: 11px;
+  }
+
+  .compact-recipe-copy h3 {
+    margin-top: 5px;
+    font-size: 1rem;
+  }
+
+  .compact-recipe-copy .recipe-description {
+    margin-bottom: 5px;
+    font-size: 0.68rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .compact-recipe-copy .meta-row {
+    gap: 4px;
+    margin: 6px 0;
+  }
+
+  .compact-recipe-copy .meta-row span {
+    padding: 4px 5px;
+    font-size: 0.58rem;
+  }
+
+  .compact-recipe-copy .tiny-tag {
+    padding: 3px 5px;
+    font-size: 0.55rem;
+  }
+
+  .compact-recipe-copy .button {
+    min-height: 38px;
+    padding: 6px 9px;
+    font-size: 0.72rem;
+  }
+
+  .roadmap-swipe-hint {
+    margin: 0 2px 5px;
+  }
+
+  .roadmap-track-picker {
+    grid-auto-columns: calc(100% - 34px);
+    margin-bottom: 12px;
+  }
+
+  .roadmap-track-card {
+    min-height: 108px;
+    padding: 12px;
+  }
+
+  .selected-roadmap-banner {
+    grid-template-columns: 40px 1fr;
+    gap: 9px;
+    margin-bottom: 12px;
+    padding: 10px 12px;
+    border-width: 1.5px;
+    box-shadow: 2px 3px 0 var(--ink);
+  }
+
+  .selected-roadmap-banner > span {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+  }
+
+  .selected-roadmap-banner h2 {
+    font-size: 1.15rem;
+  }
+
+  .selected-roadmap-banner p {
+    display: none;
+  }
+
+  .collection-overview {
+    margin-top: 14px;
+  }
+
+  .recipe-sheet-grid {
+    gap: 12px;
+  }
+
+  .dish-picture--sheet {
+    height: 138px;
+    aspect-ratio: auto;
+    border-radius: 16px;
+  }
+
+  .recipe-sheet-info .recipe-description {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-bottom: 7px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+
+  .recipe-sheet-info .meta-row {
+    margin: 7px 0;
+  }
+
+  .recipe-sheet-info .skill-chip-row {
+    margin-bottom: 8px;
+  }
+
+  .recipe-sheet-info .skill-chip-row span:nth-child(n + 4) {
+    display: none;
+  }
+
+  .safety-callout {
+    padding: 9px 10px;
+    font-size: 0.7rem;
+  }
+
+  .recipe-readiness {
+    margin-top: 12px;
+  }
+
+  .recipe-readiness summary {
+    min-height: 50px;
+    padding: 9px 11px;
+  }
+
+  .recipe-readiness-content {
+    padding: 0 11px 11px;
+  }
+
+  .recipe-readiness-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: 8px;
+  }
+
+  .recipe-readiness-grid ul {
+    padding-left: 15px;
+    font-size: 0.67rem;
+    line-height: 1.4;
+  }
+
+  .recipe-readiness-swap {
+    padding-top: 7px;
+    font-size: 0.67rem;
+  }
+
+  .recipe-readiness--limited {
+    padding: 11px;
+  }
+
+  .recipe-readiness--limited h3 {
+    font-size: 1rem;
+  }
+
+  .recipe-readiness--limited p:last-child {
+    margin-bottom: 0;
+    font-size: 0.7rem;
+  }
+
+  .mission-steps {
+    margin-top: 14px;
+    padding-top: 13px;
+  }
+
+  .checkpoint-reward-callout {
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    padding: 10px;
+    box-shadow: 2px 3px 0 var(--ink);
+  }
+
+  .checkpoint-reward-callout > div:first-child span {
+    font-size: 0.66rem;
+  }
+
+  .checkpoint-progress {
+    margin-bottom: 12px;
+  }
+
+  .mission-heading {
+    flex-direction: row;
+    align-items: end;
+  }
+
+  .mission-step {
+    min-height: 58px;
+  }
+
+  .sheet-actions {
+    padding-top: 10px;
+  }
+
+  .sheet-actions small {
+    display: none;
+  }
+
+  .sheet-action-buttons {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sheet-action-buttons .button {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .sheet-action-buttons .text-button {
+    width: auto;
+    padding-inline: 8px;
+    font-size: 0.66rem;
+    text-align: center;
+  }
+
+  .cook-complete {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .cook-complete-art {
+    height: 190px;
+    min-height: 0;
+  }
+
+  .cook-complete-copy {
+    padding: 20px 16px;
+  }
+
+  .cook-complete-copy h2 {
+    font-size: 2rem;
+  }
+
+  .cook-reward-grid {
+    gap: 6px;
+  }
+
+  .cook-reward-grid > div {
+    padding: 9px 7px;
+  }
+
+  .cook-reward-grid strong {
+    font-size: 0.76rem;
+  }
+
+  .cook-complete-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .cook-complete-actions .button {
+    width: 100%;
+  }
+
+  .name-sheet form {
+    padding-top: 16px;
+  }
+
+  .name-dialog-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  .name-sheet h2 {
+    font-size: 1.75rem;
+  }
+
+  .name-sheet form > p:not(.eyebrow) {
+    margin-bottom: 14px;
+    font-size: 0.78rem;
+  }
+
+  .onboarding-diet .diet-segment-button {
+    min-height: 42px;
+    padding-inline: 4px;
+    font-size: 0.64rem;
+  }
+}
+
+@media (max-width: 355px) {
+  .aanya-guide-intro {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .aanya-companion-art {
+    width: 52px;
+  }
+
+  .compact-recipe-card {
+    grid-template-columns: 96px minmax(0, 1fr);
+  }
+
+  .recipe-readiness-grid,
+  .cook-reward-grid {
+    grid-template-columns: 1fr;
+  }
+}

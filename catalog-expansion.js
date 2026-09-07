@@ -375,7 +375,7 @@
     2: ["Prepare every ingredient before turning on the pan.", "Preheat on controlled heat and add the cooking fat carefully.", "Cook in sequence, adjusting heat when the pan changes temperature.", "Check doneness, switch off, taste safely, and clean the cooled pan."],
     3: ["Wash, dry, and cut ingredients into even pieces.", "Build the flavour base or tadka in the stated order.", "Add the main ingredients and cook with deliberate heat changes.", "Taste, adjust one variable, finish, and switch the stove off."],
     4: ["Rinse or soak the grain or legume and measure the liquid ratio.", "Prepare the flavour base, then combine ingredients in the correct order.", "Cook covered or under pressure without forcing the vessel open.", "Check texture, adjust consistency, portion, and cool leftovers quickly."],
-    5: ["Complete all cutting and separate any raw animal protein before heat starts.", "Cook aromatics and spices until the masala loses its raw character.", "Add the main ingredient and simmer until properly cooked and seasoned.", "Verify doneness, finish the sauce, serve, and store leftovers promptly."],
+    5: ["Complete all cutting and prepare the main ingredient before heat starts.", "Cook aromatics and spices until the masala loses its raw character.", "Add the main ingredient and simmer until properly cooked and seasoned.", "Verify doneness, finish the sauce, serve, and store leftovers promptly."],
     6: ["Read the full method and measure flour, grain, or batter components.", "Hydrate, grind, rest, or ferment to the recipe's texture cues.", "Portion and cook with controlled pan heat or steam.", "Check the centre, cool safely, and reset all equipment."],
     7: ["Read every component and write the order from longest to shortest.", "Prepare shared ingredients once and start the longest component first.", "Use waiting time to cook the next stable component and clean safely.", "Run final doneness checks, serve together, and cool leftovers promptly."]
   };
@@ -458,7 +458,7 @@
     } else if (/roti|paratha|naan|puri|bhatura|bread|focaccia|pizza|litti|momo/.test(lower) || tags.includes("bread") || tags.includes("dough")) {
       kind = "dough-based speciality";
       detail = "a hands-on dish for learning hydration, shaping, and controlled cooking";
-    } else if (/egg|omelette|shakshuka|tamago/.test(lower)) {
+    } else if (diet === "Egg") {
       kind = "egg dish";
       detail = "a protein-forward meal that teaches heat control and clear doneness cues";
     } else if (/fish|prawn|shrimp|salmon|tuna|masor|macher/.test(lower)) {
@@ -492,7 +492,7 @@
     const stage = Number(stageRaw);
     const tags = (tagText || "").split(",").filter(Boolean);
     const skillIds = [...stageSkills[stage]];
-    if (/egg|omelette|shakshuka|tamago/i.test(name)) skillIds.push("crack-egg", "egg-set-cue", "protein-portion");
+    if (diet === "Egg") skillIds.push("crack-egg", "egg-set-cue", "protein-portion");
     if (/dal|chana|chickpea|bean|rajma|legume|sundal|usal|misir|ful /i.test(name)) skillIds.push("rinse-legumes", "legume-tenderness", "protein-portion");
     if (/rice|pulao|biryani|tehri|bath|bhat|khichdi|pongal/i.test(name)) skillIds.push("rinse-rice", "rice-water-ratio", "rest-fluff-rice");
     if (/dosa|idli|uttapam|appam|adai|chilla|handvo|dhokla|paniyaram/i.test(name)) skillIds.push("batter-consistency", "pan-preheat");
@@ -540,6 +540,9 @@
     }
   });
 
+  const baseFullMealIds = new Set(["balanced-thali", "sambar-meal", "appam-egg-curry", "ragi-meal", "chicken-biryani"]);
+  const baseOnePotIds = new Set(["moong-khichdi", "ven-pongal", "chana-masala", "rajma", "veg-pulao"]);
+
   data.recipes.forEach((recipe) => {
     recipe.description ||= `${recipe.name}: ${recipe.summary}`;
     recipe.summary ||= recipe.description;
@@ -547,9 +550,9 @@
     recipe.state ||= null;
     recipe.tags ||= [];
     if (recipe.protein >= 15 && !recipe.tags.includes("protein")) recipe.tags.push("protein");
-    if (recipe.stage === 7 && !recipe.tags.includes("full-meal")) recipe.tags.push("full-meal");
-    if (/breakfast|chai|oats|egg|poha|upma|idli|dosa|uttapam|pongal/i.test(recipe.name) && !recipe.tags.includes("breakfast")) recipe.tags.push("breakfast");
-    if (recipe.stage === 4 && !recipe.tags.includes("one-pot")) recipe.tags.push("one-pot");
+    if (baseFullMealIds.has(recipe.id) && !recipe.tags.includes("full-meal")) recipe.tags.push("full-meal");
+    if (baseOnePotIds.has(recipe.id) && !recipe.tags.includes("one-pot")) recipe.tags.push("one-pot");
+    if (/\b(breakfast|chai|oats?|eggs?|omelette|poha|upma|idli|dosa|uttapam|pongal)\b/i.test(recipe.name) && !recipe.tags.includes("breakfast")) recipe.tags.push("breakfast");
   });
 
   const indiaStates = [

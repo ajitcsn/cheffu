@@ -11,7 +11,7 @@
   const titleCatalog = window.CHEFFU_TITLE_CATALOG || [];
 
   const roadmapTracks = [
-    { id: "morning", name: "Morning Starter", icon: "🌅", colour: "#ffd84d", description: "Build confidence with drinks, eggs, poha, upma, toast, and fast breakfasts." },
+    { id: "morning", name: "Morning Starter", icon: "🌅", colour: "#ffd84d", description: "Build confidence with drinks, poha, upma, toast, and fast breakfasts." },
     { id: "dal-legume", name: "Dal & Bean Foundations", icon: "🫘", colour: "#b9e85b", description: "Learn soaking, pressure, simmering, and tadka through dependable dals and beans." },
     { id: "veg-curry", name: "Everyday Sabzi", icon: "🥦", colour: "#80c95b", description: "Build dry sabzis and vegetable curries for realistic weeknight cooking." },
     { id: "rice-onepot", name: "Rice & One-Pot Meals", icon: "🍚", colour: "#d9b34c", description: "Master rice ratios, khichdi, pulao, and compact one-pot Indian meals." },
@@ -56,7 +56,8 @@
   let activeRoute = "home";
   let roadmapFilters = { search: "", region: "all", diet: state.dietPreference, track: "morning" };
   let skillFilters = { search: "", status: "all" };
-  let dishFilters = { search: "" };
+  let dishFilters = { search: "", goal: "all" };
+  let dishResultLimit = 12;
   let titleFilters = { search: "", category: "all" };
   let skillView = "tree";
   let selectedSkillCluster = null;
@@ -133,6 +134,19 @@
     return `${year}-${month}-${day}`;
   }
 
+  function parseAttemptKey(key) {
+    const match = String(key).match(/^(.+)-(\d{4}-\d{2}-\d{2})$/);
+    return match ? { recipeId: match[1], date: match[2] } : null;
+  }
+
+  function activeStepKey(recipe) {
+    const saved = Object.entries(state.completedSteps || {})
+      .map(([key, completed]) => ({ key, completed, parsed: parseAttemptKey(key) }))
+      .filter((attempt) => attempt.parsed?.recipeId === recipe.id && attempt.completed.length > 0)
+      .sort((a, b) => b.parsed.date.localeCompare(a.parsed.date))[0];
+    return saved?.key || `${recipe.id}-${localDateKey()}`;
+  }
+
   function navMetric(route) {
     if (route === "dishes") return completedRecipeIds().length;
     if (route === "skills") return skills.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
@@ -147,11 +161,7 @@
   }
 
   function navNotificationCount(route) {
-    const seen = state.navSeen?.[route];
-    const growth = navUnseenGrowth(route);
-    if (growth) return growth;
-    if (route === "dishes" && navMetric(route) === 0) return 0;
-    return seen?.date === localDateKey() ? 0 : 1;
+    return navUnseenGrowth(route);
   }
 
   function markRouteSeen(route) {
@@ -274,8 +284,8 @@
 
   function dietMatches(recipe, diet) {
     if (diet === "Veg") return recipe.diet === "Vegetarian" || recipe.diet === "Vegan";
-    if (diet === "Egg") return recipe.diet === "Egg";
-    if (diet === "Non-vegetarian") return recipe.diet === "Non-vegetarian";
+    if (diet === "Egg") return ["Vegetarian", "Vegan", "Egg"].includes(recipe.diet);
+    if (diet === "Non-vegetarian") return ["Vegetarian", "Vegan", "Egg", "Non-vegetarian"].includes(recipe.diet);
     return true;
   }
 
@@ -296,10 +306,10 @@
     const completed = new Set(completedRecipeIds());
     const dietPool = recipes.filter((recipe) => dietMatches(recipe, diet));
     const preferences = state.questPreferences || defaultState.questPreferences;
-    const starterPool = dietPool.filter((recipe) => recipe.guide);
-    const isStarterPhase = completed.size < 3 && starterPool.length >= 1;
-    const ready = (isStarterPhase ? starterPool : dietPool).filter((recipe) => recipe.stage <= info.unlockedStage);
-    const nextUp = (isStarterPhase ? starterPool : dietPool).filter((recipe) => recipe.stage > info.unlockedStage).sort((a, b) => a.stage - b.stage);
+    const guidedPool = dietPool.filter((recipe) => recipe.guide);
+    const recommendationPool = guidedPool.length >= 3 ? guidedPool : dietPool;
+    const ready = recommendationPool.filter((recipe) => recipe.stage <= info.unlockedStage);
+    const nextUp = recommendationPool.filter((recipe) => recipe.stage > info.unlockedStage).sort((a, b) => a.stage - b.stage);
     const basePool = [...ready, ...nextUp].slice(0, Math.max(3, ready.length));
     const timeLimit = Number(preferences.time);
     const timePool = Number.isFinite(timeLimit) ? basePool.filter((recipe) => recipe.minutes <= timeLimit) : basePool;
@@ -307,6 +317,10 @@
     const pool = proteinPool.length >= 3 ? proteinPool : timePool.length >= 3 ? timePool : basePool;
     const seed = `${localDateKey()}-${info.unlockedStage}-${diet}`;
     const sorted = [...pool].sort((a, b) => stableHash(`${seed}-${a.id}`) - stableHash(`${seed}-${b.id}`));
+    if (completed.size === 0) {
+      const firstRecipeId = preferences.goal === "protein" ? "curd-peanut-bowl" : "lemon-water";
+      sorted.sort((a, b) => Number(b.id === firstRecipeId) - Number(a.id === firstRecipeId));
+    }
     const untried = sorted.filter((recipe) => !completed.has(recipe.id));
     const tried = sorted.filter((recipe) => completed.has(recipe.id));
     return [...untried, ...tried].slice(0, 3);
@@ -377,12 +391,18 @@
     if (badge.type === "protein") value = cooked.filter((recipe) => recipe.protein >= 15).length;
     if (badge.type === "heat") value = cooked.filter((recipe) => recipe.skillIds.some((id) => ["ignite-stove", "pan-preheat", "simmer-recognition", "saute-stir", "tadka-sequence"].includes(id))).length;
     if (badge.type === "south") value = cooked.filter((recipe) => recipe.region === "South India").length;
-    if (badge.type === "stage7") value = cooked.filter((recipe) => recipe.stage === 7).length;
+    if (badge.type === "stage7") value = cooked.filter((recipe) => recipe.tags?.includes("full-meal")).length;
     return { value: Math.min(value, badge.target), rawValue: value, complete: value >= badge.target };
   }
 
   function nextBadge() {
-    return badges.find((badge) => !badgeProgress(badge).complete) || badges[badges.length - 1];
+    return [...badges]
+      .filter((badge) => !badgeProgress(badge).complete)
+      .sort((a, b) => {
+        const aProgress = badgeProgress(a).rawValue / a.target;
+        const bProgress = badgeProgress(b).rawValue / b.target;
+        return bProgress - aProgress || a.target - b.target;
+      })[0] || badges[badges.length - 1];
   }
 
   function stageProgress(stageId, recipePool = recipes) {
@@ -407,7 +427,7 @@
     return `
       <div class="meta-row">
         <span>⏱ ${recipe.minutes} min</span>
-        <span>💪 ~${recipe.protein} g protein</span>
+        ${recipe.guide ? `<span>💪 ~${recipe.protein} g / serving</span>` : recipe.protein >= 15 ? "<span>💪 Protein-focused</span>" : ""}
         <span>⚡ ${recipe.xp} XP</span>
       </div>`;
   }
@@ -423,25 +443,30 @@
       { value: "confidence", label: "Gentle win" },
       { value: "protein", label: "More protein" }
     ];
+    const selectedTime = timeOptions.find((option) => option.value === preferences.time)?.label || "20 min";
+    const selectedGoal = goalOptions.find((option) => option.value === preferences.goal)?.label || "Gentle win";
     return `
-      <section class="quest-context" aria-label="Shape today's recommendation">
-        <div><strong>Make today realistic</strong><small>Aanya will deal a better fit.</small></div>
+      <details class="quest-context">
+        <summary><strong>Make Aanya's idea fit today</strong><small>${selectedTime} · ${selectedGoal}</small></summary>
         <div class="quest-context-controls">
           <div class="quest-context-group" role="group" aria-label="Time available">${timeOptions.map((option) => `<button type="button" data-quest-time="${option.value}" aria-pressed="${preferences.time === option.value}" class="${preferences.time === option.value ? "is-active" : ""}">${option.label}</button>`).join("")}</div>
           <div class="quest-context-group" role="group" aria-label="Today's goal">${goalOptions.map((option) => `<button type="button" data-quest-goal="${option.value}" aria-pressed="${preferences.goal === option.value}" class="${preferences.goal === option.value ? "is-active" : ""}">${option.label}</button>`).join("")}</div>
         </div>
-      </section>`;
+      </details>`;
   }
 
   function aanyaHomePanel(totalCooks, learnedSkills, badge, badgeStatus, questDeck) {
     const today = localDateKey();
     const playerName = state.playerName || "Chef";
-    const pendingCook = Object.entries(state.completedSteps || {}).map(([key, completed]) => {
-      if (!key.endsWith(`-${today}`) || !completed.length) return null;
-      const recipe = getRecipe(key.slice(0, -(today.length + 1)));
-      if (!recipe || completed.length >= recipe.steps.length) return null;
-      return { key, recipe, completed: completed.length, bankedXp: state.checkpointXp[key] || 0 };
-    }).find(Boolean);
+    const pendingCook = Object.entries(state.completedSteps || {})
+      .map(([key, completed]) => {
+        const parsed = parseAttemptKey(key);
+        const recipe = parsed ? getRecipe(parsed.recipeId) : null;
+        if (!recipe || !completed.length) return null;
+        return { key, date: parsed.date, recipe, completed: completed.length, bankedXp: state.checkpointXp[key] || 0 };
+      })
+      .filter(Boolean)
+      .sort((a, b) => b.date.localeCompare(a.date))[0];
     const sceneImages = [
       "aanya-challenge.png", "aanya-skills.png", "aanya-streak.png",
       "aanya-variations/surprised-o.jpg?v=3", "aanya-variations/cutting-glance.jpg?v=3",
@@ -470,7 +495,7 @@
     const earnsFirstDish = !targetCook?.count;
     const firstCookBonus = earnsFirstDish ? 20 : 0;
     const questXpReward = (pendingCook ? remainingRecipeXp : targetRecipe.xp) + firstCookBonus;
-    const collectionReward = earnsFirstDish ? "New dish card" : "Cook count +1";
+    const collectionReward = earnsFirstDish ? "First-cook stamp" : "Cook count +1";
     let heading;
     let comment;
     if (pendingCook) {
@@ -479,16 +504,23 @@
     } else if (totalCooks === 0) {
       heading = `Hi ${playerName}! Here's an easy first dish.`;
       comment = `${targetRecipe.name} trains ${suggestedSkill.name} in about ${targetRecipe.minutes} minutes.${canPass ? " Swipe right if you're up for the challenge! Swipe left and I'll find you something else to make 🥄" : " Accept it when you are ready."}`;
+    } else if (state.lastCookDate === today) {
+      heading = `Nice work today, ${playerName}!`;
+      comment = `Your ${state.streak}-day streak is safe. Here's another idea if you feel like cooking more.`;
     } else {
       heading = `${playerName}, here's a dish idea for today.`;
       comment = `I picked ${targetRecipe.name} because ${suggestedSkill.name} is the least-practised skill in this dish.${canPass ? " Swipe right to cook it, or left for another idea." : " Cook it whenever you are ready."}`;
     }
     return `
       <section class="aanya-companion" aria-labelledby="aanya-companion-heading">
-        <div class="aanya-companion-art"><img src="${image}" alt="Chibi Aanya guiding today's cooking plan"></div>
         <div class="aanya-companion-copy">
-          <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's dish ideas</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA RECOMMENDS</span></div>
-          <div class="aanya-speech"><span aria-hidden="true">💬</span><p>${escapeHtml(comment)}</p></div>
+          <div class="aanya-guide-intro">
+            <div class="aanya-companion-art"><img src="${image}" alt="Aanya, your friendly cooking guide"></div>
+            <div class="aanya-guide-message">
+              <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's idea for you</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA'S PICK</span></div>
+              <div class="aanya-speech"><span aria-hidden="true">💬</span><p>${escapeHtml(comment)}</p></div>
+            </div>
+          </div>
           ${!pendingCook ? questContextPicker() : ""}
           <div class="quest-deck-status">
             <strong>${pendingCook ? "COOK IN PROGRESS" : `AANYA'S IDEA ${questDeck.index + 1} OF ${questDeck.picks.length}`}</strong>
@@ -502,14 +534,14 @@
               <span class="quest-aanya-stamp"><span aria-hidden="true">👩🏽‍🍳</span><strong>Aanya recommends</strong></span>
               ${picture(targetRecipe, "quest")}
               <div class="quest-card-copy">
-                <div class="quest-card-heading"><div><p class="eyebrow">Stage ${targetRecipe.stage} · ${escapeHtml(targetRecipe.region)}</p><h3>${targetRecipe.emoji} ${escapeHtml(targetRecipe.name)}</h3></div><span class="difficulty-pill">${escapeHtml(targetRecipe.difficulty)}</span></div>
+                <div class="quest-card-heading"><div><p class="eyebrow">${targetRecipe.guide ? "Guided recipe" : "Technique mission"} · Stage ${targetRecipe.stage} · ${escapeHtml(targetRecipe.region)}</p><h3>${targetRecipe.emoji} ${escapeHtml(targetRecipe.name)}</h3></div><span class="difficulty-pill">${escapeHtml(targetRecipe.difficulty)}</span></div>
                 <p>${escapeHtml(targetRecipe.summary)}</p>
                 ${recipeMeta(targetRecipe)}
                 <div class="quest-card-outcomes">
                   <div><small>SKILL TO TRAIN</small><strong>${suggestedSkill.icon} ${escapeHtml(suggestedSkill.name)}</strong><span>${escapeHtml(suggestedSkillState.name)} · ${suggestedSkillXp} XP now</span></div>
-                  <div class="quest-card-reward"><small>COOKING REWARD</small><strong>+${questXpReward} XP</strong><span>+${skillXpReward} skill XP · ${collectionReward}</span></div>
+                  <div class="quest-card-reward"><small>COOKING REWARD</small><strong>+${questXpReward} XP</strong><span>+${skillXpReward} XP to each skill · ${collectionReward}</span></div>
                 </div>
-                ${isChoosing ? `<p class="quest-swipe-instructions" id="quest-swipe-instructions">${canPass ? "Drag this card: ← another idea · cook this →" : "Drag this card right to cook this →"}</p>` : ""}
+                ${isChoosing ? `<p class="quest-swipe-instructions" id="quest-swipe-instructions">${canPass ? "Swipe this card: ← another idea · cook this →" : "Swipe this card right to cook this →"}</p>` : ""}
               </div>
             </article>
           </div>
@@ -636,7 +668,7 @@
         icon: "🗺️",
         label: "Roadmap",
         reason: roadmapGrowth
-          ? `${currentStage.name} is now open`
+          ? `${currentStage.name} is in your recommendation range`
           : `Continue the ${currentStage.name} path`
       }
     ];
@@ -644,8 +676,8 @@
     return `
       <section class="home-route-hub" aria-labelledby="home-route-hub-heading">
         <div class="home-route-hub-heading">
-          <div><p class="eyebrow">Also waiting for you</p><h2 id="home-route-hub-heading">Quick kitchen check-ins</h2></div>
-          <small>Red badges mark something worth checking.</small>
+          <div><p class="eyebrow">Keep exploring</p><h2 id="home-route-hub-heading">Your next moves</h2></div>
+          <small>Badges appear only when something new unlocks.</small>
         </div>
         <div class="home-route-grid">
           ${prompts.map((prompt) => {
@@ -677,9 +709,8 @@
       <div class="home-grid">
         <section class="hero-copy">
           <p class="eyebrow">Today · ${new Intl.DateTimeFormat("en-IN", { weekday: "long", day: "numeric", month: "short" }).format(new Date())}</p>
-          <h1 id="home-heading">Welcome back,<br><span>${escapeHtml(info.title)} ${escapeHtml(state.playerName || "Chef")}.</span></h1>
-          <p class="hero-subtitle">Tiny missions for beginner chefs.</p>
-          <div class="equipped-title"><span>Equipped title</span><strong>${escapeHtml(info.title)}</strong></div>
+          <h1 id="home-heading">Hi, <span>${escapeHtml(state.playerName || "Chef")}</span>.</h1>
+          <p class="hero-subtitle"><strong>${escapeHtml(info.title)}</strong><span>Level ${info.level}</span><span>Pick one small cooking win for today.</span></p>
         </section>
 
         <section class="level-panel" aria-label="Player progress">
@@ -737,8 +768,8 @@
   function dietFilterButtons(activeDiet, scope) {
     const options = [
       { value: "Veg", label: "Veg", icon: "🥬" },
-      { value: "Egg", label: "Egg", icon: "🥚" },
-      { value: "Non-vegetarian", label: "Non-veg", icon: "🍗" }
+      { value: "Egg", label: "Veg + egg", icon: "🥚" },
+      { value: "Non-vegetarian", label: "Everything", icon: "🍗" }
     ];
     return `<div class="diet-segment" role="group" aria-label="Choose diet">${options.map((option) => `
       <button class="diet-segment-button ${activeDiet === option.value ? "is-active" : ""}" type="button" data-diet-scope="${scope}" data-diet-value="${option.value}" aria-pressed="${activeDiet === option.value}">
@@ -750,16 +781,21 @@
     document.querySelector("#global-diet-filter").innerHTML = dietFilterButtons(state.dietPreference, "global");
   }
 
+  function renderOnboardingDietFilter() {
+    const filter = document.querySelector("#onboarding-diet-filter");
+    if (filter) filter.innerHTML = dietFilterButtons(state.dietPreference, "onboarding");
+  }
+
   function compactRecipeCard(recipe) {
     return `
       <article class="compact-recipe-card">
         ${picture(recipe, "compact")}
         <div class="compact-recipe-copy">
-          <div><span class="tiny-tag">Stage ${recipe.stage}</span><span class="tiny-tag">${escapeHtml(recipe.region)}</span></div>
+          <div><span class="tiny-tag recipe-format-tag ${recipe.guide ? "is-guided" : ""}">${recipe.guide ? "✓ Guided recipe" : "Technique mission"}</span><span class="tiny-tag">Stage ${recipe.stage}</span><span class="tiny-tag">${escapeHtml(recipe.region)}</span></div>
           <h3>${escapeHtml(recipe.name)}</h3>
           <p class="recipe-description">${escapeHtml(recipe.description)}</p>
           ${recipeMeta(recipe)}
-          <button class="button button-secondary" type="button" data-open-recipe="${recipe.id}">View mission</button>
+          <button class="button button-secondary" type="button" data-open-recipe="${recipe.id}">${recipe.guide ? "Start cooking" : "Open practice"}</button>
         </div>
       </article>`;
   }
@@ -776,20 +812,25 @@
     const container = document.querySelector("#view-skills");
     const visibleSkillSet = availableSkills();
     const learned = visibleSkillSet.filter((skill) => (state.skillXp[skill.id] || 0) > 0).length;
-    const strongest = [...visibleSkillSet].sort((a, b) => (state.skillXp[b.id] || 0) - (state.skillXp[a.id] || 0))[0] || skills[0];
+    const recommendedSkill = dailyQuestDeck().recipe?.skillIds
+      .map((id) => skills.find((skill) => skill.id === id))
+      .find((skill) => skill && !isDietLockedSkill(skill));
+    const strongest = learned
+      ? [...visibleSkillSet].sort((a, b) => (state.skillXp[b.id] || 0) - (state.skillXp[a.id] || 0))[0]
+      : recommendedSkill || visibleSkillSet[0] || skills[0];
     const visibleSkills = filteredSkills();
     if (!selectedSkillCluster || !visibleSkillSet.some((skill) => skill.cluster === selectedSkillCluster)) selectedSkillCluster = strongest.cluster;
 
     container.innerHTML = `
       <header class="page-head">
-        <div><p class="eyebrow">Your capability map</p><h1 id="skills-heading">Micro-skills learned</h1><p>Every small kitchen action has its own progression. Skills grow only when a completed dish uses them.</p></div>
-        <div class="summary-chip"><strong>${learned} / ${visibleSkillSet.length}</strong><span>skills for your preference</span></div>
+        <div><p class="eyebrow">Your capability map</p><h1 id="skills-heading">Cooking skills</h1><p>Every dish lights up the small actions you practised. Tap a branch to find dishes that train it.</p></div>
+        <div class="summary-chip"><strong>${learned} / ${visibleSkillSet.length}</strong><span>skills started</span></div>
       </header>
 
-      <section class="skill-hero">
+      <section class="skill-hero ${learned ? "" : "skill-hero--empty"}">
         <div class="skill-hero-icon">${strongest.icon}</div>
-        <div><p class="eyebrow">Strongest skill</p><h2>${escapeHtml(strongest.name)}</h2><p>${state.skillXp[strongest.id] || 0} skill XP · ${skillState(state.skillXp[strongest.id] || 0).name}</p></div>
-        <button class="button button-secondary" type="button" data-skill-dishes="${strongest.id}">Find dishes that teach it</button>
+        <div><p class="eyebrow">${learned ? "Strongest skill" : "A good first skill"}</p><h2>${escapeHtml(strongest.name)}</h2><p>${learned ? `${state.skillXp[strongest.id] || 0} skill XP · ${skillState(state.skillXp[strongest.id] || 0).name}` : "Complete a dish using this skill to light up its branch."}</p></div>
+        <button class="button button-secondary" type="button" data-skill-dishes="${strongest.id}">${learned ? "Keep training it" : "Find a dish to practise"}</button>
       </section>
 
       <div class="skill-view-switch" role="group" aria-label="Choose skill view">
@@ -942,11 +983,9 @@
       .filter(Boolean)
       .filter((recipe) => dietMatches(recipe, state.dietPreference))
       .sort((a, b) => (state.cooks[b.id]?.lastCooked || "").localeCompare(state.cooks[a.id]?.lastCooked || ""));
-    const available = filteredDishes();
-
     container.innerHTML = `
-      <header class="page-head">
-        <div><p class="eyebrow">Cook anything you feel like</p><h1 id="dishes-heading">Dishes</h1><p>Aanya's idea is optional. Pick any dish that fits your preference and earn the same rewards when you cook it.</p></div>
+      <header class="page-head dishes-head">
+        <div><p class="eyebrow">Your kitchen, your choice</p><h1 id="dishes-heading">Dishes</h1><p>Aanya can suggest a dish, but you can cook anything here. Every completed dish earns XP.</p></div>
         <div class="summary-chip"><strong>${cooked.length} / ${recipes.filter((recipe) => dietMatches(recipe, state.dietPreference)).length}</strong><span>dishes made</span></div>
       </header>
 
@@ -965,15 +1004,40 @@
                 <div class="collection-bottom"><strong>Cooked ×${state.cooks[recipe.id].count}</strong><button class="text-button" type="button" data-open-recipe="${recipe.id}">Cook again →</button></div>
               </div>
             </article>`).join("")}
-        </div>` : `<div class="empty-state compact-empty"><div class="empty-art" aria-hidden="true">🍽️</div><h3>Your first cooked dish will appear here.</h3><p>Choose anything from the full recipe list below.</p></div>`}
+        </div>` : `<div class="dish-empty-state"><span aria-hidden="true">🍽️</span><div><h3>Your first dish card will appear here.</h3><p>Complete any guided recipe or technique mission to start your collection.</p></div><button class="text-button" type="button" data-focus-dish-search>Find a dish ↓</button></div>`}
       </section>
 
       <section class="dish-library" aria-labelledby="dish-library-heading">
-        <div class="section-heading"><div><p class="eyebrow">Every compatible recipe</p><h2 id="dish-library-heading">Browse all dishes</h2><p>${recipes.filter((recipe) => dietMatches(recipe, state.dietPreference)).length} dishes fit your ${escapeHtml(state.dietPreference === "Non-vegetarian" ? "Non-veg" : state.dietPreference)} preference.</p></div></div>
-        <label class="search-field dish-search"><span aria-hidden="true">⌕</span><input id="dishes-search" type="search" value="${escapeHtml(dishFilters.search)}" placeholder="Search dishes, cuisines, regions…" aria-label="Search dishes"></label>
-        <strong class="dish-result-count" id="dish-result-count">${available.length} shown</strong>
-        <div class="compact-card-grid" id="dish-library-grid">${available.map(compactRecipeCard).join("") || `<div class="empty-state compact-empty"><div class="empty-art">🔎</div><h3>No dishes match that search.</h3></div>`}</div>
+        <div class="section-heading"><div><p class="eyebrow">Find your next cook</p><h2 id="dish-library-heading">Browse all dishes</h2><p><strong>Guided recipes</strong> include exact ingredients. <strong>Technique missions</strong> coach the cooking sequence while you use a trusted recipe for amounts.</p></div></div>
+        <div class="dish-discovery-bar">
+          <label class="search-field dish-search"><span aria-hidden="true">⌕</span><input id="dishes-search" type="search" value="${escapeHtml(dishFilters.search)}" placeholder="Search dish, cuisine, or region…" aria-label="Search dishes" aria-describedby="dish-result-count"></label>
+          <div class="dish-filter-chips" role="group" aria-label="Filter dishes">
+            ${[
+              ["all", "All"],
+              ["guided", "Guided"],
+              ["quick", "≤ 20 min"],
+              ["protein", "Protein focus"]
+            ].map(([value, label]) => `<button type="button" class="${dishFilters.goal === value ? "is-active" : ""}" data-dish-goal="${value}" aria-pressed="${dishFilters.goal === value}">${label}</button>`).join("")}
+          </div>
+        </div>
+        <div id="dish-library-results">${renderDishLibraryResults()}</div>
       </section>`;
+  }
+
+  function renderDishLibraryResults() {
+    const available = filteredDishes();
+    const shown = available.slice(0, dishResultLimit);
+    return `
+      <strong class="dish-result-count" id="dish-result-count">Showing ${shown.length} of ${available.length}</strong>
+      <div class="compact-card-grid" id="dish-library-grid">${shown.map(compactRecipeCard).join("") || `<div class="empty-state compact-empty"><div class="empty-art">🔎</div><h3>No dishes match those filters.</h3><p>Try a shorter name or choose All.</p></div>`}</div>
+      ${shown.length < available.length ? `<button class="button button-secondary dish-load-more" type="button" data-load-more-dishes>Show ${Math.min(12, available.length - shown.length)} more dishes</button>` : ""}`;
+  }
+
+  function updateDishLibraryResults() {
+    const results = document.querySelector("#dish-library-results");
+    if (!results) return;
+    results.innerHTML = renderDishLibraryResults();
+    wireImageFallbacks(results);
   }
 
   function filteredDishes() {
@@ -981,12 +1045,17 @@
     return recipes.filter((recipe) => {
       const matchesDiet = dietMatches(recipe, state.dietPreference);
       const matchesSearch = !search || [recipe.name, recipe.cuisine, recipe.region, recipe.description, recipe.tags?.join(" ")].join(" ").toLowerCase().includes(search);
-      return matchesDiet && matchesSearch;
+      const matchesGoal = dishFilters.goal === "all"
+        || (dishFilters.goal === "guided" && Boolean(recipe.guide))
+        || (dishFilters.goal === "quick" && recipe.minutes <= 20)
+        || (dishFilters.goal === "protein" && recipe.protein >= 15);
+      return matchesDiet && matchesSearch && matchesGoal;
     });
   }
 
   function themedCollectionProgress(collection) {
     const cooked = completedRecipeIds().map(getRecipe).filter(Boolean).filter((recipe) => dietMatches(recipe, state.dietPreference));
+    if (collection.id === "protein-variety") return cooked.filter((recipe) => recipe.protein >= 15).length;
     if (collection.tag === "world") {
       return new Set(cooked.filter((recipe) => recipe.country && recipe.country !== "India").map((recipe) => recipe.country)).size;
     }
@@ -1096,9 +1165,11 @@
 
     container.innerHTML = `
       <header class="page-head collections-head">
-        <div><p class="eyebrow">Collect the kitchen world</p><h1 id="collections-heading">Collections</h1><p>Cook to fill maps, finish sets, and turn real kitchen practice into permanent trophies.</p></div>
+        <div><p class="eyebrow">Every cook leaves a mark</p><h1 id="collections-heading">Your collection</h1><p>See what you have earned, then choose one reachable reward to chase next.</p></div>
         <div class="summary-chip"><strong>${indiaComplete + worldComplete}</strong><span>map stamps found</span></div>
       </header>
+
+      ${renderTitleVault()}
 
       <section class="collection-overview">
         <div><span>🇮🇳</span><strong>${indiaComplete}/${indiaItems.length}</strong><small>Indian states</small></div>
@@ -1107,8 +1178,6 @@
         <div><span>🍽️</span><strong>${completedRecipeIds().length}/${recipes.length}</strong><small>Dish cards</small></div>
         <div><span>👑</span><strong>${titleComplete}/${titleCatalog.length}</strong><small>Titles earned</small></div>
       </section>
-
-      ${renderTitleVault()}
 
       <section class="map-collection map-collection--india">
         <div class="map-collection-heading">
@@ -1193,7 +1262,7 @@
     const starterTrackIds = ["morning", "plant-protein-fast", "one-pot"];
     const visibleTracks = isFirstChoice ? roadmapTracks.filter((track) => starterTrackIds.includes(track.id)) : roadmapTracks;
     return `${visibleTracks.map((track) => {
-      const matching = trackRecipes(track.id, false);
+      const matching = trackRecipes(track.id, true);
       const complete = matching.filter((recipe) => state.cooks[recipe.id]?.count).length;
       const active = track.id === roadmapFilters.track;
       return `
@@ -1208,14 +1277,15 @@
   function renderRoadmap() {
     const container = document.querySelector("#view-roadmap");
     const selectedTrack = roadmapTracks.find((track) => track.id === roadmapFilters.track) || roadmapTracks[0];
-    const selectedRecipes = trackRecipes(selectedTrack.id, false);
+    const selectedRecipes = trackRecipes(selectedTrack.id, true);
     const selectedComplete = selectedRecipes.filter((recipe) => state.cooks[recipe.id]?.count).length;
     container.innerHTML = `
       <header class="page-head roadmap-head">
-        <div><p class="eyebrow">${completedRecipeIds().length < 3 && !roadmapCatalogueExpanded ? "Start with one easy route" : `Choose a speciality · ${roadmapTracks.length - 1} guided paths + open catalogue`}</p><h1 id="roadmap-heading">What kind of Chef are you going to be?</h1><p>${completedRecipeIds().length < 3 && !roadmapCatalogueExpanded ? "Three beginner-friendly routes first. You can open the full catalogue whenever you want." : "Pick a focused path. Guided roadmaps are deliberately similar in size; Open Catalogue is the complete library."}</p></div>
+        <div><p class="eyebrow">${completedRecipeIds().length < 3 && !roadmapCatalogueExpanded ? "Start with one easy route" : `Choose a speciality · ${roadmapTracks.length - 1} guided paths + open catalogue`}</p><h1 id="roadmap-heading">Choose your cooking path</h1><p>${completedRecipeIds().length < 3 && !roadmapCatalogueExpanded ? "Follow one beginner-friendly route, or switch paths whenever your mood changes." : "Pick a focused path. Open Catalogue always keeps the complete library available."}</p></div>
         <div class="summary-chip"><strong>${selectedComplete} / ${selectedRecipes.length}</strong><span>${escapeHtml(selectedTrack.name)} missions</span></div>
       </header>
 
+      <p class="roadmap-swipe-hint">Swipe to compare paths →</p>
       <section class="roadmap-track-picker" aria-label="Choose a chef roadmap">${renderRoadmapTrackPicker()}</section>
 
       <section class="selected-roadmap-banner" style="--track-colour:${selectedTrack.colour}">
@@ -1282,7 +1352,7 @@
               ${displayedRecipes.map((recipe) => `
                 <button class="roadmap-recipe ${state.cooks[recipe.id]?.count ? "is-complete" : ""}" type="button" data-open-recipe="${recipe.id}">
                   <span class="roadmap-recipe-icon">${recipe.emoji}</span>
-                  <span class="roadmap-recipe-main"><strong>${escapeHtml(recipe.name)}</strong><small>${escapeHtml(recipe.description)}</small><small>${escapeHtml(recipe.cuisine)} · ${recipe.minutes} min · ~${recipe.protein} g protein</small></span>
+                  <span class="roadmap-recipe-main"><strong>${escapeHtml(recipe.name)}</strong><small>${escapeHtml(recipe.description)}</small><small>${escapeHtml(recipe.cuisine)} · ${recipe.minutes} min${recipe.guide ? ` · ~${recipe.protein} g protein / serving` : recipe.protein >= 15 ? " · Protein-focused" : ""}</small></span>
                   <span class="roadmap-recipe-xp">${state.cooks[recipe.id]?.count ? "✓ Cooked" : `+${recipe.xp} XP`}</span>
                 </button>`).join("")}
             </div>
@@ -1306,26 +1376,27 @@
     if (!recipe.guide) {
       return `
         <section class="recipe-readiness recipe-readiness--limited">
-          <div><p class="eyebrow">Practice mission</p><h3>Technique guide available</h3><p>This catalogue mission teaches the method and safety checkpoints. Detailed ingredient packs are currently available for the guided starter path.</p></div>
-          <button class="text-button" type="button" data-route="home">Choose a guided starter →</button>
+          <div><p class="eyebrow">Technique mission</p><h3>Bring a trusted recipe for exact amounts</h3><p>Cheffu will coach the sequence, safety checks, and skills. Ingredient quantities are still being added to this dish.</p></div>
         </section>`;
     }
     return `
-      <section class="recipe-readiness" aria-labelledby="recipe-readiness-heading">
-        <div class="recipe-readiness-head"><div><p class="eyebrow">Before you cook</p><h3 id="recipe-readiness-heading">Set yourself up for a calm win</h3></div><span>${escapeHtml(recipe.guide.serves)}</span></div>
-        <div class="recipe-readiness-grid">
-          <div><strong>Ingredients</strong><ul>${recipe.guide.ingredients.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>
-          <div><strong>Equipment</strong><ul>${recipe.guide.equipment.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>
+      <details class="recipe-readiness" open>
+        <summary><span><small class="eyebrow">Before you cook</small><strong id="recipe-readiness-heading">Check what you need</strong></span><span class="recipe-serves">${escapeHtml(recipe.guide.serves)}</span></summary>
+        <div class="recipe-readiness-content">
+          <div class="recipe-readiness-grid">
+            <div><strong>Ingredients</strong><ul>${recipe.guide.ingredients.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>
+            <div><strong>Equipment</strong><ul>${recipe.guide.equipment.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>
+          </div>
+          <p class="recipe-readiness-swap"><strong>Easy swap:</strong> ${escapeHtml(recipe.guide.swaps)}</p>
         </div>
-        <p class="recipe-readiness-swap"><strong>Easy swap:</strong> ${escapeHtml(recipe.guide.swaps)}</p>
-      </section>`;
+      </details>`;
   }
 
   function openRecipe(recipeId) {
     const recipe = getRecipe(recipeId);
     if (!recipe) return;
     const learnedSkillNames = recipe.skillIds.map((id) => skills.find((skill) => skill.id === id)).filter(Boolean);
-    const stepKey = `${recipe.id}-${localDateKey()}`;
+    const stepKey = activeStepKey(recipe);
     const checked = new Set(state.completedSteps[stepKey] || []);
     const claimed = new Set(state.checkpointClaims[stepKey] || []);
     const bankedXp = state.checkpointXp[stepKey] || 0;
@@ -1334,10 +1405,9 @@
 
     cookDialogContent.innerHTML = `
       <div class="sheet-head">
-        <div><p class="eyebrow">Stage ${recipe.stage} · ${escapeHtml(stages[recipe.stage].name)}</p><h2 id="cook-dialog-title">${escapeHtml(recipe.name)}</h2></div>
+        <div><p class="eyebrow">${recipe.guide ? "Guided recipe" : "Technique mission"} · Stage ${recipe.stage}</p><h2 id="cook-dialog-title">${escapeHtml(recipe.name)}</h2></div>
         <button class="icon-button" type="button" data-close-dialog aria-label="Close recipe">×</button>
       </div>
-      ${recipeReadinessPanel(recipe)}
       <div class="recipe-sheet-grid">
         <div>${picture(recipe, "sheet")}</div>
         <div class="recipe-sheet-info">
@@ -1347,22 +1417,23 @@
           <div class="safety-callout"><strong>Safety check</strong><span>${escapeHtml(recipe.safety)}</span></div>
         </div>
       </div>
+      ${recipeReadinessPanel(recipe)}
       <div class="mission-steps">
         <div class="checkpoint-reward-callout">
-          <div><strong>Every safe checkpoint pays XP</strong><span>Tap each step after doing it. You keep up to 30% XP even if you stop; all steps unlock the dish card and remaining XP.</span></div>
+          <div><strong>Earn XP as you cook</strong><span>Check off each completed step. Your checkpoint XP stays saved if you pause.</span></div>
           <div><strong id="checkpoint-xp-count">+${bankedXp}/${xpCap} XP</strong><span>banked</span></div>
         </div>
         <div class="checkpoint-progress"><span id="checkpoint-progress-fill" style="width:${Math.round((checked.size / recipe.steps.length) * 100)}%"></span></div>
-        <div class="mission-heading"><div><p class="eyebrow">Recipe checklist</p><h3>Cook at your own pace.</h3></div><span id="step-count">${checked.size}/${recipe.steps.length}</span></div>
+        <div class="mission-heading"><div><p class="eyebrow">Cooking checklist</p><h3>Follow one step at a time.</h3></div><span id="step-count">${checked.size}/${recipe.steps.length}</span></div>
         ${recipe.steps.map((step, index) => `
-          <button class="mission-step ${checked.has(index) ? "is-done" : ""}" type="button" data-toggle-step="${index}" data-recipe-id="${recipe.id}">
+          <button class="mission-step ${checked.has(index) ? "is-done" : ""}" type="button" data-toggle-step="${index}" data-recipe-id="${recipe.id}" data-attempt-key="${stepKey}">
             <span>${checked.has(index) ? "✓" : index + 1}</span><strong>${escapeHtml(step)}</strong><small>${claimed.has(index) ? "XP banked" : `+${checkpointXpForStep(recipe, index)} XP`}</small>
           </button>`).join("")}
       </div>
       <div class="sheet-actions">
         <div class="sheet-action-buttons">
-          <button class="button button-primary button-large" type="button" data-complete-recipe="${recipe.id}" ${allStepsComplete ? "" : "disabled"}>${allStepsComplete ? (state.cooks[recipe.id]?.count ? "Log another cook" : `Finish dish · earn remaining XP`) : `Select all ${recipe.steps.length} steps to finish`}</button>
-          <button class="text-button" type="button" data-close-dialog>Pause and keep checkpoint XP</button>
+          <button class="button button-primary button-large" type="button" data-complete-recipe="${recipe.id}" ${allStepsComplete ? "" : "disabled"}>${allStepsComplete ? (state.cooks[recipe.id]?.count ? "Log another cook" : "Finish dish · claim reward") : `Finish after ${recipe.steps.length - checked.size} ${recipe.steps.length - checked.size === 1 ? "step" : "steps"}`}</button>
+          <button class="text-button" type="button" data-close-dialog>Pause, progress is saved</button>
         </div>
         <small>Protein values are approximate per serving. Food photos and nutrition are not proof of food safety.</small>
       </div>`;
@@ -1376,7 +1447,7 @@
     const recipeId = button.dataset.recipeId;
     const recipe = getRecipe(recipeId);
     const index = Number(button.dataset.toggleStep);
-    const key = `${recipeId}-${localDateKey()}`;
+    const key = button.dataset.attemptKey || activeStepKey(recipe);
     const completed = new Set(state.completedSteps[key] || []);
     const claimed = new Set(state.checkpointClaims[key] || []);
     let reward = 0;
@@ -1403,16 +1474,51 @@
     const allStepsComplete = completed.size === recipe.steps.length;
     shipButton.disabled = !allStepsComplete;
     shipButton.textContent = allStepsComplete
-      ? (state.cooks[recipe.id]?.count ? "Log another cook" : "Finish dish · earn remaining XP")
-      : `Select all ${recipe.steps.length} steps to finish`;
+      ? (state.cooks[recipe.id]?.count ? "Log another cook" : "Finish dish · claim reward")
+      : `Finish after ${recipe.steps.length - completed.size} ${recipe.steps.length - completed.size === 1 ? "step" : "steps"}`;
     if (reward) showToast(`Checkpoint cleared · +${reward} XP banked`);
+  }
+
+  function renderCookCompletion(recipe, reward) {
+    const badge = nextBadge();
+    const badgeStatus = badgeProgress(badge);
+    const unlocks = [
+      ...reward.badges.map((item) => `${item.icon} ${item.name}`),
+      ...reward.titles.slice(0, 2).map((item) => `${item.icon} ${item.name}`)
+    ];
+    cookDialogContent.innerHTML = `
+      <section class="cook-complete" aria-labelledby="cook-complete-heading">
+        <div class="cook-complete-art"><img src="aanya-variations/proud-plating.jpg?v=3" alt="Aanya proudly presenting your finished dish"></div>
+        <div class="cook-complete-copy">
+          <p class="eyebrow">Dish complete</p>
+          <h2 id="cook-complete-heading" tabindex="-1">You cooked ${escapeHtml(recipe.name)}!</h2>
+          <p>Aanya says: that counts. Your practice, rewards, and dish card are saved.</p>
+          <div class="cook-reward-grid" aria-label="Rewards earned">
+            <div><span aria-hidden="true">⚡</span><strong>+${reward.totalXp} XP</strong><small>this cook</small></div>
+            <div><span aria-hidden="true">🌱</span><strong>${recipe.skillIds.length} skills</strong><small>${reward.newSkills} newly discovered</small></div>
+            <div><span aria-hidden="true">🔥</span><strong>${state.streak} day</strong><small>current streak</small></div>
+          </div>
+          ${unlocks.length ? `<p class="cook-unlocks"><strong>Unlocked:</strong> ${escapeHtml(unlocks.join(" · "))}</p>` : `<p class="cook-unlocks"><strong>${reward.isFirst ? "First-cook stamp added." : "Cook count increased."}</strong></p>`}
+          <div class="cook-next-target">
+            <span>${badge.icon}</span>
+            <div><small>Next reward</small><strong>${escapeHtml(badge.name)}</strong><div class="mini-progress"><i style="width:${Math.min(100, (badgeStatus.value / badge.target) * 100)}%"></i></div><small>${badgeStatus.value}/${badge.target}</small></div>
+          </div>
+          <div class="cook-complete-actions">
+            <button class="button button-primary button-large" type="button" data-route="home" data-close-dialog>Back to Today</button>
+            <button class="button button-secondary" type="button" data-route="dishes" data-close-dialog>Choose another dish</button>
+          </div>
+          <p class="cook-return-cue">Come back tomorrow for a fresh idea from Aanya.</p>
+        </div>
+      </section>`;
+    wireImageFallbacks(cookDialogContent);
+    window.setTimeout(() => cookDialogContent.querySelector("#cook-complete-heading")?.focus(), 0);
   }
 
   function completeRecipe(recipeId) {
     const recipe = getRecipe(recipeId);
     if (!recipe) return;
     const today = localDateKey();
-    const stepKey = `${recipe.id}-${today}`;
+    const stepKey = activeStepKey(recipe);
     const checked = new Set(state.completedSteps[stepKey] || []);
     if (checked.size !== recipe.steps.length) {
       showToast(`Complete all ${recipe.steps.length} safe checkpoints to unlock the dish card.`);
@@ -1424,6 +1530,7 @@
     const isFirst = !state.cooks[recipeId]?.count;
     const checkpointXp = state.checkpointXp[stepKey] || 0;
     const earnedXp = Math.max(0, recipe.xp - checkpointXp) + (isFirst ? 20 : 0);
+    const totalXp = recipe.xp + (isFirst ? 20 : 0);
 
     if (!state.lastCookDate) state.streak = 1;
     else {
@@ -1447,12 +1554,14 @@
 
     const unlocked = badges.filter((badge) => badgeProgress(badge).complete && !previousBadges.has(badge.id));
     const newTitles = unlockedTitles().filter((title) => !previousTitles.has(title.id));
-    closeDialog(cookDialog);
     renderAll();
-    const badgeText = unlocked.length ? ` · Badge unlocked: ${unlocked.map((badge) => badge.name).join(", ")}` : "";
-    const titleText = newTitles.length ? ` · Title unlocked: ${newTitles.slice(0, 3).map((title) => title.name).join(", ")}${newTitles.length > 3 ? ` +${newTitles.length - 3} more` : ""}` : "";
-    const skillText = ` · ${recipe.skillIds.length} micro-skills practised${newlyDiscoveredSkills.length ? ` · ${newlyDiscoveredSkills.length} discovered` : ""}`;
-    showToast(`${recipe.emoji} ${recipe.name} complete · +${earnedXp} XP${skillText}${badgeText}${titleText}`, unlocked.length > 0 || newTitles.length > 0 || newlyDiscoveredSkills.length > 0);
+    renderCookCompletion(recipe, {
+      totalXp,
+      newSkills: newlyDiscoveredSkills.length,
+      badges: unlocked,
+      titles: newTitles,
+      isFirst
+    });
   }
 
   function showSkillDishes(skillId) {
@@ -1494,12 +1603,14 @@
 
   function openNameDialog() {
     nameInput.value = state.playerName || "";
+    renderOnboardingDietFilter();
     if (typeof nameDialog.showModal === "function") nameDialog.showModal();
     else nameDialog.setAttribute("open", "");
     window.setTimeout(() => nameInput.focus(), 0);
   }
 
   function showToast(message, achievement = false) {
+    toastRegion.replaceChildren();
     const toast = document.createElement("div");
     toast.className = `toast ${achievement ? "toast--achievement" : ""}`;
     toast.innerHTML = `<strong>${achievement ? "Achievement!" : "Cook logged"}</strong><span>${escapeHtml(message)}</span>`;
@@ -1535,10 +1646,11 @@
     if (routeButton) routeTo(routeButton.dataset.route);
 
     const dietButton = event.target.closest("[data-diet-scope]");
-    if (dietButton?.dataset.dietScope === "global") {
+    if (dietButton && ["global", "onboarding"].includes(dietButton.dataset.dietScope)) {
       const dietChanged = state.dietPreference !== dietButton.dataset.dietValue;
       state.dietPreference = dietButton.dataset.dietValue;
       if (dietChanged) state.dailyQuest = {};
+      if (dietChanged) dishResultLimit = 12;
       roadmapFilters.diet = state.dietPreference;
       saveState();
       renderHome();
@@ -1547,6 +1659,7 @@
       renderCollections();
       renderRoadmap();
       renderGlobalDietFilter();
+      renderOnboardingDietFilter();
     }
 
     const questTimeButton = event.target.closest("[data-quest-time]");
@@ -1560,6 +1673,24 @@
 
     const acceptQuestButton = event.target.closest("[data-accept-daily-quest]");
     if (acceptQuestButton) animateQuestChoice(document.querySelector("[data-quest-swipe-card]"), "accept");
+
+    const dishGoalButton = event.target.closest("[data-dish-goal]");
+    if (dishGoalButton) {
+      dishFilters.goal = dishGoalButton.dataset.dishGoal;
+      dishResultLimit = 12;
+      renderDishes();
+      document.querySelector("#dishes-search")?.focus({ preventScroll: true });
+    }
+
+    if (event.target.closest("[data-load-more-dishes]")) {
+      dishResultLimit += 12;
+      updateDishLibraryResults();
+    }
+
+    if (event.target.closest("[data-focus-dish-search]")) {
+      document.querySelector("#dishes-search")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      window.setTimeout(() => document.querySelector("#dishes-search")?.focus(), 300);
+    }
 
     const trackButton = event.target.closest("[data-roadmap-track]");
     if (trackButton) {
@@ -1657,10 +1788,8 @@
     }
     if (event.target.matches("#dishes-search")) {
       dishFilters.search = event.target.value;
-      const available = filteredDishes();
-      document.querySelector("#dish-library-grid").innerHTML = available.map(compactRecipeCard).join("") || `<div class="empty-state compact-empty"><div class="empty-art">🔎</div><h3>No dishes match that search.</h3></div>`;
-      document.querySelector("#dish-result-count").textContent = `${available.length} shown`;
-      wireImageFallbacks(document.querySelector("#dish-library-grid"));
+      dishResultLimit = 12;
+      updateDishLibraryResults();
     }
     if (event.target.matches("#title-search")) {
       titleFilters.search = event.target.value;
@@ -1709,7 +1838,6 @@
     saveState();
     closeDialog(nameDialog);
     renderHome();
-    showToast(`Welcome to the kitchen, ${playerName}.`);
   });
 
   document.querySelector("#reset-progress").addEventListener("click", () => {
