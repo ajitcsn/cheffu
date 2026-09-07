@@ -485,7 +485,7 @@
     const nextIndex = (deck.index + 1) % deck.picks.length;
     setDailyQuest(nextIndex);
     refreshHome();
-    showToast(`🍳 Here's another idea from Aanya: ${deck.picks[nextIndex].name}.`);
+    showToast(`🍳 Here's another idea from Aanya: ${deck.picks[nextIndex].name}.`, false, "Aanya's deck");
   }
 
   function acceptDailyQuest(recipeId) {
@@ -493,7 +493,7 @@
     const recipe = getRecipe(recipeId);
     if (!recipe) return;
     setDailyQuest(Math.max(0, deck.picks.findIndex((pick) => pick.id === recipe.id)));
-    showToast(`${recipe.emoji} Great choice. Start when you're ready.`);
+    showToast(`${recipe.emoji} Great choice. Start when you're ready.`, false, "Aanya's deck");
     openRecipe(recipe.id);
   }
 
@@ -1756,11 +1756,11 @@
     window.setTimeout(() => nameInput.focus(), 0);
   }
 
-  function showToast(message, achievement = false) {
+  function showToast(message, achievement = false, label = "Update") {
     toastRegion.replaceChildren();
     const toast = document.createElement("div");
     toast.className = `toast ${achievement ? "toast--achievement" : ""}`;
-    toast.innerHTML = `<strong>${achievement ? "Achievement!" : "Cook logged"}</strong><span>${escapeHtml(message)}</span>`;
+    toast.innerHTML = `<strong>${achievement ? "Achievement!" : escapeHtml(label)}</strong><span>${escapeHtml(message)}</span>`;
     toastRegion.append(toast);
     window.setTimeout(() => toast.remove(), 5200);
   }
