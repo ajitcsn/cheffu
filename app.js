@@ -52,6 +52,9 @@
     questPreferences: { time: "20", goal: "confidence" }
   };
 
+  const BACKUP_FORMAT = "cheffu-progress-v1";
+  let storageWarningShown = false;
+
   let state = loadState();
   let activeRoute = "home";
   let roadmapFilters = { search: "", region: "all", diet: state.dietPreference, track: "morning" };
@@ -95,7 +98,7 @@
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
       if (!saved) return { ...defaultState };
-      const loaded = { ...defaultState, ...saved };
+      const loaded = normaliseState(saved);
       const validSkillIds = new Set(skills.map((skill) => skill.id));
       const hasOldSkillData = Object.keys(loaded.skillXp || {}).some((id) => !validSkillIds.has(id));
       if (hasOldSkillData) {
@@ -115,7 +118,121 @@
   }
 
   function saveState() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      return true;
+    } catch (error) {
+      if (!storageWarningShown) {
+        storageWarningShown = true;
+        window.setTimeout(() => showToast("Progress cannot be saved in this browser. Download a backup before leaving."), 0);
+      }
+      return false;
+    }
+  }
+
+  function isPlainObject(value) {
+    return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+  }
+
+  function boundedNumber(value, fallback = 0, max = 1000000) {
+    const number = Number(value);
+    return Number.isFinite(number) ? Math.max(0, Math.min(max, Math.floor(number))) : fallback;
+  }
+
+  function normaliseState(rawState) {
+    if (!isPlainObject(rawState)) return { ...defaultState };
+    const recipeById = new Map(recipes.map((recipe) => [recipe.id, recipe]));
+    const skillIdSet = new Set(skills.map((skill) => skill.id));
+    const cooks = {};
+    if (isPlainObject(rawState.cooks)) {
+      Object.entries(rawState.cooks).forEach(([recipeId, cook]) => {
+        if (!recipeById.has(recipeId) || !isPlainObject(cook)) return;
+        const count = boundedNumber(cook.count);
+        if (count) cooks[recipeId] = { count };
+      });
+    }
+    const skillXp = {};
+    if (isPlainObject(rawState.skillXp)) {
+      Object.entries(rawState.skillXp).forEach(([skillId, xp]) => {
+        if (!skillIdSet.has(skillId)) return;
+        const amount = boundedNumber(xp);
+        if (amount) skillXp[skillId] = amount;
+      });
+    }
+    const completedSteps = {};
+    const checkpointClaims = {};
+    const checkpointXp = {};
+    if (isPlainObject(rawState.completedSteps)) {
+      Object.entries(rawState.completedSteps).forEach(([key, steps]) => {
+        const attempt = parseAttemptKey(key);
+        const recipe = attempt && recipeById.get(attempt.recipeId);
+        if (!recipe || !Array.isArray(steps)) return;
+        const safeSteps = [...new Set(steps.map(Number).filter((step) => Number.isInteger(step) && step >= 0 && step < recipe.steps.length))].sort((a, b) => a - b);
+        if (safeSteps.length) completedSteps[key] = safeSteps;
+      });
+    }
+    if (isPlainObject(rawState.checkpointClaims)) {
+      Object.entries(rawState.checkpointClaims).forEach(([key, steps]) => {
+        if (!completedSteps[key] || !Array.isArray(steps)) return;
+        const safeClaims = [...new Set(steps.map(Number).filter((step) => completedSteps[key].includes(step)))].sort((a, b) => a - b);
+        if (safeClaims.length) checkpointClaims[key] = safeClaims;
+      });
+    }
+    if (isPlainObject(rawState.checkpointXp)) {
+      Object.entries(rawState.checkpointXp).forEach(([key, xp]) => {
+        if (!completedSteps[key]) return;
+        const amount = boundedNumber(xp, 0, 2000);
+        if (amount) checkpointXp[key] = amount;
+      });
+    }
+    const dietPreference = ["Veg", "Egg", "Non-vegetarian"].includes(rawState.dietPreference) ? rawState.dietPreference : defaultState.dietPreference;
+    const titleIdSet = new Set(titleCatalog.map((title) => title.id));
+    const playerName = typeof rawState.playerName === "string" ? rawState.playerName.trim().replace(/\s+/g, " ").slice(0, 30) : "";
+    const lastCookDate = typeof rawState.lastCookDate === "string" && /^\d{4}-\d{2}-\d{2}$/.test(rawState.lastCookDate) ? rawState.lastCookDate : null;
+    return {
+      ...defaultState,
+      xp: boundedNumber(rawState.xp),
+      cooks,
+      skillXp,
+      streak: boundedNumber(rawState.streak, 0, 36500),
+      lastCookDate,
+      completedSteps,
+      checkpointXp,
+      checkpointClaims,
+      dietPreference,
+      equippedTitleId: titleIdSet.has(rawState.equippedTitleId) ? rawState.equippedTitleId : defaultState.equippedTitleId,
+      playerName,
+      hasSeenNamePrompt: Boolean(rawState.hasSeenNamePrompt),
+      navSeen: isPlainObject(rawState.navSeen) ? rawState.navSeen : {},
+      dailyQuest: isPlainObject(rawState.dailyQuest) ? rawState.dailyQuest : {},
+      questPreferences: {
+        time: ["10", "20", "30", "45"].includes(rawState.questPreferences?.time) ? rawState.questPreferences.time : defaultState.questPreferences.time,
+        goal: ["confidence", "protein"].includes(rawState.questPreferences?.goal) ? rawState.questPreferences.goal : defaultState.questPreferences.goal
+      }
+    };
+  }
+
+  function downloadProgressBackup() {
+    const payload = JSON.stringify({ format: BACKUP_FORMAT, exportedAt: new Date().toISOString(), progress: state }, null, 2);
+    const download = document.createElement("a");
+    download.href = URL.createObjectURL(new Blob([payload], { type: "application/json" }));
+    download.download = `cheffu-progress-${localDateKey()}.json`;
+    document.body.append(download);
+    download.click();
+    download.remove();
+    window.setTimeout(() => URL.revokeObjectURL(download.href), 0);
+    showToast("Backup downloaded. Keep it somewhere private.");
+  }
+
+  async function restoreProgressBackup(file) {
+    if (!file || file.size > 250000) throw new Error("That backup file is too large.");
+    const backup = JSON.parse(await file.text());
+    if (!isPlainObject(backup) || backup.format !== BACKUP_FORMAT || !isPlainObject(backup.progress)) throw new Error("This is not a Cheffu progress backup.");
+    state = normaliseState(backup.progress);
+    saveState();
+    renderAll();
+    closeDialog(settingsDialog);
+    showToast("Your Cheffu progress is restored.");
   }
 
   function escapeHtml(value) {
@@ -1818,6 +1935,19 @@
     openNameDialog();
   });
 
+  document.querySelector("#export-progress").addEventListener("click", downloadProgressBackup);
+
+  document.querySelector("#import-progress").addEventListener("change", async (event) => {
+    const input = event.currentTarget;
+    try {
+      await restoreProgressBackup(input.files?.[0]);
+    } catch (error) {
+      showToast(error.message || "Could not restore that backup.");
+    } finally {
+      input.value = "";
+    }
+  });
+
   document.querySelector("#skip-name").addEventListener("click", () => {
     state.hasSeenNamePrompt = true;
     saveState();
@@ -1872,6 +2002,9 @@
   });
 
   window.addEventListener("popstate", () => routeTo(location.hash.slice(1) || "home"));
+  if ("serviceWorker" in navigator && location.protocol === "https:") {
+    window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(() => {}));
+  }
   activeRoute = location.hash.slice(1) || "home";
   renderAll();
   if (!state.hasSeenNamePrompt) openNameDialog();

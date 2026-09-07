@@ -5,7 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#ff6b35">
   <meta name="description" content="Cheffu is a beginner-friendly Indian cooking roadmap for confident everyday meals.">
+  <meta property="og:title" content="Cheffu · Learn to cook, one win at a time">
+  <meta property="og:description" content="A friendly, mobile-first cooking game for building everyday kitchen confidence.">
+  <meta property="og:image" content="https://cheffu.vercel.app/aanya-welcome.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cheffu.vercel.app/">
+  <meta name="twitter:card" content="summary_large_image">
   <title>Cheffu Roadmap</title>
+  <link rel="canonical" href="https://cheffu.vercel.app/">
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/png" href="cheffu-aanya-logo.png">
   <link rel="apple-touch-icon" href="cheffu-aanya-logo.png">
   <link rel="stylesheet" href="styles.css">
@@ -79,6 +87,7 @@
       <p>Your progress stays private and is saved only in this browser.</p>
       <div class="settings-diet"><strong>Diet preference</strong><span>Used to show dishes and collections that fit you.</span><div id="global-diet-filter" aria-label="Diet preference"></div></div>
       <button class="button button-secondary" id="change-name" type="button">Change your name</button>
+      <div class="progress-backup"><strong>Keep your progress</strong><span>Download a private backup before changing phones or browsers.</span><div><button class="button button-secondary" id="export-progress" type="button">Download backup</button><label class="button button-secondary" for="import-progress">Restore backup</label><input id="import-progress" type="file" accept="application/json,.json" hidden></div></div>
       <button class="button button-danger" id="reset-progress" type="button">Reset all progress</button>
     </form>
   </dialog>

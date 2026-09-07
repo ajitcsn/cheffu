@@ -109,6 +109,11 @@ assert.ok(appSource.includes("playerName") && appSource.includes("openNameDialog
 assert.ok(index.includes("What do you eat?") && appSource.includes("renderOnboardingDietFilter"), "First-time setup must collect dietary preference");
 assert.ok(appSource.includes("Guided recipe") && appSource.includes("Technique mission"), "Recipe completeness must be visible before a cook starts");
 assert.ok(index.includes("viewport-fit=cover"), "Mobile viewport must support device safe areas");
+assert.ok(index.includes('rel="manifest"') && index.includes("og:title"), "Production metadata and install manifest must be present");
+assert.ok(appSource.includes("downloadProgressBackup") && appSource.includes("restoreProgressBackup"), "Local-first progress must support private backup and restore");
+assert.ok(appSource.includes("serviceWorker.register"), "The app shell must register its offline worker on HTTPS");
+assert.ok(fs.existsSync(new URL("./manifest.webmanifest", import.meta.url)) && fs.existsSync(new URL("./service-worker.js", import.meta.url)), "PWA install and offline assets must exist");
+assert.ok(fs.existsSync(new URL("./vercel.json", import.meta.url)), "Vercel security header configuration must exist");
 assert.ok(styles.includes("--tap-target: 44px") && styles.includes("safe-area-inset-bottom"), "Mobile controls must retain 44px targets and safe-area spacing");
 assert.ok(styles.includes("overflow-x: clip") && styles.includes("@media (max-width: 700px)"), "Mobile layout must prevent page overflow and keep its phone breakpoint");
 assert.ok(appSource.includes('let skillView = "tree"'), "Skills must show the connected tree by default on every device");

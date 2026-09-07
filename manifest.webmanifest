@@ -1,0 +1,17 @@
+{
+  "name": "Cheffu",
+  "short_name": "Cheffu",
+  "description": "A friendly, mobile-first cooking game for everyday kitchen confidence.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffaf0",
+  "theme_color": "#ff6b35",
+  "icons": [
+    {
+      "src": "cheffu-aanya-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
