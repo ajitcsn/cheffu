@@ -1,4 +1,4 @@
-const CACHE_NAME = "cheffu-shell-v1";
+const CACHE_NAME = "cheffu-shell-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -31,8 +31,8 @@ self.addEventListener("fetch", (event) => {
     return;
   }
   if (url.pathname.includes("/assets/recipes/")) return;
-  event.respondWith(caches.match(request).then((cached) => cached || fetch(request).then((response) => {
+  event.respondWith(fetch(request).then((response) => {
     if (response.ok) caches.open(CACHE_NAME).then((cache) => cache.put(request, response.clone()));
     return response;
-  })));
+  }).catch(() => caches.match(request)));
 });
