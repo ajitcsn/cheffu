@@ -10,6 +10,30 @@
   Browser-first · Mobile-friendly · No build step · Local-first progress
 </p>
 
+<p align="center">
+  <a href="https://cheffu.vercel.app/"><strong>Open the live app →</strong></a>
+</p>
+
+## Product preview
+
+<p align="center">
+  <a href="https://cheffu.vercel.app/"><img src="assets/screenshots/cheffu-home-desktop.png" alt="Cheffu Today screen on a laptop" width="100%"></a>
+</p>
+
+<p align="center">
+  <img src="assets/screenshots/cheffu-home-mobile.png" alt="Cheffu Today screen on mobile" width="31%">
+  <img src="assets/screenshots/cheffu-skill-tree-mobile.png" alt="Cheffu connected cooking skill tree on mobile" width="31%">
+  <img src="assets/screenshots/cheffu-dish-library-mobile.png" alt="Cheffu searchable dish library on mobile" width="31%">
+</p>
+
+<p align="center"><sub>Today · Connected skill tree · Searchable dish library</sub></p>
+
+<p align="center">
+  <img src="assets/screenshots/cheffu-cook-complete-mobile.png" alt="Cheffu cook completion celebration with Aanya" width="340">
+</p>
+
+<p align="center"><sub>A completed cook awards XP, develops skills, extends the streak, and moves the next reward forward.</sub></p>
+
 ## What is Cheffu?
 
 Cheffu is a static cooking game designed for beginner cooks in India, especially protein-conscious young adults who have never felt comfortable in a kitchen. It starts with tiny wins such as mixing a drink, then gradually introduces heat, pans, tadka, pressure cooking, curries, dough, fermentation, and complete meals.
@@ -18,10 +42,11 @@ The experience combines practical cooking instructions with XP, levels, micro-sk
 
 ## Highlights
 
-- **378 cooking missions** across Indian regional food, protein-focused meals, desserts, baking, and international cuisines.
+- **377 cooking missions** across Indian regional food, protein-focused meals, desserts, baking, and international cuisines.
 - **124 granular kitchen skills**, including measuring tools, mixing methods, knife actions, heat cues, cooker safety, fermentation, plating, and meal planning.
 - **Eight progression stages**, from no-heat first contact to coordinated full meals.
-- **Three daily recommendations** matched to the player's diet and current progress.
+- **A daily quest deck** with three recommendations matched to the player's diet and current progress.
+- **Swipe, button, and keyboard controls** to accept a quest or pass to the next recommendation.
 - **Safe interactive checkpoints** that bank partial XP without demanding interaction during dangerous actions.
 - **100 unlockable titles** with humorous descriptions and distinct achievement conditions.
 - **Dish cards, badges, regional collections, an India map, and a world cooking passport.**
@@ -37,7 +62,7 @@ A visual collection of everything the player has successfully cooked, including 
 A colour-coded connected tree and searchable list covering every micro-skill the player has practised.
 
 **Today, `3`**  
-The daily dashboard with level progress, closest collectible, badge cabinet, Aanya's recommendation, and three suggested dishes.
+The daily dashboard with level progress, closest collectible, badge cabinet, and Aanya's quest deck. Accept a recommendation, pass to the next one, or change an accepted quest before cooking. The choice stays locked in for the day and resets when the player's diet preference changes.
 
 **Collections, `4`**  
 Badges, 100 titles, regional food collections, the India State Plate, and World Kitchen Passport.
@@ -59,7 +84,7 @@ Opening `index.html` directly is not recommended because browsers restrict some 
 
 ## Verify the content
 
-The verification script checks catalogue integrity, skill links, collections, titles, imagery, navigation, Aanya assets, and core progression requirements:
+The verification script checks catalogue integrity, skill links, collections, titles, imagery, navigation, Aanya assets, daily quest interactions, and core progression requirements:
 
 ```bash
 node verify.mjs
@@ -67,7 +92,7 @@ node verify.mjs
 
 The current verified content includes:
 
-- 378 recipes
+- 377 recipes
 - 124 micro-skills
 - 8 progression stages
 - 6 core badges

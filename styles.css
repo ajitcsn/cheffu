@@ -6328,6 +6328,8 @@ main {
   }
 
   .is-complete .cook-complete-art img {
+    width: auto;
+    height: 100%;
     max-height: 100%;
   }
 

@@ -60,8 +60,13 @@ assert.ok(titles.filter((title) => title.condition.type === "skillXp").every((ti
 assert.ok(titles.filter((title) => title.condition.type === "recipeCooks").every((title) => recipeIds.has(title.condition.value)), "Dish titles must reference real dishes");
 
 const index = fs.readFileSync(new URL("./index.html", import.meta.url), "utf8");
+const readme = fs.readFileSync(new URL("./README.md", import.meta.url), "utf8");
 const appSource = fs.readFileSync(new URL("./app.js", import.meta.url), "utf8");
 const styles = fs.readFileSync(new URL("./styles.css", import.meta.url), "utf8");
+for (const screenshot of ["cheffu-home-desktop.png", "cheffu-home-mobile.png", "cheffu-skill-tree-mobile.png", "cheffu-dish-library-mobile.png", "cheffu-cook-complete-mobile.png"]) {
+  assert.ok(fs.existsSync(new URL(`./assets/screenshots/${screenshot}`, import.meta.url)), `README screenshot missing: ${screenshot}`);
+  assert.ok(readme.includes(`assets/screenshots/${screenshot}`), `README must display screenshot: ${screenshot}`);
+}
 assert.ok(fs.existsSync(new URL("./cheffu-aanya-logo.png", import.meta.url)), "Cheffu must include the Aanya mascot logo asset");
 assert.ok(index.includes("cheffu-aanya-logo.png"), "Header and app metadata must use the Aanya mascot logo");
 for (const asset of ["aanya-welcome.png", "aanya-skills.png", "aanya-streak.png", "aanya-challenge.png"]) {
