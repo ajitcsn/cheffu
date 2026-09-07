@@ -6168,13 +6168,15 @@ main {
 
 /* The header shares the wordmark's warm paper and illustrated outline. */
 .topbar {
-  width: 100%;
+  top: 10px;
+  width: min(calc(100% - 32px), var(--content));
   min-height: 82px;
-  margin: 0;
-  padding: 10px max(16px, calc((100% - var(--content)) / 2));
-  border-bottom: 3px solid var(--ink);
+  margin: 0 auto 10px;
+  padding: 10px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 24px;
   background: var(--brand-cream);
-  box-shadow: 0 5px 0 var(--orange), 0 9px 22px rgba(24, 37, 29, 0.12);
+  box-shadow: 0 5px 0 var(--orange), 0 10px 22px rgba(24, 37, 29, 0.1);
   backdrop-filter: none;
 }
 
@@ -6268,9 +6270,12 @@ main {
 
 @media (max-width: 700px) {
   .topbar {
-    width: 100%;
+    top: max(7px, env(safe-area-inset-top));
+    width: calc(100% - 20px);
     min-height: 64px;
-    padding: max(7px, env(safe-area-inset-top)) var(--mobile-gutter) 7px;
+    margin-bottom: 9px;
+    padding: 6px 9px;
+    border-radius: 19px;
   }
 
   .sheet.is-complete {
