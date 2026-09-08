@@ -1,13 +1,13 @@
-const CACHE_NAME = "cheffu-shell-v4";
+const CACHE_NAME = "cheffu-shell-v5";
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./styles.css",
+  "./styles.css?v=5",
   "./data.js",
   "./catalog-expansion.js",
   "./recipe-photos.js",
   "./title-catalog.js",
-  "./app.js",
+  "./app.js?v=5",
   "./manifest.webmanifest",
   "./assets/brand/cheffu-aanya-logo.png",
   "./assets/brand/cheffu-wordmark.png",
