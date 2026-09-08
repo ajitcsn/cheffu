@@ -1650,7 +1650,7 @@
     cookDialogContent.innerHTML = `
       <section class="cook-complete" aria-labelledby="cook-complete-heading">
         <button class="icon-button cook-complete-close" type="button" data-close-dialog aria-label="Close celebration">×</button>
-        <div class="cook-complete-art"><img src="assets/aanya/variations/proud-plating.jpg?v=3" alt="Aanya proudly presenting your finished dish"></div>
+        <div class="cook-complete-art"><img src="assets/aanya/variations/proud-plating.jpg?v=4" alt="Aanya proudly presenting your finished dish" loading="eager" fetchpriority="high"></div>
         <div class="cook-complete-copy">
           <p class="eyebrow">Dish complete</p>
           <h2 id="cook-complete-heading" tabindex="-1">You cooked ${escapeHtml(recipe.name)}!</h2>
@@ -1796,7 +1796,7 @@
       image.addEventListener("error", showFallback, { once: true });
       if (image.complete && image.naturalWidth === 0) showFallback();
     });
-    root.querySelectorAll(".aanya-companion-art img:not([data-wired])").forEach((image) => {
+    root.querySelectorAll(".aanya-companion-art img:not([data-wired]), .cook-complete-art img:not([data-wired])").forEach((image) => {
       image.dataset.wired = "true";
       const showFallback = () => {
         if (!image.isConnected) return;
