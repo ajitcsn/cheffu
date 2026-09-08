@@ -1,8 +1,8 @@
-const CACHE_NAME = "cheffu-shell-v5";
+const CACHE_NAME = "cheffu-shell-v6";
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./styles.css?v=5",
+  "./styles.css?v=6",
   "./data.js",
   "./catalog-expansion.js",
   "./recipe-photos.js",
