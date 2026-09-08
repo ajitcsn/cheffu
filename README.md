@@ -26,6 +26,32 @@
 
 <p align="center"><sub>A completed cook awards XP, develops skills, extends the streak, and moves the next reward forward.</sub></p>
 
+## Explore the app
+
+### Grow a connected skill tree
+
+<p align="center">
+  <img src="assets/screenshots/cheffu-skills-desktop.png" alt="Cheffu connected cooking skill tree on a laptop" width="100%">
+</p>
+
+### Cook any dish
+
+<p align="center">
+  <img src="assets/screenshots/cheffu-dishes-desktop.png" alt="Cheffu searchable dishes library and cooked dish cards on a laptop" width="100%">
+</p>
+
+### Collect titles and rewards
+
+<p align="center">
+  <img src="assets/screenshots/cheffu-collections-desktop.png" alt="Cheffu collection and title vault on a laptop" width="100%">
+</p>
+
+### Choose a cooking path
+
+<p align="center">
+  <img src="assets/screenshots/cheffu-roadmap-desktop.png" alt="Cheffu guided cooking roadmap on a laptop" width="100%">
+</p>
+
 ## What is Cheffu?
 
 Cheffu is a static cooking game designed for beginner cooks in India, especially protein-conscious young adults who have never felt comfortable in a kitchen. It starts with tiny wins such as mixing a drink, then gradually introduces heat, pans, tadka, pressure cooking, curries, dough, fermentation, and complete meals.

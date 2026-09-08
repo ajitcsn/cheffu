@@ -63,7 +63,14 @@ const index = fs.readFileSync(new URL("./index.html", import.meta.url), "utf8");
 const readme = fs.readFileSync(new URL("./README.md", import.meta.url), "utf8");
 const appSource = fs.readFileSync(new URL("./app.js", import.meta.url), "utf8");
 const styles = fs.readFileSync(new URL("./styles.css", import.meta.url), "utf8");
-for (const screenshot of ["cheffu-home-desktop.png", "cheffu-cook-complete-desktop.png"]) {
+for (const screenshot of [
+  "cheffu-home-desktop.png",
+  "cheffu-cook-complete-desktop.png",
+  "cheffu-skills-desktop.png",
+  "cheffu-dishes-desktop.png",
+  "cheffu-collections-desktop.png",
+  "cheffu-roadmap-desktop.png"
+]) {
   assert.ok(fs.existsSync(new URL(`./assets/screenshots/${screenshot}`, import.meta.url)), `README screenshot missing: ${screenshot}`);
   assert.ok(readme.includes(`assets/screenshots/${screenshot}`), `README must display screenshot: ${screenshot}`);
 }
