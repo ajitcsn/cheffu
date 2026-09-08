@@ -558,9 +558,10 @@
       return `<div class="dish-picture dish-picture--${size} dish-picture--illustrated" role="img" aria-label="Illustration for ${escapeHtml(recipe.name)}"><span>${recipe.emoji}</span><small>${escapeHtml(recipe.name)}</small></div>`;
     }
     const isPriorityImage = size === "quest";
+    const imageUrl = isPriorityImage ? `${recipe.photo.url}${recipe.photo.url.includes("?") ? "&" : "?"}v=2` : recipe.photo.url;
     return `
       <figure class="dish-picture dish-picture--${size} ${recipe.photo.representative ? "dish-picture--reference" : ""}">
-        <img src="${recipe.photo.url}" alt="${escapeHtml(recipe.name)}" loading="${isPriorityImage ? "eager" : "lazy"}"${isPriorityImage ? ' fetchpriority="high"' : ""} referrerpolicy="no-referrer">
+        <img src="${imageUrl}" alt="${escapeHtml(recipe.name)}" loading="${isPriorityImage ? "eager" : "lazy"}"${isPriorityImage ? ' fetchpriority="high"' : ""} referrerpolicy="no-referrer">
         <a class="photo-credit" href="${recipe.photo.page}" target="_blank" rel="noreferrer" aria-label="Open photo source for ${escapeHtml(recipe.name)}" title="${recipe.photo.representative ? `Related-dish reference: ${escapeHtml(recipe.photo.referenceFor)}` : `Photo of ${escapeHtml(recipe.name)}`}">${recipe.photo.representative ? "related-dish reference ↗" : "photo ↗"}</a>
       </figure>`;
   }
@@ -585,16 +586,14 @@
       { value: "confidence", label: "Gentle win" },
       { value: "protein", label: "More protein" }
     ];
-    const selectedTime = timeOptions.find((option) => option.value === preferences.time)?.label || "20 min";
-    const selectedGoal = goalOptions.find((option) => option.value === preferences.goal)?.label || "Gentle win";
     return `
-      <details class="quest-context">
-        <summary><strong>Make Aanya's idea fit today</strong><small>${selectedTime} · ${selectedGoal}</small></summary>
+      <section class="quest-context" aria-labelledby="quest-context-heading">
+        <div class="quest-context-heading"><strong id="quest-context-heading">Any constraints?</strong><small>Choose what fits today</small></div>
         <div class="quest-context-controls">
           <div class="quest-context-group" role="group" aria-label="Time available">${timeOptions.map((option) => `<button type="button" data-quest-time="${option.value}" aria-pressed="${preferences.time === option.value}" class="${preferences.time === option.value ? "is-active" : ""}">${option.label}</button>`).join("")}</div>
           <div class="quest-context-group" role="group" aria-label="Today's goal">${goalOptions.map((option) => `<button type="button" data-quest-goal="${option.value}" aria-pressed="${preferences.goal === option.value}" class="${preferences.goal === option.value ? "is-active" : ""}">${option.label}</button>`).join("")}</div>
         </div>
-      </details>`;
+      </section>`;
   }
 
   function aanyaHomePanel(totalCooks, learnedSkills, badge, badgeStatus, questDeck) {
@@ -609,7 +608,7 @@
       })
       .filter(Boolean)
       .sort((a, b) => b.date.localeCompare(a.date))[0];
-    const image = "assets/aanya/variations/proud-plating.jpg?v=3";
+    const image = "assets/aanya/variations/proud-plating.jpg?v=4";
 
     const targetRecipe = pendingCook?.recipe || questDeck.recipe;
     const isChoosing = !pendingCook;
@@ -646,7 +645,7 @@
       <section class="aanya-companion" aria-labelledby="aanya-companion-heading">
         <div class="aanya-companion-copy">
           <div class="aanya-guide-intro">
-            <div class="aanya-companion-art"><img src="${image}" alt="Aanya proudly presenting a finished dish"></div>
+            <div class="aanya-companion-art"><img src="${image}" alt="Aanya proudly presenting a finished dish" loading="eager" fetchpriority="high"></div>
             <div class="aanya-guide-message">
               <div class="aanya-companion-top"><div><p class="eyebrow">Aanya's idea for you</p><h2 id="aanya-companion-heading">${escapeHtml(heading)}</h2></div><span class="aanya-live-pill">AANYA'S PICK</span></div>
               <div class="aanya-speech"><span aria-hidden="true">💬</span><p>${escapeHtml(comment)}</p></div>
@@ -677,11 +676,13 @@
             </article>
           </div>
           ${isChoosing ? `
-            <div class="quest-swipe-actions ${canPass ? "" : "quest-swipe-actions--single"}">
-              ${canPass ? `<button class="quest-swipe-button quest-swipe-button--pass" type="button" data-pass-daily-quest aria-label="Show another dish idea instead of ${escapeHtml(targetRecipe.name)}"><span aria-hidden="true">←</span><strong>Another idea</strong></button>` : ""}
-              <button class="quest-swipe-button quest-swipe-button--accept" type="button" data-accept-daily-quest="${targetRecipe.id}" aria-label="Open ${escapeHtml(targetRecipe.name)} to cook it"><span aria-hidden="true">→</span><strong>Cook this</strong></button>
-            </div>
-            <button class="text-button aanya-browse-dishes" type="button" data-route="dishes">Or browse every dish →</button>` : `
+            <div class="quest-choice-controls">
+              <div class="quest-swipe-actions ${canPass ? "" : "quest-swipe-actions--single"}">
+                ${canPass ? `<button class="quest-swipe-button quest-swipe-button--pass" type="button" data-pass-daily-quest aria-label="Show another dish idea instead of ${escapeHtml(targetRecipe.name)}"><span aria-hidden="true">←</span><strong>Another idea</strong></button>` : ""}
+                <button class="quest-swipe-button quest-swipe-button--accept" type="button" data-accept-daily-quest="${targetRecipe.id}" aria-label="Open ${escapeHtml(targetRecipe.name)} to cook it"><span aria-hidden="true">→</span><strong>Cook this</strong></button>
+              </div>
+              <button class="text-button aanya-browse-dishes" type="button" data-route="dishes">Or browse every dish →</button>
+            </div>` : `
             <div class="aanya-plan-progress"><span>Next badge</span><strong>${badge.icon} ${escapeHtml(badge.name)}</strong><span>${badgeStatus.value}/${badge.target}</span></div>
             <div class="aanya-plan-actions">
               <button class="button button-primary aanya-action" type="button" data-open-recipe="${targetRecipe.id}">Continue ${escapeHtml(targetRecipe.name)} →</button>
@@ -1793,6 +1794,20 @@
         image.replaceWith(Object.assign(document.createElement("span"), { textContent: "🍲" }));
       };
       image.addEventListener("error", showFallback, { once: true });
+      if (image.complete && image.naturalWidth === 0) showFallback();
+    });
+    root.querySelectorAll(".aanya-companion-art img:not([data-wired])").forEach((image) => {
+      image.dataset.wired = "true";
+      const showFallback = () => {
+        if (!image.isConnected) return;
+        if (!image.dataset.fallbackTried) {
+          image.dataset.fallbackTried = "true";
+          image.src = "assets/aanya/welcome.png?v=2";
+          return;
+        }
+        image.replaceWith(Object.assign(document.createElement("span"), { className: "aanya-image-fallback", textContent: "👩🏽‍🍳" }));
+      };
+      image.addEventListener("error", showFallback);
       if (image.complete && image.naturalWidth === 0) showFallback();
     });
   }

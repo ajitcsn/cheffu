@@ -70,11 +70,13 @@ for (const screenshot of ["cheffu-home-desktop.png", "cheffu-cook-complete-deskt
 assert.ok(fs.existsSync(new URL("./assets/brand/cheffu-aanya-logo.png", import.meta.url)), "Cheffu must include the Aanya mascot logo asset");
 assert.ok(index.includes("assets/brand/cheffu-aanya-logo.png"), "Header and app metadata must use the Aanya mascot logo");
 assert.ok(fs.existsSync(new URL("./assets/aanya/welcome.png", import.meta.url)), "Aanya welcome asset missing");
-assert.ok(appSource.includes('const image = "assets/aanya/variations/proud-plating.jpg?v=3"'), "Home must use one fixed Aanya variation");
+assert.ok(/const image = "assets\/aanya\/variations\/proud-plating\.jpg\?v=\d+"/.test(appSource), "Home must use one fixed Aanya variation");
 assert.ok(!appSource.includes("sceneImages") && !appSource.includes("AANYA_VARIATION_IMAGES") && !appSource.includes("aanyaCycle"), "Home must not cycle Aanya variations");
 assert.ok(appSource.includes("aanyaHomePanel") && appSource.includes("Aanya's idea for you"), "Home must include one reactive Aanya recommendation");
 assert.ok(appSource.includes("AANYA'S PICK") && appSource.includes("Aanya recommends"), "The quest card must visibly identify Aanya as its recommender");
 assert.ok(appSource.includes("quest-swipe-card") && appSource.includes("data-pass-daily-quest") && appSource.includes("data-accept-daily-quest"), "Home must expose one swipeable Aanya suggestion with accessible action buttons");
+assert.ok(appSource.includes("Any constraints?") && appSource.includes('class="quest-context"') && !appSource.includes('<details class="quest-context">'), "Quest constraints must be visible without opening a disclosure");
+assert.ok(appSource.includes("quest-choice-controls") && styles.includes(".quest-choice-controls"), "Quest action buttons must share the card width");
 assert.ok(appSource.includes("dailyQuestDeck") && appSource.includes("ANOTHER IDEA") && appSource.includes("COOK THIS"), "Aanya's suggestion deck must have clear left and right outcomes");
 assert.ok(appSource.includes("const guidedUntried") && appSource.includes("const allUntried") && !appSource.includes("[...untried, ...tried]"), "Quest recommendations must exclude cooked dishes until the compatible catalogue is exhausted");
 assert.ok(appSource.includes('"Aanya\'s deck", "suggestion"') && styles.includes(".toast--suggestion"), "Aanya's next-dish feedback must use a neutral, non-success colour");
